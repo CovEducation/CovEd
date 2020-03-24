@@ -1,6 +1,6 @@
 {
-  "name": "weblab-skeleton",
-  "version": "1.0.0",
+  "name": "coved",
+  "version": "0.1",
   "description": "",
   "main": "server/server.js",
   "scripts": {
