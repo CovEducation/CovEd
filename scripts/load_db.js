@@ -1,43 +1,20 @@
 const { google } = require('googleapis');
 const mongoose = require('mongoose');
 const fs = require('fs');
+require("dotenv").config({path: '../.env'})
 
 const { authorize } = require('./google_sheets')
 
 const Tutor = require('../server/models/tutor')
 
-main()
-
-async function main() {
-    require("dotenv").config({path: '../.env'})
-    // TODO change connection URL after setting up your team database
-    const mongoConnectionURL = process.env.MONGO_URI;
-    // TODO change database name to the name you chose
-    const databaseName = "Coved-Tutor-Test";
-
-    try {
-        // Connect to mongoDB
-        await mongoose
-            .connect(mongoConnectionURL, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-                dbName: databaseName,
-            });
-
-    } catch (err) {
-        console.log(`Error connecting to MongoDB: ${err}`)
-        return;
-    }
-        
-    // Authenticate for google sheets 
-    fs.readFile('credentials.json', (err, content) => {
-        if (err) return console.log('Error loading client secret file:', err);
-        // Authorize a client with credentials, then call the Google Sheets API.
-        // TODO: I dont like this starter code; probably want to rewrite to use async/await
-        authorize(JSON.parse(content), upload_mentor_data); 
-    });
-}
-
+// authenticate into google api and then upload mentor_data
+fs.readFile('credentials.json', (err, content) => {
+    if (err) return console.log('Error loading client secret file:', err);
+    // Authorize a client with credentials, then call the Google Sheets API.
+    // TODO: I dont like this starter code; probably want to rewrite to use async/await
+    authorize(JSON.parse(content), upload_mentor_data); 
+});
+ 
 const MENTOR_SPREADSHEET = { 
     spreadsheetId: '1WF7al7SOlf3ntEUwVEa2BwQw10jfzwdfOO7lkM6QUvw',
     range: 'Form Responses 1' 
@@ -107,11 +84,28 @@ function parse_spreadsheet(rows) {
  * @param {*} mentors 
  */
 async function put_mentors(tutors) {
+    // TODO change connection URL after setting up your team database
+    const mongoConnectionURL = process.env.MONGO_URI;
+    // TODO change database name to the name you chose
+    const databaseName = "Coved-Tutor-Test";
+
     try {
-        const docs = (await Tutor.insertMany(tutors));
-        mongoose.connection.close(); // I don't like putting this here
+        // open mongodb connection
+        await mongoose
+            .connect(mongoConnectionURL, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                dbName: databaseName,
+            });
+        
+        // insert tutors to db
+        const docs = await Tutor.insertMany(tutors);
         console.log("pushed, " +  docs);
+
     } catch (err) {
         console.log('MongoDB Error: ', err);
     }
+
+    // close the connection
+    mongoose.connection.close(); // I don't like putting this here
 }
