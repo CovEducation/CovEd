@@ -10,8 +10,8 @@
 const express = require("express");
 
 // import models so we can interact with the database
-const Mentor = require("./models/mentor");
-const Mentee = require("./models/mentee");
+const Tutor = require("./models/tutor");
+const Tutee = require("./models/tutee");
 
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
@@ -20,73 +20,47 @@ const router = express.Router();
 /*
   GET Endpoints
 */
-router.get("/mentees", (req, res) => {
-  // TODO: Returning all the mentees is a big privacy issue. Revisit if needed.
-  // // Returns all mentors for now.
-  // Mentee.find({})
-  //       .then((mentees) => {
-  //         res.send(mentees);
-  //       })
-  //       .catch(()=> res.send({}));
-  res.send({});
-});
 
-router.get("/menteeByEmail", (req, res) => {
-  Mentee.find({email: req.query.email})
-        .then((mentees) => {
-          res.send(mentees);
-        })
-        .catch(()=> res.send({}));
-});
-
-router.get("/menteebyPhone", (req, res) => {
-  Mentee.find({phone: req.query.phone})
-  .then((mentees) => {
-    res.send(mentees);
-  })
-  .catch(()=> res.send({}));
-});
-
-router.get("/mentors", (req, res) => {
-  Mentor.find({})
-        .then((mentors) => {
-          res.send(mentors.map((mentor) => removeContactInfo(mentor)));
+router.get("/tutors", (req, res) => {
+  Tutor.find({})
+        .then((tutors) => {
+          res.send(tutors.map((tutor) => removeContactInfo(tutor)));
         })
         .catch(()=> {
           res.send({});
         });
 });
 
-router.get("/mentorBySubject", (req, res) => {
-  Mentor.find({
+router.get("/tutorBySubject", (req, res) => {
+  Tutor.find({
     subjects: req.query.subject
   })
-  .then((mentors) => {
-    res.send(mentors.map((mentor) => removeContactInfo(mentor)));
+  .then((tutors) => {
+    res.send(tutors.map((tutor) => removeContactInfo(tutor)));
   })
   .catch(()=> {
     res.send({});
   });
 });
 
-router.get("/mentorByLanguage", (req, res) => {
-  Mentor.find({
+router.get("/tutorByLanguage", (req, res) => {
+  Tutor.find({
     languages: req.query.language
   })
-  .then((mentors) => {
-    res.send(mentors.map((mentor) => removeContactInfo(mentor)));
+  .then((tutors) => {
+    res.send(tutors.map((tutor) => removeContactInfo(tutor)));
   })
   .catch(()=> {
     res.send({});
   });
 });
 
-router.get("/mentorForCollegePrep", (req, res) => {
-  Mentor.find({
+router.get("/tutorForCollegePrep", (req, res) => {
+  Tutor.find({
     college_prep: true,
   })
-  .then((mentors)=> {
-    res.send(mentors.map((mentor) => removeContactInfo(mentor)));
+  .then((tutors)=> {
+    res.send(tutors.map((tutor) => removeContactInfo(tutor)));
   })
   .catch(()=> {
     res.send({});
@@ -97,8 +71,8 @@ router.get("/mentorForCollegePrep", (req, res) => {
   POST Endpoints
 */
 
-router.post("/addMentee", (req, res) => {
-  let newMentee = new Mentee({
+router.post("/addTutee", (req, res) => {
+  let newTutee = new Tutee({
     name: req.body.name,
     phone: req.body.phone,
     email: req.body.email,
@@ -110,14 +84,14 @@ router.post("/addMentee", (req, res) => {
     guardian_name: req.body.guardian_name,
     guardian_present: req.body.guardian_present,
     has_reliable_internet: req.body.has_reliable_internet,
-    mentors: [],
+    tutors: [],
   })
 
-  newMentee.save().then((mentee) => res.send(mentee))
+  newTutee.save().then((tutee) => res.send(tutee))
 });
 
-router.post("/addMentor", (req, res) => {
-  let newMentor = new Mentor({
+router.post("/addTutor", (req, res) => {
+  let newTutor = new Tutor({
     name: req.body.name,
     email: req.body.email,
     phone: req.body.phone,
@@ -127,15 +101,15 @@ router.post("/addMentor", (req, res) => {
     class_year: req.body.class_year,
     college_prep: req.body.college_prep,
     languages_spoken: req.body.languages_spoken,
-    grade_levels_to_mentor: req.body.grade_levels_to_mentor,
-    mentees: []
+    grade_levels_to_tutors: req.body.grade_levels_to_tutors,
+    tutees: []
   });
 
-  newMentor.save().then((mentor) => res.send(mentor));
+  newTutor.save().then((tutor) => res.send(tutor));
 });
 
-router.post("/pingMentor", (req, res) => {
-  // TODO: Send an email or notification ot the mentor.
+router.post("/pingTutor", (req, res) => {
+  // TODO: Send an email or notification ot the tutor.
 
 });
 
