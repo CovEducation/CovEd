@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const MenteeSchema = new mongoose.Schema({
+const TuteeSchema = new mongoose.Schema({
   name: String,
   phone: String,
   email: String,
@@ -12,10 +12,10 @@ const MenteeSchema = new mongoose.Schema({
   guardian_name: String,
   guardian_phone: String,
   guardian_email: String,
-  mentors: [mongoose.Types.ObjectId],
+  tutors: [mongoose.Types.ObjectId],
   has_reliable_internet: Boolean,
   guardian_present: Boolean,
 });
 
 // compile model from schema
-module.exports = mongoose.model("mentee", MenteeSchema);
+module.exports = mongoose.model("tutee", TuteeSchema);
