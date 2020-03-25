@@ -7,7 +7,7 @@ const TutorSchema = new mongoose.Schema({
   subjects: [String],
   location: String,
   major: String,
-  class_year: Number,
+  class_year: String,
   college_prep: Boolean,
   languages_spoken: [String],
   grade_levels_to_tutor: [Number],
