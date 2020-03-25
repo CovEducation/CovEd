@@ -1,6 +1,6 @@
 {
   "name": "coved",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "",
   "main": "server/server.js",
   "scripts": {
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "bootstrap": "^4.4.1",
     "connect-ensure-login": "^0.1.1",
     "core-js": "^3.3.6",
     "dotenv": "^8.2.0",
@@ -52,7 +53,7 @@
     "react-hot-loader": "^4.6.3",
     "style-loader": "^0.23.1",
     "webpack": "^4.28.3",
-    "webpack-cli": "^3.1.2",
+    "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.1.14"
   }
 }
