@@ -11,9 +11,11 @@ import NavBar from "./modules/NavBar.js"
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-//import "../css/animate.min.css";
-//import "../css/bootstrap.min.css";
-//import "../css/utilities.css";
+
+import "./App.css"
+// import "~/css/animate.min.css";
+// import "~/css/bootstrap.min.css";
+// import "../css/utilities.css";
 
 /**
  * Define the "App" component as a class.
