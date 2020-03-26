@@ -1,6 +1,6 @@
 {
   "name": "coved",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "",
   "main": "server/server.js",
   "scripts": {
@@ -25,6 +25,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "express-session": "^1.17.0",
+    "firebase": "^7.12.0",
     "google-auth-library": "^5.5.1",
     "googleapis": "^39.2.0",
     "mongoose": "^5.7.7",
