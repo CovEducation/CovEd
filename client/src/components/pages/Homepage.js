@@ -8,43 +8,6 @@ class Homepage extends Component {
   render() {
     return (
       <div>
-        <nav id="mainNav" className="navbar navbar-default navbar-fixed-top">
-          <div className="container-fluid">
-            {/* Brand and toggle get grouped for better mobile display */}
-            <div className="navbar-header">
-              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span className="sr-only">Toggle navigation</span>
-                <span className="icon-bar" />
-                <span className="icon-bar" />
-                <span className="icon-bar" />
-                <span className="icon-bar" />
-              </button>
-              <a className="navbar-brand page-scroll" href="#page-top">CovEd</a>
-            </div>
-            {/* Collect the nav links, forms, and other content for toggling */}
-            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul className="nav navbar-nav navbar-right">
-                <li>
-                  <a href="signup.html">Sign Up</a>
-                </li>
-                <li>
-                  <a href="resources.html">Resources</a>
-                </li>
-                <li>
-                  <a href="whoweare.html">Who We Are</a>
-                </li>
-                <li>
-                  <a href="faq.html">FAQs</a>
-                </li>
-                <li>
-                  <a href="contact.html">Contact</a>
-                </li>
-              </ul>
-            </div>
-            {/* /.navbar-collapse */}
-          </div>
-          {/* /.container-fluid */}
-        </nav>
         {/*Header section*/}
         <header>
           <div className="header-content">

@@ -93,4 +93,4 @@ class Contact extends Component {
   }
 }
 
-export default Signup;
+export default Contact;
