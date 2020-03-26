@@ -8,6 +8,9 @@ import Resources from "./pages/Resources.js";
 import SignUp from "./pages/SignUp.js";
 import WhoWeAre from "./pages/WhoWeAre.js";
 import NavBar from "./modules/NavBar.js"
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 //import "../css/animate.min.css";
 //import "../css/bootstrap.min.css";
 //import "../css/utilities.css";

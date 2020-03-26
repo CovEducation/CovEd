@@ -33,7 +33,7 @@ class NavBar extends Component {
                 <a href="whoweare">Who We Are</a>
               </li>
               <li>
-                <a href="faq">FAQs</a>
+                <a href="faqs">FAQs</a>
               </li>
               <li>
                 <a href="contact">Contact</a>

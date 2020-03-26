@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^3.4.1",
     "connect-ensure-login": "^0.1.1",
     "core-js": "^3.3.6",
     "dotenv": "^8.2.0",
@@ -31,6 +31,7 @@
     "mongoose": "^5.7.7",
     "nodemon": "^1.19.4",
     "react": "^16.7.0",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.7.0",
     "react-google-login": "^5.0.7",
     "react-router-dom": "^4.3.1",
