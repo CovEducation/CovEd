@@ -47,7 +47,7 @@ class SignUp extends Component {
                 <br />
                 <br />
                 <h3>Parents and K-12 students</h3>
-                <p>For parents and students, we have an <a href="resources.html">entire</a>page dedicated to free online resources. If you are a K-12 student, parent, or educator and would like to sign up for academic support, please register here</p>
+                <p>For parents and students, we have an <a href="resources">entire</a>page dedicated to free online resources. If you are a K-12 student, parent, or educator and would like to sign up for academic support, please register here</p>
                 <p><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeQbfc4hukSn67JZIRbXQDBXFM3iWPuHl4k51LIGFsUU64_Gw/viewform?embedded=true" width={640} height={3150} frameBorder={0} marginHeight={0} marginWidth={0}>Loading…</iframe></p>
               </div>
               <div id="college" className="tab-pane fade">
@@ -64,7 +64,7 @@ class SignUp extends Component {
                 <br />
                 <h3>Educators</h3>
                 <p>Check out our resources page!</p>
-                <a href="resources.html" className="btn btn-primary btn-xl hvr-float-shadow">Resources</a>
+                <a href="resources" className="btn btn-primary btn-xl hvr-float-shadow">Resources</a>
                 <br />
                 <br />
                 <p>Know of a few good resources yourself? Please fill out this form </p><p>

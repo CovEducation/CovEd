@@ -82,7 +82,7 @@ class FAQs extends Component {
                   <p> Got more questions? If you don't see your question answered here, shoot us an email! We're excited to hear from you~</p>
                 </div>
                 <div className="col-lg-3">
-                  <a href="contact.html" className="btn btn-default btn-xl hvr-float-shadow">Contact Us</a>
+                  <a href="contact" className="btn btn-default btn-xl hvr-float-shadow">Contact Us</a>
                 </div>
               </div>
             </div>

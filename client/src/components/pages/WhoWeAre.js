@@ -178,10 +178,10 @@ class WhoWeAre extends Component {
                 <h2 className="section-heading">Questions? Contact Us!</h2> <hr className="light" />
                 <br /> <br />
                 <div className="col-lg-4 col-lg-offset-2 text-left">
-                  <p>Check out the <a className="whiteLink" href="faq.html">FAQs page</a> to see if we've already answered your question. If you don't see your question there, shoot us an email! We're excited to hear from you~</p>
+                  <p>Check out the <a className="whiteLink" href="faq">FAQs page</a> to see if we've already answered your question. If you don't see your question there, shoot us an email! We're excited to hear from you~</p>
                 </div>
                 <div className="col-lg-3">
-                  <a href="contact.html" className="btn btn-default btn-xl hvr-float-shadow">Contact Us</a>
+                  <a href="contact" className="btn btn-default btn-xl hvr-float-shadow">Contact Us</a>
                 </div>
               </div>
             </div>

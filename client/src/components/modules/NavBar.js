@@ -19,7 +19,7 @@ class NavBar extends Component {
               <span className="icon-bar" />
               <span className="icon-bar" />
             </button>
-            <a className="navbar-brand page-scroll" href="#page-top">CovEd</a>
+            <a className="navbar-brand page-scroll" href="/">CovEd</a>
           </div>
           {/* Collect the nav links, forms, and other content for toggling */}
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

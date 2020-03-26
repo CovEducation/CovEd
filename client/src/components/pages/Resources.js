@@ -35,6 +35,7 @@ class Resources extends Component {
         
         
     <![endif]*/}
+
         <section className="bg-secondary" id="about">
           <div className="container">
             <div className="row">

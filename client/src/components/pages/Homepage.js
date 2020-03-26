@@ -15,8 +15,8 @@ class Homepage extends Component {
               <h1>CovEd<span style={{fontWeight: 200}}>ucation</span></h1>
               <p>Continuing K-12 education during the COVID-19 outbreak</p>
               {/*about button*/}
-              <a href="signup.html" className="btn btn-primary btn-xl hvr-float-shadow">Parents and K-12 students</a>
-              <a href="signup.html" className="btn btn-primary btn-xl hvr-float-shadow">College Students</a>
+              <a href="signup" className="btn btn-primary btn-xl hvr-float-shadow">Parents and K-12 students</a>
+              <a href="signup" className="btn btn-primary btn-xl hvr-float-shadow">College Students</a>
             </div>
           </div>
         </header>
@@ -27,7 +27,7 @@ class Homepage extends Component {
               <div className="col-lg-8 col-lg-offset-2 text-center">
                 <h2 className="section-heading"> About Us</h2>
                 <p>CovED is a community of undergraduates from some of the top colleges/universities across the U.S. who are interested in supporting K-12 students in light of the COVID-19 pandemic. Our goal is to create a virtual platform for pairing mentors from higher ed institutions with K-12 students affected by school closures. We hope that this platform and our resources page will help provide additional academic assistance for students and families who are facing hardships caused by the ongoing pandemic.</p>
-                {/*<a href="whoweare.html" class="btn btn-default btn-xl hvr-float-shadow">Who We Are</a>*/}
+                {/*<a href="whoweare" class="btn btn-default btn-xl hvr-float-shadow">Who We Are</a>*/}
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@ class Homepage extends Component {
                   <div className="col-lg-6">
                     <div className="feature-item" align="center">
                       <h3>Access free learning resources</h3>
-                      <p className="text-muted">Check out our <a href="resources.html">resources</a> page! We have several links listed already.</p>
+                      <p className="text-muted">Check out our <a href="resources">resources</a> page! We have several links listed already.</p>
                     </div>
                   </div>
                   <div className="col-lg-6">
@@ -89,8 +89,8 @@ class Homepage extends Component {
             </div>
             <div align="center">
               <a target="_blank" href="https://forms.gle/P4n36zh3pdt8nEzM8" className="btn btn-primary btn-xl hvr-float-shadow">Submit a resource</a>
-              <a href="signup.html#students" className="btn btn-primary btn-xl hvr-float-shadow">Request Mentor</a>
-              <a href="signup.html#college" className="btn btn-primary btn-xl hvr-float-shadow">Be a mentor</a>
+              <a href="signup#students" className="btn btn-primary btn-xl hvr-float-shadow">Request Mentor</a>
+              <a href="signup#college" className="btn btn-primary btn-xl hvr-float-shadow">Be a mentor</a>
             </div>
           </div>
         </section>
@@ -102,10 +102,10 @@ class Homepage extends Component {
                 <h2 className="section-heading">Questions? Contact Us!</h2> <hr className="light" />
                 <br /> <br />
                 <div className="col-lg-4 col-lg-offset-2 text-left">
-                  <p>Check out the <a className="whiteLink" href="faq.html">FAQs page</a> to see if we've already answered your question. If you don't see your question there, shoot us an email! We're excited to hear from you~</p>
+                  <p>Check out the <a className="whiteLink" href="faq">FAQs page</a> to see if we've already answered your question. If you don't see your question there, shoot us an email! We're excited to hear from you~</p>
                 </div>
                 <div className="col-lg-3">
-                  <a href="contact.html" className="btn btn-default btn-xl hvr-float-shadow">Contact Us</a>
+                  <a href="contact" className="btn btn-default btn-xl hvr-float-shadow">Contact Us</a>
                 </div>
               </div>
             </div>
