@@ -1,0 +1,861 @@
+/*!
+ * Start Bootstrap - Creative Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    font-weight: 200;
+}
+
+hr {
+    max-width: 150px;
+    border-color: #F2BE32;
+    border-width: 3px;
+}
+
+hr.light {
+    border-color: #fff;
+}
+
+a {
+    color: #F2BE32;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+a:hover,
+a:focus {
+    color: #F2BE32;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Muli', sans-serif;
+    font-weight: 500;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.bg-primary {
+    background-color: #00568C;
+    /*background-color: #003c61;*/
+}
+
+.bg-secondary{
+  background-color: #fff;
+  color: rgba(0,0,0,.9);
+}
+.bg-dark {
+    color: #fff;
+    background-color: #003c61;
+}
+
+.text-faded {
+    color: rgba(255,255,255,.7);
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 168px;
+}
+section {
+    padding: 100px 0;
+}
+section.bg-secondary .section-heading {
+  margin-bottom: 50px;
+}
+
+section.bg-secondary .section-heading h2 {
+  margin-top: 0;
+}
+
+section.bg-secondary .section-heading p {
+  margin-bottom: 0;
+}
+
+section.bg-secondary .device-container,
+section.bg-secondary .feature-item {
+  max-width: 325px;
+  margin: 0 auto;
+}
+
+section.bg-secondary .device-container {
+  margin-bottom: 100px;
+}
+
+@media (min-width: 992px) {
+  section.bg-secondary .device-container {
+    margin-bottom: 0;
+  }
+}
+
+section.bg-secondary .feature-item {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+section.bg-secondary .feature-item h3 {
+  font-size: 25px;
+}
+
+section.bg-secondary .feature-item i {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 15px;
+  background: -webkit-gradient(linear, right top, left top, from(#3d9e38), to(#60dfff));
+  background: linear-gradient(to left, #3d9e38, #60dfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section2{
+    padding: 0px 0px 100px 0px!important;
+}
+
+.center-div
+{
+     margin: 0 auto;
+     width: 400px;
+}
+
+aside {
+    padding: 50px 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+/*for the tabs on the sign up page*/
+
+.nav-tabs{
+  font-family: 'Muli', sans-serif;
+  font-weight:600;
+  border-bottom:2px solid #F2BE32;
+}
+
+.nav-tabs>li{
+  margin-bottom: -2px;
+}
+
+.nav-tabs>li>a:hover,
+.nav-tabs>li>a:focus{
+  background-color: #F2BE32;
+  border:2px solid #F2BE32;
+  color: #000;
+}
+
+.nav-tabs>li.active>a{
+  border:2px solid #F2BE32;
+  border-bottom-color:transparent;
+  color: #000;
+}
+
+.nav-tabs>li.active>a:hover,
+.nav-tabs>li.active>a:focus{
+  border:2px solid #F2BE32;
+  color: #000;
+  border-bottom-color:transparent;
+}
+
+.navbar-default {
+    border-color: rgba(255,255,255,0);
+    font-family: 'Muli', sans-serif;
+    background-color: rgba(255,255,255,1);
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.navbar-default .navbar-header .navbar-brand {
+    /*text-transform: uppercase;*/
+  font-family: 'Muli', sans-serif;
+    font-weight: 600;
+    color: #222;
+}
+
+.navbar-default .navbar-header .navbar-brand:hover,
+.navbar-default .navbar-header .navbar-brand:focus {
+    color: #F2BE32;
+}
+
+/*color of menu items on phone screen when you DO NOT hover*/
+.navbar-default .nav > li>a,
+.navbar-default .nav>li>a:focus {
+    /*text-transform: uppercase;*/
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+}
+
+/*color of menu items on phone screen when you hover*/
+.navbar-default .nav > li>a:hover,
+.navbar-default .nav>li>a:focus:hover {
+    color: #F2BE32;
+}
+
+.navbar-default .nav > li.active>a,
+.navbar-default .nav>li.active>a:focus {
+    color: #F2BE32!important;
+    background-color: transparent;
+}
+
+.navbar-default .nav > li.active>a:hover,
+.navbar-default .nav>li.active>a:focus:hover {
+    background-color: transparent;
+}
+
+@media(min-width:768px) {
+    .navbar-default {
+	border-color: rgba(255,255,255,0);
+	background-color: rgba(255,255,255,0);
+    }
+
+/*standard colors when at the top of the screen on desktop*/
+    .navbar-default .navbar-header .navbar-brand {
+        color: #fff;
+    }
+
+    .navbar-default .navbar-header .navbar-brand:hover,
+    .navbar-default .navbar-header .navbar-brand:focus {
+	color: #F2BE32;
+    }
+
+    .navbar-default .nav > li>a,
+    .navbar-default .nav>li>a:focus {
+        color: #fff;
+    }
+
+    .navbar-default .nav > li>a:hover,
+    .navbar-default .nav>li>a:focus:hover {
+        color: #F2BE32;
+    }
+
+    /*the color of the following nav bar when you scroll down*/
+    .navbar-default.affix {
+        border-color: rgba(34,34,34,.05);
+        background-color: #fff;
+    }
+
+    /*the color of the CovEd text following nav bar when you scroll down*/
+    .navbar-default.affix .navbar-header .navbar-brand {
+        font-size: 18px;
+        color: #222;
+    }
+
+    .navbar-default.affix .navbar-header .navbar-brand:hover,
+    .navbar-default.affix .navbar-header .navbar-brand:focus {
+        color: #F2BE32;
+    }
+
+    /*the color of the menu text following nav bar when you scroll down*/
+    .navbar-default.affix .nav > li>a,
+    .navbar-default.affix .nav>li>a:focus {
+        color: #222;
+    }
+
+    .navbar-default.affix .nav > li>a:hover,
+    .navbar-default.affix .nav>li>a:focus:hover {
+        color: #F2BE32;
+    }
+}
+
+/*LIGHT VERSION OF NAVBAR*/
+.navbar-default2 {
+    border-color: rgba(255,255,255,0);
+    font-family: 'Muli', sans-serif;
+    background-color: rgba(255,255,255,1);
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.navbar-default2 .navbar-header .navbar-brand {
+    /*text-transform: uppercase;*/
+  font-family: 'Muli', sans-serif;
+    font-weight: 600;
+    color: #222;
+}
+
+.navbar-default2 .navbar-header .navbar-brand:hover,
+.navbar-default2 .navbar-header .navbar-brand:focus {
+    color: #F2BE32;
+}
+
+
+.navbar-default2 .navbar-toggle .icon-bar{
+    background-color: #222;
+}
+
+/*color of menu items on phone screen when you DO NOT hover*/
+.navbar-default2 .nav > li>a,
+.navbar-default2 .nav>li>a:focus {
+    /*text-transform: uppercase;*/
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+}
+
+/*color of menu items on phone screen when you hover*/
+.navbar-default2 .nav > li>a:hover,
+.navbar-default2 .nav>li>a:focus:hover {
+    color: #F2BE32;
+}
+
+.navbar-default2 .nav > li.active>a,
+.navbar-default2 .nav>li.active>a:focus {
+    color: #F2BE32!important;
+    background-color: transparent;
+}
+
+.navbar-default2 .nav > li.active>a:hover,
+.navbar-default2 .nav>li.active>a:focus:hover {
+    background-color: transparent;
+}
+
+@media(min-width:768px) {
+    .navbar-default2 {
+	border-color: rgba(255,255,255,0);
+	background-color: rgba(255,255,255,0);
+    }
+
+/*standard colors when at the top of the screen on desktop*/
+    .navbar-default2 .navbar-header .navbar-brand {
+        color: #222;
+        background-color: transparent;
+    }
+
+    .navbar-default2 .navbar-header .navbar-brand:hover,
+    .navbar-default2 .navbar-header .navbar-brand:focus {
+	     color: #F2BE32;
+       background-color: transparent;
+    }
+
+    .navbar-default2 .nav > li>a,
+    .navbar-default2 .nav>li>a:focus {
+        color: #222;
+        background-color: transparent;
+    }
+
+    .navbar-default2 .nav > li>a:hover,
+    .navbar-default2 .nav>li>a:focus:hover {
+        color: #F2BE32;
+        background-color: transparent;
+    }
+
+    /*the color of the following nav bar when you scroll down*/
+    .navbar-default2.affix {
+        border-color: rgba(34,34,34,.05);
+        background-color: #fff;
+    }
+
+    /*the color of the CovEd text following nav bar when you scroll down*/
+    .navbar-default2.affix .navbar-header .navbar-brand {
+        font-size: 18px;
+        color: #222;
+    }
+
+    .navbar-default2.affix .navbar-header .navbar-brand:hover,
+    .navbar-default2.affix .navbar-header .navbar-brand:focus {
+        color: #F2BE32;
+    }
+
+    /*the color of the menu text following nav bar when you scroll down*/
+    .navbar-default2.affix .nav > li>a,
+    .navbar-default2.affix .nav>li>a:focus {
+        color: #222;
+    }
+
+    .navbar-default2.affix .nav > li>a:hover,
+    .navbar-default2.affix .nav>li>a:focus:hover {
+        color: #F2BE32;
+    }
+
+}
+
+header {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
+    /*background: radial-gradient(rgba(0,86,140, 0.5), rgba(0,86,140,0.95)),*/
+    background: radial-gradient(rgba(0,60,97, 0.7), rgba(0,60,97,0.95)),
+    url(../img/header.jpg);
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header .header-content {
+    position: relative;
+    width: 100%;
+    padding: 100px 15px;
+    text-align: center;
+}
+
+header .header-content .header-content-inner h1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    /*text-transform: uppercase;*/
+    font-weight: 700;
+    font-size: 80%;
+}
+
+header .header-content .header-content-inner hr {
+    margin: 15px auto;
+    max-width: 10%;
+    border-color: #fff;
+}
+
+header .header-content .header-content-inner p {
+    margin-bottom: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,.9);
+}
+
+@media(min-width:768px) {
+    header {
+        min-height: 100%;
+    }
+
+    header .header-content {
+        position: absolute;
+        top: 50%;
+        padding: 0 50px;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    header .header-content .header-content-inner {
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 1000px;
+    }
+
+    header .header-content .header-content-inner p {
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 80%;
+        font-size: 18px;
+    }
+}
+
+.section-heading {
+    margin-top: 0;
+}
+
+.service-box {
+    margin: 50px auto 0;
+    max-width: 400px;
+}
+
+@media(min-width:992px) {
+    .service-box {
+        margin: 20px auto 0;
+    }
+}
+
+.service-box p {
+    margin-bottom: 0;
+}
+
+.portfolio-box {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 650px;
+}
+
+.portfolio-box .portfolio-box-caption {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #000;
+    opacity: 0;
+    background: #f7f7f7;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-50%);
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    padding: 0 15px;
+    font-family: 'Muli', sans-serif;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    font-size: 18px;
+}
+
+.portfolio-box:hover .portfolio-box-caption {
+    opacity: 0.95;
+}
+
+@media(min-width:768px) {
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+        font-size: 16px;
+        color: #000;
+    }
+
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+        font-size: 22px;
+    }
+}
+
+.call-to-action h2 {
+    margin: 0 auto 20px;
+}
+
+.text-primary {
+    color: #F2BE32;
+}
+
+.some-gutter > [class*=col-] {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom:20px;
+}
+
+.btn-default {
+    border-color: #d1d1d1;
+    color: #222;
+    background-color: #fff;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  border-color: #ededed;
+  color: #F2BE32;
+  font-weight: 800;
+  background-color: #fff;
+  border-width: medium;
+}
+/*
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    background-image: none;
+}*/
+
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
+    border-color: #d1d1d1;
+    background-color: #fff;
+}
+
+.btn-default .badge {
+    color: #fff;
+    background-color: #222;
+}
+
+.btn-primary {
+    border-color: #F2BE32;
+    color: #222;
+    background-color: #F2BE32;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+    border-color: #F2BE32;
+    color: #222;
+    font-weight: 800;
+    background-color: #F2BE32;
+    border-width: medium;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+    background-image: none;
+}
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+    border-color: #F2BE32;
+    background-color: #F2BE32;
+}
+
+.btn-primary .badge {
+    color: #F2BE32;
+    background-color: #fff;
+}
+
+.btn {
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-family: 'Muli', sans-serif;
+    font-weight: 600;
+}
+
+.btn-xl {
+    padding: 15px 30px;
+    margin-top: 20px;
+    margin-right: 12px;
+    margin-left: 12px;
+}
+
+.hvr-float-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-float-shadow:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 80%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 80%);
+  /* W3C */
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform, opacity;
+  transition-property: transform, opacity;
+}
+.hvr-float-shadow:hover, .hvr-float-shadow:focus, .hvr-float-shadow:active {
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+  /* move the element up by 5px */
+}
+.hvr-float-shadow:hover:before, .hvr-float-shadow:focus:before, .hvr-float-shadow:active:before {
+  opacity: 1;
+  -webkit-transform: translateY(7px);
+  transform: translateY(7px);
+  /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+}
+::-moz-selection {
+    text-shadow: none;
+    color: #fff;
+    background: #222;
+}
+
+::selection {
+    text-shadow: none;
+    color: #fff;
+    background: #222;
+}
+
+img::selection {
+    color: #fff;
+    background: 0 0;
+}
+
+img::-moz-selection {
+    color: #fff;
+    background: 0 0;
+}
+
+body {
+    webkit-tap-highlight-color: #222;
+}
+
+.img-responsive {
+	width: 100%;
+	height: 250px;
+}
+
+.img-responsive2 {
+	width: 100%;
+	height: 90%;
+}
+/*white colored links*/
+.whiteLink {
+	color:rgba(255,255,255,0.60);
+	text-decoration:none;
+}
+
+.whiteLink:hover,a:hover {
+	color:rgba(255,255,255,1.0);
+	text-decoration:underline;
+}
+/*Black colored links*/
+.link,a {
+	color:rgba(0,0,0,0.50);
+	text-decoration:none;
+}
+
+.link:hover,a:hover {
+	color:rgba(0,0,0,1.0);
+	text-decoration:underline;
+}
+
+.table {
+	table-layout:fixed;
+  width: 100%;
+}
+
+.table, td{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*Carousel*/
+.carousel-caption{
+  color: white;
+  xright: 58%;
+  text-align: center;
+  max-width: 300px;
+  left: 0;
+  top: 1px;
+  /*top: 50%; */
+  xtransform: translateY(-50%);
+  xbottom: initial;
+  background: rgba(0,0,0,0.5);
+  padding:10px;
+  height:100%;
+  data-interval: 3000;
+}
+
+.carousel-caption p{
+  font-size: calc(11px + (14 - 10) * ((100vw - 300px) / (1300 - 300)));
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: left;
+}
+
+.carousel-inner{
+  height: 50%;
+
+}
+
+/*Accordianssss*/
+.accordion {
+    background-color: #f7f7f7;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    margin-bottom: 10px;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.accordion:hover, .active2 {
+    background-color: #e8e8e8;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active2:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
