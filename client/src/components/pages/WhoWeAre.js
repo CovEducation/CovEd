@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./styling.css";
 
 class WhoWeAre extends Component {
   constructor(props) {

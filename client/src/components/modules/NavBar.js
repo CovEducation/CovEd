@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./NavBar.css"
 
 class NavBar extends Component {
   constructor(props) {
