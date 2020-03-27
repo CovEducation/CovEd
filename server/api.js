@@ -16,6 +16,7 @@ const Tutee = require("./models/tutee");
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
 
+const firebase = require("firebase-admin");
 
 /*
   GET Endpoints
@@ -118,6 +119,17 @@ function removeContactInfo(person){
   person.phone = undefined;
   return person;
 };
+
+router.get("/auth_get", async (req, res) => {
+  console.log(req.query.token);
+  try {
+    const decodedToken = await firebase.auth().verifyIdToken(req.query.token);
+    res.send({status: 'success', uid: decodedToken.uid});
+  } catch (err) {
+    console.log(err);
+    res.send({status: 'error', error: err});
+  }
+});
 
 router.get("/healthCheck", (req, res) => {
   res.send({ok: true});

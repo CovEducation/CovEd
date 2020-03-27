@@ -11,12 +11,15 @@ class Authpage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = {ok: false, user: undefined, error: undefined};
+    this.state = {ok: false, user: undefined, error: undefined, msg: undefined};
     this.state.form = {email: undefined, password: undefined};
 
     this.signup = this.signup.bind(this);
     this.signin = this.signin.bind(this);
     this.signout = this.signout.bind(this);
+
+    this.auth_get = this.auth_get.bind(this);
+
     this.handleChange = this.handleChange.bind(this);
 
     auth.onAuthStateChanged((user) => {
@@ -27,11 +30,26 @@ class Authpage extends Component {
     });
   }
 
+  auth_get() {
+      auth.currentUser.getIdToken()
+        .then(token => {
+            get('/api/auth_get', {token: token})
+                .then(res => {
+                    this.setState({msg : res});
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }).catch(err => {
+            console.log(err);
+        });
+  }
+
   
   async signup() {
     event.preventDefault();
     try {
-        const user = await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password)
+        const user = await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
         console.log(user);
     } catch (error) {
         console.log(error);
@@ -89,6 +107,7 @@ class Authpage extends Component {
             <button onClick={this.signup}>Sign Up</button>
             <button onClick={this.signin}>Sign In</button>
             <button onClick={this.signout}>Sign Out</button>
+            <button onClick={this.auth_get}>Sign Out</button>
         </>
     );
   }

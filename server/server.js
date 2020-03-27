@@ -23,8 +23,19 @@ const http = require("http");
 const express = require("express"); // backend framework for our node server.
 const session = require("express-session"); // library that stores info about each connected user
 const mongoose = require("mongoose"); // library to connect to MongoDB
+const firebase = require("firebase-admin");
+const fs = require("fs");
 const path = require("path"); // provide utilities for working with file and directory paths
 const api = require("./api");
+
+
+// initialize firebase admin
+const firebaseConfigPath = path.join(__dirname, '..','/firebase-config.json');
+const serviceAccount = JSON.parse(fs.readFileSync(firebaseConfigPath));
+firebase.initializeApp({
+  credential: firebase.credential.cert(serviceAccount),
+  databaseURL: "https://coveducation-13eda.firebaseio.com"
+});
 
 // Server configuration below
 require("dotenv").config()
