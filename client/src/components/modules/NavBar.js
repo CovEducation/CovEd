@@ -13,7 +13,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar collapseOnSelect fixed="top" expand="lg" bg="white" variant="light">
+      <Navbar collapseOnSelect fixed="sticky-top" expand="lg" bg="white" variant="light">
         <Navbar.Brand href="/">Coved</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
