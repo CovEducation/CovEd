@@ -11,6 +11,7 @@ import Authpage from "./pages/Authpage.js";
 import Profile from "./pages/Profile.js";
 import Resources from "./pages/Resources.js";
 import FAQ from "./pages/FAQ.js";
+import WhoWeAre from "./pages/WhoWeAre.js";
 // Components
 import NavBar from "./modules/NavBar.js";
 
@@ -40,6 +41,7 @@ class App extends Component {
           <Authpage path="/auth" />
           <Profile path="/profile" />
           <FAQ path="/faq" />
+          <WhoWeAre path="/whoweare" />
         </Router>
         
       </>

@@ -15,7 +15,7 @@ import {
 
 // Styling components
 import Typography from "@material-ui/core/Typography";
-import { Button } from "@material-ui/core";
+import { Button, Container } from "@material-ui/core";
 
 // Assets
 import girl_task from "../../public/img/clip-list-is-empty.png";
@@ -63,7 +63,7 @@ class Homepage extends Component {
                 flexDirection="column"
                 style={{ zIndex: 1 }}
               >
-                <Heading>CovEDucation</Heading>
+                <Heading>CovEducation</Heading>
                 <Subhead fontSize={[8, 4]}>
                   Continuing K-12 education during the COVID-19 outbreak
                 </Subhead>
@@ -81,16 +81,17 @@ class Homepage extends Component {
             </Flex>
             <ScrollDownIndicator />
           </Hero>
-
-          <Section width={[1]} heading="About Us" subhead="">
-            <Typography variant="h4">{about_us_content}</Typography>
-          </Section>
-          <Section width={[1]} heading="Problem" subhead="">
-            <Typography variant="h4">{problem_content}</Typography>
-          </Section>
-          <Section width={[1]} heading="Our Solution" subhead="">
-            <Typography variant="h4">{solution_content}</Typography>
-          </Section>
+          <Container>
+            <Section width={[1]} heading="About Us" subhead="">
+              <Typography variant="body1">{about_us_content}</Typography>
+            </Section>
+            <Section width={[1]} heading="Problem" subhead="">
+              <Typography variant="body1">{problem_content}</Typography>
+            </Section>
+            <Section width={[1]} heading="Our Solution" subhead="">
+              <Typography variant="body1">{solution_content}</Typography>
+            </Section>
+          </Container>
         </Provider>
       </>
     );

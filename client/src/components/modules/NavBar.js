@@ -25,6 +25,7 @@ class NavBar extends Component {
             <Nav.Link href="/resources">Resources</Nav.Link>
             <Nav.Link href="/signup">Sign Up</Nav.Link>
             <Nav.Link href="/faq">FAQ</Nav.Link>
+            <Nav.Link href="/whoweare">Who We Are</Nav.Link>
             <Nav.Link href="/auth">Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
