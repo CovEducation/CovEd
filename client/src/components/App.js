@@ -8,10 +8,11 @@ import "./App.css";
 import NotFound from "./pages/NotFound.js";
 import Homepage from "./pages/Homepage.js";
 import Authpage from "./pages/Authpage.js";
-import Profile from "./pages/Profile.js";
+import ProfileEdit from "./pages/ProfileEdit.js";
 import Resources from "./pages/Resources.js";
 import FAQ from "./pages/FAQ.js";
 import WhoWeAre from "./pages/WhoWeAre.js";
+import Contact from "./pages/Contact.js";
 // Components
 import NavBar from "./modules/NavBar.js";
 
@@ -39,9 +40,11 @@ class App extends Component {
           <Homepage path="/" />
           <Resources path="/resources" />
           <Authpage path="/auth" />
-          <Profile path="/profile" />
+          <ProfileEdit path="/edit" />
           <FAQ path="/faq" />
           <WhoWeAre path="/whoweare" />
+          <Contact path="/contact" />
+          <NotFound default></NotFound>
         </Router>
         
       </>

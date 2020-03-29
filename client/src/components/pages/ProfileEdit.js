@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./Profile.css";
+import "./ProfileEdit.css";
 import "../../utilities.css";
 import { get } from "../../utilities";
 import profile_pic from "../../img/blank-profile-pic.jpg";
@@ -11,7 +11,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 
-class Profile extends Component {
+class ProfileEdit extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
@@ -148,4 +148,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default ProfileEdit;
