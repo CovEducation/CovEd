@@ -1,0 +1,8 @@
+.TutorFilter-container {
+    display: flex;
+    flex-direction: column;
+    flex: auto auto;
+    min-width: 25vw;
+    min-height: 15vh;
+    padding: 2em;
+}

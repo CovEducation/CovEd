@@ -13,7 +13,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar collapseOnSelect fixed="top" expand="lg" bg="white" variant="light">
+      <Navbar collapseOnSelect fixed="sticky-top" expand="lg" bg="white" variant="light">
         <Navbar.Brand href="/">Coved</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -21,11 +21,13 @@ class NavBar extends Component {
             
           </Nav>
           <Nav>
-            <Nav.Link href="/about">About</Nav.Link>
             <Nav.Link href="/resources">Resources</Nav.Link>
-            <Nav.Link href="/signup">Sign Up</Nav.Link>
+            <Nav.Link href="/findatutor">Find a Tutor</Nav.Link>
             <Nav.Link href="/faq">FAQ</Nav.Link>
-            <Nav.Link href="/auth">Login</Nav.Link>
+            <Nav.Link href="/whoweare">Who We Are</Nav.Link>
+            <Nav.Link href="/contact">Contact</Nav.Link>
+            <Nav.Link href="/auth">Sign In</Nav.Link>
+            <Nav.Link href="/edit">Register</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -88,3 +88,8 @@ form {
 .u-link:hover {
   color: var(--primary--dim);
 }
+
+.u-center {
+  margin: auto auto;
+  text-align: center;
+}

@@ -1,0 +1,22 @@
+.Resources-title {
+    text-align: center;
+    margin: auto auto;
+    padding-bottom: 2em;
+    width: 50vw;
+}
+
+.Resources-subtitle {
+    padding-top: 2em;
+}
+
+.Resources-tab {
+    text-align: center;
+    margin: auto auto;
+    width: 50vw;
+    padding-bottom: 2em;
+}
+
+.Resources-tab-title {
+    padding-bottom: 2em;
+    padding-top: 2em;
+}
