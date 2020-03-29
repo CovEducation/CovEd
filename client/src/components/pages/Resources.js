@@ -218,31 +218,25 @@ class Resources extends Component {
         <div className="Resources-tab">
           <Accordion>
             <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  High School (Grades 9-12)
-                </Accordion.Toggle>
-              </Card.Header>
+              <Accordion.Toggle as={Card.Header} eventKey="0">
+                High School (Grades 9-12)
+              </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
                 <Card.Body>{high_school_resource_tabs}</Card.Body>
               </Accordion.Collapse>
             </Card>
             <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                  Middle School (Grades 6-8)
-                </Accordion.Toggle>
-              </Card.Header>
+              <Accordion.Toggle as={Card.Header} eventKey="1">
+                Middle School (Grades 6-8)
+              </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
                 <Card.Body>{middle_school_resource_tabs}</Card.Body>
               </Accordion.Collapse>
             </Card>
             <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                  Elementary School (Grades K-5)
-                </Accordion.Toggle>
-              </Card.Header>
+              <Accordion.Toggle as={Card.Header} eventKey="2">
+                Elementary School (Grades K-5)
+              </Accordion.Toggle>
               <Accordion.Collapse eventKey="2">
                 <Card.Body>{elementary_school_resource_tabs}</Card.Body>
               </Accordion.Collapse>
