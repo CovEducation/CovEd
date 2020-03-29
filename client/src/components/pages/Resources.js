@@ -204,9 +204,12 @@ class Resources extends Component {
           <Typography variant="h4">
             <div className="Resources-subtitle">
               {RESOURCE_SUBTITLE}
+              
+            </div>
+          </Typography>
+          <Typography variant="h6">
               Know of a free resource that we haven't mentioned? Let us know
               <Link href="https://forms.gle/P4n36zh3pdt8nEzM8">{" here!"}</Link>
-            </div>
           </Typography>
         </div>
         {/* HIGH SCHOOL */}
