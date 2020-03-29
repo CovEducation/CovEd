@@ -119,13 +119,13 @@ class Homepage extends Component {
             <br />
             <br />
           <Flex flexWrap="wrap" justifyContent="center">
-              <Row className="justify-content-md-center" mt={4} mb={4}>
-              <Col md={{span: 4}} p={5} className="text-center">
+              <Row className="justify-content-sm-center" mt={4} mb={4}>
+              <Col sm={{span: 4}} p={5} className="text-center">
               <h3><span className="light-h">Access free learning resources</span></h3>
               <br />
               <p fontWeight="light" className="feature">Check out our <a className="dark-a" href="/resources">resources page</a>! We have several links listed already.</p>
               </Col>
-              <Col md={{span: 4, offset:1}} className="text-center" mt={4} mb={4}>
+              <Col sm={{span: 4, offset:1}} className="text-center" mt={4} mb={4}>
               <h3><span className="light-h">Be a Mentor</span></h3>
               <br />
               <p fontWeight="light" className="feature">We are looking for <b>college students</b> to help us mentor and tutor students who no longer have school. Help us help them stay on-track educationally!</p>
@@ -134,15 +134,13 @@ class Homepage extends Component {
               <br />
               <br />
               <br />
-              <Row className="justify-content-md-center">
-              </Row>
-              <Row className="justify-content-md-center">
-              <Col md={{span: 4}} className="text-center" p={5} >
+              <Row className="justify-content-sm-center">
+              <Col sm={{span: 4}} className="text-center" p={5} >
               <h3><span className="light-h">Request a Mentor</span></h3>
               <br />
               <p fontWeight="light" className="feature">We are offering <b>free mentoring</b> and <b>tutoring services</b> for <b>K-12 students</b>. Our mentors and tutors are volunteer college students from some of the top universities in the world.</p>
               </Col>
-              <Col md={{span: 4, offset:1}} className="text-center" p={5}>
+              <Col sm={{span: 4, offset:1}} className="text-center" p={5}>
               <h3><span className="light-h">Know of a learning resource we haven't mentioned?</span></h3>
               <br />
               <p fontWeight="light" className="feature">Definitely let us know!</p>
