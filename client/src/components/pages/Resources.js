@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import Divider from "@material-ui/core/Divider";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import "./Resources.css";
 import ResourceTabs from "../modules/ResourceTabs.js";
 // DATA
@@ -200,41 +204,50 @@ class Resources extends Component {
       <>
         <div className="Resources-title">
           {/* INTRO */}
-          <Typography variant="h2">Resources</Typography>
-          <Typography variant="h4">
-            <div className="Resources-subtitle">
-              {RESOURCE_SUBTITLE}
-              
-            </div>
-          </Typography>
-          <Typography variant="h6">
-              Know of a free resource that we haven't mentioned? Let us know
-              <Link href="https://forms.gle/P4n36zh3pdt8nEzM8">{" here!"}</Link>
-          </Typography>
+          <Jumbotron>
+            <h1>Resources</h1>
+            <h3>{RESOURCE_SUBTITLE}</h3>
+            <p>Know of a free resource that we haven't mentioned?</p>
+            <p>
+              <Button variant="primary" href="https://forms.gle/P4n36zh3pdt8nEzM8">
+                Click here!
+              </Button>
+            </p>
+          </Jumbotron>
         </div>
-        {/* HIGH SCHOOL */}
-        <Divider light variant="inset" />
-        <div className="Resource-tab">
-          <div className="Resource-tab-title">
-            <Typography variant="h4">High School (Grades 9-12)</Typography>
-          </div>
-          {high_school_resource_tabs}
-        </div>
-        {/* MIDDLE SCHOOL */}
-        <Divider light variant="inset" />
-        <div className="Resource-tab">
-          <div className="Resource-tab-title">
-            <Typography variant="h4">Middle School (Grades 6-8)</Typography>
-          </div>
-          {middle_school_resource_tabs}
-        </div>
-        {/* ELEMENTARY */}
-        <Divider light variant="inset"/>
-        <div className="Resource-tab">
-          <div className="Resource-tab-title">
-            <Typography variant="h4">Elementary School (Grades K-5)</Typography>
-          </div>
-          {elementary_school_resource_tabs}
+        <div className="Resources-tab">
+          <Accordion>
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                  High School (Grades 9-12)
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body>{high_school_resource_tabs}</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                  Middle School (Grades 6-8)
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body>{middle_school_resource_tabs}</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="2">
+                  Elementary School (Grades K-5)
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="2">
+                <Card.Body>{elementary_school_resource_tabs}</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
         </div>
       </>
     );
