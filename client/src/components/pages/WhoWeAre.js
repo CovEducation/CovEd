@@ -76,6 +76,11 @@ const technology = [
     school: "UT Austin, 2021",
     major: "Computer Science and Mathematics"
   },
+  {
+    name: "April Xie",
+    school: "MIT, 2021",
+    major: "Computer Science"
+  },
 ];
 
 
