@@ -13,6 +13,7 @@ import Resources from "./pages/Resources.js";
 import FAQ from "./pages/FAQ.js";
 import WhoWeAre from "./pages/WhoWeAre.js";
 import Contact from "./pages/Contact.js";
+import FindATutor from "./pages/FindATutor.js";
 // Components
 import NavBar from "./modules/NavBar.js";
 
@@ -44,6 +45,7 @@ class App extends Component {
           <FAQ path="/faq" />
           <WhoWeAre path="/whoweare" />
           <Contact path="/contact" />
+          <FindATutor path="/findatutor"/>
           <NotFound default></NotFound>
         </Router>
         
