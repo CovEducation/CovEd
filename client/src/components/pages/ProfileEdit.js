@@ -7,8 +7,6 @@ import profile_pic from "../../img/blank-profile-pic.jpg";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 
@@ -30,12 +28,12 @@ function FormExample() {
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Row>
-        <div className="ProfileEdit-form-image">
+        <div className="ProfileEdit-form-center">
           <Image src={userPhoto} roundedCircle />
         </div>
       </Form.Row>
       <Form.Row>
-        <div className="ProfileEdit-form-image">
+        <div className="ProfileEdit-form-center">
           <Form.File id="formcheck-api-regular">
             <Form.File.Input />
           </Form.File>
@@ -63,6 +61,34 @@ function FormExample() {
             />
             <Form.Control.Feedback type="invalid">
               Please input a valid email.
+            </Form.Control.Feedback>
+          </InputGroup>
+        </Form.Group>
+        <Form.Group as={Col} md="4" controlId="validationPassword">
+          <Form.Label>Password</Form.Label>
+          <InputGroup>
+            <Form.Control
+              type="password"
+              placeholder="****"
+              aria-describedby="inputGroupPrepend"
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Please input a password.
+            </Form.Control.Feedback>
+          </InputGroup>
+        </Form.Group>
+        <Form.Group as={Col} md="4" controlId="validationPassword">
+          <Form.Label>Confirm password</Form.Label>
+          <InputGroup>
+            <Form.Control
+              type="password"
+              placeholder="****"
+              aria-describedby="inputGroupPrepend"
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Passwords do not match.
             </Form.Control.Feedback>
           </InputGroup>
         </Form.Group>
