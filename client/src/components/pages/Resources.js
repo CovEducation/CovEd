@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
-
+import Divider from "@material-ui/core/Divider";
 import "./Resources.css";
 import ResourceTabs from "../modules/ResourceTabs.js";
 // DATA
@@ -161,7 +161,6 @@ const ELEMENTARY_SCHOOL_RESOURCES = [
         description: "ADD DESCRIPTION HERE",
         link: "https://classroommagazines.scholastic.com/support/learnathome.html",
       },
-      
     ],
   },
   {
@@ -171,10 +170,11 @@ const ELEMENTARY_SCHOOL_RESOURCES = [
       {
         title: "Dreamscape",
         link: "https://play.squigglepark.com/dreamscape/index.html?v=1",
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];
+
 class Resources extends Component {
   constructor(props) {
     super(props);
@@ -201,30 +201,32 @@ class Resources extends Component {
         <div className="Resources-title">
           {/* INTRO */}
           <Typography variant="h2">Resources</Typography>
-          <Typography variant="subtitle1">
-            {RESOURCE_SUBTITLE}
-            Know of a free resource that we haven't mentioned? Let us know
-            <Link href="https://forms.gle/P4n36zh3pdt8nEzM8">{" here!"}</Link>
+          <Typography variant="h4">
+            <div className="Resources-subtitle">
+              {RESOURCE_SUBTITLE}
+              Know of a free resource that we haven't mentioned? Let us know
+              <Link href="https://forms.gle/P4n36zh3pdt8nEzM8">{" here!"}</Link>
+            </div>
           </Typography>
         </div>
         {/* HIGH SCHOOL */}
+        <Divider light variant="inset" />
         <div className="Resource-tab">
           <div className="Resource-tab-title">
             <Typography variant="h4">High School (Grades 9-12)</Typography>
           </div>
-
           {high_school_resource_tabs}
         </div>
-
         {/* MIDDLE SCHOOL */}
+        <Divider light variant="inset" />
         <div className="Resource-tab">
           <div className="Resource-tab-title">
             <Typography variant="h4">Middle School (Grades 6-8)</Typography>
           </div>
-
           {middle_school_resource_tabs}
         </div>
         {/* ELEMENTARY */}
+        <Divider light variant="inset"/>
         <div className="Resource-tab">
           <div className="Resource-tab-title">
             <Typography variant="h4">Elementary School (Grades K-5)</Typography>

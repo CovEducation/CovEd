@@ -19,7 +19,7 @@ class ResourceTabs extends Component {
       return (
         <Tab eventKey={resource_kind.title} title={resource_kind.title}>
           <div className="ResourceTabs-description">
-            <Typography variant="subtitle1">{resource_kind.description}</Typography>
+            <Typography variant="body1">{resource_kind.description}</Typography>
           </div>
           {resource_kind.resources.map((resource) => {
             return (

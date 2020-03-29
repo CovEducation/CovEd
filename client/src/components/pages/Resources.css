@@ -5,10 +5,15 @@
     width: 50vw;
 }
 
+.Resources-subtitle {
+    padding-top: 2em;
+}
+
 .Resource-tab {
     text-align: center;
     margin: auto auto;
     width: 50vw;
+    padding-bottom: 2em;
 }
 
 .Resource-tab-title {
