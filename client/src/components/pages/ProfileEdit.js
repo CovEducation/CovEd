@@ -42,12 +42,12 @@ function FormExample() {
       <Form.Row>
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>First name</Form.Label>
-          <Form.Control required type="text" placeholder="Jack" />
+          <Form.Control required type="text" placeholder="" />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationCustom02">
           <Form.Label>Last name</Form.Label>
-          <Form.Control required type="text" placeholder="Florey" />
+          <Form.Control required type="text" placeholder="" />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationEmail">
@@ -69,7 +69,7 @@ function FormExample() {
           <InputGroup>
             <Form.Control
               type="password"
-              placeholder="****"
+              placeholder=""
               aria-describedby="inputGroupPrepend"
               required
             />
@@ -83,7 +83,7 @@ function FormExample() {
           <InputGroup>
             <Form.Control
               type="password"
-              placeholder="****"
+              placeholder=""
               aria-describedby="inputGroupPrepend"
               required
             />
