@@ -26,38 +26,39 @@ class TutorFilter extends Component {
 
   render() {
     return (
-        <Card className="TutorFilter-container">
-          <Typography variant="subtitle2" className='u-center'>Filter Options</Typography>
-          <FormControl>
-            <InputLabel id="timezone-select-label">Time Zone</InputLabel>
-            <Select
-              labelId="timezone-customized-select-label"
-              id="timezone-customized-select"
-              value={this.state.time_zone}
-              onChange={(event) => this.setState({ time_zone: event.target.value })}
-            >
-              {TIME_ZONES.map((time_zone) => (
-                <MenuItem value={time_zone}>{time_zone}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl>
-            <InputLabel id="subject-select-label">Subject</InputLabel>
-            <Select
-              labelId="subject-select-label"
-              id="subject-select"
-              value={this.state.subject}
-              onChange={(event) => this.setState({ subject: event.target.value })}
-            >
-              {SUBJECTS.map((subject) => (
-                <MenuItem value={subject} key={subject}>
-                  {subject}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Card>
-      
+      <Card className="TutorFilter-container">
+        <Typography variant="subtitle2" className="u-center">
+          Filter Options
+        </Typography>
+        <FormControl>
+          <InputLabel id="timezone-select-label">Time Zone</InputLabel>
+          <Select
+            labelId="timezone-customized-select-label"
+            id="timezone-customized-select"
+            value={this.state.time_zone}
+            onChange={(event) => this.setState({ time_zone: event.target.value })}
+          >
+            {TIME_ZONES.map((time_zone) => (
+              <MenuItem value={time_zone}>{time_zone}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl>
+          <InputLabel id="subject-select-label">Subject</InputLabel>
+          <Select
+            labelId="subject-select-label"
+            id="subject-select"
+            value={this.state.subject}
+            onChange={(event) => this.setState({ subject: event.target.value })}
+          >
+            {SUBJECTS.map((subject) => (
+              <MenuItem value={subject} key={subject}>
+                {subject}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Card>
     );
   }
 }
