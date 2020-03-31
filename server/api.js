@@ -13,6 +13,9 @@ const express = require("express");
 const Tutor = require("./models/tutor");
 const Tutee = require("./models/tutee");
 
+// import authentication library
+const auth = require("./auth");
+
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
 
@@ -31,6 +34,15 @@ router.get("/tutors", (req, res) => {
           res.send({});
         });
 });
+
+router.get('/tutorByFirebaseUID', (req, res) => {
+  Tutor.find({
+    firebase_uid: req.query.firebase_uid
+  })
+  .then((tutor) => {
+    res.send()
+  })
+})
 
 router.get("/tutorBySubject", (req, res) => {
   Tutor.find({
@@ -74,6 +86,7 @@ router.get("/tutorForCollegePrep", (req, res) => {
 
 router.post("/addTutee", (req, res) => {
   let newTutee = new Tutee({
+    firebase_uid: req.body.firebase_uid,
     name: req.body.name,
     phone: req.body.phone,
     email: req.body.email,
@@ -93,6 +106,7 @@ router.post("/addTutee", (req, res) => {
 
 router.post("/addTutor", (req, res) => {
   let newTutor = new Tutor({
+    firebase_uid: req.body.firebase_uid,
     name: req.body.name,
     email: req.body.email,
     phone: req.body.phone,
@@ -119,17 +133,6 @@ function removeContactInfo(person){
   person.phone = undefined;
   return person;
 };
-
-router.get("/auth_get", async (req, res) => {
-  console.log(req.query.token);
-  try {
-    const decodedToken = await firebase.auth().verifyIdToken(req.query.token);
-    res.send({status: 'success', uid: decodedToken.uid});
-  } catch (err) {
-    console.log(err);
-    res.send({status: 'error', error: err});
-  }
-});
 
 router.get("/healthCheck", (req, res) => {
   res.send({ok: true});
