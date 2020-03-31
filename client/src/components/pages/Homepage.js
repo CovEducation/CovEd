@@ -90,8 +90,8 @@ class Homepage extends Component {
             <Heading fontSize={[5]}>CovEd<span className="light">ucation</span></Heading>
             <Subhead mt={3} fontSize={[2]}><span className="light">Continuing K-12 education during the COVID-19 outbreak</span></Subhead>
             <Flex mt={3} p={5}>
-            <CallToAction href='/signup' mr={4} bg="yellow" color="black" fonts="sans">Parents and K-12 Students</CallToAction>
-            <CallToAction href='/signup' mr={4} bg="yellow" color="black" fonts="sans">College</CallToAction>
+            <Button href='/signup'>Parents and K-12 Students</Button>
+            <Button href='/signup'>College</Button>
             </Flex>
             <ScrollDownIndicator />
         </Hero>
@@ -113,7 +113,7 @@ class Homepage extends Component {
           </Col>
           </Row>
         </Section>
-        <Section p={6} mt={7} mb={7}>
+        <Section p={6} mt={7} mb={2}>
             <h2><span className="light-h2">Interested?</span><hr className="hr-primary"/></h2>
             <br />
             <br />
@@ -148,13 +148,24 @@ class Homepage extends Component {
               </Row>
           </Flex>
         </Section>
+        <Section p={[2,6,2,2]} mt={1} mb={2}>
+          <Flex flexWrap="wrap" justifyContent="center">
+              <Row className="justify-content-sm-center" mt={4} mb={4}>
+              <Col>
+              <Button href='https://forms.gle/P4n36zh3pdt8nEzM8'>Submit a resource</Button>
+              <Button href='/signup'>Request Mentor</Button>
+              <Button href='/signup'>Be a Mentor</Button>
+              </Col>
+              </Row>
+          </Flex>
+        </Section>
         <Section fontSize={[2]} bg="darkblue" heading="" subhead="" p={[6,6,6,8]} mt={7}>
           <Row bg="blue" className="justify-content-sm-center">
           <Col sm={{span: 8}} className="light-text text-center">
             <h2><span className="light-h">Questions? Contact Us! <br /><br /><hr className="hr-light"/></span></h2>
             <br />
             <br />
-            <p>Check out the <a className="light-a" href="/faq"> FAQs </a> page to see if we've already answered your question. If you don't see your question there, shoot us an email at <a className="light-a" href="mailto:coveducation@gmail.com">coveducation@gmail.com</a>! We're excited to hear from you~</p>
+            <p>Check out the <a className="light-a" href="/faq"> FAQs </a> page to see if we've already answered your question. If you don't see your question there, shoot us an email <a className="light-a" href='mailto:coveducation@gmail.com'>coveducation@gmail.com</a>! We're excited to hear from you~</p>
           </Col>
           </Row>
         </Section>

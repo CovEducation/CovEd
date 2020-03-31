@@ -1,14 +1,15 @@
-function getFirebaseUID(req, res) {
-    console.log(req.query.token);
-    try {
-      const decodedToken = await firebase.auth().verifyIdToken(req.query.token);
-      return res.send({status: 'success', uid: decodedToken.uid});
-    } catch (err) {
-      console.log(err);
-      return res.send({status: 'error', error: err});
-    }
-  }
+const firebase = require("firebase-admin");
 
-  module.exports = {
-    getFirebaseUID
-  };
+async function firebaseMiddleware(req, res, next) {
+  try {
+    const decodedToken = await firebase.auth().verifyIdToken(req.query.token || req.headers.token);
+    req.user = decodedToken;
+    next();
+  } catch (err) {
+    console.log('error' + err);
+    return res.sendStatus(403);
+  }
+}
+
+module.exports = firebaseMiddleware;
+

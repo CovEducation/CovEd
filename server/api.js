@@ -19,7 +19,7 @@ const auth = require("./auth");
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
 
-const firebase = require("firebase-admin");
+const firebaseMiddleware = require("./auth");
 
 /*
   GET Endpoints
@@ -126,9 +126,13 @@ router.post("/addTutor", (req, res) => {
   newTutor.save().then((tutor) => res.send(tutor));
 });
 
+router.get("/auth_get", firebaseMiddleware, (req, res) => {
+  console.log(req.user);
+  res.send({status: 'success', user: req.user});
+})
+
 router.post("/pingTutor", (req, res) => {
   // TODO: Send an email or notification ot the tutor.
-
 });
 
 function removeContactInfo(person){

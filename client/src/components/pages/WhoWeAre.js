@@ -50,9 +50,14 @@ const management = [
 ];
 const resources = [
   {
-    name: "Evelyn Wong",
-    school: "Harvard, 2021",
-    major: "Neuroscience and Spanish Literature"
+    name: "Dheekshita Kumar",
+    school: "MIT, 2020",
+    major: "Mechanical Engineering, Electrical Eng. & Computer Science"
+  },
+  {
+    name: "Garrett Rolph",
+    school: "Harvard, 2022",
+    major: "Government"
   },
   {
     name: "Benjamin Levy",
@@ -83,7 +88,36 @@ const technology = [
   },
 ];
 
-
+const theme={
+  colors: {
+      blue: '#00568C',
+      yellow: '#F2BE32',
+      white: '#ffffff',
+      darkblue: '#003c61',
+  },
+  fonts:{
+    sans: 'Muli, sans-serif',
+  },
+  fontWeights: {
+    light: 300,
+    normal: 600,
+    bold: 700,
+  },
+  fontSizes: [
+      12, 16, 24, 36, 48, 72
+    ],
+  space: [
+      0,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      140,
+      256,
+    ]
+}
 
 const renderTable = list => {
   return (
@@ -115,36 +149,36 @@ class WhoWeAre extends Component {
   render() {
     return (
       <>
-        <Provider>
+        <Provider theme={theme}>
           <Hero>
-            <Container>
-              <Row>
-                <Col>
-                  <Typography>
+            <Container fonts="sans">
+              <Row mt={3} mb={3} className="justify-content-center">
+                <Col sm={{span: 12}} className="text-center" p={5}>
+                  <Typography variant="h4">
                     Management
                     </Typography>
                 </Col>
-                <Col xs={10}>
+                <Col xs={12} md={10}>
                   {renderTable(management)}
                 </Col>
               </Row>
-              <Row>
-                <Col>
-                  <Typography>
+              <Row mt={3} mb={3} className="justify-content-center">
+                <Col sm={{span: 12}} className="text-center" p={3}>
+                  <Typography variant="h4">
                     Resource Management Team
                   </Typography>
                 </Col>
-                <Col xs={10}>
+                <Col xs={12} md={10}>
                   {renderTable(resources)}
                 </Col>
               </Row>
-              <Row>
-                <Col>
-                  <Typography>
+              <Row mt={3} mb={3} className="justify-content-center">
+                <Col md={{span: 12}} className="text-center" p={3}>
+                  <Typography variant="h4">
                     Technology Team
                   </Typography>
                 </Col>
-                <Col xs={10}>
+                <Col xs={12} md={10}>
                   {renderTable(technology)}
                 </Col>
               </Row>
