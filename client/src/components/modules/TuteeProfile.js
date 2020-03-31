@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 
 import "./ProfileEdit.css";
 import "../../utilities.css";
@@ -10,20 +10,6 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 
-function FormExample() {
-
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    // TODO: Add firebase api call here!
-    setValidated(true);
-  };
-}
-
 class TuteeProfile extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +18,7 @@ class TuteeProfile extends Component {
       ok: false,
       validated: false,
       setValidated: false,
-      edit: false,
+      edit: false, // eventually get rid of this since it will be in props
       user: {
         name: "Ben Bitdiddle",
         phone: "123-456-7890",
@@ -54,12 +40,23 @@ class TuteeProfile extends Component {
     // TODO: set user info
   }
 
+  handleSubmit = (event) => {
+    const form = event.currentTarget;
+
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    // TODO: Add firebase api call here!
+    this.setState({setValidated: true});
+  };
+
   render() {
     return (
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
       <Form.Row>
         <div className="ProfileEdit-form-center">
-          <Image src={userPhoto} roundedCircle />
+          <Image src={this.state.user.photo} roundedCircle />
         </div>
       </Form.Row>
       <Form.Row>
@@ -83,71 +80,62 @@ class TuteeProfile extends Component {
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationEmail">
           <Form.Label>Email</Form.Label>
-          <InputGroup>
-            <Form.Control
-              type="email"
-              placeholder="jackflorey@mit.edu"
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please input a valid email.
-            </Form.Control.Feedback>
-          </InputGroup>
+          {!this.state.edit 
+            ?
+            <InputGroup>
+              <Form.Control
+                type="email"
+                placeholder="jackflorey@mit.edu"
+                aria-describedby="inputGroupPrepend"
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Please input a valid email.
+              </Form.Control.Feedback>
+            </InputGroup>
+            : <Form.Control plaintext readOnly type="email" defaultValue={this.state.user.email} />
+          }
         </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationPassword">
-          <Form.Label>Password</Form.Label>
-          <InputGroup>
-            <Form.Control
-              type="password"
-              placeholder=""
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please input a password.
-            </Form.Control.Feedback>
-          </InputGroup>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationPassword">
-          <Form.Label>Confirm password</Form.Label>
-          <InputGroup>
-            <Form.Control
-              type="password"
-              placeholder=""
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Passwords do not match.
-            </Form.Control.Feedback>
-          </InputGroup>
+        <Form.Group as={Col} md="4" controlId="validationPhone">
+          <Form.Label>Phone Number</Form.Label>
+          {this.state.edit
+            ? 
+            <>
+            <Form.Control required type="tel" placeholder="(123)-123-1234" />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </>
+            : <Form.Control plaintext readOnly type="text" defaultValue={this.state.user.phone} />
+          }
         </Form.Group>
       </Form.Row>
       <Form.Row>
         <Form.Group as={Col} controlId="formGridState">
           <Form.Label>Time Zone</Form.Label>
-          <Form.Control as="select" value="Pacific Time (US &amp; Canada)">
-            <option value="Hawaii">(GMT-10:00) Hawaii</option>
-            <option value="Alaska">(GMT-09:00) Alaska</option>
-            <option value="Pacific Time (US &amp; Canada)" selected="selected">
-              (GMT-08:00) Pacific Time (US &amp; Canada)
-            </option>
-            <option value="Arizona">(GMT-07:00) Arizona</option>
-            <option value="Mountain Time (US &amp; Canada)">
-              (GMT-07:00) Mountain Time (US &amp; Canada)
-            </option>
-            <option value="Central Time (US &amp; Canada)">
-              (GMT-06:00) Central Time (US &amp; Canada)
-            </option>
-            <option value="Eastern Time (US &amp; Canada)">
-              (GMT-05:00) Eastern Time (US &amp; Canada)
-            </option>
-            <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-          </Form.Control>
+          {this.state.edit 
+            ?
+            <Form.Control as="select" value="Pacific Time (US &amp; Canada)">
+              <option value="Hawaii">(GMT-10:00) Hawaii</option>
+              <option value="Alaska">(GMT-09:00) Alaska</option>
+              <option value="Pacific Time (US &amp; Canada)" selected="selected">
+                (GMT-08:00) Pacific Time (US &amp; Canada)
+              </option>
+              <option value="Arizona">(GMT-07:00) Arizona</option>
+              <option value="Mountain Time (US &amp; Canada)">
+                (GMT-07:00) Mountain Time (US &amp; Canada)
+              </option>
+              <option value="Central Time (US &amp; Canada)">
+                (GMT-06:00) Central Time (US &amp; Canada)
+              </option>
+              <option value="Eastern Time (US &amp; Canada)">
+                (GMT-05:00) Eastern Time (US &amp; Canada)
+              </option>
+              <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+            </Form.Control>
+            : <Form.Control plaintext readOnly defaultValue={this.state.user.location} />
+          }
         </Form.Group>
       </Form.Row>
-      <Button type="submit">Submit</Button>
+      {!this.state.edit && <Button type="submit">Submit</Button>}
     </Form>
     );
   }
