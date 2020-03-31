@@ -11,8 +11,6 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 
 function FormExample() {
-  const [validated, setValidated] = useState(false);
-  const [userPhoto] = useState(profile_pic);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -32,9 +30,17 @@ class TuteeProfile extends Component {
     // Initialize Default State
     this.state = {
       ok: false,
+      validated: false,
+      setValidated: false,
+      edit: false,
       user: {
         name: "Ben Bitdiddle",
-        timezone: "Pacific",
+        phone: "123-456-7890",
+        email: "bbitdiddle@gmail.com",
+        location: "Pacific",
+        grade_level: "6",
+        guardian_name: "Mom",
+        guardian_phone: "098-765-4321",
         photo: profile_pic,
       },
     };
@@ -65,14 +71,15 @@ class TuteeProfile extends Component {
       </Form.Row>
       <Form.Row>
         <Form.Group as={Col} md="4" controlId="validationCustom01">
-          <Form.Label>First name</Form.Label>
-          <Form.Control required type="text" placeholder="" />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationCustom02">
-          <Form.Label>Last name</Form.Label>
-          <Form.Control required type="text" placeholder="" />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Label>Name</Form.Label>
+          {this.state.edit
+            ? 
+            <>
+            <Form.Control required type="text" placeholder="" />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </>
+            : <Form.Control plaintext readOnly type="text" defaultValue={this.state.user.name} />
+          }
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationEmail">
           <Form.Label>Email</Form.Label>
@@ -139,22 +146,7 @@ class TuteeProfile extends Component {
             <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
           </Form.Control>
         </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>Role</Form.Label>
-          <Form.Control as="select">
-            <option>Tutor</option>
-            <option>Student/Parent</option>
-          </Form.Control>
-        </Form.Group>
       </Form.Row>
-      <Form.Group>
-        <Form.Check
-          required
-          label="Agree to terms and conditions"
-          feedback="You must agree before submitting."
-        />
-      </Form.Group>
       <Button type="submit">Submit</Button>
     </Form>
     );
