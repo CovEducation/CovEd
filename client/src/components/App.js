@@ -14,6 +14,7 @@ import FAQ from "./pages/FAQ.js";
 import WhoWeAre from "./pages/WhoWeAre.js";
 import Contact from "./pages/Contact.js";
 import FindATutor from "./pages/FindATutor.js";
+import Profile from "./pages/Profile.js";
 // Components
 import NavBar from "./modules/NavBar.js";
 // Providers 
@@ -48,6 +49,7 @@ class App extends Component {
             <WhoWeAre path="/whoweare" />
             <Contact path="/contact" />
             <FindATutor path="/findatutor"/>
+            <Profile path="/profile"/>
             <NotFound default></NotFound>
           </Router>
         </UserProvider>

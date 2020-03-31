@@ -1,0 +1,13 @@
+img {
+    width: 180px;
+}
+
+.Profile-form {
+    max-width: 50vw;
+    margin: auto auto;
+}
+
+.Profile-form-center {
+    text-align: center;
+    margin: auto auto;
+}
