@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const TutorSchema = new mongoose.Schema({
+  firebase_uid: String,
   name: String,
   email: String,
   phone: String,
