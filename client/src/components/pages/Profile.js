@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TuteeProfile from "../modules/TuteeProfile.js";
+import "./Profile.css";
 
 class Profile extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className='profile'>
+      <div className='Profile-form'>
         <TuteeProfile></TuteeProfile>
       </div>
     );
