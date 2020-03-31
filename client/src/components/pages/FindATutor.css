@@ -1,8 +1,7 @@
 .FindATutor-filter {
-   
-    margin: auto auto;
-    padding: 2em;
-    width: fit-content;
-    height: auto;
+   padding: 2em;
+}
 
+.FindATutor-results {
+    padding: 2em;
 }
