@@ -136,3 +136,40 @@ a.btn-primary:hover{
 .table{
   font-size: 1.2rem !important;
 }
+
+.accordion {
+    background-color: #fff;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    margin-bottom: 10px;
+    outline: none;
+    transition: 0.4s;
+    font-size: 1.2rem;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.card {
+    padding: 20px 18px;
+    background-color: #f7f7f7;
+    display: none;
+    overflow: hidden;
+    border: 2px solid #fff !important;
+}
+
+.card-header{
+    background-color: #f7f7f7 !important;
+    border-bottom: transparent !important;
+    content: '\02795';
+}
+
+.card-body{
+    font-weight: 300;
+}
+
+.card-header:hover{
+    font-weight: 800 !important;
+}
