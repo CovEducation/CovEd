@@ -16,7 +16,8 @@ import Contact from "./pages/Contact.js";
 import FindATutor from "./pages/FindATutor.js";
 // Components
 import NavBar from "./modules/NavBar.js";
-
+// Providers 
+import UserProvider from "../providers/UserProvider";
 
 /**
  * Define the "App" component as a class.

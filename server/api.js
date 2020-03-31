@@ -40,9 +40,12 @@ router.get('/tutorByFirebaseUID', (req, res) => {
     firebase_uid: req.query.firebase_uid
   })
   .then((tutor) => {
-    res.send()
+    res.send(tutor)
   })
-})
+  .catch(() => {
+    res.send({});
+  });
+});
 
 router.get("/tutorBySubject", (req, res) => {
   Tutor.find({

@@ -6,8 +6,12 @@ import { get } from "../../utilities";
 
 // auth 
 import firebase, {auth} from "../../firebase-config";
+import { UserContext } from "../../providers/UserProvider";
 
 class Authpage extends Component {
+  // set context
+  static contextType = UserContext;
+  
   constructor(props) {
     super(props);
     // Initialize Default State
@@ -21,15 +25,7 @@ class Authpage extends Component {
     this.auth_get = this.auth_get.bind(this);
 
     this.handleChange = this.handleChange.bind(this);
-
-    auth.onAuthStateChanged((user) => {
-        this.setState({
-            error: undefined,
-            user : user
-        });
-    });
   }
-
   auth_get() {
       auth.currentUser.getIdToken()
         .then(token => {
@@ -44,7 +40,6 @@ class Authpage extends Component {
             console.log(err);
         });
   }
-
   
   async signup() {
     event.preventDefault();
@@ -79,6 +74,7 @@ class Authpage extends Component {
   }
 
   render() {
+    this.state.user = this.context;
     return (
         <>
         <h1>Coved Firebase Auth Test</h1>
