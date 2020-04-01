@@ -11,8 +11,16 @@ class UserProvider extends Component {
 
     componentDidMount() {
         auth.onAuthStateChanged(user => {
-            this.setState({user: user});
-        })
+            auth.currentUser.getIdToken()
+            .then(token => {
+                get('/api/tutorByFirebaseUID', {token: token})
+                .then(res => {
+                    this.setState({user: res.user});
+                })
+            }).catch(err => {
+                console.log(err);
+            });
+        });
     }
 
     render() {
