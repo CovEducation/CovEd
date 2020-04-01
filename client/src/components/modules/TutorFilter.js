@@ -13,7 +13,7 @@ const TIME_ZONES = [
   "(GMT-05:00) Indiana (East)",
 ];
 
-const SUBJECTS = ["Math", "Science", "English", "Computer Science"];
+const SUBJECTS = ["Math", "Biology", "English/Writing/Literature", "Computer Science"];
 
 class TutorFilter extends Component {
   constructor(props) {
@@ -26,8 +26,7 @@ class TutorFilter extends Component {
 
   
   handleSubjectSelection = (event) => {
-    console.log("Handling subject selection")
-    if (SUBJECTS.includes(event.target.value)) {
+    if (SUBJECTS.includes(event.target.value) && this.state.subjects !== [event.target.value]) {
       this.setState({subjects: [event.target.value]});
       this.props.onChange([event.target.value]);
     }
@@ -46,7 +45,7 @@ class TutorFilter extends Component {
             labelId="timezone-customized-select-label"
             id="timezone-customized-select"
             value={this.state.time_zone}
-            onChange={(event) => this.setState({ time_zone: event.target.value })}
+            onChange={(event) => event.target.value !== this.state.time_zone ? this.setState({ time_zone: event.target.value }) : false}
           >
             {TIME_ZONES.map((time_zone) => (
               <MenuItem value={time_zone} key={"time-zone" + time_zone}>{time_zone}</MenuItem>
@@ -65,7 +64,7 @@ class TutorFilter extends Component {
             value={this.state.subjects}
             onChange={this.handleSubjectSelection}
           >
-            {SUBJECTS.map((subject) => (
+            {SUBJECTS.map((subject, i) => (
               <MenuItem value={subject} key={subject}>
                 {subject}
               </MenuItem>

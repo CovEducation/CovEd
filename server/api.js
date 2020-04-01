@@ -63,7 +63,7 @@ router.get("/tutorsBySubjects", (req, res) => {
     .then((tutors) => {
       for (let i = 0; i < tutors.length; i++) {
         let overlapping_subjects = tutors[i].subjects.filter((subject) =>
-          subjects_wanted.includes(subject)
+          subjects_wanted.includes(subject) && subject != ""
         );
         tutors[i]["i"] = overlapping_subjects.length;
       }
