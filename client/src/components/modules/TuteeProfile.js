@@ -17,7 +17,6 @@ class TuteeProfile extends Component {
     this.state = {
       ok: false,
       validated: false,
-      setValidated: false,
       edit: false, // eventually get rid of this since it will be in props
       user: {
         name: "Ben Bitdiddle",
@@ -48,7 +47,7 @@ class TuteeProfile extends Component {
       event.stopPropagation();
     }
     // TODO: Add firebase api call here!
-    this.setState({setValidated: true});
+    this.setState({validated: true});
   };
 
   render() {
@@ -80,7 +79,7 @@ class TuteeProfile extends Component {
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationEmail">
           <Form.Label>Email</Form.Label>
-          {!this.state.edit 
+          {this.state.edit 
             ?
             <InputGroup>
               <Form.Control
@@ -101,8 +100,8 @@ class TuteeProfile extends Component {
           {this.state.edit
             ? 
             <>
-            <Form.Control required type="tel" placeholder="(123)-123-1234" />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" />
+            <Form.Control.Feedback type="invalid">Please enter a valid phone number.</Form.Control.Feedback>
             </>
             : <Form.Control plaintext readOnly type="text" defaultValue={this.state.user.phone} />
           }
@@ -135,7 +134,7 @@ class TuteeProfile extends Component {
           }
         </Form.Group>
       </Form.Row>
-      {!this.state.edit && <Button type="submit">Submit</Button>}
+      {this.state.edit && <Button type="submit">Submit</Button>}
     </Form>
     );
   }
