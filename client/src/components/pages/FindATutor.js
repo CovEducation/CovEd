@@ -20,26 +20,31 @@ class FindATutor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      subject: undefined,
+      subjects: undefined,
       selected_tutor: undefined,
     };
   }
 
-  updateSubject = (subject) => {
-    if (this.state.subject !== subject) this.setState({ subject: subject });
+  updateSubjects = (subjects) => {
+    console.log("Updating subjects! ")
+    console.log(subjects);
+    if (this.state.subjects != subjects) this.setState({ subjects: subjects });
   }
+  
   updateTutor = (tutor) => {
     if (this.state.selected_tutor !== tutor) this.setState({selected_tutor: tutor})
   };
 
   render() {
+    console.log("Page has")
+    console.log(this.state)
     return (
       <div className="u-flex">
         <div className="FindATutor-filter">
-          <TutorFilter onChange={this.updateSubject} />
+          <TutorFilter onChange={this.updateSubjects} />
         </div>
         <div className="FindATutor-results">
-          <TutorSearchResult subject={this.state.subject} onChange={this.updateTutor}/>
+          <TutorSearchResult subjects={this.state.subjects} onChange={this.updateTutor}/>
         </div>
         <div className="FindATutor-tutor-display">
           {/* Change when the profile component is implemented*/}  

@@ -19,9 +19,16 @@ class TutorFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      subject: "Select a Subject",
+      subjects: "Select a Subject",
       time_zone: "Select a Time Zone",
     };
+  }
+
+  
+  handleSubjectSelection = (event) => {
+    this.setState({subjects: [event.target.value]});
+    this.props.onChange([event.target.value]);
+
   }
 
   render() {
@@ -45,11 +52,15 @@ class TutorFilter extends Component {
         </FormControl>
         <FormControl>
           <InputLabel id="subject-select-label">Subject</InputLabel>
+          {/*
+          TODO: 
+            ENABLE SELECTION OF MULTIPLE SUBJECTS.
+          */}
           <Select
             labelId="subject-select-label"
             id="subject-select"
-            value={this.state.subject}
-            onChange={(event) => this.setState({ subject: event.target.value })}
+            value={this.state.subjects}
+            onChange={this.handleSubjectSelection}
           >
             {SUBJECTS.map((subject) => (
               <MenuItem value={subject} key={subject}>

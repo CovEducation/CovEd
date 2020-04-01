@@ -70,7 +70,6 @@ router.get("/tutorsBySubjects", (req, res) => {
         delete sorted_tutors[i]["i"];
         sorted_tutors[i] = removeContactInfo(sorted_tutors[i]);
       }
-      // remove the extra field
       res.send(sorted_tutors);
     })
     .catch(() => {

@@ -61,7 +61,7 @@ const ProfileCard = (props) => {
       <ButtonBase  onClick={props.onClick}>
         <CardContent>
           <Avatar className={styles.avatar} src={props.user.profile_pic} />
-          <h3 className={styles.heading}>{props.user.first_name + " " + props.user.last_name}</h3>
+          <h3 className={styles.heading}>{props.user.name}</h3>
           <span className={styles.subheader}>{props.user.major}</span>
         </CardContent>
         <Divider light />

@@ -19,37 +19,22 @@ class TutorSearchResult extends Component {
 
   componentDidMount() {
     // API request to get N mentors
-    const example_response = [
-      {
-        first_name: "Allysa",
-        last_name: "Brown",
-        subjects: ["Math", "Science"],
-        major: "Writing",
-        profile_pic: temp_profile_pic,
-      },
-      {
-        first_name: "Charlie",
-        last_name: "Goldman",
-        subjects: ["Biography", "History"],
-        major: "Computer Science",
-        profile_pic: temp_profile_pic,
-      },
-    ];
-
-    for (let i = 0; i < 5; i++) {
-      example_response.push(example_response[i % example_response.length]);
+    if (this.props.subjects == undefined) {
+      // TEMPORARY CHANGE
+      get("/api/tutorsBySubjects", { subjects: ["Math"]}).then((tutors) => {
+        this.setState({ tutor_list: tutors })
+      });
     }
-    this.setState({ tutor_list: example_response });
-    /*
-    get("/api/tutorBySubjects", { subjects: this.props.subjects }).then((tutors) =>
+    get("/api/tutorsBySubjects", { subjects: this.props.subjects }).then((tutors) => {
       this.setState({ tutor_list: tutors })
-    );*/
+    }
+    );
   }
 
   make_tutor_card = (tutor) => {
     return (
       <div style={{ padding: "1em" }}>
-        <ProfileCard user={tutor} onClick={() => this.setState({ tutor_selected: tutor })} />
+        <ProfileCard user={tutor} key={tutor.name} onClick={() => this.setState({ tutor_selected: tutor })} />
       </div>
     );
   };
