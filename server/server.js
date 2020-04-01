@@ -42,7 +42,7 @@ require("dotenv").config()
 // TODO change connection URL after setting up your team database
 const mongoConnectionURL = process.env.MONGO_URI;
 // TODO change database name to the name you chose
-const databaseName = "Coved";
+const databaseName = "Coved-Tutor-Test";
 
 // connect to mongodb
 mongoose

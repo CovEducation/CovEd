@@ -47,15 +47,34 @@ router.get("/tutorByFirebaseUID", (req, res) => {
     });
 });
 
-router.get("/tutorBySubject", (req, res) => {
-  Tutor.find({
-    subjects: req.query.subject,
-  })
+router.get("/tutorBySubjects", (req, res) => {
+  // We want tutors which have any of the subjects, matched by how many
+  // Speed up by using MongoDB aggregate (unwind, filter by subject, then group)
+  // if the database is large enough that it warrants the time.
+
+  // Getting all tutors, sorting by how many subjects they have in common with the
+  // ones requested
+  const subjects_wanted = req.query.subjects;
+  Tutor.find({})
     .then((tutors) => {
-      res.send(tutors.map((tutor) => removeContactInfo(tutor)));
+      for (let i = 0; i < tutors.length; i++) {
+        let overlapping_subjects = tutors[i].subjects.filter((subject) =>
+          subjects_wanted.includes(subject)
+        );
+        tutors[i]["i"] = overlapping_subjects.length;
+      }
+      tutors = tutors.filter((tutor) => tutor.i !== 0);
+      let sorted_tutors = tutors.sort((a, b) => (a.i > b.i ? 1 : -1));
+      // final cleanup
+      for (let i = 0; i < sorted_tutors.length; i++) {
+        delete sorted_tutors[i]["i"];
+        sorted_tutors[i] = removeContactInfo(sorted_tutors[i]);
+      }
+      // remove the extra field
+      res.send(sorted_tutors);
     })
     .catch(() => {
-      res.send({});
+      res.sendStatus(500);
     });
 });
 
@@ -129,7 +148,8 @@ router.post("/addTutor", firebaseMiddleware, (req, res) => {
 router.post("/updateTutee", firebaseMiddleware, (req, res) => {
   // the object with the update should be included in req.body.update
   let update = req.body.update;
-  Tutee.updateOne({ firebase_uid: req.user }, update).then((updated_tutee) => res.send(updated_tutee))
+  Tutee.updateOne({ firebase_uid: req.user }, update)
+    .then((updated_tutee) => res.send(updated_tutee))
     .catch(() => {
       return res.sendStatus(400);
     });
@@ -138,12 +158,12 @@ router.post("/updateTutee", firebaseMiddleware, (req, res) => {
 router.post("/updateTutor", firebaseMiddleware, (req, res) => {
   // the object with the update should be included in req.body.update
   let update = req.body.update;
-  Tutor.updateOne({ firebase_uid: req.user }, update).then((updated_tutor) => res.send(updated_tutor))
+  Tutor.updateOne({ firebase_uid: req.user }, update)
+    .then((updated_tutor) => res.send(updated_tutor))
     .catch(() => {
       return res.sendStatus(400);
     });
 });
-
 
 router.get("/auth_get", firebaseMiddleware, (req, res) => {
   console.log(req.user);
