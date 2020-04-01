@@ -38,6 +38,7 @@ const theme={
       yellow: '#F2BE32',
       white: '#ffffff',
       darkblue: '#003c61',
+      weird: '#E3E1E5'
   },
   fonts:{
     sans: 'Muli, sans-serif',
@@ -113,7 +114,7 @@ class Homepage extends Component {
           </Col>
           </Row>
         </Section>
-        <Section p={6} mt={7} mb={2}>
+        <Section p={6} mt={7} mb={2} bg="white">
             <h2><span className="light-h2">Interested?</span><hr className="hr-primary"/></h2>
             <br />
             <br />
