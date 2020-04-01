@@ -47,7 +47,7 @@ router.get("/tutorByFirebaseUID", (req, res) => {
     });
 });
 
-router.get("/tutorBySubjects", (req, res) => {
+router.get("/tutorsBySubjects", (req, res) => {
   // We want tutors which have any of the subjects, matched by how many
   // Speed up by using MongoDB aggregate (unwind, filter by subject, then group)
   // if the database is large enough that it warrants the time.
@@ -78,7 +78,7 @@ router.get("/tutorBySubjects", (req, res) => {
     });
 });
 
-router.get("/tutorByLanguage", (req, res) => {
+router.get("/tutorsByLanguage", (req, res) => {
   Tutor.find({
     languages: req.query.language,
   })
@@ -90,7 +90,7 @@ router.get("/tutorByLanguage", (req, res) => {
     });
 });
 
-router.get("/tutorForCollegePrep", (req, res) => {
+router.get("/tutorsForCollegePrep", (req, res) => {
   Tutor.find({
     college_prep: true,
   })
