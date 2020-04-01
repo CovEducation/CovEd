@@ -55,6 +55,10 @@ router.get("/tutorsBySubjects", (req, res) => {
   // Getting all tutors, sorting by how many subjects they have in common with the
   // ones requested
   const subjects_wanted = req.query.subjects;
+  if (subjects_wanted.length == 0) {
+    res.sendStatus(500);
+  }
+  const limit = req.query.limit === undefined ? 10 : req.query.limit;
   Tutor.find({})
     .then((tutors) => {
       for (let i = 0; i < tutors.length; i++) {
@@ -64,6 +68,7 @@ router.get("/tutorsBySubjects", (req, res) => {
         tutors[i]["i"] = overlapping_subjects.length;
       }
       tutors = tutors.filter((tutor) => tutor.i !== 0);
+      tutors = tutors.slice(0, limit);
       let sorted_tutors = tutors.sort((a, b) => (a.i > b.i ? 1 : -1));
       // final cleanup
       for (let i = 0; i < sorted_tutors.length; i++) {

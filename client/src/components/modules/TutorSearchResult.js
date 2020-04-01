@@ -17,20 +17,30 @@ class TutorSearchResult extends Component {
     };
   }
 
+  getTutors = () => {
+
+    if (this.props.subjects.length === 0) {
+      // TEMPORARY CHANGE
+      get("/api/tutorsBySubjects", { subjects: ["Math"], limit: 10}).then((tutors) => {
+        if (this.state.tutor_list.length == 0) {
+          this.setState({ tutor_list: tutors })
+        }
+      });
+      
+    } else {
+      get("/api/tutorsBySubjects", { subjects: this.props.subjects, limit: 10}).then((tutors) => {
+        if (this.state.tutor_list !== tutors) {
+          this.setState({ tutor_list: tutors })
+        }
+      })
+    }
+  }
   componentDidMount() {
     // API request to get N mentors
-    if (this.props.subjects == undefined) {
-      // TEMPORARY CHANGE
-      get("/api/tutorsBySubjects", { subjects: ["Math"]}).then((tutors) => {
-        this.setState({ tutor_list: tutors })
-      });
-    }
-    get("/api/tutorsBySubjects", { subjects: this.props.subjects }).then((tutors) => {
-      this.setState({ tutor_list: tutors })
-    }
-    );
+    
+    this.getTutors();
+    
   }
-
   make_tutor_card = (tutor) => {
     return (
       <div style={{ padding: "1em" }}>
@@ -41,7 +51,10 @@ class TutorSearchResult extends Component {
   
   componentDidUpdate() {
       this.props.onChange(this.state.tutor_selected);
-  }
+      this.getTutors();
+      
+  };
+
   render() {
     return (
       <>

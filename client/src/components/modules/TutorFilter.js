@@ -13,21 +13,24 @@ const TIME_ZONES = [
   "(GMT-05:00) Indiana (East)",
 ];
 
-const SUBJECTS = ["Math", "Science", "English"];
+const SUBJECTS = ["Math", "Science", "English", "Computer Science"];
 
 class TutorFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      subjects: "Select a Subject",
+      subjects: [],
       time_zone: "Select a Time Zone",
     };
   }
 
   
   handleSubjectSelection = (event) => {
-    this.setState({subjects: [event.target.value]});
-    this.props.onChange([event.target.value]);
+    console.log("Handling subject selection")
+    if (SUBJECTS.includes(event.target.value)) {
+      this.setState({subjects: [event.target.value]});
+      this.props.onChange([event.target.value]);
+    }
 
   }
 
@@ -46,7 +49,7 @@ class TutorFilter extends Component {
             onChange={(event) => this.setState({ time_zone: event.target.value })}
           >
             {TIME_ZONES.map((time_zone) => (
-              <MenuItem value={time_zone}>{time_zone}</MenuItem>
+              <MenuItem value={time_zone} key={"time-zone" + time_zone}>{time_zone}</MenuItem>
             ))}
           </Select>
         </FormControl>
