@@ -9,132 +9,53 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+import Select from "react-select";
 
-function FormExample() {
-  const [validated, setValidated] = useState(false);
-  const [userPhoto] = useState(profile_pic);
+// TODO: put these constants in another place.
+const timeZones = [
+  {
+    value: "GMT-5",
+    timezone: "Central Daylight Time - Chicago (GMT-5)"
+  },
+  {
+    value: "GMT-6",
+    timezone: "Mountain Daylight Time - Denver (GMT-6)"
+  },
+  {
+    value: "GMT-7",
+    timezone: "Mountain Standard Time - Phoenix (GMT-7)"
+  },
+  {
+    value: "GMT-7",
+    timezone: "Pacific Daylight Time - Los Angeles (GMT-7)"
+  },
+  {
+    value: "GMT-8",
+    timezone: "Alaska Daylight Time - Anchorage (GMT-8)"
+  },
+  {
+    value: "GMT-10",
+    timezone: "Hawaii-Aleutian Standard Time - Honolulu (GMT-10)"
+  },
+]
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    // TODO: Add firebase api call here!
-    setValidated(true);
-  };
-
-  return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <Form.Row>
-        <div className="ProfileEdit-form-center">
-          <Image src={userPhoto} roundedCircle />
-        </div>
-      </Form.Row>
-      <Form.Row>
-        <div className="ProfileEdit-form-center">
-          <Form.File id="formcheck-api-regular">
-            <Form.File.Input />
-          </Form.File>
-        </div>
-      </Form.Row>
-      <Form.Row>
-        <Form.Group as={Col} md="4" controlId="validationCustom01">
-          <Form.Label>First name</Form.Label>
-          <Form.Control required type="text" placeholder="" />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationCustom02">
-          <Form.Label>Last name</Form.Label>
-          <Form.Control required type="text" placeholder="" />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationEmail">
-          <Form.Label>Email</Form.Label>
-          <InputGroup>
-            <Form.Control
-              type="email"
-              placeholder="jackflorey@mit.edu"
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please input a valid email.
-            </Form.Control.Feedback>
-          </InputGroup>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationPassword">
-          <Form.Label>Password</Form.Label>
-          <InputGroup>
-            <Form.Control
-              type="password"
-              placeholder=""
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please input a password.
-            </Form.Control.Feedback>
-          </InputGroup>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationPassword">
-          <Form.Label>Confirm password</Form.Label>
-          <InputGroup>
-            <Form.Control
-              type="password"
-              placeholder=""
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Passwords do not match.
-            </Form.Control.Feedback>
-          </InputGroup>
-        </Form.Group>
-      </Form.Row>
-      <Form.Row>
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>Time Zone</Form.Label>
-          <Form.Control as="select" value="Pacific Time (US &amp; Canada)">
-            <option value="Hawaii">(GMT-10:00) Hawaii</option>
-            <option value="Alaska">(GMT-09:00) Alaska</option>
-            <option value="Pacific Time (US &amp; Canada)" selected="selected">
-              (GMT-08:00) Pacific Time (US &amp; Canada)
-            </option>
-            <option value="Arizona">(GMT-07:00) Arizona</option>
-            <option value="Mountain Time (US &amp; Canada)">
-              (GMT-07:00) Mountain Time (US &amp; Canada)
-            </option>
-            <option value="Central Time (US &amp; Canada)">
-              (GMT-06:00) Central Time (US &amp; Canada)
-            </option>
-            <option value="Eastern Time (US &amp; Canada)">
-              (GMT-05:00) Eastern Time (US &amp; Canada)
-            </option>
-            <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-          </Form.Control>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>Role</Form.Label>
-          <Form.Control as="select">
-            <option>Tutor</option>
-            <option>Student/Parent</option>
-          </Form.Control>
-        </Form.Group>
-      </Form.Row>
-      <Form.Group>
-        <Form.Check
-          required
-          label="Agree to terms and conditions"
-          feedback="You must agree before submitting."
-        />
-      </Form.Group>
-      <Button type="submit">Submit</Button>
-    </Form>
-  );
-}
+// TODO: put these constants in another place.
+const subjects = [
+  {
+    value: 'math', 
+    label: 'Math'
+  }, 
+  { value: 'physics',
+    label: 'Physics'
+  },
+  { value: 'english',
+    label: 'English'
+  }, 
+  {
+    value: 'biology',
+    label: 'Biology'
+  }
+]
 
 class ProfileEdit extends Component {
   constructor(props) {
@@ -142,27 +63,171 @@ class ProfileEdit extends Component {
     // Initialize Default State
     this.state = {
       ok: false,
-      user: {
-        name: "Ben Bitdiddle",
+      validated: false,
+      setValidated: false,
+      edit: true, // eventually get rid of this since it will be in props
+      form: {
+        firstname: "Ben",
+        lastname: "Something",
+        phone: "1234567890",
+        email: "bbitdiddle@gmail.com",
+        subjects: [],
         timezone: "Pacific",
+        school: "UT",
+        major: "CS",
+        bio: "I am a cool kid.",
         photo: profile_pic,
       },
     };
   }
 
   componentDidMount() {
-    // remember -- api calls go here!
-    get("/api/healthCheck").then((resp) => {
-      this.setState({ ok: resp.ok });
-    });
-    // TODO: set user info
+  }
+
+  handleSubmit = (event) => {
+    const form = event.currentTarget;
+
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    // TODO: Add firebase api call here!
+    this.setState({validated: true});
+  };
+
+  handleChange = (event) => {
+    const form = this.state.form;
+    form[event.target.name] = event.target.value
+    this.setState({form: form});
+    console.log(this.state.form)
+  }
+
+  handleSelectChange = (selected) => {
+    const form = this.state.form;
+    form["subjects"] = selected;
+    this.setState({form: form});
   }
 
   render() {
     return (
       <>
         <div className="ProfileEdit-form">
-          <FormExample />
+          <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
+            <Form.Row>
+              <div className="ProfileEdit-form-center">
+                <Image src={this.state.form.photo} roundedCircle onChange={this.handleChange}/>
+              </div>
+            </Form.Row>
+            <Form.Row>
+              <div className="ProfileEdit-form-center">
+                <Form.File id="formcheck-api-regular">
+                  <Form.File.Input />
+                </Form.File>
+              </div>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col} md="4" controlId="validationCustom01">
+                <Form.Label>First name</Form.Label>
+                <Form.Control name="firstname" value={this.state.form.firstname} required type="text" placeholder="" onChange={this.handleChange}/>
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group as={Col} md="4" controlId="validationCustom02">
+                <Form.Label>Last name</Form.Label>
+                <Form.Control name="lastname" value={this.state.form.lastname} required type="text" placeholder="" onChange={this.handleChange}/>
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group as={Col} md="4" controlId="validationEmail">
+                <Form.Label>Email</Form.Label>
+                <InputGroup>
+                  <Form.Control
+                    name="email"
+                    value={this.state.form.email}
+                    disabled
+                    type="email"
+                    placeholder="jackflorey@mit.edu"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                    onChange={this.handleChange}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Please input a valid email.
+            </Form.Control.Feedback>
+                </InputGroup>
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col} md="4" controlId="validationPhone">
+                <Form.Label>Phone Number</Form.Label>
+                <InputGroup>
+                  <Form.Control
+                    name="phone"
+                    value={this.state.form.phone}
+                    type="phone"
+                    placeholder="1234567890"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                    onChange={this.handleChange}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Please input a valid phone number.
+            </Form.Control.Feedback>
+                </InputGroup>
+              </Form.Group>
+              <Form.Group as={Col} controlId="formGridState">
+                <Form.Label>Time Zone</Form.Label>
+                <Form.Control name="timezone" value={this.state.form.timezone} as="select" onChange={this.handleChange}>
+                  {timeZones.map((tz => {
+                    return (
+                      <option value={tz.value}> {tz.timezone} </option>
+                    )
+                  }))}
+                </Form.Control>
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col} controlId="formBioTextArea">
+                <Form.Label>Introduce Yourself!</Form.Label>
+                <Form.Control name="bio" value={this.state.form.bio} as="textarea" rows="3" onChange={this.handleChange}/>
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col} md="4" controlId="validationPhone">
+                <Form.Label>School</Form.Label>
+                <InputGroup>
+                  <Form.Control
+                    name="school"
+                    value={this.state.form.school}
+                    type="text"
+                    placeholder="University"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </InputGroup>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Major</Form.Label>
+                <InputGroup>
+                  <Form.Control
+                    name="major"
+                    value={this.state.form.major}
+                    type="text"
+                    placeholder="Learning"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </InputGroup>
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
+                <Form.Label>Subjects</Form.Label>
+                <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange}/>
+              </Form.Group>
+            </Form.Row>
+            <Button type="submit">Submit</Button>
+          </Form>
         </div>
       </>
     );
