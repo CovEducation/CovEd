@@ -10,47 +10,22 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Select from "react-select";
-
-// TODO: put these constants in another place.
-const timeZones = [
-  {
-    value: "GMT-5",
-    timezone: "Central Daylight Time - Chicago (GMT-5)"
-  },
-  {
-    value: "GMT-6",
-    timezone: "Mountain Daylight Time - Denver (GMT-6)"
-  },
-  {
-    value: "GMT-7",
-    timezone: "Mountain Standard Time - Phoenix (GMT-7)"
-  },
-  {
-    value: "GMT-7",
-    timezone: "Pacific Daylight Time - Los Angeles (GMT-7)"
-  },
-  {
-    value: "GMT-8",
-    timezone: "Alaska Daylight Time - Anchorage (GMT-8)"
-  },
-  {
-    value: "GMT-10",
-    timezone: "Hawaii-Aleutian Standard Time - Honolulu (GMT-10)"
-  },
-]
+import timeZones from "./TimeZones";
 
 // TODO: put these constants in another place.
 const subjects = [
   {
-    value: 'math', 
+    value: 'math',
     label: 'Math'
-  }, 
-  { value: 'physics',
+  },
+  {
+    value: 'physics',
     label: 'Physics'
   },
-  { value: 'english',
+  {
+    value: 'english',
     label: 'English'
-  }, 
+  },
   {
     value: 'biology',
     label: 'Biology'
@@ -92,20 +67,20 @@ class ProfileEdit extends Component {
       event.stopPropagation();
     }
     // TODO: Add firebase api call here!
-    this.setState({validated: true});
+    this.setState({ validated: true });
   };
 
   handleChange = (event) => {
     const form = this.state.form;
     form[event.target.name] = event.target.value
-    this.setState({form: form});
+    this.setState({ form: form });
     console.log(this.state.form)
   }
 
   handleSelectChange = (selected) => {
     const form = this.state.form;
     form["subjects"] = selected;
-    this.setState({form: form});
+    this.setState({ form: form });
   }
 
   render() {
@@ -115,7 +90,7 @@ class ProfileEdit extends Component {
           <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
             <Form.Row>
               <div className="ProfileEdit-form-center">
-                <Image src={this.state.form.photo} roundedCircle onChange={this.handleChange}/>
+                <Image src={this.state.form.photo} roundedCircle onChange={this.handleChange} />
               </div>
             </Form.Row>
             <Form.Row>
@@ -128,12 +103,12 @@ class ProfileEdit extends Component {
             <Form.Row>
               <Form.Group as={Col} md="4" controlId="validationCustom01">
                 <Form.Label>First name</Form.Label>
-                <Form.Control name="firstname" value={this.state.form.firstname} required type="text" placeholder="" onChange={this.handleChange}/>
+                <Form.Control name="firstname" value={this.state.form.firstname} required type="text" placeholder="" onChange={this.handleChange} />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationCustom02">
                 <Form.Label>Last name</Form.Label>
-                <Form.Control name="lastname" value={this.state.form.lastname} required type="text" placeholder="" onChange={this.handleChange}/>
+                <Form.Control name="lastname" value={this.state.form.lastname} required type="text" placeholder="" onChange={this.handleChange} />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationEmail">
@@ -187,7 +162,7 @@ class ProfileEdit extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="formBioTextArea">
                 <Form.Label>Introduce Yourself!</Form.Label>
-                <Form.Control name="bio" value={this.state.form.bio} as="textarea" rows="3" onChange={this.handleChange}/>
+                <Form.Control name="bio" value={this.state.form.bio} as="textarea" rows="3" onChange={this.handleChange} />
               </Form.Group>
             </Form.Row>
             <Form.Row>
@@ -223,7 +198,7 @@ class ProfileEdit extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
                 <Form.Label>Subjects</Form.Label>
-                <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange}/>
+                <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
               </Form.Group>
             </Form.Row>
             <Button type="submit">Submit</Button>
