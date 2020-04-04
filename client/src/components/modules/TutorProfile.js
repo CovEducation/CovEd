@@ -108,7 +108,7 @@ class ProfileEdit extends Component {
                 {this.props.edit
                   ? 
                   <>
-                  <Form.Control required type="text" placeholder="" placeholder={this.state.user.name}/>
+                  <Form.Control required type="text" placeholder="" placeholder={this.props.tutor.name}/>
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </>
                   : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.name} />
@@ -122,7 +122,7 @@ class ProfileEdit extends Component {
                     <Form.Control
                       name="email"
                       type="email"
-                      placeholder={this.state.user.email}
+                      placeholder={this.props.tutor.email}
                       aria-describedby="inputGroupPrepend"
                       required
                       onChange={this.handleChange}
@@ -144,7 +144,7 @@ class ProfileEdit extends Component {
                     <Form.Control
                       name="phone"
                       type="phone"
-                      placeholder={this.state.user.phone}
+                      placeholder={this.props.tutor.phone}
                       aria-describedby="inputGroupPrepend"
                       required
                       onChange={this.handleChange}
@@ -175,7 +175,7 @@ class ProfileEdit extends Component {
               <Form.Group as={Col} controlId="formBioTextArea">
                 <Form.Label>Introduce Yourself!</Form.Label>
                 {this.props.edit 
-                  ? <Form.Control name="bio" placeholder={this.state.user.bio} as="textarea" rows="3" onChange={this.handleChange} />
+                  ? <Form.Control name="bio" placeholder={this.props.tutor.bio} as="textarea" rows="3" onChange={this.handleChange} />
                   : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.bio} />
                 }
               </Form.Group>
@@ -220,7 +220,7 @@ class ProfileEdit extends Component {
               <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
                 <Form.Label>Subjects</Form.Label>
                 {this.props.edit
-                  ? <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
+                  ? <Select value={this.props.tutor.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
                   : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.subjects} />
                 }
               </Form.Group>

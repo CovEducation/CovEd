@@ -35,9 +35,9 @@ router.get("/tutors", (req, res) => {
     });
 });
 
-router.get("/tutorByFirebaseUID", (req, res) => {
+router.get("/tutor", firebaseMiddleware, (req, res) => {
   Tutor.find({
-    firebase_uid: req.query.firebase_uid,
+    firebase_uid: req.user.user_id,
   })
     .then((tutor) => {
       res.send(tutor);
@@ -132,7 +132,7 @@ router.post("/addTutee", firebaseMiddleware, (req, res) => {
 
 router.post("/addTutor", firebaseMiddleware, (req, res) => {
   let newTutor = new Tutor({
-    firebase_uid: req.user,
+    firebase_uid: req.user.user_id,
     name: req.body.name,
     email: req.body.email,
     phone: req.body.phone,

@@ -25,4 +25,23 @@ const timeZones = [
   },
 ]
 
+export const subjects = [
+  {
+    value: 'math',
+    label: 'Math'
+  },
+  {
+    value: 'physics',
+    label: 'Physics'
+  },
+  {
+    value: 'english',
+    label: 'English'
+  },
+  {
+    value: 'biology',
+    label: 'Biology'
+  }
+]
+
 export default timeZones;

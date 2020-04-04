@@ -2,7 +2,7 @@ const firebase = require("firebase-admin");
 
 async function firebaseMiddleware(req, res, next) {
   try {
-    const decodedToken = await firebase.auth().verifyIdToken(req.query.token || req.headers.token);
+    const decodedToken = await firebase.auth().verifyIdToken(req.query.token || req.headers.token || req.body.token);
     req.user = decodedToken;
     next();
   } catch (err) {
