@@ -110,3 +110,34 @@ const server = http.Server(app);
 server.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
+
+const nodemailer = require("nodemailer");
+
+async function test() {
+
+
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "jccamacho19992",
+      pass: "Wubbadubdub!1"
+    },
+  })
+  let msg = "zoom zoom zoom"
+  let mailOptions = {
+    from: "Johan Cervantes <jccamacho19992@gmail.com>",
+    to: "johanc@mit.edu,",
+    subject: "Ping!",
+    text: msg,
+    html: "<b>" + msg + "</b>"
+  };
+  
+  transporter.sendMail(mailOptions, function (err, info) {
+    if(err)
+      console.log(err)
+    else
+      console.log(info);
+ });
+
+}
+test();

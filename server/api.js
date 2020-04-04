@@ -6,8 +6,11 @@
 | This file defines the routes for your server.
 |
 */
-
+// For routing
 const express = require("express");
+
+// Email module
+const nodemailer = require("nodemailer");
 
 // import models so we can interact with the database
 const Tutor = require("./models/tutor");
@@ -15,6 +18,18 @@ const Tutee = require("./models/tutee");
 
 // import authentication library
 const auth = require("./auth");
+
+// connecting to email service
+
+const email_user = process.env.EMAILUSER;
+const email_pass = process.env.EMAILPASS;
+let transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: email_user,
+    pass: email_pass,
+  },
+});
 
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
@@ -62,8 +77,8 @@ router.get("/tutorsBySubjects", (req, res) => {
   Tutor.find({})
     .then((tutors) => {
       for (let i = 0; i < tutors.length; i++) {
-        let overlapping_subjects = tutors[i].subjects.filter((subject) =>
-          subjects_wanted.includes(subject) && subject != ""
+        let overlapping_subjects = tutors[i].subjects.filter(
+          (subject) => subjects_wanted.includes(subject) && subject != ""
         );
         tutors[i]["i"] = overlapping_subjects.length;
       }
@@ -176,6 +191,32 @@ router.get("/auth_get", firebaseMiddleware, (req, res) => {
 
 router.post("/pingTutor", (req, res) => {
   // TODO: Send an email or notification ot the tutor.
+  // We assume that we know which subjects the student
+  // needs help with and the email.
+  const student_email = req.body.student.email;
+  const tutor_uid = req.body.tutor_uid;
+  const subjects = req.body.subjects;
+
+  Tutor.findOne({ firebase_uid: tutor_uid }).then((tutor) => {
+    let tutor_email = tutor.email;
+    let msg = "Hi you got a tutor. Hype. Email: " + student_email;
+    let mailOptions = {
+      from: "CovED <coved@gmail>",
+      to: tutor_email + ", ",
+      subject: "Match! ",
+      text: msg,
+      html: "<b>" + msg + "</b>",
+    };
+
+    transporter.sendMail(mailOptions, function (err, info) {
+      if (err) res.sendStatus(500);
+      else
+        res.send({
+          ok: true,
+          resp: info,
+        });
+    });
+  });
 });
 
 function removeContactInfo(person) {
