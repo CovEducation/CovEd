@@ -225,7 +225,7 @@ class ProfileEdit extends Component {
                 }
               </Form.Group>
             </Form.Row>
-            <Button type="submit">Submit</Button>
+            {this.props.edit && <Button type="submit">Submit</Button>}
           </Form>
         </div>
       </>
