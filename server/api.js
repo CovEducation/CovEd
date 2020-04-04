@@ -20,9 +20,10 @@ const Tutee = require("./models/tutee");
 const auth = require("./auth");
 
 // connecting to email service
+require("dotenv").config()
+const email_user = process.env.EMAIL_USER;
+const email_pass = process.env.EMAIL_PASS;
 
-const email_user = process.env.EMAILUSER;
-const email_pass = process.env.EMAILPASS;
 let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
