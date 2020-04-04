@@ -21,7 +21,6 @@ class Authpage extends Component {
     this.signup = this.signup.bind(this);
     this.signin = this.signin.bind(this);
     this.signout = this.signout.bind(this);
-
     this.auth_get = this.auth_get.bind(this);
 
     this.handleChange = this.handleChange.bind(this);
