@@ -17,7 +17,6 @@ class TuteeProfile extends Component {
     this.state = {
       ok: false,
       validated: false,
-      edit: false, // eventually get rid of this since it will be in props
       user: {
         name: "Ben Bitdiddle",
         phone: "123-456-7890",
@@ -58,17 +57,21 @@ class TuteeProfile extends Component {
           <Image src={this.state.user.photo} roundedCircle />
         </div>
       </Form.Row>
-      <Form.Row>
-        <div className="ProfileEdit-form-center">
-          <Form.File id="formcheck-api-regular">
-            <Form.File.Input />
-          </Form.File>
-        </div>
-      </Form.Row>
+      {this.state.edit 
+        ?
+        <Form.Row>
+          <div className="ProfileEdit-form-center">
+            <Form.File id="formcheck-api-regular">
+              <Form.File.Input />
+            </Form.File>
+          </div>
+        </Form.Row>
+        : <Form.Row></Form.Row>
+      }
       <Form.Row>
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>Name</Form.Label>
-          {this.state.edit
+          {this.props.edit
             ? 
             <>
             <Form.Control required type="text" placeholder="" />
@@ -79,7 +82,7 @@ class TuteeProfile extends Component {
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationEmail">
           <Form.Label>Email</Form.Label>
-          {this.state.edit 
+          {this.props.edit 
             ?
             <InputGroup>
               <Form.Control
@@ -97,7 +100,7 @@ class TuteeProfile extends Component {
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationPhone">
           <Form.Label>Phone Number</Form.Label>
-          {this.state.edit
+          {this.props.edit
             ? 
             <>
             <Form.Control required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" />
@@ -110,7 +113,7 @@ class TuteeProfile extends Component {
       <Form.Row>
         <Form.Group as={Col} controlId="formGridState">
           <Form.Label>Time Zone</Form.Label>
-          {this.state.edit 
+          {this.props.edit 
             ?
             <Form.Control as="select" value="Pacific Time (US &amp; Canada)">
               <option value="Hawaii">(GMT-10:00) Hawaii</option>
@@ -134,7 +137,7 @@ class TuteeProfile extends Component {
           }
         </Form.Group>
       </Form.Row>
-      {this.state.edit && <Button type="submit">Submit</Button>}
+      {this.props.edit && <Button type="submit">Submit</Button>}
     </Form>
     );
   }

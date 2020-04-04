@@ -34,20 +34,18 @@ const subjects = [
 
 class ProfileEdit extends Component {
   constructor(props) {
-    super(props);
+    super(props); // expecting user and edit
     // Initialize Default State
     this.state = {
       ok: false,
       validated: false,
       setValidated: false,
-      edit: true, // eventually get rid of this since it will be in props
-      form: {
-        firstname: "Ben",
-        lastname: "Something",
+      user: {
+        name: "Ben Something",
         phone: "1234567890",
         email: "bbitdiddle@gmail.com",
         subjects: [],
-        timezone: "Pacific",
+        location: "Pacific",
         school: "UT",
         major: "CS",
         bio: "I am a cool kid.",
@@ -71,16 +69,16 @@ class ProfileEdit extends Component {
   };
 
   handleChange = (event) => {
-    const form = this.state.form;
-    form[event.target.name] = event.target.value
+    const form = this.state.user;
+    user[event.target.name] = event.target.value
     this.setState({ form: form });
     console.log(this.state.form)
   }
 
   handleSelectChange = (selected) => {
-    const form = this.state.form;
+    const form = this.state.user;
     form["subjects"] = selected;
-    this.setState({ form: form });
+    this.setState({ user: user });
   }
 
   render() {
@@ -90,115 +88,141 @@ class ProfileEdit extends Component {
           <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
             <Form.Row>
               <div className="ProfileEdit-form-center">
-                <Image src={this.state.form.photo} roundedCircle onChange={this.handleChange} />
+                <Image src={this.props.tutor.photo} roundedCircle onChange={this.handleChange} />
               </div>
             </Form.Row>
-            <Form.Row>
-              <div className="ProfileEdit-form-center">
-                <Form.File id="formcheck-api-regular">
-                  <Form.File.Input />
-                </Form.File>
-              </div>
-            </Form.Row>
+            {this.props.edit 
+              ?
+              <Form.Row>
+                <div className="ProfileEdit-form-center">
+                  <Form.File id="formcheck-api-regular">
+                    <Form.File.Input />
+                  </Form.File>
+                </div>
+              </Form.Row>
+              : <Form.Row></Form.Row>
+            }
             <Form.Row>
               <Form.Group as={Col} md="4" controlId="validationCustom01">
-                <Form.Label>First name</Form.Label>
-                <Form.Control name="firstname" value={this.state.form.firstname} required type="text" placeholder="" onChange={this.handleChange} />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="4" controlId="validationCustom02">
-                <Form.Label>Last name</Form.Label>
-                <Form.Control name="lastname" value={this.state.form.lastname} required type="text" placeholder="" onChange={this.handleChange} />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Label>Name</Form.Label>
+                {this.props.edit
+                  ? 
+                  <>
+                  <Form.Control required type="text" placeholder="" placeholder={this.state.user.name}/>
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  </>
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.name} />
+                }
               </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationEmail">
                 <Form.Label>Email</Form.Label>
-                <InputGroup>
-                  <Form.Control
-                    name="email"
-                    value={this.state.form.email}
-                    disabled
-                    type="email"
-                    placeholder="jackflorey@mit.edu"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                    onChange={this.handleChange}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please input a valid email.
-            </Form.Control.Feedback>
-                </InputGroup>
+                {this.props.edit
+                  ?
+                  <InputGroup>
+                    <Form.Control
+                      name="email"
+                      type="email"
+                      placeholder={this.state.user.email}
+                      aria-describedby="inputGroupPrepend"
+                      required
+                      onChange={this.handleChange}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please input a valid email.
+                    </Form.Control.Feedback>
+                  </InputGroup>
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.email} />
+                }
               </Form.Group>
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col} md="4" controlId="validationPhone">
                 <Form.Label>Phone Number</Form.Label>
-                <InputGroup>
-                  <Form.Control
-                    name="phone"
-                    value={this.state.form.phone}
-                    type="phone"
-                    placeholder="1234567890"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                    onChange={this.handleChange}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please input a valid phone number.
-            </Form.Control.Feedback>
-                </InputGroup>
+                {this.props.edit
+                  ?
+                  <InputGroup>
+                    <Form.Control
+                      name="phone"
+                      type="phone"
+                      placeholder={this.state.user.phone}
+                      aria-describedby="inputGroupPrepend"
+                      required
+                      onChange={this.handleChange}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please input a valid phone number.
+                    </Form.Control.Feedback>
+                  </InputGroup>
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.phone} />
+                }
               </Form.Group>
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label>Time Zone</Form.Label>
-                <Form.Control name="timezone" value={this.state.form.timezone} as="select" onChange={this.handleChange}>
-                  {timeZones.map((tz => {
-                    return (
-                      <option value={tz.value}> {tz.timezone} </option>
-                    )
-                  }))}
-                </Form.Control>
+                {this.props.edit
+                  ?
+                  <Form.Control name="timezone" as="select" onChange={this.handleChange}>
+                    {timeZones.map((tz => {
+                      return (
+                        <option value={tz.value}> {tz.timezone} </option>
+                      )
+                    }))}
+                  </Form.Control>
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.location} />
+                }
               </Form.Group>
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col} controlId="formBioTextArea">
                 <Form.Label>Introduce Yourself!</Form.Label>
-                <Form.Control name="bio" value={this.state.form.bio} as="textarea" rows="3" onChange={this.handleChange} />
+                {this.props.edit 
+                  ? <Form.Control name="bio" placeholder={this.state.user.bio} as="textarea" rows="3" onChange={this.handleChange} />
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.bio} />
+                }
               </Form.Group>
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col} md="4" controlId="validationPhone">
                 <Form.Label>School</Form.Label>
-                <InputGroup>
-                  <Form.Control
-                    name="school"
-                    value={this.state.form.school}
-                    type="text"
-                    placeholder="University"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                    onChange={this.handleChange}
-                  />
-                </InputGroup>
+                {this.props.edit 
+                  ?
+                  <InputGroup>
+                    <Form.Control
+                      name="school"
+                      type="text"
+                      placeholder="University"
+                      aria-describedby="inputGroupPrepend"
+                      required
+                      onChange={this.handleChange}
+                    />
+                  </InputGroup>
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.school} />
+                }
               </Form.Group>
               <Form.Group>
                 <Form.Label>Major</Form.Label>
-                <InputGroup>
-                  <Form.Control
-                    name="major"
-                    value={this.state.form.major}
-                    type="text"
-                    placeholder="Learning"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                    onChange={this.handleChange}
-                  />
-                </InputGroup>
+                {this.props.edit
+                  ?
+                    <InputGroup>
+                      <Form.Control
+                        name="major"
+                        type="text"
+                        placeholder="Learning"
+                        aria-describedby="inputGroupPrepend"
+                        required
+                        onChange={this.handleChange}
+                      />
+                    </InputGroup>
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.major} />
+                }
               </Form.Group>
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
                 <Form.Label>Subjects</Form.Label>
-                <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
+                {this.props.edit
+                  ? <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.subjects} />
+                }
               </Form.Group>
             </Form.Row>
             <Button type="submit">Submit</Button>

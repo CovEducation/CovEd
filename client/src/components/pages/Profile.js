@@ -13,8 +13,8 @@ class Profile extends Component {
 
 
   render() {
-    this.state.user = this.content;
-    let profile = this.state.user.role = "tutee" ? <TuteeProfile></TuteeProfile> : <TutorProfile></TutorProfile>;
+    // this.state.user = this.content;
+    let profile = this.state.user.role == "tutee" ? <TuteeProfile edit={false}></TuteeProfile> : <TutorProfile edit={false}></TutorProfile>;
     return (
       <div className='Profile-form'>
         {profile}
