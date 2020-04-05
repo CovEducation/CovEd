@@ -8,6 +8,7 @@ import "./App.css";
 import NotFound from "./pages/NotFound.js";
 import Homepage from "./pages/Homepage.js";
 import Authpage from "./pages/Authpage.js";
+import SignIn from "./pages/SignIn.js";
 import Register from "./pages/Register.js";
 import Resources from "./pages/Resources.js";
 import FAQ from "./pages/FAQ.js";
@@ -43,7 +44,7 @@ class App extends Component {
           <Router basepath="/">
             <Homepage path="/" />
             <Resources path="/resources" />
-            <Authpage path="/auth" />
+            <SignIn path="/auth" />
             <Register path="/register" />
             <FAQ path="/faq" />
             <WhoWeAre path="/whoweare" />

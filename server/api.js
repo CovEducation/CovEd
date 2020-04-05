@@ -58,10 +58,25 @@ router.get("/tutor", firebaseMiddleware, (req, res) => {
     .then((tutor) => {
       res.send(tutor);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.send({});
     });
 });
+
+router.get("/tutee", firebaseMiddleware, (req, res) => {
+  Tutee.find({
+    firebase_uid: req.user.user_id, 
+  })
+    .then((tutor) => {
+      res.send(tutor);
+    })
+    .catch(()=> {
+      console.log(err)
+      // FIXME : We need to at send an error status to the client
+      res.send({})
+    })
+})
 
 router.get("/tutorsBySubjects", (req, res) => {
   // We want tutors which have any of the subjects, matched by how many
@@ -128,7 +143,7 @@ router.get("/tutorsForCollegePrep", (req, res) => {
 
 router.post("/addTutee", firebaseMiddleware, (req, res) => {
   let newTutee = new Tutee({
-    firebase_uid: req.user,
+    firebase_uid: req.user.user_id,
     name: req.body.name,
     phone: req.body.phone,
     email: req.body.email,

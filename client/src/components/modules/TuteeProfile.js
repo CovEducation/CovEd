@@ -52,11 +52,11 @@ class TuteeProfile extends Component {
   render() {
     return (
       <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-      <Form.Row>
+      {/* <Form.Row>
         <div className="ProfileEdit-form-center">
-          <Image src={this.state.user.photo} roundedCircle />
+          <Image src={this.props.tutee.photo} roundedCircle />
         </div>
-      </Form.Row>
+      </Form.Row> */}
       {this.state.edit 
         ?
         <Form.Row>
@@ -77,7 +77,7 @@ class TuteeProfile extends Component {
             <Form.Control required type="text" placeholder="" />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </>
-            : <Form.Control plaintext readOnly type="text" defaultValue={this.state.user.name} />
+            : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.name} />
           }
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationEmail">
@@ -95,7 +95,7 @@ class TuteeProfile extends Component {
                 Please input a valid email.
               </Form.Control.Feedback>
             </InputGroup>
-            : <Form.Control plaintext readOnly type="email" defaultValue={this.state.user.email} />
+            : <Form.Control plaintext readOnly type="email" defaultValue={this.props.tutee.email} />
           }
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationPhone">
@@ -106,7 +106,7 @@ class TuteeProfile extends Component {
             <Form.Control required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" />
             <Form.Control.Feedback type="invalid">Please enter a valid phone number.</Form.Control.Feedback>
             </>
-            : <Form.Control plaintext readOnly type="text" defaultValue={this.state.user.phone} />
+            : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.phone} />
           }
         </Form.Group>
       </Form.Row>
@@ -133,7 +133,7 @@ class TuteeProfile extends Component {
               </option>
               <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
             </Form.Control>
-            : <Form.Control plaintext readOnly defaultValue={this.state.user.location} />
+            : <Form.Control plaintext readOnly defaultValue={this.props.tutee.location} />
           }
         </Form.Group>
       </Form.Row>

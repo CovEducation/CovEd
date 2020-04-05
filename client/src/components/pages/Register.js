@@ -75,13 +75,20 @@ class Register extends Component {
     this.setState({ validated: true });
 
     // clean up subject list 
-    this.state.form.subjects = this.state.form.subjects.map(sub => sub.value);
+    this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
 
     console.log(JSON.stringify(this.state.form, null, 2));
     try {
       const user = await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
       const idToken = await auth.currentUser.getIdToken();
-      const status = await this.postTutor(idToken);
+      let status; 
+      
+      if (this.state.form.role == "tutor"){
+        status = await this.postTutor(idToken);
+      } else if (this.state.form.role == "student") {
+        status = await this.postTutee(idToken);
+      }
+
       console.log(status);
       this.props.navigate('/profile');
     } catch (error) {
@@ -90,6 +97,20 @@ class Register extends Component {
     }
   };
 
+
+  postTutee = async (idToken) => {
+    const status = await post("/api/addTutee", 
+    {
+      token: idToken, 
+      name: this.state.form.firstname + ' ' + this.state.form.lastname,
+      email: this.state.form.email,
+      subjects: this.state.form.subjects_clean,
+      location: this.state.form.timezone, 
+      guardian_name: this.state.form.parentFirstname + ' ' + this.state.form.parentLastname,
+    });
+  }
+
+
   postTutor = async (idToken) => {
     console.log(idToken);
     const status = await post("/api/addTutor", 
@@ -97,7 +118,7 @@ class Register extends Component {
       token: idToken,
       name: this.state.form.firstname + ' ' + this.state.form.lastname,
       email: this.state.form.email,
-      subjects: this.state.form.subjects,
+      subjects: this.state.form.subjects_clean,
       location: this.state.form.timezone,
       major: this.state.form.major,
       school: this.state.form.school,
