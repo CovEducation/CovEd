@@ -15,7 +15,7 @@ import { subjects } from "../modules/TimeZones";
 import timeZones from "../modules/TimeZones";
 
 // auth 
-import firebase, {auth} from "../../firebase-config";
+import firebase, { auth } from "../../firebase-config";
 import { useNavigate } from "@reach/router";
 
 // TODO : THERE IS SO MUCH HACK CODE HELP!!!
@@ -80,9 +80,9 @@ class Register extends Component {
     try {
       const user = await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
       const idToken = await auth.currentUser.getIdToken();
-      let status; 
-      
-      if (this.state.form.role == "tutor"){
+      let status;
+
+      if (this.state.form.role == "tutor") {
         status = await this.postTutor(idToken);
       } else if (this.state.form.role == "student") {
         status = await this.postTutee(idToken);
@@ -98,33 +98,33 @@ class Register extends Component {
 
 
   postTutee = async (idToken) => {
-    const status = await post("/api/addTutee", 
-    {
-      token: idToken, 
-      name: this.state.form.firstname + ' ' + this.state.form.lastname,
-      email: this.state.form.email,
-      timezone: this.state.form.timezone,
-      bio: this.state.form.bio,
-      subjects: this.state.form.subjects_clean,
-      guardian_name: this.state.form.parentFirstname + ' ' + this.state.form.parentLastname,
-      guardian_email: this.state.form.parentEmail,
-    });
+    const status = await post("/api/addTutee",
+      {
+        token: idToken,
+        name: this.state.form.firstname + ' ' + this.state.form.lastname,
+        email: this.state.form.email,
+        timezone: this.state.form.timezone,
+        bio: this.state.form.bio,
+        subjects: this.state.form.subjects_clean,
+        guardian_name: this.state.form.parentFirstname + ' ' + this.state.form.parentLastname,
+        guardian_email: this.state.form.parentEmail,
+      });
   }
 
 
   postTutor = async (idToken) => {
     console.log(idToken);
-    const status = await post("/api/addTutor", 
-    {
-      token: idToken,
-      name: this.state.form.firstname + ' ' + this.state.form.lastname,
-      email: this.state.form.email,
-      timezone: this.state.form.timezone,
-      bio: this.state.form.bio,
-      subjects: this.state.form.subjects_clean,
-      school: this.state.form.school,
-      major: this.state.form.major,
-    });
+    const status = await post("/api/addTutor",
+      {
+        token: idToken,
+        name: this.state.form.firstname + ' ' + this.state.form.lastname,
+        email: this.state.form.email,
+        timezone: this.state.form.timezone,
+        bio: this.state.form.bio,
+        subjects: this.state.form.subjects_clean,
+        school: this.state.form.school,
+        major: this.state.form.major,
+      });
 
     return status;
   }
@@ -214,11 +214,11 @@ class Register extends Component {
   }
 
   render() {
-    
+
     let extraFields;
     if (this.state.form.role == "tutor") {
       extraFields = this.renderTutorFields();
-    } else if (this.state.form.role == "student"){
+    } else if (this.state.form.role == "student") {
       extraFields = this.renderStudentFields();
     } else {
       extraFields = null;
@@ -226,23 +226,8 @@ class Register extends Component {
 
     return (
       <>
-        <pre style={{ height: 300, overflow: "auto" }}>
-          {JSON.stringify(this.state, null, 2)}
-        </pre>
         <div className="ProfileEdit-form">
           <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-            <Form.Row>
-              <div className="Register-form-center">
-                <Image src={this.state.form.photo} roundedCircle />
-              </div>
-            </Form.Row>
-            <Form.Row>
-              <div className="Register-form-center">
-                <Form.File id="formcheck-api-regular">
-                  <Form.File.Input />
-                </Form.File>
-              </div>
-            </Form.Row>
             <Form.Row>
               <Form.Group as={Col} md="4" controlId="validationCustom01">
                 <Form.Label>First name</Form.Label>
@@ -327,7 +312,7 @@ class Register extends Component {
                 </Form.Control>
               </Form.Group>
             </Form.Row>
-    
+
             <Form.Row>
               <Form.Group as={Col} controlId="formBioTextArea">
                 <Form.Label>Introduce Yourself!</Form.Label>
