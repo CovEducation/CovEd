@@ -32,7 +32,6 @@ class Profile extends Component {
 
           user = user[0];
           user.role = role;
-          console.log(user);
           this.setState({ user: user });
 
         } catch (err) {

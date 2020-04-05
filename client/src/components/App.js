@@ -30,6 +30,7 @@ class App extends Component {
     super(props);
   }
   render() {
+    console.log('APP RENDER');
     return (
       <>
         {/* Boostrap */}
@@ -41,7 +42,9 @@ class App extends Component {
         />
         <UserProvider>
           <NavBar />
-          <Router basepath="/">
+           {/* "primary={false}" breaks an accesibility feature of reach router that allows screen readers to work 
+           https://stackoverflow.com/questions/53058110/stop-reach-router-scrolling-down-the-page-after-navigating-to-new-page*/}
+          <Router primary={false} basepath="/"> 
             <Homepage path="/" />
             <Resources path="/resources" />
             <SignIn path="/auth" />
