@@ -44,6 +44,7 @@ class Register extends Component {
         email: "",
         parentEmail: "",
         password: "",
+        confirmPassword: "",
         timezone: "GMT-5", // there must be a better way of setting the default values 
         photo: profile_pic,
         role: "student",
@@ -282,20 +283,25 @@ class Register extends Component {
                     placeholder="Password"
                     aria-describedby="inputGroupPrepend"
                     required
+                    pattern="^[A-Za-z0-9\s$&+,:;=?@#|'<>.^*()%!-]{6,}$"
                   />
                   <Form.Control.Feedback type="invalid">
-                    Please input a password.
+                    Password must be at least 6 characters long.
             </Form.Control.Feedback>
                 </InputGroup>
               </Form.Group>
-              <Form.Group as={Col} md="4" controlId="validationPassword">
+              <Form.Group as={Col} md="4" controlId="validationPassword1">
                 <Form.Label>Confirm password</Form.Label>
                 <InputGroup>
                   <Form.Control
+                    name="confirmPassword"
                     type="password"
                     placeholder="Reenter Password"
                     aria-describedby="inputGroupPrepend"
                     required
+                    value={this.state.form.confirmPassword}
+                    onChange={this.handleChange}
+                    pattern={this.state.form.password}
                   />
                   <Form.Control.Feedback type="invalid">
                     Passwords do not match.
