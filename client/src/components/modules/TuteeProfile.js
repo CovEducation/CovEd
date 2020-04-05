@@ -8,6 +8,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
+import timeZones from "./TimeZones";
+
 import Image from "react-bootstrap/Image";
 
 class TuteeProfile extends Component {
@@ -46,99 +48,88 @@ class TuteeProfile extends Component {
       event.stopPropagation();
     }
     // TODO: Add firebase api call here!
-    this.setState({validated: true});
+    this.setState({ validated: true });
   };
 
   render() {
     return (
       <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-      {/* <Form.Row>
+        {/* <Form.Row>
         <div className="ProfileEdit-form-center">
           <Image src={this.props.tutee.photo} roundedCircle />
         </div>
       </Form.Row> */}
-      {this.state.edit 
-        ?
+        {this.state.edit
+          ?
+          <Form.Row>
+            <div className="ProfileEdit-form-center">
+              <Form.File id="formcheck-api-regular">
+                <Form.File.Input />
+              </Form.File>
+            </div>
+          </Form.Row>
+          : <Form.Row></Form.Row>
+        }
         <Form.Row>
-          <div className="ProfileEdit-form-center">
-            <Form.File id="formcheck-api-regular">
-              <Form.File.Input />
-            </Form.File>
-          </div>
-        </Form.Row>
-        : <Form.Row></Form.Row>
-      }
-      <Form.Row>
-        <Form.Group as={Col} md="4" controlId="validationCustom01">
-          <Form.Label>Name</Form.Label>
-          {this.props.edit
-            ? 
-            <>
-            <Form.Control required type="text" placeholder="" />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            </>
-            : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.name} />
-          }
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationEmail">
-          <Form.Label>Email</Form.Label>
-          {this.props.edit 
-            ?
-            <InputGroup>
-              <Form.Control
-                type="email"
-                placeholder="jackflorey@mit.edu"
-                aria-describedby="inputGroupPrepend"
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                Please input a valid email.
+          <Form.Group as={Col} md="4" controlId="validationCustom01">
+            <Form.Label>Name</Form.Label>
+            {this.props.edit
+              ?
+              <>
+                <Form.Control required type="text" placeholder="" />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </>
+              : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.name} />
+            }
+          </Form.Group>
+          <Form.Group as={Col} md="4" controlId="validationEmail">
+            <Form.Label>Email</Form.Label>
+            {this.props.edit
+              ?
+              <InputGroup>
+                <Form.Control
+                  type="email"
+                  placeholder="jackflorey@mit.edu"
+                  aria-describedby="inputGroupPrepend"
+                  required
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please input a valid email.
               </Form.Control.Feedback>
-            </InputGroup>
-            : <Form.Control plaintext readOnly type="email" defaultValue={this.props.tutee.email} />
-          }
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationPhone">
-          <Form.Label>Phone Number</Form.Label>
-          {this.props.edit
-            ? 
-            <>
-            <Form.Control required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" />
-            <Form.Control.Feedback type="invalid">Please enter a valid phone number.</Form.Control.Feedback>
-            </>
-            : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.phone} />
-          }
-        </Form.Group>
-      </Form.Row>
-      <Form.Row>
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>Time Zone</Form.Label>
-          {this.props.edit 
-            ?
-            <Form.Control as="select" value="Pacific Time (US &amp; Canada)">
-              <option value="Hawaii">(GMT-10:00) Hawaii</option>
-              <option value="Alaska">(GMT-09:00) Alaska</option>
-              <option value="Pacific Time (US &amp; Canada)" selected="selected">
-                (GMT-08:00) Pacific Time (US &amp; Canada)
-              </option>
-              <option value="Arizona">(GMT-07:00) Arizona</option>
-              <option value="Mountain Time (US &amp; Canada)">
-                (GMT-07:00) Mountain Time (US &amp; Canada)
-              </option>
-              <option value="Central Time (US &amp; Canada)">
-                (GMT-06:00) Central Time (US &amp; Canada)
-              </option>
-              <option value="Eastern Time (US &amp; Canada)">
-                (GMT-05:00) Eastern Time (US &amp; Canada)
-              </option>
-              <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-            </Form.Control>
-            : <Form.Control plaintext readOnly defaultValue={this.props.tutee.location} />
-          }
-        </Form.Group>
-      </Form.Row>
-      {this.props.edit && <Button type="submit">Submit</Button>}
-    </Form>
+              </InputGroup>
+              : <Form.Control plaintext readOnly type="email" defaultValue={this.props.tutee.email} />
+            }
+          </Form.Group>
+          <Form.Group as={Col} md="4" controlId="validationPhone">
+            <Form.Label>Phone Number</Form.Label>
+            {this.props.edit
+              ?
+              <>
+                <Form.Control required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" />
+                <Form.Control.Feedback type="invalid">Please enter a valid phone number.</Form.Control.Feedback>
+              </>
+              : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.phone} />
+            }
+          </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group as={Col} controlId="formGridState">
+            <Form.Label>Time Zone</Form.Label>
+            {this.props.edit
+              ?
+              <Form.Control as="select" value="Pacific Time (US &amp; Canada)">
+                {timeZones.map((tz => {
+                  return (
+                    <option value={tz.value}> {tz.timezone} </option>
+                  )
+                }))}
+              </Form.Control>
+              : <Form.Control plaintext readOnly defaultValue={this.props.tutee.timezone} />
+            }
+          </Form.Group>
+        </Form.Row>
+        {this.props.edit && <Button type="submit">Submit</Button>}
+      </Form>
     );
   }
 }

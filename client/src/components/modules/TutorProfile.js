@@ -91,7 +91,7 @@ class ProfileEdit extends Component {
                 <Image src={this.props.tutor.photo} roundedCircle onChange={this.handleChange} />
               </div>
             </Form.Row>
-            {this.props.edit 
+            {this.props.edit
               ?
               <Form.Row>
                 <div className="ProfileEdit-form-center">
@@ -106,10 +106,10 @@ class ProfileEdit extends Component {
               <Form.Group as={Col} md="4" controlId="validationCustom01">
                 <Form.Label>Name</Form.Label>
                 {this.props.edit
-                  ? 
+                  ?
                   <>
-                  <Form.Control required type="text" placeholder="" placeholder={this.props.tutor.name}/>
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    <Form.Control required type="text" placeholder="" placeholder={this.props.tutor.name} />
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </>
                   : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.name} />
                 }
@@ -167,14 +167,14 @@ class ProfileEdit extends Component {
                       )
                     }))}
                   </Form.Control>
-                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.location} />
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.timezone} />
                 }
               </Form.Group>
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col} controlId="formBioTextArea">
                 <Form.Label>Introduce Yourself!</Form.Label>
-                {this.props.edit 
+                {this.props.edit
                   ? <Form.Control name="bio" placeholder={this.props.tutor.bio} as="textarea" rows="3" onChange={this.handleChange} />
                   : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.bio} />
                 }
@@ -183,7 +183,7 @@ class ProfileEdit extends Component {
             <Form.Row>
               <Form.Group as={Col} md="4" controlId="validationPhone">
                 <Form.Label>School</Form.Label>
-                {this.props.edit 
+                {this.props.edit
                   ?
                   <InputGroup>
                     <Form.Control
@@ -202,16 +202,16 @@ class ProfileEdit extends Component {
                 <Form.Label>Major</Form.Label>
                 {this.props.edit
                   ?
-                    <InputGroup>
-                      <Form.Control
-                        name="major"
-                        type="text"
-                        placeholder="Learning"
-                        aria-describedby="inputGroupPrepend"
-                        required
-                        onChange={this.handleChange}
-                      />
-                    </InputGroup>
+                  <InputGroup>
+                    <Form.Control
+                      name="major"
+                      type="text"
+                      placeholder="Learning"
+                      aria-describedby="inputGroupPrepend"
+                      required
+                      onChange={this.handleChange}
+                    />
+                  </InputGroup>
                   : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.major} />
                 }
               </Form.Group>

@@ -104,9 +104,11 @@ class Register extends Component {
       token: idToken, 
       name: this.state.form.firstname + ' ' + this.state.form.lastname,
       email: this.state.form.email,
+      timezone: this.state.form.timezone,
+      bio: this.state.form.bio,
       subjects: this.state.form.subjects_clean,
-      location: this.state.form.timezone, 
       guardian_name: this.state.form.parentFirstname + ' ' + this.state.form.parentLastname,
+      guardian_email: this.state.form.parentEmail,
     });
   }
 
@@ -118,11 +120,11 @@ class Register extends Component {
       token: idToken,
       name: this.state.form.firstname + ' ' + this.state.form.lastname,
       email: this.state.form.email,
+      timezone: this.state.form.timezone,
+      bio: this.state.form.bio,
       subjects: this.state.form.subjects_clean,
-      location: this.state.form.timezone,
-      major: this.state.form.major,
       school: this.state.form.school,
-      bio: this.state.form.bio
+      major: this.state.form.major,
     });
 
     return status;
