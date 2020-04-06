@@ -60,21 +60,10 @@ const ProfileCard = (props) => {
     <Card className={cx(styles.card, shadowStyles.root)}>
       <ButtonBase  onClick={props.onClick}>
         <CardContent>
-          <Avatar className={styles.avatar} src={props.user.profile_pic} />
           <h3 className={styles.heading}>{props.user.name}</h3>
           <span className={styles.subheader}>{props.user.major}</span>
         </CardContent>
         <Divider light />
-        <Box display={"flex"}>
-          <Box p={2} flex={"auto"} className={borderedGridStyles.item}>
-            <p className={styles.statLabel}>Time Zone</p>
-            <p className={styles.statValue}>PST</p>
-          </Box>
-          <Box p={2} flex={"auto"} className={borderedGridStyles.item}>
-            <p className={styles.statLabel}>Number of pets</p>
-            <p className={styles.statValue}>2</p>
-          </Box>
-        </Box>
       </ButtonBase>
     </Card>
   );

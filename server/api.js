@@ -75,19 +75,30 @@ router.get("/tutee", firebaseMiddleware, (req, res) => {
     })
 })
 
-router.get("/tutorsBySubjects", (req, res) => {
+router.get("/getTutors", (req, res) => {
   // We want tutors which have any of the subjects, matched by how many
   // Speed up by using MongoDB aggregate (unwind, filter by subject, then group)
   // if the database is large enough that it warrants the time.
 
-  // Getting all tutors, sorting by how many subjects they have in common with the
-  // ones requested
+  // Getting all tutors, sorting by how many subjects they have in common, then by 
+  // how recently the tutors were contacted by other students.
   const subjects_wanted = req.query.subjects;
+  const timezone = req.query.timezone;
+
   if (subjects_wanted.length == 0) {
     res.sendStatus(500);
   }
   const limit = req.query.limit === undefined ? 10 : req.query.limit;
-  Tutor.find({})
+  let query = {
+    public: true,
+  }
+  if (timezone != undefined && timezone !== 'undefined') {
+    query.timezone = timezone;
+  }
+  console.log(query);
+  console.log(typeof subjects_wanted);
+  console.log(subjects_wanted)
+  Tutor.find(query)
     .then((tutors) => {
       for (let i = 0; i < tutors.length; i++) {
         let overlapping_subjects = tutors[i].subjects.filter(
@@ -95,9 +106,22 @@ router.get("/tutorsBySubjects", (req, res) => {
         );
         tutors[i]["i"] = overlapping_subjects.length;
       }
-      tutors = tutors.filter((tutor) => tutor.i !== 0);
+      // We need the tags to match.
+      tutors = tutors.filter((tutor) => tutor.i > 0);
       tutors = tutors.slice(0, limit);
-      let sorted_tutors = tutors.sort((a, b) => (a.i > b.i ? 1 : -1));
+      // People that haven't been requested recently go first.
+      let sorted_tutors = tutors.sort((a, b) => {
+        // We want to sort by how many tags match
+        let matches_a = a.i;
+        let matches_b = b.i;
+
+        if (matches_a == matches_b) { 
+          // then by how recently they were requested by someone else (reverse)
+          return (a.last_request < b.last_request) ? -1: 1
+        } else {
+          return matches_a > matches_b ? 1 : -1;
+        }
+      }); 
       // final cleanup
       for (let i = 0; i < sorted_tutors.length; i++) {
         delete sorted_tutors[i]["i"];
@@ -176,6 +200,8 @@ router.post("/addTutor", firebaseMiddleware, (req, res) => {
     languages_spoken: req.body.languages_spoken,
     grade_levels_to_tutors: req.body.grade_levels_to_tutors,
     tutees: [],
+    last_request: new Date().getTime(), // Newer tutors will show up on top.
+    public: true,
   });
 
   newTutor.save().then((tutor) => res.send(tutor));

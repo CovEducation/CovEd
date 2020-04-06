@@ -14,17 +14,17 @@ class FindATutor extends Component {
       subjects: ["Math"],
       selected_tutor: undefined,
       tutors: [],
-      time_zone: "",
     };
   }
 
   updateSubjects = (subjects) => {
-    get("/api/tutorsBySubjects", { subjects: subjects, limit: 10 }).then((tutors) => {
-      if (this.state.tutors !== tutors) {
-        this.setState({tutors: tutors})
-      }
-    });
-    if (this.state.subjects !== subjects) this.setState({ subjects: subjects });
+    if (this.state.subjects !== subjects) {
+      get("/api/getTutors", { subjects: subjects, limit: 10}).then((tutors) => {
+        if (this.state.tutors !== tutors) {
+          this.setState({tutors: tutors})
+        }
+      });
+      this.setState({ subjects: subjects })};
     // We also want to clear the tutor selection
     this.setState({selected_tutor: undefined})
   };
@@ -32,14 +32,15 @@ class FindATutor extends Component {
   updateTutor = (tutor) => {
     if (this.state.selected_tutor != tutor) this.setState({ selected_tutor: tutor });
   };
-
+  
   componentDidMount() {
-    get("/api/tutorsBySubjects", { subjects: this.state.subjects, limit: 10 }).then((tutors) => {
+    get("/api/getTutors", { subjects: this.state.subjects, limit: 10 }).then((tutors) => {
       if (this.state.tutors !== tutors) {
         this.setState({tutors: tutors})
       }
     });
   }
+  
   render() {
     return (
       <div className="u-flex">
