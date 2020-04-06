@@ -11,8 +11,8 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Select from "react-select";
 
-import { subjects } from "../modules/TimeZones";
-import timeZones from "../modules/TimeZones";
+import { subjects } from "../modules/Constants";
+import timeZones from "../modules/Constants";
 
 // auth 
 import firebase, { auth } from "../../firebase-config";

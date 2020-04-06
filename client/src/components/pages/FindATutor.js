@@ -5,6 +5,8 @@ import TutorResultDisplay from "../modules/TutorResultDisplay.js";
 import "../../utilities.css";
 import "./FindATutor.css";
 import { get } from "../../utilities.js";
+import Col from "react-bootstrap/Col";
+import { Row } from "react-bootstrap";
 
 
 class FindATutor extends Component {
@@ -19,46 +21,47 @@ class FindATutor extends Component {
 
   updateSubjects = (subjects) => {
     if (this.state.subjects !== subjects) {
-      get("/api/getTutors", { subjects: subjects, limit: 10}).then((tutors) => {
+      get("/api/getTutors", { subjects: subjects, limit: 10 }).then((tutors) => {
         if (this.state.tutors !== tutors) {
-          this.setState({tutors: tutors})
+          this.setState({ tutors: tutors })
         }
       });
-      this.setState({ subjects: subjects })};
+      this.setState({ subjects: subjects })
+    };
     // We also want to clear the tutor selection
-    this.setState({selected_tutor: undefined})
+    this.setState({ selected_tutor: undefined })
   };
 
   updateTutor = (tutor) => {
     if (this.state.selected_tutor != tutor) this.setState({ selected_tutor: tutor });
   };
-  
+
   componentDidMount() {
     get("/api/getTutors", { subjects: this.state.subjects, limit: 10 }).then((tutors) => {
       if (this.state.tutors !== tutors) {
-        this.setState({tutors: tutors})
+        this.setState({ tutors: tutors })
       }
     });
   }
-  
+
   render() {
     return (
-      <div className="u-flex">
-        <div className="FindATutor-filter">
+      <Row>
+        <Col className="FindATutor-filter">
           <TutorFilter onChange={this.updateSubjects} />
-        </div>
-        <div className="FindATutor-results">
+        </Col>
+        <Col className="FindATutor-results">
           <TutorSearchResult tutors={this.state.tutors} onChange={this.updateTutor} />
-        </div>
-        <div className="FindATutor-tutor-display">
+        </Col>
+        <Col className="FindATutor-tutor-display">
           {/* Change when the profile component is implemented*/}
           {this.state.selected_tutor !== undefined ? (
             <TutorResultDisplay tutor={this.state.selected_tutor} user={this.props.user} />
           ) : (
-            <div> </div>
-          )}
-        </div>
-      </div>
+              <div> </div>
+            )}
+        </Col>
+      </Row>
     );
   }
 }

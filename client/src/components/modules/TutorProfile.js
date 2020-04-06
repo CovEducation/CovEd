@@ -10,7 +10,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Select from "react-select";
-import timeZones from "./TimeZones";
+import timeZones from "./Constants";
 
 // TODO: put these constants in another place.
 const subjects = [

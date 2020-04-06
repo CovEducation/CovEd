@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
-import timeZones from "./TimeZones";
+import timeZones from "./Constants";
 
 import Image from "react-bootstrap/Image";
 

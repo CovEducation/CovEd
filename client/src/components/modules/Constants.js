@@ -27,20 +27,20 @@ const timeZones = [
 
 export const subjects = [
   {
-    value: 'math',
-    label: 'Math'
+    value: "Math",
+    label: "Math"
   },
   {
-    value: 'physics',
-    label: 'Physics'
+    value: "Biology",
+    label: "Biology"
   },
   {
-    value: 'english',
-    label: 'English'
+    value: "English/Writing/Literature",
+    label: "English/Writing/Literature"
   },
   {
-    value: 'biology',
-    label: 'Biology'
+    value: "Computer Science",
+    label: "Computer Science"
   }
 ]
 

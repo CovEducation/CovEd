@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import "../../utilities.css";
 import "./TutorFilter.css";
 import Card from "@material-ui/core/Card";
-import { Typography, InputLabel, Select, MenuItem, FormControl } from "@material-ui/core";
+import { Typography, InputLabel, MenuItem, FormControl } from "@material-ui/core";
+import Select from "react-select";
+import { subjects } from "./Constants";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+
 
 const TIME_ZONES = [
   "(GMT-10:00) Hawaii",
@@ -13,48 +18,32 @@ const TIME_ZONES = [
   "(GMT-05:00) Indiana (East)",
 ];
 
-const SUBJECTS = ["Math", "Biology", "English/Writing/Literature", "Computer Science"];
 
 class TutorFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: []
     };
   }
 
 
-  handleChange = (event) => {
-    this.setState({value: event.target.value})
-    this.props.onChange(event.target.value)
+  handleChange = (selected) => {
+    this.setState({ value: selected })
+    if (selected.length == 0) {
+      selected = subjects;
+    }
+    this.props.onChange(selected.map(sub => sub.value));
   }
 
   render() {
     return (
-      <Card className="TutorFilter-container">
-        <Typography variant="subtitle2" className="u-center">
-          Filter Options
-        </Typography>
-        <FormControl>
-          <InputLabel id="subject-select-label">Subject</InputLabel>
-          {/*
-          TODO: 
-            ENABLE SELECTION OF MULTIPLE SUBJECTS.
-          */}
-          <Select
-            labelId="subject-select-label"
-            id="subject-select"
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            {SUBJECTS.map((subject) => (
-              <MenuItem value={subject} key={subject}>
-                {subject}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Card>
+      <Container fluid>
+        <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Label>Filter By Subjects</Form.Label>
+          <Select width='200px' value={this.state.value} options={subjects} isMulti onChange={this.handleChange} />
+        </Form.Group>
+      </Container>
     );
   }
 }
