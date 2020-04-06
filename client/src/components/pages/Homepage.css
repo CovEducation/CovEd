@@ -18,6 +18,24 @@
     margin-right: 12px;
     margin-left: 12px;
 }
+.btn-primary.loginButton {
+  border-color: #F2BE32;
+  color: #222;
+  background-color: #F2BE32;
+  margin: 0px;
+}
+.btn-primary.loginButton:hover,
+.btn-primary.loginButton:focus,
+.btn-primary.loginButton.focus,
+.btn-primary.loginButton:active,
+.btn-primary.loginButton.active,
+.open > .dropdown-toggle.btn-primary.loginButton {
+    border-color: #F2BE32;
+    color: #222;
+    font-weight: 800;
+    background-color: #F2BE32;
+    border-width: medium;
+}
 
 .btn-primary:hover,
 .btn-primary:focus,

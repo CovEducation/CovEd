@@ -30,7 +30,6 @@ class App extends Component {
     super(props);
   }
   render() {
-    console.log('APP RENDER');
     return (
       <>
         {/* Boostrap */}
