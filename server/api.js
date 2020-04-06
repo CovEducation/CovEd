@@ -16,9 +16,6 @@ const nodemailer = require("nodemailer");
 const Tutor = require("./models/tutor");
 const Tutee = require("./models/tutee");
 
-// import authentication library
-const auth = require("./auth");
-
 // connecting to email service
 require("dotenv").config()
 const email_user = process.env.EMAIL_USER;
@@ -153,7 +150,6 @@ router.post("/addTutee", firebaseMiddleware, (req, res) => {
     guardian_name: req.body.guardian_name,
     guardian_phone: req.body.guardian_phone,
     guardian_email: req.body.guardian_email,
-
     college_prep: req.body.college_prep,
     grade_level: req.body.grade_level,
     has_reliable_internet: req.body.has_reliable_internet,
@@ -206,7 +202,6 @@ router.post("/updateTutor", firebaseMiddleware, (req, res) => {
 });
 
 router.get("/auth_get", firebaseMiddleware, (req, res) => {
-  console.log(req.user);
   res.send({ status: "success", user: req.user });
 });
 
@@ -217,10 +212,10 @@ router.post("/pingTutor", (req, res) => {
   const student_email = req.body.student.email;
   const tutor_uid = req.body.tutor_uid;
   const subjects = req.body.subjects;
-
+  const student_message = req.body.personal_message;
   Tutor.findOne({ firebase_uid: tutor_uid }).then((tutor) => {
     let tutor_email = tutor.email;
-    let msg = "Hi you got a tutor. Hype. Email: " + student_email;
+    let msg = "Hi, someone wants you as a mentor. Zoom Zoom. Email: " + student_email + " \n Personal Note: " + student_message;
     let mailOptions = {
       from: "CovED <coved@gmail>",
       to: tutor_email + ", ",
@@ -228,7 +223,6 @@ router.post("/pingTutor", (req, res) => {
       text: msg,
       html: "<b>" + msg + "</b>",
     };
-
     transporter.sendMail(mailOptions, function (err, info) {
       if (err) res.sendStatus(500);
       else

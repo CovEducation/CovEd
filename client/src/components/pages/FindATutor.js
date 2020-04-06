@@ -1,23 +1,11 @@
 import React, { Component } from "react";
 import TutorFilter from "../modules/TutorFilter.js";
 import TutorSearchResult from "../modules/TutorSearchResult.js";
-import Image from "react-bootstrap/Image";
+import TutorResultDisplay from "../modules/TutorResultDisplay.js";
 import "../../utilities.css";
 import "./FindATutor.css";
-import { Card } from "@material-ui/core";
 import { get } from "../../utilities.js";
 
-const ProfileDisplayTemp = (props) => {
-  return (
-    <Card style={{ textAlign: "center", margin: "auto auto" }}>
-      <Image src={props.tutor.profile_pic} />
-      <h4>{props.tutor.name}</h4>
-      <h6>{props.tutor.major}</h6>
-      <p>{props.tutor.subjects}</p>
-      <a href={props.tutor.email}>Contact</a>
-    </Card>
-  );
-};
 
 class FindATutor extends Component {
   constructor(props) {
@@ -64,7 +52,7 @@ class FindATutor extends Component {
         <div className="FindATutor-tutor-display">
           {/* Change when the profile component is implemented*/}
           {this.state.selected_tutor !== undefined ? (
-            <ProfileDisplayTemp tutor={this.state.selected_tutor} />
+            <TutorResultDisplay tutor={this.state.selected_tutor} user={this.props.user} />
           ) : (
             <div> </div>
           )}

@@ -55,6 +55,11 @@ class ProfileEdit extends Component {
   }
 
   componentDidMount() {
+    if (this.props.tutor !== undefined) {
+      this.setState({
+        user: this.props.tutor,
+      })
+    }
   }
 
   handleSubmit = (event) => {
