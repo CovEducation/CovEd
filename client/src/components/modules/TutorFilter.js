@@ -6,10 +6,10 @@ import { Typography, InputLabel, Select, MenuItem, FormControl } from "@material
 
 const TIME_ZONES = [
   "(GMT-10:00) Hawaii",
-  "(GMT-08:00) Pacific Time (US &amp; Canada)",
-  "(GMT-07:00) Mountain Time (US &amp; Canada)",
-  "(GMT-06:00) Central Time (US &amp; Canada)",
-  "(GMT-05:00) Eastern Time (US &amp; Canada)",
+  "(GMT-08:00) Pacific Time (US & Canada)",
+  "(GMT-07:00) Mountain Time (US &Canada)",
+  "(GMT-06:00) Central Time (US & Canada)",
+  "(GMT-05:00) Eastern Time (US & Canada)",
   "(GMT-05:00) Indiana (East)",
 ];
 
@@ -19,18 +19,14 @@ class TutorFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      subjects: [],
-      time_zone: "Select a Time Zone",
+      value: ''
     };
   }
 
-  
-  handleSubjectSelection = (event) => {
-    if (SUBJECTS.includes(event.target.value) && this.state.subjects !== [event.target.value]) {
-      this.setState({subjects: [event.target.value]});
-      this.props.onChange([event.target.value]);
-    }
 
+  handleChange = (event) => {
+    this.setState({value: event.target.value})
+    this.props.onChange(event.target.value)
   }
 
   render() {
@@ -40,19 +36,6 @@ class TutorFilter extends Component {
           Filter Options
         </Typography>
         <FormControl>
-          <InputLabel id="timezone-select-label">Time Zone</InputLabel>
-          <Select
-            labelId="timezone-customized-select-label"
-            id="timezone-customized-select"
-            value={this.state.time_zone}
-            onChange={(event) => event.target.value !== this.state.time_zone ? this.setState({ time_zone: event.target.value }) : false}
-          >
-            {TIME_ZONES.map((time_zone) => (
-              <MenuItem value={time_zone} key={"time-zone" + time_zone}>{time_zone}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <FormControl>
           <InputLabel id="subject-select-label">Subject</InputLabel>
           {/*
           TODO: 
@@ -61,10 +44,10 @@ class TutorFilter extends Component {
           <Select
             labelId="subject-select-label"
             id="subject-select"
-            value={this.state.subjects}
-            onChange={this.handleSubjectSelection}
+            value={this.state.value}
+            onChange={this.handleChange}
           >
-            {SUBJECTS.map((subject, i) => (
+            {SUBJECTS.map((subject) => (
               <MenuItem value={subject} key={subject}>
                 {subject}
               </MenuItem>
