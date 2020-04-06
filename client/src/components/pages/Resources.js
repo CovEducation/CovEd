@@ -5,7 +5,7 @@ import {
 	SingleRange,
 	ResultCard,
 	ReactiveList,
-	MultiDataList,
+	MultiList,
 } from '@appbaseio/reactivesearch';
 
 import {Col, Row, Button} from 'react-bootstrap'
@@ -63,49 +63,43 @@ class Resources extends Component {
 		return (
 			<>
 			<Provider theme={theme}>
-			<Section fontSize={[2]} width={[1]} heading="" subhead="" p={4} mt={7} mb={7}>
-			<Row className="justify-content-sm-center">
-			<Col sm={{span: 12}} className="text-center">
+			<Section fontSize={[2]} width={[1]} heading="" subhead="" p={3} mt={2} mb={7}>
+			<h2><span className="light-h2">Resources</span><hr className="hr-primary"/> <br /> <br /> <br /> <br /></h2>
 			<ReactiveBase
 							app="coved"
 							credentials="sJ8zoOmW3:f3dbcd79-4ab9-437c-936d-d1d37b46073e"
 						>
-							<MultiDataList
+						<Row className="justify-content-sm-center">
+						<Col md={{span: 3}} sm={{span:10}} className="text-center">
+							<MultiList
 								componentId="schoolfilter"
 								title="Filter by School"
 								dataField="schools.type.keyword"
-								data={[
-									{label: 'Elementary School (PreKG - 5)', value: 'elementary',},
-									{label: 'Middle School (6-8)', value: 'middleschool',},
-									{label: 'High School (9-12)', value: 'highschool',},
-								]}
 							/>
-							<MultiDataList
+							<br />
+							<br />
+							<MultiList
 								componentId="subjectfilter"
 								title="Filter by Subject"
 								dataField="subjects.type.keyword"
-								data={[
-									{label: 'Math', value: 'math',},
-									{label: 'Computer Science', value: 'computer science',},
-									{label: 'English', value: 'english',},
-								]}
 							/>
-							<MultiDataList
+							<br />
+							<br />
+							<MultiList
 								componentId="specfilter"
 								title="Filter by Special Needs"
 								dataField="special.type.keyword"
-								data={[
-									{label: 'SPED', value: 'sped',},
-									{label: 'Hearing Impaired Friendly', value: 'hearing',},
-									{label: 'Visually Impaired Friendly', value: 'visual',},
-								]}
 							/>
+							<br />
+							<br />
+						</Col>
+						<Col md={{span:9}} sm={{span:10}} className="text-center">
 							<ReactiveList
 								componentId="result"
 								title="Results"
 								dataField="name"
 								from={0}
-								size={5}
+								size={20}
 								pagination={true}
 								react={{
 									and: ['schoolfilter','subjectfilter','specfilter'],
@@ -113,7 +107,7 @@ class Resources extends Component {
 								render={({ data }) => (
 									<ReactiveList.ResultCardsWrapper>
 										{data.map(item => (
-											<ResultCard key={item._id}>
+											<ResultCard href={item.url} key={item._id}>
 												<ResultCard.Title
 													dangerouslySetInnerHTML={{
 														__html: item.name,
@@ -127,9 +121,9 @@ class Resources extends Component {
 									</ReactiveList.ResultCardsWrapper>
 								)}
 							/>
-						</ReactiveBase>
-						</Col>
+							</Col>
 						</Row>
+						</ReactiveBase>
 					</Section>
 				</Provider>
 			</>
