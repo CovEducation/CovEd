@@ -49,8 +49,9 @@ class Profile extends Component {
 
   render() {
     let profile = null;
-    if (this.state.user)
-      profile = this.state.user.role == "tutee" ? <TuteeProfile tutee={this.state.user} edit={false}></TuteeProfile> : <TutorProfile tutor={this.state.user} edit={false}></TutorProfile>;
+    if (this.state.user) {
+      profile = this.state.user.role == "tutee" ? <TuteeProfile tutee={this.state.user}></TuteeProfile> : <TutorProfile tutor={this.state.user}></TutorProfile>;
+    }
     return (
       <div className='Profile-form'>
         {profile}

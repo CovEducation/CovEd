@@ -32,7 +32,7 @@ const subjects = [
   }
 ]
 
-class ProfileEdit extends Component {
+class TutorProfile extends Component {
   constructor(props) {
     super(props); // expecting user and edit
     // Initialize Default State
@@ -40,13 +40,13 @@ class ProfileEdit extends Component {
       ok: false,
       validated: false,
       setValidated: false,
+      edit: false,
       user: {
         name: "Ben Something",
         phone: "1234567890",
         email: "bbitdiddle@gmail.com",
         subjects: [],
         location: "Pacific",
-        school: "UT",
         major: "CS",
         bio: "I am a cool kid.",
         photo: profile_pic,
@@ -73,6 +73,10 @@ class ProfileEdit extends Component {
     this.setState({ validated: true });
   };
 
+  handleEdit = (event) => {
+    this.setState({ edit: true})
+  }
+
   handleChange = (event) => {
     const form = this.state.user;
     user[event.target.name] = event.target.value
@@ -96,7 +100,7 @@ class ProfileEdit extends Component {
                 <Image src={this.props.tutor.photo} roundedCircle onChange={this.handleChange} />
               </div>
             </Form.Row>
-            {this.props.edit
+            {this.state.edit
               ?
               <Form.Row>
                 <div className="ProfileEdit-form-center">
@@ -110,7 +114,7 @@ class ProfileEdit extends Component {
             <Form.Row>
               <Form.Group as={Col} md="4" controlId="validationCustom01">
                 <Form.Label>Name</Form.Label>
-                {this.props.edit
+                {this.state.edit
                   ?
                   <>
                     <Form.Control required type="text" placeholder="" placeholder={this.props.tutor.name} />
@@ -121,7 +125,7 @@ class ProfileEdit extends Component {
               </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationEmail">
                 <Form.Label>Email</Form.Label>
-                {this.props.edit
+                {this.state.edit
                   ?
                   <InputGroup>
                     <Form.Control
@@ -143,7 +147,7 @@ class ProfileEdit extends Component {
             <Form.Row>
               <Form.Group as={Col} md="4" controlId="validationPhone">
                 <Form.Label>Phone Number</Form.Label>
-                {this.props.edit
+                {this.state.edit
                   ?
                   <InputGroup>
                     <Form.Control
@@ -163,7 +167,7 @@ class ProfileEdit extends Component {
               </Form.Group>
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label>Time Zone</Form.Label>
-                {this.props.edit
+                {this.state.edit
                   ?
                   <Form.Control name="timezone" as="select" onChange={this.handleChange}>
                     {timeZones.map((tz => {
@@ -179,33 +183,16 @@ class ProfileEdit extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="formBioTextArea">
                 <Form.Label>Introduce Yourself!</Form.Label>
-                {this.props.edit
+                {this.state.edit
                   ? <Form.Control name="bio" placeholder={this.props.tutor.bio} as="textarea" rows="3" onChange={this.handleChange} />
                   : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.bio} />
                 }
               </Form.Group>
             </Form.Row>
             <Form.Row>
-              <Form.Group as={Col} md="4" controlId="validationPhone">
-                <Form.Label>School</Form.Label>
-                {this.props.edit
-                  ?
-                  <InputGroup>
-                    <Form.Control
-                      name="school"
-                      type="text"
-                      placeholder="University"
-                      aria-describedby="inputGroupPrepend"
-                      required
-                      onChange={this.handleChange}
-                    />
-                  </InputGroup>
-                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.school} />
-                }
-              </Form.Group>
               <Form.Group>
                 <Form.Label>Major</Form.Label>
-                {this.props.edit
+                {this.state.edit
                   ?
                   <InputGroup>
                     <Form.Control
@@ -224,18 +211,19 @@ class ProfileEdit extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
                 <Form.Label>Subjects</Form.Label>
-                {this.props.edit
+                {this.state.edit
                   ? <Select value={this.props.tutor.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
                   : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.subjects} />
                 }
               </Form.Group>
             </Form.Row>
-            {this.props.edit && <Button type="submit">Submit</Button>}
+            {this.state.edit && <Button type="submit">Submit</Button>}
           </Form>
+          {!this.state.edit && <Button type="button" onClick={this.handleEdit}>Edit</Button>}
         </div>
       </>
     );
   }
 }
 
-export default ProfileEdit;
+export default TutorProfile;

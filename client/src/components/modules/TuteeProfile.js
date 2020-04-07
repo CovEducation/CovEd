@@ -19,6 +19,7 @@ class TuteeProfile extends Component {
     this.state = {
       ok: false,
       validated: false,
+      edit: false,
       user: {
         name: "Ben Bitdiddle",
         phone: "123-456-7890",
@@ -33,6 +34,7 @@ class TuteeProfile extends Component {
   }
 
   componentDidMount() {
+    console.log("ok")
     // remember -- api calls go here!
     get("/api/healthCheck").then((resp) => {
       this.setState({ ok: resp.ok });
@@ -51,8 +53,14 @@ class TuteeProfile extends Component {
     this.setState({ validated: true });
   };
 
+  handleEdit = (event) => {
+    this.setState({edit: true});
+  };
+
   render() {
+    console.log(this.state.edit)
     return (
+      <div>
       <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
         {/* <Form.Row>
         <div className="ProfileEdit-form-center">
@@ -73,7 +81,7 @@ class TuteeProfile extends Component {
         <Form.Row>
           <Form.Group as={Col} md="4" controlId="validationCustom01">
             <Form.Label>Name</Form.Label>
-            {this.props.edit
+            {this.state.edit
               ?
               <>
                 <Form.Control required type="text" placeholder="" />
@@ -84,7 +92,7 @@ class TuteeProfile extends Component {
           </Form.Group>
           <Form.Group as={Col} md="4" controlId="validationEmail">
             <Form.Label>Email</Form.Label>
-            {this.props.edit
+            {this.state.edit
               ?
               <InputGroup>
                 <Form.Control
@@ -102,7 +110,7 @@ class TuteeProfile extends Component {
           </Form.Group>
           <Form.Group as={Col} md="4" controlId="validationPhone">
             <Form.Label>Phone Number</Form.Label>
-            {this.props.edit
+            {this.state.edit
               ?
               <>
                 <Form.Control required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" />
@@ -115,7 +123,7 @@ class TuteeProfile extends Component {
         <Form.Row>
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Time Zone</Form.Label>
-            {this.props.edit
+            {this.state.edit
               ?
               <Form.Control as="select" value="Pacific Time (US &amp; Canada)">
                 {timeZones.map((tz => {
@@ -128,8 +136,10 @@ class TuteeProfile extends Component {
             }
           </Form.Group>
         </Form.Row>
-        {this.props.edit && <Button type="submit">Submit</Button>}
+        {this.state.edit && <Button type="submit">Submit</Button>}
       </Form>
+      {!this.state.edit && <Button type="button" onClick={this.handleEdit}>Edit</Button>}
+      </div>
     );
   }
 }

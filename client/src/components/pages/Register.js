@@ -34,7 +34,6 @@ class Register extends Component {
       ok: false,
       validated: false,
       setValidated: false,
-      edit: true, // eventually get rid of this since it will be in props
       form: {
         firstname: "",
         lastname: "",
@@ -53,7 +52,6 @@ class Register extends Component {
         subjects: [],
         bio: "",
         agreedtowaiver: "",
-        school: "",
         major: "",
         tags: [],
       },
@@ -118,7 +116,6 @@ class Register extends Component {
         timezone: this.state.form.timezone,
         bio: this.state.form.bio,
         subjects: this.state.form.subjects_clean,
-        school: this.state.form.school,
         major: this.state.form.major,
         tags: this.state.form.tags,
       });
@@ -142,20 +139,6 @@ class Register extends Component {
     return (
       <>
         <Form.Row>
-          <Form.Group as={Col} md="4" controlId="validationPhone">
-            <Form.Label>School</Form.Label>
-            <InputGroup>
-              <Form.Control
-                name="school"
-                value={this.state.form.school}
-                type="text"
-                placeholder="University"
-                aria-describedby="inputGroupPrepend"
-                required
-                onChange={this.handleChange}
-              />
-            </InputGroup>
-          </Form.Group>
           <Form.Group>
             <Form.Label>Major</Form.Label>
             <InputGroup>
