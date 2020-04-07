@@ -17,7 +17,8 @@ const TutorSchema = new mongoose.Schema({
   grade_levels_to_tutor: [Number],
   tutees: [mongoose.Types.ObjectId],
   public: Boolean,
-  last_request: Date
+  last_request: Date,
+  tags: [String],
 });
 
 // compile model from schema

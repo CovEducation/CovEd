@@ -83,28 +83,22 @@ router.get("/getTutors", (req, res) => {
   // Getting all tutors, sorting by how many subjects they have in common, then by 
   // how recently the tutors were contacted by other students.
   const subjects_wanted = req.query.subjects;
-  const timezone = req.query.timezone;
+
 
   if (subjects_wanted.length == 0) {
     res.sendStatus(500);
   }
   const limit = req.query.limit === undefined ? 10 : req.query.limit;
-  let query = {
-    public: true,
-  }
-  if (timezone != undefined && timezone !== 'undefined') {
-    query.timezone = timezone;
-  }
-  console.log(query);
-  console.log(typeof subjects_wanted);
-  console.log(subjects_wanted)
-  Tutor.find(query)
+  Tutor.find({public: true})
     .then((tutors) => {
       for (let i = 0; i < tutors.length; i++) {
         let overlapping_subjects = tutors[i].subjects.filter(
           (subject) => subjects_wanted.includes(subject) && subject != ""
         );
-        tutors[i]["i"] = overlapping_subjects.length;
+        let overlapping_tags = tutors[i].tags.filter((tag) => 
+          (subjects_wanted.includes(tag) && tag != "")
+        )
+        tutors[i]["i"] = overlapping_subjects.length + overlapping_tags.length;
       }
       // We need the tags to match.
       tutors = tutors.filter((tutor) => tutor.i > 0);
@@ -202,6 +196,7 @@ router.post("/addTutor", firebaseMiddleware, (req, res) => {
     tutees: [],
     last_request: new Date().getTime(), // Newer tutors will show up on top.
     public: true,
+    tags: req.body.tags ? req.body.tags : [],
   });
 
   newTutor.save().then((tutor) => res.send(tutor));

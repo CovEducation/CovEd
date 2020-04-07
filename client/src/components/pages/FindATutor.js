@@ -13,13 +13,13 @@ class FindATutor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      subjects: ["Math"],
+      subjects: ["Math"], // Default.
       selected_tutor: undefined,
       tutors: [],
     };
   }
 
-  updateSubjects = (subjects) => {
+  updateTags = (subjects) => {
     if (this.state.subjects !== subjects) {
       get("/api/getTutors", { subjects: subjects, limit: 10 }).then((tutors) => {
         if (this.state.tutors !== tutors) {
@@ -48,7 +48,7 @@ class FindATutor extends Component {
     return (
       <Row>
         <Col className="FindATutor-filter">
-          <TutorFilter onChange={this.updateSubjects} />
+          <TutorFilter onChange={this.updateTags} />
         </Col>
         <Col className="FindATutor-results">
           <TutorSearchResult tutors={this.state.tutors} onChange={this.updateTutor} />

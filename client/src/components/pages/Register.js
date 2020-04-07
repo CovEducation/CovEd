@@ -2,23 +2,23 @@ import React, { Component, useState } from "react";
 
 import "./Register.css";
 import "../../utilities.css";
-import { get, post } from "../../utilities";
+import { post } from "../../utilities";
 import profile_pic from "../../img/blank-profile-pic.jpg";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
 import Select from "react-select";
 
-import { subjects } from "../modules/Constants";
+import { subjects, tags } from "../modules/Constants";
 import timeZones from "../modules/Constants";
 
 // auth 
-import firebase, { auth } from "../../firebase-config";
+import { auth } from "../../firebase-config";
 import { useNavigate } from "@reach/router";
 
 // TODO : THERE IS SO MUCH HACK CODE HELP!!!
+// 4/6/2020:  I feel u.
 const withNavigate = (Component) => {
   return (props) => {
     const navigate = useNavigate();
@@ -53,9 +53,9 @@ class Register extends Component {
         subjects: [],
         bio: "",
         agreedtowaiver: "",
-
         school: "",
         major: "",
+        tags: [],
       },
     };
   }
@@ -77,7 +77,6 @@ class Register extends Component {
     // clean up subject list 
     this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
 
-    console.log(JSON.stringify(this.state.form, null, 2));
     try {
       const user = await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
       const idToken = await auth.currentUser.getIdToken();
@@ -88,11 +87,8 @@ class Register extends Component {
       } else if (this.state.form.role == "student") {
         status = await this.postTutee(idToken);
       }
-
-      console.log(status);
       this.props.navigate('/profile');
     } catch (error) {
-      console.log(error);
       // TODO: DISPLAY ERROR TO USER
     }
   };
@@ -114,7 +110,6 @@ class Register extends Component {
 
 
   postTutor = async (idToken) => {
-    console.log(idToken);
     const status = await post("/api/addTutor",
       {
         token: idToken,
@@ -125,6 +120,7 @@ class Register extends Component {
         subjects: this.state.form.subjects_clean,
         school: this.state.form.school,
         major: this.state.form.major,
+        tags: this.state.form.tags,
       });
 
     return status;
@@ -332,7 +328,24 @@ class Register extends Component {
                 <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
               </Form.Group>
             </Form.Row>
-
+            <Form.Row>
+              <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
+                <Form.Label>Subjects</Form.Label>
+                <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
+                <Form.Label>Subjects</Form.Label>
+                <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
+                <Form.Label>Optional tags: </Form.Label>
+                <Select value={this.state.form.tags} options={tags} isMulti onChange={this.handleSelectChange} />
+              </Form.Group>
+            </Form.Row>
             {extraFields}
 
             <Form.Group>

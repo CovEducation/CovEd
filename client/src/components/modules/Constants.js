@@ -27,21 +27,56 @@ const timeZones = [
 
 export const subjects = [
   {
+    value: "English",
+    label: "English"
+  },
+  {
+    value: "History",
+    label: "History"
+  },
+  {
+    value: "Science",
+    label: "Science"
+  },
+  {
     value: "Math",
     label: "Math"
+  },
+  {
+    value: "Physics",
+    label: "Physics"
+  },
+  {
+    value: "Chemistry",
+    label: "Chemistry"
   },
   {
     value: "Biology",
     label: "Biology"
   },
   {
-    value: "English/Writing/Literature",
-    label: "English/Writing/Literature"
+    value: "College Prep - SATs, ACTs",
+    label: "College Prep - SATs, ACTs",
+  },
+  {
+    value: "College Prep - Essays",
+    label: "College Prep - Essays"
+  },
+  {
+    value: "Writing",
+    label: "Writing",
+  },
+  {
+    value: "Economics",
+    label: "Economics"
   },
   {
     value: "Computer Science",
     label: "Computer Science"
   }
 ]
+
+export const tags = ["Women in STEM", "FGLI", "SPED: Special Education", "ASL: American Sign Language", "LGBTQ + ", "English as a Second Language", "Underrepresented Minority in STEM(African Americans, American Indians / Alaska Natives, and Latinos)", "Early Childhood Learning", "High School", "Middle School", "Elementary School", "Preschool"];
+
 
 export default timeZones;
