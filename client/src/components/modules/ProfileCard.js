@@ -1,9 +1,8 @@
 import React from "react";
 import cx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
@@ -57,14 +56,14 @@ const ProfileCard = (props) => {
     height: "50%",
   });
   return (
-    <Card className={cx(styles.card, shadowStyles.root)}>
-      <ButtonBase  onClick={props.onClick}>
+    <Card className={cx(styles.card)}>
+      <CardActionArea  onClick={props.onClick}>
         <CardContent>
           <h3 className={styles.heading}>{props.user.name}</h3>
           <span className={styles.subheader}>{props.user.major}</span>
         </CardContent>
         <Divider light />
-      </ButtonBase>
+      </CardActionArea>
     </Card>
   );
 };

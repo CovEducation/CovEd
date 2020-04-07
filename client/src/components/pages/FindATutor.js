@@ -6,7 +6,7 @@ import "../../utilities.css";
 import "./FindATutor.css";
 import { get } from "../../utilities.js";
 import Col from "react-bootstrap/Col";
-import { Row } from "react-bootstrap";
+import { Row, Container } from "react-bootstrap";
 
 
 class FindATutor extends Component {
@@ -46,6 +46,7 @@ class FindATutor extends Component {
 
   render() {
     return (
+      <Container>
       <Row>
         <Col className="FindATutor-filter">
           <TutorFilter onChange={this.updateTags} />
@@ -53,7 +54,7 @@ class FindATutor extends Component {
         <Col className="FindATutor-results">
           <TutorSearchResult tutors={this.state.tutors} onChange={this.updateTutor} />
         </Col>
-        <Col className="FindATutor-tutor-display">
+        <Col className="FindATutor-results">
           {/* Change when the profile component is implemented*/}
           {this.state.selected_tutor !== undefined ? (
             <TutorResultDisplay tutor={this.state.selected_tutor} user={this.props.user} />
@@ -62,6 +63,7 @@ class FindATutor extends Component {
             )}
         </Col>
       </Row>
+      </Container>
     );
   }
 }

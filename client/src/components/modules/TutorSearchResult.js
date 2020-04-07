@@ -25,7 +25,7 @@ class TutorSearchResult extends Component {
   render() {
     return (
       <>
-        <List>{this.props.tutors.map((tutor) => this.make_tutor_card(tutor))}</List>
+        <List style={{maxHeight: 700, overflow: 'auto'}}>{this.props.tutors.map((tutor) => this.make_tutor_card(tutor))}</List>
       </>
     );
   }
