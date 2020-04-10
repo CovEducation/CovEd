@@ -7,7 +7,7 @@ import "./FindATutor.css";
 import { get } from "../../utilities.js";
 import Col from "react-bootstrap/Col";
 import { Row, Container } from "react-bootstrap";
-
+import { auth } from "../../firebase-config";
 
 class FindATutor extends Component {
   constructor(props) {
@@ -16,12 +16,13 @@ class FindATutor extends Component {
       subjects: ["Math"], // Default.
       selected_tutor: undefined,
       tutors: [],
+      token: undefined,
     };
   }
 
   updateTags = (subjects) => {
     if (this.state.subjects !== subjects) {
-      get("/api/getTutors", { subjects: subjects, limit: 10 }).then((tutors) => {
+      get("/api/getTutors", { subjects: subjects, limit: 10, token: this.state.token}).then((tutors) => {
         if (this.state.tutors !== tutors) {
           this.setState({ tutors: tutors })
         }
@@ -37,11 +38,29 @@ class FindATutor extends Component {
   };
 
   componentDidMount() {
-    get("/api/getTutors", { subjects: this.state.subjects, limit: 10 }).then((tutors) => {
-      if (this.state.tutors !== tutors) {
-        this.setState({ tutors: tutors })
-      }
+    auth.onAuthStateChanged(async (user) => {
+     try{
+      const token = await user.getIdToken();
+      this.setState({
+        token: token
+      });
+      get("/api/getTutors", {
+        subjects: this.state.subjects,
+        limit: 10,
+        token: token
+      }).then((tutors) => {
+        if (this.state.tutors !== tutors) {
+          this.setState({
+            tutors: tutors
+          })
+        }
+      });
+     }
+     catch {
+       alert("You must be logged in")
+     }
     });
+    
   }
 
   render() {
