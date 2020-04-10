@@ -4,6 +4,8 @@ import "../../utilities.css";
 
 import { Col, Row, Button, Container } from 'react-bootstrap'
 import Form from "react-bootstrap/Form";
+import SimpleSnackbar from "../modules/SimpleSnackbar.js";
+
 // Landing page library
 import { Provider } from "rebass";
 import {
@@ -11,7 +13,7 @@ import {
 } from "react-landing-page";
 
 // auth 
-import firebase, { auth } from "../../firebase-config";
+import { auth } from "../../firebase-config";
 import { UserContext } from "../../providers/UserProvider";
 import { useNavigate } from "@reach/router"
 // TODO : THERE IS SO MUCH HACK CODE HELP!!!
@@ -65,6 +67,7 @@ class SignIn extends Component {
     this.state.form = { email: undefined, password: undefined };
     this.signin = this.signin.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.error = undefined;
   }
 
   async signin(event) {
@@ -73,8 +76,7 @@ class SignIn extends Component {
       const user = await auth.signInWithEmailAndPassword(this.state.form.email, this.state.form.password);
       this.props.navigate('/profile');
     } catch (error) {
-      console.log(error);
-      this.setState({ error: error });
+      this.setState({error: (<SimpleSnackbar message="Wrong email / password."/>)});
     }
   }
 
@@ -82,6 +84,7 @@ class SignIn extends Component {
     const form = this.state.form;
     form[event.target.name] = event.target.value
     this.setState({ form: form });
+    this.setState({error : undefined});
   }
 
   render() {
@@ -107,6 +110,7 @@ class SignIn extends Component {
                     <Button  className="loginButton" block onClick={this.signin}>
                       Sign In
                     </Button>
+                    {this.state.error}
                   </Form>
                 </Col>
               </Row>
