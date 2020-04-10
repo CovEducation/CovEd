@@ -16,6 +16,9 @@ import WhoWeAre from "./pages/WhoWeAre.js";
 import Contact from "./pages/Contact.js";
 import FindATutor from "./pages/FindATutor.js";
 import Profile from "./pages/Profile.js";
+
+import ProtectedPage from "./modules/ProtectedPage.js";
+
 // Components
 import NavBar from "./modules/NavBar.js";
 // Providers 
@@ -51,8 +54,8 @@ class App extends Component {
             <FAQ path="/faq" />
             <WhoWeAre path="/whoweare" />
             <Contact path="/contact" />
-            <FindATutor path="/findatutor"/>
-            <Profile path="/profile"/>
+            <ProtectedPage path="/findatutor" component={FindATutor}/>
+            <ProtectedPage path="/profile" component={Profile}/>
             <NotFound default></NotFound>
           </Router>
         </UserProvider>

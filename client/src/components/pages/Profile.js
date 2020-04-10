@@ -15,42 +15,13 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    auth.onAuthStateChanged(async (user) => {
-      try {
-        const token = await user.getIdToken();
-        console.log(token);
-
-        try {
-          let user = await get("/api/tutee", { token: token });
-          let role = "tutee";
-
-          // if the user is not a student 
-          if (user.length == 0) {
-            user = await get("/api/tutor", { token: token });
-            role = "tutor";
-          }
-
-          user = user[0];
-          user.role = role;
-          this.setState({ user: user });
-
-        } catch (err) {
-          console.log(err);
-        }
-
-      } catch (error) {
-        // TODO:handle error
-        console.log(error);
-      }
-    });
   }
-
-
 
   render() {
     let profile = null;
-    if (this.state.user) {
-      profile = this.state.user.role == "tutee" ? <TuteeProfile tutee={this.state.user}></TuteeProfile> : <TutorProfile tutor={this.state.user}></TutorProfile>;
+    let { user } = this.props;
+    if (user) {
+      profile = user.role == "tutee" ? <TuteeProfile tutee={user}></TuteeProfile> : <TutorProfile tutor={user}></TutorProfile>;
     }
     return (
       <div className='Profile-form'>
