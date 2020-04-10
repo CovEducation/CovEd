@@ -72,10 +72,6 @@ class Homepage extends Component {
   }
 
   componentDidMount() {
-    // remember -- api calls go here!
-    get("/api/healthCheck").then((resp) => {
-      this.setState({ ok: resp.ok });
-    });
   }
 
   render() {

@@ -38,15 +38,6 @@ const firebaseMiddleware = require("./auth");
   GET Endpoints
 */
 
-router.get("/tutors", (req, res) => {
-  Tutor.find({})
-    .then((tutors) => {
-      res.send(tutors.map((tutor) => removeContactInfo(tutor)));
-    })
-    .catch(() => {
-      res.send({});
-    });
-});
 
 router.get("/tutor", firebaseMiddleware, (req, res) => {
   Tutor.find({
@@ -75,7 +66,7 @@ router.get("/tutee", firebaseMiddleware, (req, res) => {
     })
 })
 
-router.get("/getTutors", (req, res) => {
+router.get("/getTutors", firebaseMiddleware, (req, res) => {
   // We want tutors which have any of the subjects, matched by how many
   // Speed up by using MongoDB aggregate (unwind, filter by subject, then group)
   // if the database is large enough that it warrants the time.
@@ -125,30 +116,6 @@ router.get("/getTutors", (req, res) => {
     })
     .catch(() => {
       res.sendStatus(500);
-    });
-});
-
-router.get("/tutorsByLanguage", (req, res) => {
-  Tutor.find({
-    languages: req.query.language,
-  })
-    .then((tutors) => {
-      res.send(tutors.map((tutor) => removeContactInfo(tutor)));
-    })
-    .catch(() => {
-      res.send({});
-    });
-});
-
-router.get("/tutorsForCollegePrep", (req, res) => {
-  Tutor.find({
-    college_prep: true,
-  })
-    .then((tutors) => {
-      res.send(tutors.map((tutor) => removeContactInfo(tutor)));
-    })
-    .catch(() => {
-      res.send({});
     });
 });
 
@@ -226,7 +193,7 @@ router.get("/auth_get", firebaseMiddleware, (req, res) => {
   res.send({ status: "success", user: req.user });
 });
 
-router.post("/pingTutor", (req, res) => {
+router.post("/pingTutor", firebaseMiddleware, (req, res) => {
   // TODO: Send an email or notification ot the tutor.
   // We assume that we know which subjects the student
   // needs help with and the email.
@@ -261,9 +228,6 @@ function removeContactInfo(person) {
   return person;
 }
 
-router.get("/healthCheck", (req, res) => {
-  res.send({ ok: true });
-});
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
