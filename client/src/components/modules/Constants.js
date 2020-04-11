@@ -1,5 +1,9 @@
 const timeZones = [
   {
+    value: "GMT-4",
+    timezone: "Eastern Daylight Time - Boston (GMT-4)"
+  },
+  {
     value: "GMT-5",
     timezone: "Central Daylight Time - Chicago (GMT-5)"
   },
