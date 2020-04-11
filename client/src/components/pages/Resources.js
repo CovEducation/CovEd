@@ -23,6 +23,8 @@ import {
   CallToAction, Feature,
 } from "react-landing-page";
 
+import Card from "@material-ui/core/Card";
+
 const theme={
   colors: {
       blue: '#00568C',
@@ -68,13 +70,13 @@ class Resources extends Component {
 			<>
 			<Provider theme={theme}>
 			<Section fontSize={[2]} width={[1]} heading="" subhead="" p={3} mt={2} mb={7}>
-			<h2><span className="light-h2">Resources</span><hr className="hr-primary"/> <br /> <br /> <br /> <br /></h2>
+			<h2><span className="light-h2">Resources</span><hr className="hr-primary"/> <br /> <br /></h2>
 			<ReactiveBase
 							app="coved"
 							credentials="sJ8zoOmW3:f3dbcd79-4ab9-437c-936d-d1d37b46073e"
 						>
 						<Row className="justify-content-sm-center">
-						<Col md={{span: 3}} sm={{span:10}} className="text-center">
+						<Col md={{span: 3}} sm={{span:10}} className="text-center filters">
 							<MultiList
 								componentId="schoolfilter"
 								title="Filter by School"
@@ -113,7 +115,8 @@ class Resources extends Component {
 									<ReactiveList.ResultListWrapper>
 										{data.map(item => (
 											<div className="rlistitem">
-											<ResultList href={item.url} key={item._id} className="rlistitem">
+											<Card variant="outlined">
+											<ResultList href={item.url} key={item._id} className="rlist">
 											 <Col sm={{span:6}} md={{span:3}} className="text-center">
 												<ResultList.Title>
 												<div className="resourcetitle">
@@ -122,7 +125,7 @@ class Resources extends Component {
 												</ResultList.Title>
 												</Col>
 												<ResultList.Description>
-												<Col sm={{span:10}} className="resourcesdesc">
+												<Col md={{span:10}} sm={{span:12}} className="resourcesdesc">
 												{item.description}
 												<br />
 												<br />
@@ -135,7 +138,7 @@ class Resources extends Component {
 													))}
 													</Col>
 												</ResultList.Description>
-											</ResultList></div>
+											</ResultList></Card></div>
 										))}
 									</ReactiveList.ResultListWrapper>
 								)}

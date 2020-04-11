@@ -26,7 +26,7 @@ class NavBar extends Component {
   render() {
 
     let userLinks;
-    if (!this.context) {
+    if (!this.context.user) {
       userLinks = (
         <>
           <Nav.Link as={Link} to="/auth">Sign In</Nav.Link>
