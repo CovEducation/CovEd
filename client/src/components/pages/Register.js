@@ -10,13 +10,37 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
 import Select from "react-select";
 
+import {Provider} from "rebass";
+import {Section} from "react-landing-page";
+
 import { subjects, tags } from "../modules/Constants";
 import timeZones from "../modules/Constants";
 
-// auth 
+// auth
 import { auth } from "../../firebase-config";
 import { useNavigate } from "@reach/router";
 
+const theme={
+  fonts:{
+    sans: 'Muli, sans-serif',
+  },
+  fontWeights: {
+    light: 300,
+    normal: 600,
+    bold: 700,
+  },
+  space: [
+      0,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      140,
+      256,
+    ]
+}
 // TODO : THERE IS SO MUCH HACK CODE HELP!!!
 // 4/6/2020:  I feel u.
 const withNavigate = (Component) => {
@@ -44,7 +68,7 @@ class Register extends Component {
         parentEmail: "",
         password: "",
         confirmPassword: "",
-        timezone: "GMT-5", // there must be a better way of setting the default values 
+        timezone: "GMT-5", // there must be a better way of setting the default values
         photo: profile_pic,
         role: "student",
         adultname: "",
@@ -72,7 +96,7 @@ class Register extends Component {
     // TODO: Add firebase api call here!
     this.setState({ validated: true });
 
-    // clean up subject list 
+    // clean up subject list
     this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
 
     try {
@@ -212,6 +236,9 @@ class Register extends Component {
 
     return (
       <>
+        <Provider theme={theme}>
+        <Section width={[1]} heading="" subhead="" p={6} mt={2} mb={7}>
+        <h2><span className="light-h2">Register <br /><hr className="hr-primary"/><br /></span></h2>
         <div className="ProfileEdit-form">
           <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
             <Form.Row>
@@ -336,6 +363,8 @@ class Register extends Component {
             <Button value={this.state.form.agreedtowaiver} onChange={this.handleChange} type="submit">Submit</Button>
           </Form>
         </div>
+        </Section>
+        </Provider>
       </>
     );
   }
