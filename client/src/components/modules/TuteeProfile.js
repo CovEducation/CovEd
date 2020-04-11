@@ -10,9 +10,12 @@ import Select from "react-select";
 import Alert from "react-bootstrap/Alert";
 
 import { subjects, tags } from "./Constants";
-import timeZones from "./Constants";
+import timeZones from "./Constants"
+import { UserContext } from "../../providers/UserProvider";
 
 class TuteeProfile extends Component {
+  static contextType = UserContext;
+
   constructor(props) {
     super(props);
     // Initialize Default State
@@ -60,7 +63,6 @@ class TuteeProfile extends Component {
     this.setState({ validated: true });
   };
 
-
   updateTutee = async () => {
     const update = 
     {
@@ -73,6 +75,7 @@ class TuteeProfile extends Component {
       guardian_email: this.state.form.parentEmail,
     };
     const status = await post("/api/updateTutee", {update: update, token: this.props.tutee.token});
+    this.context.refreshUser();
   }
 
   handleChange = (event) => {
