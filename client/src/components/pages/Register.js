@@ -85,7 +85,7 @@ class Register extends Component {
       } else if (this.state.form.role == "student") {
         status = await this.postTutee(idToken);
       }
-      this.props.navigate('/profile');
+      this.props.navigate('/');
     } catch (error) {
       // TODO: DISPLAY ERROR TO USER
     }

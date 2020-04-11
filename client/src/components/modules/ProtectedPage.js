@@ -1,10 +1,8 @@
 import React, { Component, useContext } from "react";
 import { Router } from "@reach/router";
 
-import { get } from "../../utilities";
-import firebase, { auth } from "../../firebase-config";
-
 import { UserContext } from "../../providers/UserProvider";
+import { Redirect } from "@reach/router";
 
 class ProtectedPage extends Component {
     static contextType = UserContext;
@@ -19,8 +17,8 @@ class ProtectedPage extends Component {
         const Component = this.props.component;
         console.log(this.context)
         return (
-            <>
-                {this.context ? <Component user={this.context}/> : <p>Not Logged in</p>}
+            <>  
+                {this.context ? <Component user={this.context}/> : <Redirect to="/auth"/>}
             </>
         )
     }
