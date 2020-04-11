@@ -3,10 +3,14 @@ import {
 	ReactiveBase,
 	CategorySearch,
 	SingleRange,
-	ResultCard,
+	ResultList,
 	ReactiveList,
 	MultiList,
 } from '@appbaseio/reactivesearch';
+
+import "../../utilities.css";
+import "./Homepage.css";
+import { get } from "../../utilities";
 
 import {Col, Row, Button} from 'react-bootstrap'
 // Landing page library
@@ -18,12 +22,6 @@ import {
   Section,
   CallToAction, Feature,
 } from "react-landing-page";
-
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 
 const theme={
   colors: {
@@ -99,32 +97,47 @@ class Resources extends Component {
 							<br />
 							<br />
 						</Col>
-						<Col md={{span:9}} sm={{span:10}} className="text-center">
+						<Col md={{span:9}} sm={{span:10}} className="text-left">
 							<ReactiveList
 								componentId="result"
 								title="Results"
 								dataField="name"
 								from={0}
 								size={20}
+								className="rlist"
 								pagination={true}
 								react={{
 									and: ['schoolfilter','subjectfilter','specfilter'],
 								}}
 								render={({ data }) => (
-									<ReactiveList.ResultCardsWrapper>
+									<ReactiveList.ResultListWrapper>
 										{data.map(item => (
-											<ResultCard href={item.url} key={item._id}>
-												<ResultCard.Title
-													dangerouslySetInnerHTML={{
-														__html: item.name,
-													}}
-												/>
-												<ResultCard.Description>
-													{item.description}
-												</ResultCard.Description>
-											</ResultCard>
+											<div className="rlistitem">
+											<ResultList href={item.url} key={item._id} className="rlistitem">
+											 <Col sm={{span:6}} md={{span:3}} className="text-center">
+												<ResultList.Title>
+												<div className="resourcetitle">
+												{item.name}
+												</div>
+												</ResultList.Title>
+												</Col>
+												<ResultList.Description>
+												<Col sm={{span:10}} className="resourcesdesc">
+												{item.description}
+												<br />
+												<br />
+												{item.subjects
+													.slice(0, 4)
+													.map(tag => (
+														<span key={tag.type} className="resourcetag">
+															 {tag.type}
+														</span>
+													))}
+													</Col>
+												</ResultList.Description>
+											</ResultList></div>
 										))}
-									</ReactiveList.ResultCardsWrapper>
+									</ReactiveList.ResultListWrapper>
 								)}
 							/>
 							</Col>
