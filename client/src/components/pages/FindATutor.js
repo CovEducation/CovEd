@@ -21,8 +21,9 @@ class FindATutor extends Component {
   }
 
   updateTags = (subjects) => {
+    const { user } = this.props;
     if (this.state.subjects !== subjects) {
-      get("/api/getTutors", { subjects: subjects, limit: 10, token: this.state.token}).then((tutors) => {
+      get("/api/getTutors", { subjects: subjects, limit: 10, token: user.token }).then((tutors) => {
         if (this.state.tutors !== tutors) {
           this.setState({ tutors: tutors })
         }
@@ -38,30 +39,15 @@ class FindATutor extends Component {
   };
 
   componentDidMount() {
-    auth.onAuthStateChanged(async (user) => {
-     try{
-      const token = await user.getIdToken();
-      this.setState({
-        token: token
-      });
-      get("/api/getTutors", {
-        subjects: this.state.subjects,
-        limit: 10,
-        token: token
-      }).then((tutors) => {
-        if (this.state.tutors !== tutors) {
-          this.setState({
-            tutors: tutors
-          })
-        }
-      });
-     }
-     catch {
-       alert("You must be logged in")
-     }
+    const { user } = this.props;
+    get("/api/getTutors", { subjects: this.state.subjects, limit: 10, token: user.token }).then((tutors) => {
+      if (this.state.tutors !== tutors) {
+        this.setState({ tutors: tutors })
+      }
     });
     
   }
+
 
   render() {
     return (

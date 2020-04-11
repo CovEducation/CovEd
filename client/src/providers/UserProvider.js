@@ -11,17 +11,36 @@ class UserProvider extends Component {
     }
 
     componentDidMount() {
-        auth.onAuthStateChanged(user => {
-            this.setState({user: user});
-            // auth.currentUser.getIdToken()
-            // .then(token => {
-            //     get('/api/tutorByFirebaseUID', {token: token})
-            //     .then(res => {
-                    
-            //     })
-            // }).catch(err => {
-            //     console.log(err);
-            // });
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                try {
+                    const token = await user.getIdToken();
+                    try {
+                        let user = await get("/api/tutee", { token: token });
+                        let role = "tutee";
+
+                        // if the user is not a student 
+                        if (user.length == 0) {
+                            user = await get("/api/tutor", { token: token });
+                            role = "tutor";
+                        }
+
+                        user = user[0];
+                        user.role = role;
+                        user.token = token;
+                        this.setState({ user: user });
+
+                    } catch (err) {
+                        console.log(err);
+                    }
+
+                } catch (error) {
+                    // TODO:handle error
+                    console.log(error);
+                }
+            } else {
+                this.setState({user: undefined});
+            }
         });
     }
 

@@ -170,11 +170,13 @@ router.post("/addTutor", firebaseMiddleware, (req, res) => {
 });
 
 router.post("/updateTutee", firebaseMiddleware, (req, res) => {
+  console.log("got here");
   // the object with the update should be included in req.body.update
   let update = req.body.update;
-  Tutee.updateOne({ firebase_uid: req.user }, update)
+  Tutee.updateOne({ firebase_uid: req.user.user_id }, update)
     .then((updated_tutee) => res.send(updated_tutee))
-    .catch(() => {
+    .catch((error) => {
+      console.log(error);
       return res.sendStatus(400);
     });
 });
@@ -182,7 +184,7 @@ router.post("/updateTutee", firebaseMiddleware, (req, res) => {
 router.post("/updateTutor", firebaseMiddleware, (req, res) => {
   // the object with the update should be included in req.body.update
   let update = req.body.update;
-  Tutor.updateOne({ firebase_uid: req.user }, update)
+  Tutor.updateOne({ firebase_uid: req.user.user_id }, update)
     .then((updated_tutor) => res.send(updated_tutor))
     .catch(() => {
       return res.sendStatus(400);

@@ -11,7 +11,7 @@ import Select from "react-select";
 import { subjects, tags } from "./Constants";
 import timeZones from "./Constants";
 
-class TuteeProfile2 extends Component {
+class TuteeProfile extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
@@ -21,8 +21,8 @@ class TuteeProfile2 extends Component {
       setValidated: false,
       edit: false,
       form: {
-        name: props.tutee.name || "",
-        parentName: props.tutee.guardian_name || "",
+        name: props.tutee.name.trim() || "",
+        parentName: props.tutee.guardian_name.trim() || "",
         email: props.tutee.email || "",
         parentEmail: props.tutee.guardian_email || "",
         timezone: props.tutee.timezone || "GMT-5", // there must be a better way of setting the default values 
@@ -53,6 +53,7 @@ class TuteeProfile2 extends Component {
 
     try {
       this.updateTutee();
+      // this.displaySuccess();
     } catch (error) {
       // TODO: DISPLAY ERROR TO USER
     }
@@ -70,7 +71,7 @@ class TuteeProfile2 extends Component {
       guardian_name: this.state.form.parentName,
       guardian_email: this.state.form.parentEmail,
     };
-    const status = await post("/api/updateTutee", update);
+    const status = await post("/api/updateTutee", {update: update, token: this.props.tutee.token});
   }
 
   handleChange = (event) => {
@@ -152,7 +153,8 @@ class TuteeProfile2 extends Component {
                     <Form.Control 
                       name="name" 
                       value={this.state.form.name} 
-                      required type="text" 
+                      required
+                      type="text" 
                       placeholder="Your Name" 
                       onChange={this.handleChange} />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -223,18 +225,6 @@ class TuteeProfile2 extends Component {
                     <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
                   </Form.Group>
                 </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
-                    <Form.Label>Subjects</Form.Label>
-                    <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
-                    <Form.Label>Subjects</Form.Label>
-                    <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
-                  </Form.Group>
-                </Form.Row>
               </>
               : 
               <>
@@ -267,4 +257,4 @@ class TuteeProfile2 extends Component {
   }
 }
 
-export default TuteeProfile2;
+export default TuteeProfile;
