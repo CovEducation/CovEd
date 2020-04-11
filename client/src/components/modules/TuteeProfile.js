@@ -7,11 +7,15 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
 import Select from "react-select";
+import Alert from "react-bootstrap/Alert";
 
 import { subjects, tags } from "./Constants";
-import timeZones from "./Constants";
+import timeZones from "./Constants"
+import { UserContext } from "../../providers/UserProvider";
 
 class TuteeProfile extends Component {
+  static contextType = UserContext;
+
   constructor(props) {
     super(props);
     // Initialize Default State
@@ -20,6 +24,7 @@ class TuteeProfile extends Component {
       validated: false,
       setValidated: false,
       edit: false,
+      success: false,
       form: {
         name: props.tutee.name.trim() || "",
         parentName: props.tutee.guardian_name.trim() || "",
@@ -44,21 +49,19 @@ class TuteeProfile extends Component {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      // clean up subject list 
+      this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
+  
+      try {
+        this.updateTutee();
+        this.displaySuccess();
+      } catch (error) {
+        // TODO: DISPLAY ERROR TO USER
+      }
     }
-    // TODO: Add firebase api call here!
     this.setState({ validated: true });
-
-    // clean up subject list 
-    this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
-
-    try {
-      this.updateTutee();
-      // this.displaySuccess();
-    } catch (error) {
-      // TODO: DISPLAY ERROR TO USER
-    }
   };
-
 
   updateTutee = async () => {
     const update = 
@@ -72,6 +75,7 @@ class TuteeProfile extends Component {
       guardian_email: this.state.form.parentEmail,
     };
     const status = await post("/api/updateTutee", {update: update, token: this.props.tutee.token});
+    this.context.refreshUser();
   }
 
   handleChange = (event) => {
@@ -87,11 +91,15 @@ class TuteeProfile extends Component {
   }
 
   handleEdit = () => {
-    this.setState({ edit: true});
+    this.setState({ edit: true, success: false});
   }
 
   handleCancel = () => {
     this.setState({ edit: false});
+  }
+
+  displaySuccess = () => {
+    this.setState({success: true, edit: false})
   }
 
   renderStudentFields() {
@@ -188,13 +196,18 @@ class TuteeProfile extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label>Time Zone</Form.Label>
-                <Form.Control name="timezone" value={this.state.form.timezone} as="select" onChange={this.handleChange}>
+                {
+                  this.state.edit
+                  ?
+                  <Form.Control name="timezone" value={this.state.form.timezone} as="select" onChange={this.handleChange}>
                   {timeZones.map((tz => {
                     return (
                       <option value={tz.value}> {tz.timezone} </option>
                     )
                   }))}
                 </Form.Control>
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.timezone} />
+                }
               </Form.Group>
             </Form.Row>
 
@@ -251,6 +264,7 @@ class TuteeProfile extends Component {
             </Form.Row>
           </Form>
           {!this.state.edit && <Button type="button" onClick={this.handleEdit}>Edit</Button>}
+          {this.state.success && <Alert variant="success">Profile updated successfully!</Alert>}
         </div>
       </>
     );

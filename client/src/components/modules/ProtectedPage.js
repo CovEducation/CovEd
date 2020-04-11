@@ -6,19 +6,11 @@ import { Redirect } from "@reach/router";
 
 class ProtectedPage extends Component {
     static contextType = UserContext;
-    constructor(props) {
-        super(props);
-        this.state = { user: undefined };
-    }
-
-    componentDidMount() {}
-
     render() {
         const Component = this.props.component;
-        console.log(this.context)
         return (
             <>  
-                {this.context ? <Component user={this.context}/> : <Redirect to="/auth"/>}
+                {this.context ? <Component user={this.context.user}/> : <Redirect to="/auth"/>}
             </>
         )
     }
