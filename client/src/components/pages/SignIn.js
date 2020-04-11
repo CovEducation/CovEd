@@ -74,7 +74,7 @@ class SignIn extends Component {
     event.preventDefault();
     try {
       const user = await auth.signInWithEmailAndPassword(this.state.form.email, this.state.form.password);
-      this.props.navigate('/profile');
+      this.props.navigate('/');
     } catch (error) {
       this.setState({error: (<SimpleSnackbar message="Wrong email / password."/>)});
     }
