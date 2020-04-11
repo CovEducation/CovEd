@@ -15,6 +15,7 @@ import {Section} from "react-landing-page";
 
 import { subjects, tags } from "../modules/Constants";
 import timeZones from "../modules/Constants";
+import TermsDialog from "../modules/TermsOfServiceDialog";
 
 // auth
 import { auth } from "../../firebase-config";
@@ -240,7 +241,7 @@ class Register extends Component {
         <Section width={[1]} heading="" subhead="" p={6} mt={2} mb={7}>
         <h2><span className="light-h2">Register <br /><hr className="hr-primary"/><br /></span></h2>
         <div className="ProfileEdit-form">
-          <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
+          <Form noValidate validated={this.state.validated}>
             <Form.Row>
               <Form.Group as={Col} md="4" controlId="validationCustom01">
                 <Form.Label>First name</Form.Label>
@@ -351,16 +352,7 @@ class Register extends Component {
               </Form.Group>
             </Form.Row>
             {extraFields}
-
-            <Form.Group>
-              <Form.Check
-                required
-                label="Agree to terms and conditions"
-                feedback="You must agree before submitting."
-              />
-            </Form.Group>
-
-            <Button value={this.state.form.agreedtowaiver} onChange={this.handleChange} type="submit">Submit</Button>
+            <TermsDialog onSubmit={this.handleSubmit}/>
           </Form>
         </div>
         </Section>
