@@ -12,7 +12,11 @@ import Alert from "react-bootstrap/Alert";
 import { subjects, tags } from "./Constants";
 import timeZones from "./Constants";
 
+import { UserContext } from "../../providers/UserProvider";
+
 class TutorProfile extends Component {
+  static contextType = UserContext;
+
   constructor(props) {
     super(props);
     // Initialize Default State
@@ -27,7 +31,7 @@ class TutorProfile extends Component {
         email: props.tutor.email || "",
         timezone: props.tutor.timezone || "GMT-5", // there must be a better way of setting the default values 
         role: "tutor",
-        subjects: props.tutor.subjects || [],
+        subjects: props.tutor.subjects.map(s => {return {value: s, label: s}}) || [],
         bio: props.tutor.bio || "",
         major: props.tutor.major || "",
         tags: props.tutor.tags || [],
@@ -72,6 +76,7 @@ class TutorProfile extends Component {
       tags: this.state.form.tags,
     };
     const status = await post("/api/updateTutor", {update: update, token: this.props.tutor.token});
+    this.context.refreshUser();
   }
 
   handleChange = (event) => {

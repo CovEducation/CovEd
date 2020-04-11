@@ -32,7 +32,7 @@ class TuteeProfile extends Component {
         parentEmail: props.tutee.guardian_email || "",
         timezone: props.tutee.timezone || "GMT-5", // there must be a better way of setting the default values 
         role: "student",
-        subjects: props.tutee.subjects || [],
+        subjects: props.tutee.subjects.map(s => {return {value: s, label: s}}) || [],
         bio: props.tutee.bio || "",
         tags: [],
       },
