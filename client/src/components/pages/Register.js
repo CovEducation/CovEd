@@ -85,7 +85,7 @@ class Register extends Component {
       } else if (this.state.form.role == "student") {
         status = await this.postTutee(idToken);
       }
-      this.props.navigate('/profile');
+      this.props.navigate('/');
     } catch (error) {
       // TODO: DISPLAY ERROR TO USER
     }
@@ -129,10 +129,12 @@ class Register extends Component {
     this.setState({ form: form });
   }
 
-  handleSelectChange = (selected) => {
-    const form = this.state.form;
-    form["subjects"] = selected;
-    this.setState({ form: form });
+  handleSelectChange = (fieldName) => {
+    return (selected) => {
+      const form = this.state.form;
+      form[fieldName] = selected;
+      this.setState({ form: form });
+    }
   }
 
   renderTutorFields() {
@@ -203,6 +205,10 @@ class Register extends Component {
     } else {
       extraFields = null;
     }
+
+    let tag_options = tags.map(tag => {
+      return {value: tag, label: tag}
+    })
 
     return (
       <>
@@ -308,25 +314,13 @@ class Register extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
                 <Form.Label>Subjects</Form.Label>
-                <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
-              </Form.Group>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
-                <Form.Label>Subjects</Form.Label>
-                <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
-              </Form.Group>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
-                <Form.Label>Subjects</Form.Label>
-                <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
+                <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange("subjects")} />
               </Form.Group>
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
                 <Form.Label>Optional tags: </Form.Label>
-                <Select value={this.state.form.tags} options={tags} isMulti onChange={this.handleSelectChange} />
+                <Select value={this.state.form.tags} options={tag_options} isMulti onChange={this.handleSelectChange("tags")} />
               </Form.Group>
             </Form.Row>
             {extraFields}

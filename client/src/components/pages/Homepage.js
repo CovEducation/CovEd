@@ -87,8 +87,8 @@ class Homepage extends Component {
             <Heading fontSize={[5]}>CovEd<span className="light">ucation</span></Heading>
             <Subhead mt={3} fontSize={[2]}><span className="light">Continuing K-12 education during the COVID-19 outbreak</span></Subhead>
             <Flex mt={3} p={5}>
-            <Button href='/signup'>Parents and K-12 Students</Button>
-            <Button href='/signup'>College</Button>
+            <Button href='/register'>Register</Button>
+            {/* {<Button href='/signup'>College</Button>} */}
             </Flex>
             <ScrollDownIndicator />
         </Hero>

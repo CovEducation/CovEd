@@ -7,7 +7,7 @@ import "./FindATutor.css";
 import { get } from "../../utilities.js";
 import Col from "react-bootstrap/Col";
 import { Row, Container } from "react-bootstrap";
-
+import { auth } from "../../firebase-config";
 
 class FindATutor extends Component {
   constructor(props) {
@@ -16,12 +16,14 @@ class FindATutor extends Component {
       subjects: ["Math"], // Default.
       selected_tutor: undefined,
       tutors: [],
+      token: undefined,
     };
   }
 
   updateTags = (subjects) => {
+    const { user } = this.props;
     if (this.state.subjects !== subjects) {
-      get("/api/getTutors", { subjects: subjects, limit: 10 }).then((tutors) => {
+      get("/api/getTutors", { subjects: subjects, limit: 10, token: user.token }).then((tutors) => {
         if (this.state.tutors !== tutors) {
           this.setState({ tutors: tutors })
         }
@@ -37,12 +39,15 @@ class FindATutor extends Component {
   };
 
   componentDidMount() {
-    get("/api/getTutors", { subjects: this.state.subjects, limit: 10 }).then((tutors) => {
+    const { user } = this.props;
+    get("/api/getTutors", { subjects: this.state.subjects, limit: 10, token: user.token }).then((tutors) => {
       if (this.state.tutors !== tutors) {
         this.setState({ tutors: tutors })
       }
     });
+    
   }
+
 
   render() {
     return (
