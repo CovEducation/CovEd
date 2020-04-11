@@ -34,6 +34,7 @@
     "firebase-admin": "^8.10.0",
     "google-auth-library": "^5.5.1",
     "googleapis": "^39.2.0",
+    "handlebars": "^4.7.6",
     "jquery": "^3.4.1",
     "material-ui": "^0.20.2",
     "mongoose": "^5.7.7",

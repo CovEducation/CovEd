@@ -17,6 +17,8 @@ const Tutor = require("./models/tutor");
 const Tutee = require("./models/tutee");
 
 // connecting to email service
+const sendEmail = require("./sendEmail.js")
+
 require("dotenv").config()
 const email_user = process.env.EMAIL_USER;
 const email_pass = process.env.EMAIL_PASS;
@@ -201,26 +203,10 @@ router.post("/pingTutor", firebaseMiddleware, (req, res) => {
   // needs help with and the email.
   const student_email = req.body.student.email;
   const tutor_uid = req.body.tutor_uid;
-  const subjects = req.body.subjects;
   const student_message = req.body.personal_message;
   Tutor.findOne({ firebase_uid: tutor_uid }).then((tutor) => {
     let tutor_email = tutor.email;
-    let msg = "Hi, someone wants you as a mentor. Zoom Zoom. Email: " + student_email + " \n Personal Note: " + student_message;
-    let mailOptions = {
-      from: "CovED <coved@gmail>",
-      to: tutor_email + ", ",
-      subject: "Match! ",
-      text: msg,
-      html: "<b>" + msg + "</b>",
-    };
-    transporter.sendMail(mailOptions, function (err, info) {
-      if (err) res.sendStatus(500);
-      else
-        res.send({
-          ok: true,
-          resp: info,
-        });
-    });
+    sendEmail(tutor_email, tutor.name.split()[0], student_email, student_message)
   });
 });
 
