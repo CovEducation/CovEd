@@ -2,13 +2,11 @@ import React, { Component, useState } from "react";
 
 import "./ProfileEdit.css";
 import "../../utilities.css";
-import { get } from "../../utilities";
-import profile_pic from "../../img/blank-profile-pic.jpg";
+import { post } from "../../utilities";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
 import Select from "react-select";
 import timeZones from "./Constants";
 
@@ -48,8 +46,7 @@ class TutorProfile extends Component {
         subjects: [],
         location: "Pacific",
         major: "CS",
-        bio: "I am a cool kid.",
-        photo: profile_pic,
+        bio: "I am a cool kid."
       },
     };
   }
@@ -68,56 +65,53 @@ class TutorProfile extends Component {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      post("/api/updateTutor", this.state.user)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log(error);
+      });
     }
     // TODO: Add firebase api call here!
     this.setState({ validated: true });
   };
 
-  handleEdit = (event) => {
+  handleEdit = () => {
     this.setState({ edit: true})
   }
 
+  handleCancel = () => {
+    this.setState({ edit: false});
+  }
+
   handleChange = (event) => {
-    const form = this.state.user;
+    const user = this.state.user;
     user[event.target.name] = event.target.value
-    this.setState({ form: form });
-    console.log(this.state.form)
+    this.setState({ user: user });
+    console.log(this.state.user)
   }
 
   handleSelectChange = (selected) => {
-    const form = this.state.user;
-    form["subjects"] = selected;
+    const user = this.state.user;
+    user["subjects"] = selected;
     this.setState({ user: user });
   }
 
   render() {
+    console.log(this.props.tutor);
     return (
       <>
         <div className="ProfileEdit-form">
           <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-            <Form.Row>
-              <div className="ProfileEdit-form-center">
-                <Image src={this.props.tutor.photo} roundedCircle onChange={this.handleChange} />
-              </div>
-            </Form.Row>
-            {this.state.edit
-              ?
-              <Form.Row>
-                <div className="ProfileEdit-form-center">
-                  <Form.File id="formcheck-api-regular">
-                    <Form.File.Input />
-                  </Form.File>
-                </div>
-              </Form.Row>
-              : <Form.Row></Form.Row>
-            }
             <Form.Row>
               <Form.Group as={Col} md="4" controlId="validationCustom01">
                 <Form.Label>Name</Form.Label>
                 {this.state.edit
                   ?
                   <>
-                    <Form.Control required type="text" placeholder="" placeholder={this.props.tutor.name} />
+                    <Form.Control required type="text" placeholder={this.props.tutor.name} />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </>
                   : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.name} />
@@ -217,7 +211,10 @@ class TutorProfile extends Component {
                 }
               </Form.Group>
             </Form.Row>
+            <Form.Row>
             {this.state.edit && <Button type="submit">Submit</Button>}
+            {this.state.edit && <Button variant="danger" onClick={this.handleCancel}>Cancel</Button>}
+            </Form.Row>
           </Form>
           {!this.state.edit && <Button type="button" onClick={this.handleEdit}>Edit</Button>}
         </div>
