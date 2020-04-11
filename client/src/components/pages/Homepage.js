@@ -150,8 +150,7 @@ class Homepage extends Component {
               <Row className="justify-content-sm-center" mt={4} mb={4}>
               <Col>
               <Button href='https://forms.gle/P4n36zh3pdt8nEzM8'>Submit a resource</Button>
-              <Button href='/signup'>Request Mentor</Button>
-              <Button href='/signup'>Be a Mentor</Button>
+              <Button href='/register'>Register</Button>
               </Col>
               </Row>
           </Flex>
