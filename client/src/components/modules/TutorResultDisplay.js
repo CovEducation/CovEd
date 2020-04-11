@@ -9,6 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import { post, get } from "../../utilities.js";
 import { auth } from "../../firebase-config";
 import { UserContext } from "../../providers/UserProvider";
+import "./TutorResultDisplay.css";
+import {Col, Row} from 'react-bootstrap';
 
 class TutorResultDisplay extends Component {
   static contextType = UserContext;
@@ -55,7 +57,7 @@ class TutorResultDisplay extends Component {
     const bull = <span>•</span>;
     return (
       <>
-        <Card>
+        <Card classes={{ label:"hoveryellow"}}>
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Tutor Information
@@ -67,6 +69,7 @@ class TutorResultDisplay extends Component {
               Major: {this.props.tutor.major}
             </Typography>
             <Typography variant="body2" component="p">
+            <br />
               {/* {this.props.tutor.bio ? <h4>About: {this.props.tutor.bio}</h4> : <></> }   */}
             Subjects available for:
             <br />
@@ -74,25 +77,29 @@ class TutorResultDisplay extends Component {
             </Typography>
           </CardContent>
           <CardActions>
+          <Row className="justify-content-sm-center">
+          <Col className="text-center">
             <TextField
               id="outlined-multiline-flexible"
               label="Send a message!!"
               multiline
               rowsMax="10"
+              margin="normal"
               variant="outlined"
               rows="4"
-              fullWidth
+              fullWidth="true"
               value={this.state.msg}
               onChange={this.handleChange}
             />
             <Button
               variant="contained"
               color="primary"
-              endIcon={<Icon>send</Icon>}
+              endIcon={<Icon></Icon>}
               onClick={this.handleSubmit}
-            >
-              Send
-            </Button>
+            > Send</Button>
+            <br />
+            </Col>
+            </Row>
           </CardActions>
         </Card>
       </>
