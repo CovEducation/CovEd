@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TuteeProfile from "../modules/TuteeProfile.js";
 import TutorProfile from "../modules/TutorProfile.js";
-import "./Profile.css";
+import "./Profile.css";../modules/TuteeProfile.js/index.js
 import { UserContext } from "../../providers/UserProvider";
 import { get } from "../../utilities";
 import firebase, { auth } from "../../firebase-config";
@@ -22,12 +22,12 @@ class Profile extends Component {
 
         try {
           let user = await get("/api/tutee", { token: token });
-          let role = "tutee";
+          let role = "Student";
 
           // if the user is not a student 
           if (user.length == 0) {
             user = await get("/api/tutor", { token: token });
-            role = "tutor";
+            role = "Tutor";
           }
 
           user = user[0];
@@ -50,7 +50,8 @@ class Profile extends Component {
   render() {
     let profile = null;
     if (this.state.user) {
-      profile = this.state.user.role == "tutee" ? <TuteeProfile tutee={this.state.user}></TuteeProfile> : <TutorProfile tutor={this.state.user}></TutorProfile>;
+      console.log(this.state.user.role);
+      profile = this.state.user.role == "Student" ? <TuteeProfile tutee={this.state.user}></TuteeProfile> : <TutorProfile tutor={this.state.user}></TutorProfile>;
     }
     return (
       <div className='Profile-form'>
