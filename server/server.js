@@ -75,9 +75,6 @@ app.use(
 // connect user-defined routes
 app.use("/api", api);
 
-// // serve static website 
-// app.use(express.static(path.join(__dirname, '..', 'static-website')));
-
 // load the compiled react files, which will serve /index.html and /bundle.js
 const reactPath = path.resolve(__dirname, "..", "client", "dist");
 app.use(express.static(reactPath));
