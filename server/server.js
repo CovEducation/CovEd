@@ -32,9 +32,9 @@ const api = require("./api");
 
 
 // initialize firebase admin
-const firebaseConfigPath = path.join(__dirname, '..','/firebase-config.json');
-const herokuConfigPath = path.join(__dirname, "..", process.env.GOOGLE_APPLICATION_CREDENTIALS);
-const googleServiceAccount = JSON.parse(fs.readFileSync(herokuConfigPath|| firebaseConfigPath) );
+const firebaseConfigPath = path.join(__dirname, '..','/google-credentials-heroku.json');
+
+const googleServiceAccount = JSON.parse(fs.readFileSync(firebaseConfigPath) );
 
 if (!googleServiceAccount) {
   throw new Error('Cannot find google service account credentials.');
