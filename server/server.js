@@ -31,9 +31,14 @@ const api = require("./api");
 
 // initialize firebase admin
 const firebaseConfigPath = path.join(__dirname, '..','/firebase-config.json');
-const serviceAccount = JSON.parse(fs.readFileSync(firebaseConfigPath));
+const googleServiceAccount = JSON.parse(fs.readFileSync(process.env.GOOGLE_CREDS || firebaseConfigPath) );
+
+if (!googleServiceAccount) {
+  throw new Error('Cannot find google service account credentials.');
+}
+
 firebase.initializeApp({
-  credential: firebase.credential.cert(serviceAccount),
+  credential: firebase.credential.cert(googleServiceAccount),
   databaseURL: "https://coveducation-13eda.firebaseio.com"
 });
 
