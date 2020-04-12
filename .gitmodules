@@ -1,3 +1,0 @@
-[submodule "static-website"]
-	path = static-website
-	url = git@github.com:CovED-website/CovED-website.git
