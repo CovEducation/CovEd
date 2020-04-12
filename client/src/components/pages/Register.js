@@ -93,12 +93,14 @@ class Register extends Component {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+      return; // FIXME: THIS DOESNT ACTUALLY WORK
     }
     // TODO: Add firebase api call here!
     this.setState({ validated: true });
 
     // clean up subject list
     this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
+    this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
 
     try {
       const user = await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
@@ -142,7 +144,7 @@ class Register extends Component {
         bio: this.state.form.bio,
         subjects: this.state.form.subjects_clean,
         major: this.state.form.major,
-        tags: this.state.form.tags,
+        tags: this.state.form.tags_clean,
         public: true,
       });
 

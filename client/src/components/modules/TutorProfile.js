@@ -13,7 +13,6 @@ import { subjects, tags } from "./Constants";
 import timeZones from "./Constants";
 
 import { UserContext } from "../../providers/UserProvider";
-import { Checkbox } from "react-bootstrap";
 
 class TutorProfile extends Component {
   static contextType = UserContext;
@@ -36,7 +35,7 @@ class TutorProfile extends Component {
         subjects: props.tutor.subjects.map(s => { return { value: s, label: s } }) || [],
         bio: props.tutor.bio || "",
         major: props.tutor.major || "",
-        tags: props.tutor.tags || [],
+        tags: props.tutor.tags.map(s => { return { value: s, label: s } }) || [],
         public: props.tutor.public || false,
       },
     };
@@ -55,7 +54,7 @@ class TutorProfile extends Component {
     } else {
       // clean up subject list 
       this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
-
+      this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
       try {
         this.updateTutor();
         this.displaySuccess();
@@ -76,7 +75,7 @@ class TutorProfile extends Component {
       bio: this.state.form.bio,
       subjects: this.state.form.subjects_clean,
       major: this.state.form.major,
-      tags: this.state.form.tags,
+      tags: this.state.form.tags_clean,
       public: this.state.form.public,
     };
     const status = await post("/api/updateTutor", { update: update, token: this.props.tutor.token });
@@ -95,10 +94,12 @@ class TutorProfile extends Component {
     this.setState({ form: form }); 
   }
   
-  handleSelectChange = (selected) => {
-    const form = this.state.form;
-    form["subjects"] = selected;
-    this.setState({ form: form });
+  handleSelectChange = (fieldName) => {
+    return (selected) => {
+      const form = this.state.form;
+      form[fieldName] = selected;
+      this.setState({ form: form });
+    }
   }
 
   handleEdit = () => {
@@ -236,7 +237,7 @@ class TutorProfile extends Component {
                 <Form.Row>
                   <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
                     <Form.Label>Subjects</Form.Label>
-                    <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
+                    <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange("subjects")} />
                   </Form.Group>
                 </Form.Row>
               </>
@@ -252,7 +253,7 @@ class TutorProfile extends Component {
                 <Form.Label>Optional tags: </Form.Label>
                 {
                   this.state.edit
-                    ? <Select value={this.state.form.tags} options={tags} isMulti onChange={this.handleSelectChange} />
+                    ? <Select value={this.state.form.tags} options={tags} isMulti onChange={this.handleSelectChange("tags")} />
                     : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.tags} />
                 }
               </Form.Group>
