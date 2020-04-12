@@ -164,7 +164,7 @@ router.post("/addTutor", firebaseMiddleware, (req, res) => {
     grade_levels_to_tutors: req.body.grade_levels_to_tutors,
     tutees: [],
     last_request: new Date().getTime(), // Newer tutors will show up on top.
-    public: true,
+    public: req.body.public,
     tags: req.body.tags ? req.body.tags : [],
   });
 

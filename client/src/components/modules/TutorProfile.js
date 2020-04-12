@@ -13,6 +13,7 @@ import { subjects, tags } from "./Constants";
 import timeZones from "./Constants";
 
 import { UserContext } from "../../providers/UserProvider";
+import { Checkbox } from "react-bootstrap";
 
 class TutorProfile extends Component {
   static contextType = UserContext;
@@ -20,6 +21,7 @@ class TutorProfile extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
+   
     this.state = {
       ok: false,
       validated: false,
@@ -31,10 +33,11 @@ class TutorProfile extends Component {
         email: props.tutor.email || "",
         timezone: props.tutor.timezone || "GMT-5", // there must be a better way of setting the default values 
         role: "tutor",
-        subjects: props.tutor.subjects.map(s => {return {value: s, label: s}}) || [],
+        subjects: props.tutor.subjects.map(s => { return { value: s, label: s } }) || [],
         bio: props.tutor.bio || "",
         major: props.tutor.major || "",
         tags: props.tutor.tags || [],
+        public: props.tutor.public || false,
       },
     };
   }
@@ -52,7 +55,7 @@ class TutorProfile extends Component {
     } else {
       // clean up subject list 
       this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
-  
+
       try {
         this.updateTutor();
         this.displaySuccess();
@@ -65,7 +68,7 @@ class TutorProfile extends Component {
 
 
   updateTutor = async () => {
-    const update = 
+    const update =
     {
       name: this.state.form.name,
       email: this.state.form.email,
@@ -74,8 +77,9 @@ class TutorProfile extends Component {
       subjects: this.state.form.subjects_clean,
       major: this.state.form.major,
       tags: this.state.form.tags,
+      public: this.state.form.public,
     };
-    const status = await post("/api/updateTutor", {update: update, token: this.props.tutor.token});
+    const status = await post("/api/updateTutor", { update: update, token: this.props.tutor.token });
     this.context.refreshUser();
   }
 
@@ -85,6 +89,12 @@ class TutorProfile extends Component {
     this.setState({ form: form });
   }
 
+  handleCheckChange = (event) => {
+    const form = this.state.form;
+    form[event.target.name] = event.target.checked;
+    this.setState({ form: form }); 
+  }
+  
   handleSelectChange = (selected) => {
     const form = this.state.form;
     form["subjects"] = selected;
@@ -92,15 +102,15 @@ class TutorProfile extends Component {
   }
 
   handleEdit = () => {
-    this.setState({ edit: true, success: false});
+    this.setState({ edit: true, success: false });
   }
 
   handleCancel = () => {
-    this.setState({ edit: false});
+    this.setState({ edit: false });
   }
 
   displaySuccess = () => {
-    this.setState({success: true, edit: false})
+    this.setState({ success: true, edit: false })
   }
 
   renderTutorFields() {
@@ -111,20 +121,23 @@ class TutorProfile extends Component {
             <Form.Label>Major</Form.Label>
             {
               this.state.edit
-              ?
-              <InputGroup>
-                <Form.Control
-                  name="major"
-                  value={this.state.form.major}
-                  type="text"
-                  placeholder="Learning"
-                  aria-describedby="inputGroupPrepend"
-                  required
-                  onChange={this.handleChange}
-                />
-              </InputGroup>
-              : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.major} />
+                ?
+                <InputGroup>
+                  <Form.Control
+                    name="major"
+                    value={this.state.form.major}
+                    type="text"
+                    placeholder="Learning"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </InputGroup>
+                : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.major} />
             }
+            <Form.Row>
+              <Form.Check checked={this.state.form.public} disabled={!this.state.edit} name="public" onChange={this.handleCheckChange} type="checkbox" label="Listed as an Available Mentor." />
+            </Form.Row>
           </Form.Group>
         </Form.Row>
 
@@ -146,12 +159,12 @@ class TutorProfile extends Component {
                 {this.state.edit
                   ?
                   <>
-                    <Form.Control 
-                      name="name" 
-                      value={this.state.form.name} 
+                    <Form.Control
+                      name="name"
+                      value={this.state.form.name}
                       required
-                      type="text" 
-                      placeholder="Your Name" 
+                      type="text"
+                      placeholder="Your Name"
                       onChange={this.handleChange} />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </>
@@ -162,22 +175,22 @@ class TutorProfile extends Component {
                 <Form.Label>Email</Form.Label>
                 {
                   this.state.edit
-                  ?
-                  <InputGroup>
-                    <Form.Control
-                      name="email"
-                      value={this.state.form.email}
-                      onChange={this.handleChange}
-                      type="email"
-                      placeholder="youremail@mail.com"
-                      aria-describedby="inputGroupPrepend"
-                      required
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Please input a valid email.
+                    ?
+                    <InputGroup>
+                      <Form.Control
+                        name="email"
+                        value={this.state.form.email}
+                        onChange={this.handleChange}
+                        type="email"
+                        placeholder="youremail@mail.com"
+                        aria-describedby="inputGroupPrepend"
+                        required
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Please input a valid email.
                     </Form.Control.Feedback>
-                  </InputGroup>
-                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.email} />
+                    </InputGroup>
+                    : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.email} />
                 }
               </Form.Group>
             </Form.Row>
@@ -186,15 +199,15 @@ class TutorProfile extends Component {
                 <Form.Label>Time Zone</Form.Label>
                 {
                   this.state.edit
-                  ?
-                  <Form.Control name="timezone" value={this.state.form.timezone} as="select" onChange={this.handleChange}>
-                  {timeZones.map((tz => {
-                    return (
-                      <option value={tz.value}> {tz.timezone} </option>
-                    )
-                  }))}
-                </Form.Control>
-                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.timezone} />
+                    ?
+                    <Form.Control name="timezone" value={this.state.form.timezone} as="select" onChange={this.handleChange}>
+                      {timeZones.map((tz => {
+                        return (
+                          <option value={tz.value}> {tz.timezone} </option>
+                        )
+                      }))}
+                    </Form.Control>
+                    : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.timezone} />
                 }
               </Form.Group>
             </Form.Row>
@@ -210,9 +223,9 @@ class TutorProfile extends Component {
               <Form.Group as={Col} controlId="formBioTextArea">
                 <Form.Label>Introduce Yourself!</Form.Label>
                 {
-                  this.state.edit 
-                  ? <Form.Control name="bio" value={this.state.form.bio} as="textarea" rows="3" onChange={this.handleChange} placeholder="About Me" />
-                  : <Form.Control as="textarea" readOnly defaultValue={this.props.tutor.bio} />
+                  this.state.edit
+                    ? <Form.Control name="bio" value={this.state.form.bio} as="textarea" rows="3" onChange={this.handleChange} placeholder="About Me" />
+                    : <Form.Control as="textarea" readOnly defaultValue={this.props.tutor.bio} />
                 }
               </Form.Group>
             </Form.Row>
@@ -227,7 +240,7 @@ class TutorProfile extends Component {
                   </Form.Group>
                 </Form.Row>
               </>
-              : 
+              :
               <>
                 <Form.Label>Subjects</Form.Label>
                 <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.subjects} />

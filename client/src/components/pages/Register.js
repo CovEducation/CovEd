@@ -143,6 +143,7 @@ class Register extends Component {
         subjects: this.state.form.subjects_clean,
         major: this.state.form.major,
         tags: this.state.form.tags,
+        public: true,
       });
 
     return status;
