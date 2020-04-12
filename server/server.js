@@ -23,15 +23,31 @@ const http = require("http");
 const express = require("express"); // backend framework for our node server.
 const session = require("express-session"); // library that stores info about each connected user
 const mongoose = require("mongoose"); // library to connect to MongoDB
+const firebase = require("firebase-admin");
+const fs = require("fs");
 const path = require("path"); // provide utilities for working with file and directory paths
 const api = require("./api");
+
+
+// initialize firebase admin
+const firebaseConfigPath = path.join(__dirname, '..','/firebase-config.json');
+const googleServiceAccount = JSON.parse(fs.readFileSync(process.env.GOOGLE_CREDS || firebaseConfigPath) );
+
+if (!googleServiceAccount) {
+  throw new Error('Cannot find google service account credentials.');
+}
+
+firebase.initializeApp({
+  credential: firebase.credential.cert(googleServiceAccount),
+  databaseURL: "https://coveducation-13eda.firebaseio.com"
+});
 
 // Server configuration below
 require("dotenv").config()
 // TODO change connection URL after setting up your team database
 const mongoConnectionURL = process.env.MONGO_URI;
 // TODO change database name to the name you chose
-const databaseName = "Coved";
+const databaseName = "Coved-Tutor-Test";
 
 // connect to mongodb
 mongoose
