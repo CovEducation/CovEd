@@ -2,3 +2,4 @@ client/dist/bundle.js
 node_modules/
 .env
 firebase-config.json
+google-credentials-heroku.json

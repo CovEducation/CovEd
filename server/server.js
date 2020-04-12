@@ -17,6 +17,8 @@
 // this is a tool provided by staff, so you don't need to worry about it
 const validator = require("./validator");
 validator.checkSetup();
+// environmental variables
+require("dotenv").config()
 
 //import libraries needed for the webserver to work!
 const http = require("http");
@@ -31,7 +33,8 @@ const api = require("./api");
 
 // initialize firebase admin
 const firebaseConfigPath = path.join(__dirname, '..','/firebase-config.json');
-const googleServiceAccount = JSON.parse(fs.readFileSync(process.env.GOOGLE_CREDS || firebaseConfigPath) );
+const herokuConfigPath = path.join(__dirname, "..", process.env.GOOGLE_APPLICATION_CREDENTIALS);
+const googleServiceAccount = JSON.parse(fs.readFileSync(herokuConfigPath|| firebaseConfigPath) );
 
 if (!googleServiceAccount) {
   throw new Error('Cannot find google service account credentials.');
@@ -43,7 +46,7 @@ firebase.initializeApp({
 });
 
 // Server configuration below
-require("dotenv").config()
+
 // TODO change connection URL after setting up your team database
 const mongoConnectionURL = process.env.MONGO_URI;
 // TODO change database name to the name you chose
@@ -105,8 +108,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-// hardcode port to 3000 for now
-const port = 3000;
+// hardcode port to 3000
+const port = process.env.PORT || 3000;
 const server = http.Server(app);
 
 server.listen(port, () => {
