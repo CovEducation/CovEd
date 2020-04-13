@@ -8,17 +8,15 @@
     }
 }
 
-.loading {
-    width: 100vw;
-    height: 100vh;
+#wrapper {
+    height:100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
 
-    position:absolute; /*it can be fixed too*/
-    left:50vw; right:0;
-    top:50vh; bottom:0;
-    margin:auto;
-
-    /*this to solve "the content will not be cut when the window is smaller than the content": */
-    max-width:100%;
-    max-height:100%;
-    overflow:auto;
+#wrapper td {
+    vertical-align: middle;
+    text-align: center;
 }

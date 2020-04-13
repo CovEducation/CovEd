@@ -26,7 +26,14 @@ import UserProvider from "../providers/UserProvider";
  */
 class App extends Component {
   // makes props available in this component
+
   render() {
+    const loading_component =
+      (<table id="wrapper">
+        <tr>
+          <td><Heart color={"#F2BE32"}/></td>
+        </tr>
+      </table>)
     return (
       <div className="App Fade">
         <link
@@ -41,7 +48,7 @@ class App extends Component {
           </Suspense>
            {/* "primary={false}" breaks an accessibility feature of reach router that allows screen readers to work
            https://stackoverflow.com/questions/53058110/stop-reach-router-scrolling-down-the-page-after-navigating-to-new-page*/}
-           <Suspense fallback={<div className={"loading"}><Heart color={"#F2BE32"}/></div>}>
+           <Suspense fallback={loading_component}>
              <Router primary={false} basepath="/">
                <Homepage path="/"/>
                <Resources path="/resources" />
