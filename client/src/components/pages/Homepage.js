@@ -13,7 +13,6 @@ import {
   Section,
 } from "react-landing-page";
 
-
 // Assets
 import header from "../../public/img/header.png"
 

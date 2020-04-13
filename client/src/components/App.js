@@ -1,25 +1,23 @@
-import React, { Component } from "react";
+import React, { Component, Suspense, lazy } from "react";
 import { Router } from "@reach/router";
 // Styling
 import "../utilities.css";
 import "./App.css";
-
+import Heart from "@bit/joshk.react-spinners-css.heart";
 // Pages
-import NotFound from "./pages/NotFound.js";
-import Homepage from "./pages/Homepage.js";
-import SignIn from "./pages/SignIn.js";
-import Register from "./pages/Register.js";
-import Resources from "./pages/Resources.js";
-import FAQ from "./pages/FAQ.js";
-import WhoWeAre from "./pages/WhoWeAre.js";
-import Contact from "./pages/Contact.js";
-import FindATutor from "./pages/FindATutor.js";
-import Profile from "./pages/Profile.js";
+const NotFound = lazy(()=>import("./pages/NotFound.js"));
+const Homepage = lazy(()=>import("./pages/Homepage.js"));
+const SignIn = lazy(()=>import("./pages/SignIn.js"));
+const Register = lazy(()=>import("./pages/Register.js"));
+const Resources = lazy(()=>import("./pages/Resources.js"));
+const FAQ = lazy(()=>import("./pages/FAQ.js"));
+const WhoWeAre = lazy(()=>import("./pages/WhoWeAre.js"));
+const Contact = lazy(()=>import("./pages/Contact.js"));
+const FindATutor = lazy(()=>import("./pages/FindATutor.js"));
+const Profile = lazy(()=>import("./pages/Profile.js"));
+const ProtectedPage = lazy(()=>import("./modules/ProtectedPage.js"));
+const NavBar = lazy(()=> import("./modules/NavBar.js"))
 
-import ProtectedPage from "./modules/ProtectedPage.js";
-
-// Components
-import NavBar from "./modules/NavBar.js";
 // Providers 
 import UserProvider from "../providers/UserProvider";
 
@@ -30,7 +28,7 @@ class App extends Component {
   // makes props available in this component
   render() {
     return (
-      <>
+      <div className="App Fade">
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -38,23 +36,28 @@ class App extends Component {
           crossOrigin="anonymous"
         />
         <UserProvider>
-          <NavBar />
+          <Suspense fallback={<div/>}>
+            <NavBar />
+          </Suspense>
            {/* "primary={false}" breaks an accessibility feature of reach router that allows screen readers to work
            https://stackoverflow.com/questions/53058110/stop-reach-router-scrolling-down-the-page-after-navigating-to-new-page*/}
-          <Router primary={false} basepath="/"> 
-            <Homepage path="/" />
-            <Resources path="/resources" />
-            <SignIn path="/auth" />
-            <Register path="/register" />
-            <FAQ path="/faq" />
-            <WhoWeAre path="/whoweare" />
-            <Contact path="/contact" />
-            <ProtectedPage path="/findatutor" component={FindATutor}/>
-            <ProtectedPage path="/profile" component={Profile}/>
-            <NotFound default/>
-          </Router>
+           <Suspense fallback={<div className={"loading"}><Heart color={"#F2BE32"}/></div>}>
+             <Router primary={false} basepath="/">
+               <Homepage path="/"/>
+               <Resources path="/resources" />
+               <SignIn path="/auth" />
+               <Register path="/register" />
+               <FAQ path="/faq" />
+               <WhoWeAre path="/whoweare" />
+               <Contact path="/contact" />
+               <ProtectedPage path="/findatutor" component={FindATutor}/>
+               <ProtectedPage path="/profile" component={Profile}/>
+               <NotFound default/>
+             </Router>
+           </Suspense>
+
         </UserProvider>
-      </>
+      </div>
     );
   }
 }

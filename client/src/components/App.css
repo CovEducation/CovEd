@@ -1,1 +1,24 @@
 /* Styling here. */
+@keyframes FadeAnim {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.loading {
+    width: 100vw;
+    height: 100vh;
+
+    position:absolute; /*it can be fixed too*/
+    left:50vw; right:0;
+    top:50vh; bottom:0;
+    margin:auto;
+
+    /*this to solve "the content will not be cut when the window is smaller than the content": */
+    max-width:100%;
+    max-height:100%;
+    overflow:auto;
+}

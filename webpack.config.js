@@ -29,7 +29,6 @@ module.exports = {
     publicPath: "/",
     filename: "bundle.js",
   },
-  devtool: "source-map",
   module: {
     rules: [
       {
@@ -63,6 +62,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')

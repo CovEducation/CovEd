@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./NavBar.css";
 // auth
-import firebase, { auth } from "../../firebase-config";
+import { auth } from "../../firebase-config";
 import { UserContext } from "../../providers/UserProvider";
 import { Link } from "@reach/router";
 
@@ -13,9 +13,6 @@ import { Link } from "@reach/router";
 class NavBar extends Component {
 
   static contextType = UserContext;
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {  }
 
@@ -48,7 +45,7 @@ class NavBar extends Component {
         <Navbar.Brand as={Link} to="/">CovEd</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto"></Nav>
+          <Nav className="mr-auto"/>
           <Nav>
             <Nav.Link as={Link} to="/resources">Resources</Nav.Link>
             <Nav.Link as={Link} to="/faq">FAQ</Nav.Link>
