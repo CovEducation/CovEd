@@ -106,6 +106,12 @@ app.use((err, req, res, next) => {
   });
 });
 
+// GZIP Compression
+app.get('*.js', function (req, res, next) {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
 // hardcode port to 3000
 const port = process.env.PORT || 3000;
 const server = http.Server(app);
