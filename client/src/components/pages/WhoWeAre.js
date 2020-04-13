@@ -4,12 +4,9 @@ import "../../utilities.css";
 import "./Homepage.css";
 
 // Landing page library
-import { Provider, Heading, Subhead } from "rebass";
+import { Provider } from "rebass";
 import {
   Hero,
-  ScrollDownIndicator,
-  Flex,
-  Section,
 } from "react-landing-page";
 
 import { Container, Row, Col, Table } from "react-bootstrap";

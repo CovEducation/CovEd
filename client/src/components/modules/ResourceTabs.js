@@ -10,7 +10,7 @@ class ResourceTabs extends Component {
   }
 
   render() {
-    if (this.props.resources.length == 0) {
+    if (this.props.resources.length === 0) {
       return <div>Resources here</div>;
     }
     console.log(this.props);

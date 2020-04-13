@@ -1,4 +1,6 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+require("firebase/auth");
+
 const config = {
     apiKey: "AIzaSyD5TA_oyBIV5ElJ-CEi_dJdaN3VzvrBlvc",
     authDomain: "coveducation-13eda.firebaseapp.com",

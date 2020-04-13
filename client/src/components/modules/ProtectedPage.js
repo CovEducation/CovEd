@@ -1,5 +1,4 @@
-import React, { Component, useContext } from "react";
-import { Router } from "@reach/router";
+import React, { Component  } from "react";
 
 import { UserContext } from "../../providers/UserProvider";
 import { Redirect } from "@reach/router";
