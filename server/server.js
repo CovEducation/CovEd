@@ -25,7 +25,7 @@ const http = require("http");
 const express = require("express"); // backend framework for our node server.
 const session = require("express-session"); // library that stores info about each connected user
 const mongoose = require("mongoose"); // library to connect to MongoDB
-//const compression = require("compression");
+const compression = require("compression");
 const firebase = require("firebase-admin");
 const fs = require("fs");
 const path = require("path"); // provide utilities for working with file and directory paths
@@ -64,7 +64,7 @@ mongoose
 // create a new express server
 const app = express();
 app.use(validator.checkRoutes);
-//app.use(compression());
+app.use(compression());
 // allow us to process POST requests
 app.use(express.json());
 
@@ -77,21 +77,6 @@ app.use(
   })
 );
 
-
-// GZIP Compression
-app.get("*.js", function(req, res, next) {
-  req.url = req.url + ".gz";
-  res.set("Content-Encoding", "gzip");
-  res.set("Content-Type", "text/javascript");
-  next();
-});
-
-app.get("*.css", function(req, res, next) {
-  req.url = req.url + ".gz";
-  res.set("Content-Encoding", "gzip");
-  res.set("Content-Type", "text/css");
-  next();
-});
 
 // connect user-defined routes
 app.use("/api", api);
