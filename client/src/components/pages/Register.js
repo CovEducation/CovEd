@@ -1,22 +1,18 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 
 import "./Register.css";
 import "../../utilities.css";
 import { post } from "../../utilities";
-import profile_pic from "../../img/blank-profile-pic.jpg";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
 import Select from "react-select";
 
-import {Provider} from "rebass";
-import {Section} from "react-landing-page";
+import { Provider } from "rebass";
+import { Section } from "react-landing-page";
 
-import { subjects, tags } from "../modules/Constants";
-import timeZones from "../modules/Constants";
+import timeZones, { subjects, tags } from "../modules/Constants";
 import TermsDialog from "../modules/TermsOfServiceDialog";
-
 // auth
 import { auth } from "../../firebase-config";
 import { useNavigate } from "@reach/router";
@@ -42,8 +38,7 @@ const theme={
       256,
     ]
 }
-// TODO : THERE IS SO MUCH HACK CODE HELP!!!
-// 4/6/2020:  I feel u.
+
 const withNavigate = (Component) => {
   return (props) => {
     const navigate = useNavigate();
@@ -70,7 +65,6 @@ class Register extends Component {
         password: "",
         confirmPassword: "",
         timezone: "GMT-5", // there must be a better way of setting the default values
-        photo: profile_pic,
         role: "student",
         adultname: "",
         adultemail: "",
@@ -83,9 +77,6 @@ class Register extends Component {
     };
   }
 
-  componentDidMount() {
-  }
-
   handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -95,7 +86,6 @@ class Register extends Component {
       event.stopPropagation();
       return; // FIXME: THIS DOESNT ACTUALLY WORK
     }
-    // TODO: Add firebase api call here!
     this.setState({ validated: true });
 
     // clean up subject list
@@ -107,20 +97,20 @@ class Register extends Component {
       const idToken = await auth.currentUser.getIdToken();
       let status;
 
-      if (this.state.form.role == "tutor") {
+      if (this.state.form.role === "tutor") {
         status = await this.postTutor(idToken);
-      } else if (this.state.form.role == "student") {
+      } else if (this.state.form.role === "student") {
         status = await this.postTutee(idToken);
       }
       this.props.navigate('/');
     } catch (error) {
-      // TODO: DISPLAY ERROR TO USER
+      alert("Please check al the required fields.");
     }
   };
 
 
   postTutee = async (idToken) => {
-    const status = await post("/api/addTutee",
+    return await post("/api/addTutee",
       {
         token: idToken,
         name: this.state.form.firstname + ' ' + this.state.form.lastname,
@@ -135,7 +125,7 @@ class Register extends Component {
 
 
   postTutor = async (idToken) => {
-    const status = await post("/api/addTutor",
+    return await post("/api/addTutor",
       {
         token: idToken,
         name: this.state.form.firstname + ' ' + this.state.form.lastname,
@@ -147,8 +137,6 @@ class Register extends Component {
         tags: this.state.form.tags_clean,
         public: true,
       });
-
-    return status;
   }
 
   handleChange = (event) => {
@@ -226,9 +214,9 @@ class Register extends Component {
   render() {
 
     let extraFields;
-    if (this.state.form.role == "tutor") {
+    if (this.state.form.role === "tutor") {
       extraFields = this.renderTutorFields();
-    } else if (this.state.form.role == "student") {
+    } else if (this.state.form.role === "student") {
       extraFields = this.renderStudentFields();
     } else {
       extraFields = null;

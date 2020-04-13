@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import Jumbotron from "react-bootstrap/Jumbotron";
 import "./Contact.css";
-import { Typography } from "@material-ui/core";
-import Link from "@material-ui/core/Link";
-
-import {Col, Row, Button} from 'react-bootstrap'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 // Landing page library
-import { Provider, Heading, Subhead } from "rebass";
+import { Provider } from "rebass";
 import {
   Section,
 } from "react-landing-page";
@@ -20,7 +17,7 @@ const theme={
       darkblue: '#003c61',
   },
   fonts:{
-    sans: 'Muli, sans-serif',
+    sans: 'Multi, sans-serif',
   },
   fontWeights: {
     light: 300,

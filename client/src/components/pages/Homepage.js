@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-import { get } from "../../utilities";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../utilities.css";
 import "./Homepage.css";
@@ -13,12 +11,8 @@ import {
   ScrollDownIndicator,
   Flex,
   Section,
-  CallToAction, Feature,
 } from "react-landing-page";
 
-// Styling components
-import Typography from "@material-ui/core/Typography";
-//import { Button } from "@material-ui/core";
 
 // Assets
 import header from "../../public/img/header.png"

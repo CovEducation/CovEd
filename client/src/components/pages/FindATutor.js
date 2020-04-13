@@ -6,8 +6,8 @@ import "../../utilities.css";
 import "./FindATutor.css";
 import { get } from "../../utilities.js";
 import Col from "react-bootstrap/Col";
-import { Row, Container } from "react-bootstrap";
-import { auth } from "../../firebase-config";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 class FindATutor extends Component {
   constructor(props) {
@@ -60,7 +60,6 @@ class FindATutor extends Component {
           <TutorSearchResult tutors={this.state.tutors} onChange={this.updateTutor} />
         </Col>
         <Col className="FindATutor-results">
-          {/* Change when the profile component is implemented*/}
           {this.state.selected_tutor !== undefined ? (
             <TutorResultDisplay tutor={this.state.selected_tutor} user={this.props.user} />
           ) : (

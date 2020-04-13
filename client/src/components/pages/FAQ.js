@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-
 import "../../utilities.css";
-import { get } from "../../utilities";
-
-import {Accordion, Card, Button, Col,Row} from "react-bootstrap";
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import "./Homepage.css";
-// Landing page library
 import {Provider} from "rebass";
 import {
   Section,
@@ -110,11 +109,6 @@ class FAQ extends Component {
     super(props);
     // Initialize Default State
     this.state = { ok: false };
-  }
-
-  componentDidMount() {
-    // remember -- api calls go here!
-
   }
 
   render() {

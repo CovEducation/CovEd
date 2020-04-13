@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import "../../utilities.css";
 import "./Homepage.css";
-import { get } from "../../utilities";
 
 // Landing page library
 import { Provider, Heading, Subhead } from "rebass";

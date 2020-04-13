@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {
 	ReactiveBase,
-	CategorySearch,
-	SingleRange,
 	ResultList,
 	ReactiveList,
 	MultiList,
@@ -10,17 +8,12 @@ import {
 
 import "../../utilities.css";
 import "./Homepage.css";
-import { get } from "../../utilities";
 
-import {Col, Row, Button} from 'react-bootstrap'
+import {Col, Row } from 'react-bootstrap'
 // Landing page library
-import { Provider, Heading, Subhead } from "rebass";
+import { Provider,} from "rebass";
 import {
-  Hero,
-  ScrollDownIndicator,
-  Flex,
   Section,
-  CallToAction, Feature,
 } from "react-landing-page";
 
 import Card from "@material-ui/core/Card";

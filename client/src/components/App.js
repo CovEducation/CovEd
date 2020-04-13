@@ -7,7 +7,6 @@ import "./App.css";
 // Pages
 import NotFound from "./pages/NotFound.js";
 import Homepage from "./pages/Homepage.js";
-import Authpage from "./pages/Authpage.js";
 import SignIn from "./pages/SignIn.js";
 import Register from "./pages/Register.js";
 import Resources from "./pages/Resources.js";
@@ -29,22 +28,18 @@ import UserProvider from "../providers/UserProvider";
  */
 class App extends Component {
   // makes props available in this component
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <>
-        {/* Boostrap */}
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         />
         <UserProvider>
           <NavBar />
-           {/* "primary={false}" breaks an accesibility feature of reach router that allows screen readers to work 
+           {/* "primary={false}" breaks an accessibility feature of reach router that allows screen readers to work
            https://stackoverflow.com/questions/53058110/stop-reach-router-scrolling-down-the-page-after-navigating-to-new-page*/}
           <Router primary={false} basepath="/"> 
             <Homepage path="/" />
@@ -56,7 +51,7 @@ class App extends Component {
             <Contact path="/contact" />
             <ProtectedPage path="/findatutor" component={FindATutor}/>
             <ProtectedPage path="/profile" component={Profile}/>
-            <NotFound default></NotFound>
+            <NotFound default/>
           </Router>
         </UserProvider>
       </>
