@@ -21,8 +21,6 @@ import Typography from "@material-ui/core/Typography";
 //import { Button } from "@material-ui/core";
 
 // Assets
-import girl_task from "../../public/img/clip-list-is-empty.png";
-import boy_book from "../../public/img/clip-education.png";
 import header from "../../public/img/header.png"
 
 const about_us_content =
@@ -71,9 +69,6 @@ class Homepage extends Component {
     this.state = { ok: false };
   }
 
-  componentDidMount() {
-  }
-
   render() {
     return (
       <>
@@ -88,7 +83,6 @@ class Homepage extends Component {
             <Subhead mt={3} fontSize={[2]}><span className="light">Continuing K-12 education during the COVID-19 outbreak</span></Subhead>
             <Flex mt={3} p={5}>
             <Button href='/register'>Register</Button>
-            {/* {<Button href='/signup'>College</Button>} */}
             </Flex>
             <ScrollDownIndicator />
         </Hero>

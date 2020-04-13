@@ -34,7 +34,7 @@ const api = require("./api");
 // initialize firebase admin
 const firebaseConfigPath = path.join(__dirname, '..','/google-credentials-heroku.json');
 
-const googleServiceAccount = JSON.parse(fs.readFileSync(firebaseConfigPath) );
+const googleServiceAccount = JSON.parse(fs.readFileSync(firebaseConfigPath));
 
 if (!googleServiceAccount) {
   throw new Error('Cannot find google service account credentials.');
@@ -47,9 +47,7 @@ firebase.initializeApp({
 
 // Server configuration below
 
-// TODO change connection URL after setting up your team database
 const mongoConnectionURL = process.env.MONGO_URI;
-// TODO change database name to the name you chose
 const databaseName = "Coved-Tutor-Test";
 
 // connect to mongodb
