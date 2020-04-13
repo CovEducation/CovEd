@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
 	ReactiveBase,
+	ReactiveList,
 	MultiList,
 } from '@appbaseio/reactivesearch';
 
