@@ -25,6 +25,7 @@ const http = require("http");
 const express = require("express"); // backend framework for our node server.
 const session = require("express-session"); // library that stores info about each connected user
 const mongoose = require("mongoose"); // library to connect to MongoDB
+const compression = require("compression");
 const firebase = require("firebase-admin");
 const fs = require("fs");
 const path = require("path"); // provide utilities for working with file and directory paths
@@ -63,7 +64,7 @@ mongoose
 // create a new express server
 const app = express();
 app.use(validator.checkRoutes);
-
+app.use(compression());
 // allow us to process POST requests
 app.use(express.json());
 
