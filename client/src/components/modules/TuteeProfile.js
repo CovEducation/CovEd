@@ -54,7 +54,7 @@ class TuteeProfile extends Component {
       this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
   
       try {
-        this.updateTutee();
+        await this.updateTutee();
         this.displaySuccess();
       } catch (error) {
         // TODO: DISPLAY ERROR TO USER
@@ -75,7 +75,7 @@ class TuteeProfile extends Component {
       guardian_email: this.state.form.parentEmail,
     };
     const status = await post("/api/updateTutee", {update: update, token: this.props.tutee.token});
-    this.context.refreshUser();
+    await this.context.refreshUser();
   }
 
   handleChange = (event) => {

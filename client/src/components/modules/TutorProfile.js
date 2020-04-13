@@ -56,7 +56,7 @@ class TutorProfile extends Component {
       this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
       this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
       try {
-        this.updateTutor();
+        await this.updateTutor();
         this.displaySuccess();
       } catch (error) {
         // TODO: DISPLAY ERROR TO USER
@@ -79,7 +79,7 @@ class TutorProfile extends Component {
       public: this.state.form.public,
     };
     const status = await post("/api/updateTutor", { update: update, token: this.props.tutor.token });
-    this.context.refreshUser();
+    await this.context.refreshUser();
   }
 
   handleChange = (event) => {

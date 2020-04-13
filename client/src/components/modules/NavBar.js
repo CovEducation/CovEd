@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
@@ -16,8 +16,8 @@ class NavBar extends Component {
 
   componentDidMount() {  }
 
-  signout(event) {
-    auth.signOut();
+  signOut(event) {
+    auth.signOut().then(()=>{});
   }
 
   render() {
@@ -35,7 +35,7 @@ class NavBar extends Component {
         <>
           <Nav.Link as={Link} to="/findatutor">Find a Tutor</Nav.Link>
           <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-          <Nav.Link as={Link} to="/" onClick={this.signout}>Sign Out</Nav.Link>
+          <Nav.Link as={Link} to="/" onClick={this.signOut}>Sign Out</Nav.Link>
         </>
       )
     }

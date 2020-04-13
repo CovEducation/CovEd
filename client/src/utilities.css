@@ -7,15 +7,12 @@
 * 
 * All utility classes start with a `u-` and all do
 * one basic CSS thing (for example, making the font-weight
-* 600 for bolding) or are super generic.
+* 600 for bold-ing) or are super generic.
 * 
 * This is 𝙉𝙊𝙏 the place to define classes for components or
-* do rigorous styling. You shoud not need to change this file
+* do rigorous styling. You should not need to change this file
 * much after initial creation.
 */
-
-/* TODO: REPLACE WITH YOUR OWN FONT! */
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
 :root {
   --primary: #396dff;

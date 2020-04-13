@@ -94,7 +94,7 @@ class TutorResultDisplay extends Component {
             <Button
               variant="contained"
               color="primary"
-              endIcon={<Icon></Icon>}
+              endIcon={<Icon/>}
               onClick={this.handleSubmit}
             > Send</Button>
             <br />

@@ -22,7 +22,7 @@
   border-color: #F2BE32;
   color: #222;
   background-color: #F2BE32;
-  margin: 0px;
+  margin: 0;
 }
 .btn-primary.loginButton:hover,
 .btn-primary.loginButton:focus,
@@ -210,11 +210,11 @@ a.btn-primary:hover{
 
 .resourcesdesc{
   text-align: left;
-  padding: 20px 0px 20px 40px;
+  padding: 20px 0 20px 40px;
 }
 
 .rlist{
-  padding: 0px 20px 0px 20px;
+  padding: 0 20px 0 20px;
   font-size: 1.2rem;
   font-weight: 300 !important;
   color: #000 !important;
@@ -240,5 +240,5 @@ a.btn-primary:hover{
 }
 
 .filters{
-  padding: 0px 20px 0px 50px !important;
+  padding: 0 20px 0 50px !important;
 }

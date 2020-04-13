@@ -1,9 +1,11 @@
-import React, { Component, Suspense, lazy } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import { Router } from "@reach/router";
 // Styling
 import "../utilities.css";
 import "./App.css";
 import Heart from "@bit/joshk.react-spinners-css.heart";
+// Providers
+import UserProvider from "../providers/UserProvider";
 // Pages
 const NotFound = lazy(()=>import("./pages/NotFound.js"));
 const Homepage = lazy(()=>import("./pages/Homepage.js"));
@@ -17,9 +19,6 @@ const FindATutor = lazy(()=>import("./pages/FindATutor.js"));
 const Profile = lazy(()=>import("./pages/Profile.js"));
 const ProtectedPage = lazy(()=>import("./modules/ProtectedPage.js"));
 const NavBar = lazy(()=> import("./modules/NavBar.js"))
-
-// Providers 
-import UserProvider from "../providers/UserProvider";
 
 /**
  * Define the "App" component as a class.

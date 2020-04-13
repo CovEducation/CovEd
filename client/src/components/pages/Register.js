@@ -19,7 +19,7 @@ import { useNavigate } from "@reach/router";
 
 const theme={
   fonts:{
-    sans: 'Muli, sans-serif',
+    sans: 'Multi, sans-serif',
   },
   fontWeights: {
     light: 300,

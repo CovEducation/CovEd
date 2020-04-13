@@ -26,7 +26,7 @@ async function upload_mentor_data(auth) {
     try {
         rows = (await sheets.spreadsheets.values.get(MENTOR_SPREADSHEET)).data.values;
         mentors = parse_spreadsheet(rows);
-        put_mentors(mentors);
+        await put_mentors(mentors);
     } catch (err) {
         console.log('Google Sheets API Error: ' + err);
     }

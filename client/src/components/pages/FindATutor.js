@@ -29,7 +29,7 @@ class FindATutor extends Component {
         }
       });
       this.setState({ subjects: subjects })
-    };
+    }
     // We also want to clear the tutor selection
     this.setState({ selected_tutor: undefined })
   };

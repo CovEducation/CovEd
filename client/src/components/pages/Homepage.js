@@ -1,20 +1,14 @@
 import React, { Component } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../../utilities.css";
 import "./Homepage.css";
 
-import {Col, Row, Button} from 'react-bootstrap'
+import { Button, Col, Row } from "react-bootstrap";
 // Landing page library
-import { Provider, Heading, Subhead } from "rebass";
-import {
-  Hero,
-  ScrollDownIndicator,
-  Flex,
-  Section,
-} from "react-landing-page";
-
+import { Heading, Provider, Subhead } from "rebass";
+import { Flex, Hero, ScrollDownIndicator, Section } from "react-landing-page";
 // Assets
-import header from "../../public/img/header.png"
+import header from "../../public/img/header.png";
 
 const about_us_content =
   "CovED is a community of undergraduates from some of the top colleges/universities across the U.S. who are interested in supporting K-12 students in light of the COVID-19 pandemic. Our goal is to create a virtual platform for pairing mentors from higher ed institutions with K-12 students affected by school closures. We hope that this platform and our resources page will help provide additional academic assistance for students and families who are facing hardships caused by the ongoing pandemic.";
