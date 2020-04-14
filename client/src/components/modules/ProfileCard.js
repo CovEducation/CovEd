@@ -5,8 +5,6 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import Divider from "@material-ui/core/Divider";
-import { useFadedShadowStyles } from "@mui-treasury/styles/shadow/faded";
-import { useGutterBorderedGridStyles } from "@mui-treasury/styles/grid/gutterBordered";
 
 const useStyles = makeStyles(({ palette }) => ({
   card: {
