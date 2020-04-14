@@ -52,7 +52,8 @@ class TuteeProfile extends Component {
     } else {
       // clean up subject list 
       this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
-  
+      this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
+
       try {
         await this.updateTutee();
         this.displaySuccess();
@@ -147,7 +148,7 @@ class TuteeProfile extends Component {
   render() {
 
     let extraFields = this.renderStudentFields();
-
+    const tags_options = tags.map(s => { return { value: s, label: s } })
     return (
       <>
         <div className="ProfileEdit-form">
@@ -251,7 +252,7 @@ class TuteeProfile extends Component {
                 <Form.Label>Optional tags: </Form.Label>
                 {
                   this.state.edit
-                    ? <Select value={this.state.form.tags} options={tags} isMulti onChange={this.handleSelectChange} />
+                    ? <Select value={this.state.form.tags} options={tags_options} isMulti onChange={this.handleSelectChange} />
                     : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.tags} />
                 }
               </Form.Group>

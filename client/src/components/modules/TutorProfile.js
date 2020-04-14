@@ -150,6 +150,8 @@ class TutorProfile extends Component {
 
     let extraFields = this.renderTutorFields();
 
+    const tags_options = tags.map(s => { return { value: s, label: s } })
+
     return (
       <>
         <div className="ProfileEdit-form">
@@ -253,7 +255,7 @@ class TutorProfile extends Component {
                 <Form.Label>Optional tags: </Form.Label>
                 {
                   this.state.edit
-                    ? <Select value={this.state.form.tags} options={tags} isMulti onChange={this.handleSelectChange("tags")} />
+                    ? <Select value={this.state.form.tags} options={tags_options} isMulti onChange={this.handleSelectChange("tags")} />
                     : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.tags} />
                 }
               </Form.Group>
