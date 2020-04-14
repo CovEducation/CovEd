@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component  } from "react";
 
 import "../../utilities.css";
 import { post } from "../../utilities";
@@ -9,8 +9,8 @@ import Col from "react-bootstrap/Col";
 import Select from "react-select";
 import Alert from "react-bootstrap/Alert";
 
-import { subjects, tags } from "./Constants";
-import timeZones from "./Constants"
+import { subjects, tags } from "../Constants";
+import timeZones from "../Constants"
 import { UserContext } from "../../providers/UserProvider";
 
 class TuteeProfile extends Component {
@@ -20,9 +20,7 @@ class TuteeProfile extends Component {
     super(props);
     // Initialize Default State
     this.state = {
-      ok: false,
       validated: false,
-      setValidated: false,
       edit: false,
       success: false,
       form: {
@@ -38,10 +36,6 @@ class TuteeProfile extends Component {
       },
     };
   }
-
-  componentDidMount() {
-  }
-
   handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -50,16 +44,20 @@ class TuteeProfile extends Component {
       event.preventDefault();
       event.stopPropagation();
     } else {
-      // clean up subject list 
-      this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
-      this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
-
-      try {
-        await this.updateTutee();
-        this.displaySuccess();
-      } catch (error) {
-        // TODO: DISPLAY ERROR TO USER
-      }
+      // clean up subject list
+      let updatedForm = this.state.form;
+      updatedForm.subjects_clean = this.state.form.subjects.map(sub => sub.value);
+      updatedForm.tags_clean = this.state.form.tags.map(tag => tag.value);
+      this.setState({
+        form: updatedForm
+      }, async () => {
+        try {
+          await this.updateTutee();
+          this.displaySuccess();
+        } catch (error) {
+          alert("Error updating user.")
+        }
+      })
     }
     this.setState({ validated: true });
   };

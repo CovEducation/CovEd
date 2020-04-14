@@ -11,7 +11,7 @@ import Select from "react-select";
 import { Provider } from "rebass";
 import { Section } from "react-landing-page";
 
-import timeZones, { subjects, tags } from "../modules/Constants";
+import timeZones, { subjects, tags } from "../Constants";
 import TermsDialog from "../modules/TermsOfServiceDialog";
 // auth
 import { auth } from "../../firebase-config";
@@ -90,14 +90,12 @@ class Register extends Component {
       this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
 
       try {
-        const user = await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
+        await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
         const idToken = await auth.currentUser.getIdToken();
-        let status;
-
         if (this.state.form.role === "tutor") {
-          status = await this.postTutor(idToken);
+          await this.postTutor(idToken);
         } else if (this.state.form.role === "student") {
-          status = await this.postTutee(idToken);
+          await this.postTutee(idToken);
         }
         this.props.navigate('/');
       } catch (error) {

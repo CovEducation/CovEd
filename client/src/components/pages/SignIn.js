@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../utilities.css";
+import { theme } from "../Constants.js";
 
 import { Col, Row, Button, Container } from 'react-bootstrap'
 import Form from "react-bootstrap/Form";
@@ -24,38 +25,6 @@ const withNavigate = (Component) => {
   }
 }
 
-const theme = {
-  colors: {
-    blue: '#00568C',
-    yellow: '#F2BE32',
-    white: '#ffffff',
-    darkblue: '#003c61',
-  },
-  fonts: {
-    sans: 'Muli, sans-serif',
-  },
-  fontWeights: {
-    light: 300,
-    normal: 600,
-    bold: 700,
-  },
-  fontSizes: [
-    12, 16, 24, 36, 48, 72
-  ],
-  space: [
-    0,
-    4,
-    8,
-    16,
-    32,
-    64,
-    128,
-    140,
-    256,
-  ]
-}
-
-
 class SignIn extends Component {
   // set context
   static contextType = UserContext;
@@ -63,17 +32,16 @@ class SignIn extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { ok: false, user: undefined, error: undefined, msg: undefined };
+    this.state = {  error: undefined };
     this.state.form = { email: undefined, password: undefined };
     this.signin = this.signin.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.error = undefined;
   }
 
   async signin(event) {
     event.preventDefault();
     try {
-      const user = await auth.signInWithEmailAndPassword(this.state.form.email, this.state.form.password);
+      await auth.signInWithEmailAndPassword(this.state.form.email, this.state.form.password);
       this.props.navigate('/');
     } catch (error) {
       this.setState({error: (<SimpleSnackbar message="Wrong email / password."/>)});
