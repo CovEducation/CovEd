@@ -84,28 +84,27 @@ class Register extends Component {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      return; // FIXME: THIS DOESNT ACTUALLY WORK
+    } else {
+      // clean up subject list
+      this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
+      this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
+
+      try {
+        const user = await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
+        const idToken = await auth.currentUser.getIdToken();
+        let status;
+
+        if (this.state.form.role === "tutor") {
+          status = await this.postTutor(idToken);
+        } else if (this.state.form.role === "student") {
+          status = await this.postTutee(idToken);
+        }
+        this.props.navigate('/');
+      } catch (error) {
+        alert("Please check all the required fields.");
+      }
     }
     this.setState({ validated: true });
-
-    // clean up subject list
-    this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
-    this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
-
-    try {
-      const user = await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
-      const idToken = await auth.currentUser.getIdToken();
-      let status;
-
-      if (this.state.form.role === "tutor") {
-        status = await this.postTutor(idToken);
-      } else if (this.state.form.role === "student") {
-        status = await this.postTutee(idToken);
-      }
-      this.props.navigate('/');
-    } catch (error) {
-      alert("Please check al the required fields.");
-    }
   };
 
 
