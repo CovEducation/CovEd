@@ -11,7 +11,7 @@ import Select from "react-select";
 import { Provider } from "rebass";
 import { Section } from "react-landing-page";
 
-import timeZones, { subjects, tags } from "../modules/Constants";
+import timeZones, { subjects, tags } from "../Constants";
 import TermsDialog from "../modules/TermsOfServiceDialog";
 // auth
 import { auth } from "../../firebase-config";

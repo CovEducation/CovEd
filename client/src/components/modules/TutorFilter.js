@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../utilities.css";
 import "./TutorFilter.css";
 import Select from "react-select";
-import { subjects, tags } from "./Constants";
+import { subjects, tags } from "../Constants";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 

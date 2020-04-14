@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import "../../utilities.css";
 import "./Homepage.css";
+import { theme } from "../Constants.js";
 
 // Landing page library
 import { Provider } from "rebass";
@@ -83,37 +84,6 @@ const technology = [
     major: "Computer Science"
   },
 ];
-
-const theme={
-  colors: {
-      blue: '#00568C',
-      yellow: '#F2BE32',
-      white: '#ffffff',
-      darkblue: '#003c61',
-  },
-  fonts:{
-    sans: 'Muli, sans-serif',
-  },
-  fontWeights: {
-    light: 300,
-    normal: 600,
-    bold: 700,
-  },
-  fontSizes: [
-      12, 16, 24, 36, 48, 72
-    ],
-  space: [
-      0,
-      4,
-      8,
-      16,
-      32,
-      64,
-      128,
-      140,
-      256,
-    ]
-}
 
 const renderTable = list => {
   return (

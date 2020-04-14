@@ -9,8 +9,8 @@ import Col from "react-bootstrap/Col";
 import Select from "react-select";
 import Alert from "react-bootstrap/Alert";
 
-import { subjects, tags } from "./Constants";
-import timeZones from "./Constants"
+import { subjects, tags } from "../Constants";
+import timeZones from "../Constants"
 import { UserContext } from "../../providers/UserProvider";
 
 class TuteeProfile extends Component {

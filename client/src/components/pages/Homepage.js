@@ -9,45 +9,7 @@ import { Heading, Provider, Subhead } from "rebass";
 import { Flex, Hero, ScrollDownIndicator, Section } from "react-landing-page";
 // Assets
 import header from "../../public/img/header.jpg";
-
-const about_us_content =
-  "CovED is a community of undergraduates from some of the top colleges/universities across the U.S. who are interested in supporting K-12 students in light of the COVID-19 pandemic. Our goal is to create a virtual platform for pairing mentors from higher ed institutions with K-12 students affected by school closures. We hope that this platform and our resources page will help provide additional academic assistance for students and families who are facing hardships caused by the ongoing pandemic.";
-const problem_content =
-  "Many of us have been grappling with how we can meaningfully support our home communities during COVID-19 school shutdowns. As this pandemic is intensifying, many middle and high school students are faced with financial, familial, and logistical challenges that may impact their learning experience.";
-const solution_content =
-  "The goal of this virtual service is to provide a resource for students including academic tutoring, college preparation, and personalized mentorship. We are working to compile free, web-based educational resources for students, families, and educators, as well as partner with schools and other non-profits to improve the learning experience of K-12 students.";
-
-const theme={
-  colors: {
-      blue: '#00568C',
-      yellow: '#F2BE32',
-      white: '#ffffff',
-      darkblue: '#003c61',
-      weird: '#E3E1E5'
-  },
-  fonts:{
-    sans: 'Muli, sans-serif',
-  },
-  fontWeights: {
-    light: 300,
-    normal: 600,
-    bold: 700,
-  },
-  fontSizes: [
-      12, 16, 24, 36, 48, 72
-    ],
-  space: [
-      0,
-      4,
-      8,
-      16,
-      32,
-      64,
-      128,
-      140,
-      256,
-    ]
-}
+import { theme, about_us_content, problem_content, solution_content } from "../Constants.js";
 
 class Homepage extends Component {
   render() {
