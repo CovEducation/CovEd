@@ -134,14 +134,6 @@ const renderTable = list => {
 }
 
 class WhoWeAre extends Component {
-  constructor(props) {
-    super(props);
-    // Initialize Default State
-    this.state = { ok: false };
-  }
-
-  componentDidMount() { }
-
   render() {
     return (
       <>

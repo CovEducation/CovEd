@@ -3,4 +3,8 @@ node_modules/
 .env
 firebase-config.json
 google-credentials-heroku.json
-./.idea
+.idea/
+.vscode/
+*.gz
+client/dist/*bundle.js?*
+client/dist/*bundle.js

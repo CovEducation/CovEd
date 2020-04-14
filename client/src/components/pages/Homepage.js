@@ -50,12 +50,6 @@ const theme={
 }
 
 class Homepage extends Component {
-  constructor(props) {
-    super(props);
-    // Initialize Default State
-    this.state = { ok: false };
-  }
-
   render() {
     return (
       <>

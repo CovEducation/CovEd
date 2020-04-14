@@ -22,9 +22,7 @@ class TutorProfile extends Component {
     // Initialize Default State
    
     this.state = {
-      ok: false,
       validated: false,
-      setValidated: false,
       edit: false,
       success: false,
       form: {
@@ -41,9 +39,6 @@ class TutorProfile extends Component {
     };
   }
 
-  componentDidMount() {
-  }
-
   handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -53,18 +48,22 @@ class TutorProfile extends Component {
       event.stopPropagation();
     } else {
       // clean up subject list 
-      this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
-      this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
-      try {
-        await this.updateTutor();
-        this.displaySuccess();
-      } catch (error) {
-        // TODO: DISPLAY ERROR TO USER
-      }
+      let updatedForm = this.state.form;
+      updatedForm.subjects_clean = this.state.form.subjects.map(sub => sub.value);
+      updatedForm.tags_clean = this.state.form.tags.map(tag => tag.value);
+      this.setState({
+        form: updatedForm
+      }, async () => {
+        try {
+          await this.updateTutor();
+          this.displaySuccess();
+        } catch (error) {
+          alert("Error updating user.")
+        }
+      })
     }
     this.setState({ validated: true });
   };
-
 
   updateTutor = async () => {
     const update =
@@ -78,7 +77,7 @@ class TutorProfile extends Component {
       tags: this.state.form.tags_clean,
       public: this.state.form.public,
     };
-    const status = await post("/api/updateTutor", { update: update, token: this.props.tutor.token });
+    await post("/api/updateTutor", { update: update, token: this.props.tutor.token });
     await this.context.refreshUser();
   }
 

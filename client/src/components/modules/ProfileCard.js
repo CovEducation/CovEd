@@ -49,11 +49,6 @@ const useStyles = makeStyles(({ palette }) => ({
 
 const ProfileCard = (props) => {
   const styles = useStyles();
-  const shadowStyles = useFadedShadowStyles();
-  const borderedGridStyles = useGutterBorderedGridStyles({
-    borderColor: "rgba(0, 0, 0, 0.08)",
-    height: "50%",
-  });
   return (
     <Card className={cx(styles.card)}>
       <CardActionArea  onClick={props.onClick}>

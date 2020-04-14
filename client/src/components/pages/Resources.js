@@ -51,13 +51,6 @@ const theme={
 }
 
 class Resources extends Component {
-	constructor(props) {
-    super(props);
-		this.state = {
-			data: []
-		}
-  }
-
 	render() {
 		return (
 			<>

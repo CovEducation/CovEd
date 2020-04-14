@@ -105,12 +105,6 @@ const FAQS = [
 ]
 
 class FAQ extends Component {
-  constructor(props) {
-    super(props);
-    // Initialize Default State
-    this.state = { ok: false };
-  }
-
   render() {
     return (
       <>

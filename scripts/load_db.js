@@ -24,8 +24,8 @@ async function upload_mentor_data(auth) {
     const sheets = google.sheets({version: 'v4', auth});
 
     try {
-        rows = (await sheets.spreadsheets.values.get(MENTOR_SPREADSHEET)).data.values;
-        mentors = parse_spreadsheet(rows);
+        let rows = (await sheets.spreadsheets.values.get(MENTOR_SPREADSHEET)).data.values;
+        let mentors = parse_spreadsheet(rows);
         await put_mentors(mentors);
     } catch (err) {
         console.log('Google Sheets API Error: ' + err);
@@ -37,7 +37,7 @@ async function upload_mentor_data(auth) {
  * @param {*} rows 
  */
 function parse_spreadsheet(rows) {
-    tutors = [];
+    let tutors = [];
 
     rows.forEach(tutor_raw => {
 
