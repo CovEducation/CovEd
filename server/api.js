@@ -198,15 +198,13 @@ router.get("/auth_get", firebaseMiddleware, (req, res) => {
 });
 
 router.post("/pingTutor", firebaseMiddleware, (req, res) => {
-  // TODO: Send an email or notification ot the tutor.
-  // We assume that we know which subjects the student
-  // needs help with and the email.
   const student_email = req.body.student.email;
   const tutor_uid = req.body.tutor_uid;
   const student_message = req.body.personal_message;
   Tutor.findOne({ firebase_uid: tutor_uid }).then((tutor) => {
     let tutor_email = tutor.email;
     sendEmail(tutor_email, tutor.name.split()[0], student_email, student_message)
+      .then(()=> res.send({}));
   });
 });
 

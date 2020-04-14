@@ -19,13 +19,15 @@ class TutorResultDisplay extends Component {
     // Initialize Default State
     this.state = {
       msg: "",
-      user: undefined
+      user: undefined,
+      token: undefined,
     };
   }
 
   componentDidMount() {
     // remember -- api calls go here!
     auth.currentUser.getIdToken().then((token) => {
+      this.setState({token: token});
       get("/api/auth_get", { token: token }).then((resp) => {
         this.setState({
           user: resp.user,
@@ -41,9 +43,10 @@ class TutorResultDisplay extends Component {
       personal_message: this.state.msg,
       tutor_uid: this.props.tutor.firebase_uid,
       student: this.state.user ? this.state.user : { email: "test@email.com" },
+      token: this.state.token,
     }
     post("/api/pingTutor", args).then((resp) => {
-      alert("Sent message!")
+      alert("Send message! Expect a reply within the next couple days");
       this.setState({
         msg: "",
       })

@@ -8,7 +8,7 @@
 | - Connect to the database
 | - Sets up server middleware (i.e. addons that enable things like json parsing, user login)
 | - Hooks up all the backend routes specified in api.js
-| - Fowards frontend routes that should be handled by the React router
+| - Forwards frontend routes that should be handled by the React router
 | - Sets up error handling in case something goes wrong when handling a request
 | - Actually starts the webserver
 */
