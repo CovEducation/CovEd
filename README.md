@@ -7,22 +7,29 @@
 ![David](https://img.shields.io/david/johancc/CovEd?color=blue)
 ![Website](https://img.shields.io/website?down_color=red&down_message=offline&up_color=blue&up_message=online&url=http%3A%2F%2Fcoved.herokuapp.com%2F)
 
-Note:
-  After cloning, create a .env file with the MongoDB connection URI as follows:
+This repository contains the frontend and backend code for CovEd's website. The website is built using ReactJS, Firebase, and MongoDB.
 
-  MONGO_URI : "$SomeConnectionStringHere"
+## Setup
 
+1) To ensure that the website has the required credentials, before installing
+make a .env file that contains the following:
 
-# Starting the server
+```
+MONGO_URI = "$MongoDB URI"
+EMAIL_USER = "$SomeEmail"
+EMAIL_PASS = "$Password" 
+GOOGLE_CONFIG = "$GoogleProjectConfigFileContent"
+GOOGLE_APPLICATION_CREDENTIALS = "./google-credentials-heroku.json"
+```
+
+2) Install dependencies & build
 
 ```
 npm install
-npm start 
-```
-
-To verify that the server is working correctly, in another terminal window:
-
-```
 npx webpack
-npm run hotloader
+```
+
+3) Start the server and client
+```
+npm start & npm run hotloader
 ```
