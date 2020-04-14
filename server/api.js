@@ -9,27 +9,12 @@
 // For routing
 const express = require("express");
 
-// Email module
-const nodemailer = require("nodemailer");
-
 // import models so we can interact with the database
 const Tutor = require("./models/tutor");
 const Tutee = require("./models/tutee");
 
 // connecting to email service
 const sendEmail = require("./sendEmail.js")
-
-require("dotenv").config()
-const email_user = process.env.EMAIL_USER;
-const email_pass = process.env.EMAIL_PASS;
-
-let transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: email_user,
-    pass: email_pass,
-  },
-});
 
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
@@ -40,7 +25,6 @@ const firebaseMiddleware = require("./auth");
   GET Endpoints
 */
 
-
 router.get("/tutor", firebaseMiddleware, (req, res) => {
   Tutor.find({
     firebase_uid: req.user.user_id,
@@ -48,9 +32,8 @@ router.get("/tutor", firebaseMiddleware, (req, res) => {
     .then((tutor) => {
       res.send(tutor);
     })
-    .catch((err) => {
-      console.log(err);
-      res.send({});
+    .catch(() => {
+      res.sendStatus(400).send("Could not find user requested.");
     });
 });
 
@@ -62,54 +45,33 @@ router.get("/tutee", firebaseMiddleware, (req, res) => {
       res.send(tutor);
     })
     .catch(()=> {
-      console.log(err)
-      // FIXME : We need to at send an error status to the client
-      res.send({})
+      res.sendStatus(400).send("Could not find user requested.")
     })
 })
 
 router.get("/getTutors", firebaseMiddleware, (req, res) => {
-  // We want tutors which have any of the subjects, matched by how many
-  // Speed up by using MongoDB aggregate (unwind, filter by subject, then group)
-  // if the database is large enough that it warrants the time.
-
-  // Getting all tutors, sorting by how many subjects they have in common, then by 
-  // how recently the tutors were contacted by other students.
-  const subjects_wanted = req.query.subjects;
-
-
-  if (subjects_wanted.length == 0) {
-    res.sendStatus(500);
-  }
-  const limit = req.query.limit === undefined ? 10 : req.query.limit;
+  // We want to return all users which have the required tags and are public, sorted
+  // by how recently they were contacted by someone else.
+  const required_tags = req.query.subjects ? req.query.subjects.split() : [];
+  const limit = req.query.limit || 10;
   Tutor.find({public: true})
     .then((tutors) => {
-      for (let i = 0; i < tutors.length; i++) {
-        let overlapping_subjects = tutors[i].subjects.filter(
-          (subject) => subjects_wanted.includes(subject) && subject != ""
+      tutors = tutors.filter((tutor)=> {
+        let overlapping_subjects = tutor.subjects.filter(
+          (subject) => required_tags.includes(subject) && subject !== ""
         );
-        let overlapping_tags = tutors[i].tags.filter((tag) => 
-          (subjects_wanted.includes(tag) && tag != "")
+        let overlapping_tags = tutor.tags.filter((tag) =>
+          (required_tags.includes(tag) && tag !== "")
         )
-        tutors[i]["i"] = overlapping_subjects.length + overlapping_tags.length;
-      }
-      // We need the tags to match.
-      tutors = tutors.filter((tutor) => tutor.i > 0);
-      tutors = tutors.slice(0, limit);
+        return overlapping_tags.length + overlapping_subjects.length === required_tags.length;
+      })
       // People that haven't been requested recently go first.
       let sorted_tutors = tutors.sort((a, b) => {
-        // We want to sort by how many tags match
-        let matches_a = a.i;
-        let matches_b = b.i;
-
-        if (matches_a == matches_b) { 
-          // then by how recently they were requested by someone else (reverse)
           return (a.last_request < b.last_request) ? -1: 1
-        } else {
-          return matches_a > matches_b ? 1 : -1;
-        }
-      }); 
-      // final cleanup
+      });
+
+      sorted_tutors = sorted_tutors.slice(0, limit);
+
       for (let i = 0; i < sorted_tutors.length; i++) {
         delete sorted_tutors[i]["i"];
         sorted_tutors[i] = removeContactInfo(sorted_tutors[i]);
@@ -143,7 +105,6 @@ router.post("/addTutee", firebaseMiddleware, (req, res) => {
     guardian_present: req.body.guardian_present,
     tutors: [],
   });
-
   newTutee.save().then((tutee) => res.send(tutee));
 });
 
@@ -172,14 +133,12 @@ router.post("/addTutor", firebaseMiddleware, (req, res) => {
 });
 
 router.post("/updateTutee", firebaseMiddleware, (req, res) => {
-  console.log("got here");
   // the object with the update should be included in req.body.update
   let update = req.body.update;
   Tutee.updateOne({ firebase_uid: req.user.user_id }, update)
     .then((updated_tutee) => res.send(updated_tutee))
     .catch((error) => {
-      console.log(error);
-      return res.sendStatus(400);
+      return res.sendStatus(400).send("Unable to update user, check UID.")
     });
 });
 
@@ -189,7 +148,7 @@ router.post("/updateTutor", firebaseMiddleware, (req, res) => {
   Tutor.updateOne({ firebase_uid: req.user.user_id }, update)
     .then((updated_tutor) => res.send(updated_tutor))
     .catch(() => {
-      return res.sendStatus(400);
+      return res.sendStatus(400).send("Unable to update user, check UID.");
     });
 });
 
