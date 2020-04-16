@@ -16,28 +16,7 @@ import TermsDialog from "../modules/TermsOfServiceDialog";
 // auth
 import { auth } from "../../firebase-config";
 import { useNavigate } from "@reach/router";
-
-const theme={
-  fonts:{
-    sans: 'Multi, sans-serif',
-  },
-  fontWeights: {
-    light: 300,
-    normal: 600,
-    bold: 700,
-  },
-  space: [
-      0,
-      4,
-      8,
-      16,
-      32,
-      64,
-      128,
-      140,
-      256,
-    ]
-}
+import { theme} from "../Constants.js";
 
 const withNavigate = (Component) => {
   return (props) => {
