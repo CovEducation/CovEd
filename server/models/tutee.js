@@ -17,6 +17,7 @@ const TuteeSchema = new mongoose.Schema({
   has_reliable_internet: Boolean,
   guardian_present: Boolean,
   tutors: [mongoose.Types.ObjectId],
+  tags: [String],
 });
 
 // compile model from schema
