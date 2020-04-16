@@ -7,38 +7,7 @@ import { Provider } from "rebass";
 import {
   Section,
 } from "react-landing-page";
-
-
-const theme={
-  colors: {
-      blue: '#00568C',
-      yellow: '#F2BE32',
-      white: '#ffffff',
-      darkblue: '#003c61',
-  },
-  fonts:{
-    sans: 'Multi, sans-serif',
-  },
-  fontWeights: {
-    light: 300,
-    normal: 600,
-    bold: 700,
-  },
-  fontSizes: [
-      12, 16, 24, 36, 48, 72
-    ],
-  space: [
-      0,
-      4,
-      8,
-      16,
-      32,
-      64,
-      128,
-      140,
-      256,
-    ]
-}
+import {theme} from "../Constants.js";
 
 class Contact extends Component {
   constructor(props) {
