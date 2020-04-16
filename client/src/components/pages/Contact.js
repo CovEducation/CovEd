@@ -7,7 +7,7 @@ import { Provider } from "rebass";
 import {
   Section,
 } from "react-landing-page";
-import {theme} from "../Constants.js"
+import {theme} from "../Constants.js";
 
 class Contact extends Component {
   constructor(props) {
