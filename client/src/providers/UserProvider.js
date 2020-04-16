@@ -20,13 +20,13 @@ class UserProvider extends Component {
     async refreshUser() {
         const token = this.state.user.token;
         try {
-            let user = await get("/api/tutee", { token: token });
-            let role = "tutee";
+            let user = await get("/api/mentee", { token: token });
+            let role = "mentee";
 
             // if the user is not a student 
             if (user.length == 0) {
-                user = await get("/api/tutor", { token: token });
-                role = "tutor";
+                user = await get("/api/mentor", { token: token });
+                role = "mentor";
             }
 
             user = user[0];
@@ -45,13 +45,13 @@ class UserProvider extends Component {
                 try {
                     const token = await user.getIdToken();
                     try {
-                        let user = await get("/api/tutee", { token: token });
-                        let role = "tutee";
+                        let user = await get("/api/mentee", { token: token });
+                        let role = "mentee";
 
                         // if the user is not a student 
                         if (user.length == 0) {
-                            user = await get("/api/tutor", { token: token });
-                            role = "tutor";
+                            user = await get("/api/mentor", { token: token });
+                            role = "mentor";
                         }
 
                         user = user[0];

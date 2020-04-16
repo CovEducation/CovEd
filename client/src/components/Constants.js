@@ -117,53 +117,53 @@ export const about_us_content =
 export const problem_content =
   "Many of us have been grappling with how we can meaningfully support our home communities during COVID-19 school shutdowns. As this pandemic is intensifying, many middle and high school students are faced with financial, familial, and logistical challenges that may impact their learning experience.";
 export const solution_content =
-  "The goal of this virtual service is to provide a resource for students including academic tutoring, college preparation, and personalized mentorship. We are working to compile free, web-based educational resources for students, families, and educators, as well as partner with schools and other non-profits to improve the learning experience of K-12 students.";
+  "The goal of this virtual service is to provide a resource for students including academic mentoring, college preparation, and personalized mentorship. We are working to compile free, web-based educational resources for students, families, and educators, as well as partner with schools and other non-profits to improve the learning experience of K-12 students.";
 
 export const FAQS = [
   {
     key: "0",
     question: "Who is eligible to register?",
-    answer: "If you are a K-12 student, you are eligible to register as a tutee for personalized mentorship and academic support from an undergraduate or postgraduate mentor. For students under 18 years old, we require that parents be present during tutoring sessions."
+    answer: "If you are a K-12 student, you are eligible to register as a mentee for personalized mentorship and academic support from an undergraduate or postgraduate mentor. For students under 18 years old, we require that parents be present during mentoring sessions."
   },
   {
     key: "1",
-    question: "What tutoring services are available?",
-    answer: "We provide tutoring services for all school subjects from K-12 (including some AP and Honors classes), mentorship, and college preparation (including help with college essays or preparing for the SAT/ACT/Subject Test exams)."
+    question: "What mentoring services are available?",
+    answer: "We provide mentoring services for all school subjects from K-12 (including some AP and Honors classes), mentorship, and college preparation (including help with college essays or preparing for the SAT/ACT/Subject Test exams)."
   },
   {
     key: "2",
-    question: "How does tutoring work?",
-    answer: "Due to the COVID-19 outbreak, our tutoring sessions will be conducted online via video chat. We suggest using Skype, Google Hangouts, or Zoom, although this can be decided on a one-to-one basis between the tutor and tutee."
+    question: "How does mentoring work?",
+    answer: "Due to the COVID-19 outbreak, our mentoring sessions will be conducted online via video chat. We suggest using Skype, Google Hangouts, or Zoom, although this can be decided on a one-to-one basis between the mentor and mentee."
   },
   {
     key: "3",
     question: "What if I do not have access to Wi-Fi?",
-    answer: "Spectrum is providing free Wi-Fi services for students during the school shutdown. Their number is 1-844-488-8398. Tutoring lessons are also able to be held via phone calling."
+    answer: "Spectrum is providing free Wi-Fi services for students during the school shutdown. Their number is 1-844-488-8398. Mentoring lessons are also able to be held via phone calling."
   },
   {
     key: "4",
-    question: "How do I get matched with a tutor/ tutee? How does the matching process work?",
-    answer: "After filling out the registration form, parents/students will receive details on mentorship pairs and how to connect with his/her/their tutor. We are currently manually pairing the tutors and tutees based on a variety of factors including (but not limited to): subjects needed/offered, time zones, accomodations needed (i.e. SPED), future goals of the tutee and current course of study of the tutor, and any special comments left by the individual that filled out the registration form."
+    question: "How do I get matched with a mentor/ mentee? How does the matching process work?",
+    answer: "After filling out the registration form, parents/students will receive details on mentorship pairs and how to connect with his/her/their mentor. We are currently manually pairing the mentors and mentees based on a variety of factors including (but not limited to): subjects needed/offered, time zones, accomodations needed (i.e. SPED), future goals of the mentee and current course of study of the mentor, and any special comments left by the individual that filled out the registration form."
   },
   {
     key: "5",
     question: "How many hours a week do I have to commit?",
-    answer: "We suggest students and tutors meet between 1-2 hours a week, although this can be decided among mentorship pairs. This may depend on the student’s needs as well as the tutor’s availability."
+    answer: "We suggest students and mentors meet between 1-2 hours a week, although this can be decided among mentorship pairs. This may depend on the student’s needs as well as the mentor’s availability."
   },
   {
     key: "6",
-    question: "How long will CovEd tutors provide tutoring?",
-    answer: "We expect tutors to be able to help until the end of the academic year for the student. After the academic year is over, discussions between the tutor and tutee can help determine possible plans and whether or not the tutoring will continue."
+    question: "How long will CovEd mentors provide mentoring?",
+    answer: "We expect mentors to be able to help until the end of the academic year for the student. After the academic year is over, discussions between the mentor and mentee can help determine possible plans and whether or not the mentoring will continue."
   },
   {
     key: "7",
-    question: "What are the responsibilities of a tutor?",
-    answer: "Tutors are responsible for volunteering a minimum of one to two hours a week of their time to help their matched tutee with the subjects the tutee requests help in. While a tutor is only matched with one tutee, they can reach out if they would like to tutor more. Tutors are expected to help their tutee until the end of the 2020 academic school year. Additionally, all tutors must comply with the CovEd safety guidelines and expectations provided to them at all times."
+    question: "What are the responsibilities of a mentor?",
+    answer: "Mentors are responsible for volunteering a minimum of one to two hours a week of their time to help their matched mentee with the subjects the mentee requests help in. While a mentor is only matched with one mentee, they can reach out if they would like to mentor more. Mentors are expected to help their mentee until the end of the 2020 academic school year. Additionally, all mentors must comply with the CovEd safety guidelines and expectations provided to them at all times."
   },
   {
     key: "8",
     question: "How are you addressing concerns of student safety?",
-    answer: "Our safety guidelines during our tutoring sessions include (but are not limited to): receiving consent from the tutee’s parent or legal guardian, having a parent or guardian present during the lessons, having tutors record the lessons, and instituting a “no social media contact with your tutee” policy. All tutors will receive and be assessed on information about expectations and safety guidelines prior to their first meeting with their tutee."
+    answer: "Our safety guidelines during our mentoring sessions include (but are not limited to): receiving consent from the mentee’s parent or legal guardian, having a parent or guardian present during the lessons, having mentors record the lessons, and instituting a “no social media contact with your mentee” policy. All mentors will receive and be assessed on information about expectations and safety guidelines prior to their first meeting with their mentee."
   },
   {
     key: "9",
@@ -173,7 +173,7 @@ export const FAQS = [
   {
     key: "10",
     question: "Can you help students that do not speak English very well?",
-    answer: "Yes! We have tutors that are fluent in various languages and if this is a concern, be sure to mention this in the special requests/concerns portion of the registration form and we will definitely work to accommodate this. Additionally, we are working on translating all flyers and publicity materials into different languages to reach students regardless of their first language."
+    answer: "Yes! We have mentors that are fluent in various languages and if this is a concern, be sure to mention this in the special requests/concerns portion of the registration form and we will definitely work to accommodate this. Additionally, we are working on translating all flyers and publicity materials into different languages to reach students regardless of their first language."
   },
   {
     key: "11",

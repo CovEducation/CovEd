@@ -5,7 +5,7 @@ require("dotenv").config({path: '../.env'})
 
 const { authorize } = require('./google_sheets')
 
-const Tutor = require('../server/models/tutor')
+const Mentor = require('../server/models/mentor')
 
 // authenticate into google api and then upload mentor_data
 fs.readFile('credentials.json', (err, content) => {
@@ -37,57 +37,57 @@ async function upload_mentor_data(auth) {
  * @param {*} rows 
  */
 function parse_spreadsheet(rows) {
-    let tutors = [];
+    let mentors = [];
 
-    rows.forEach(tutor_raw => {
+    rows.forEach(mentor_raw => {
 
-        const tutor = {
-            name : tutor_raw[1],
-            email : tutor_raw[2],
-            phone_num : tutor_raw[3],
-            class_year : tutor_raw[4],
-            college : tutor_raw[5],
-            major : tutor_raw[6],
-            location : tutor_raw[7],
-            time_zone : tutor_raw[8], // phyllis computed hour offsets from EST 
-            subjects_raw : tutor_raw[9],
-            college_raw : tutor_raw[10],
-            other_langs : tutor_raw[11],
-            comments : tutor_raw[12],
-            grade_levels : tutor_raw[13]
+        const mentor = {
+            name : mentor_raw[1],
+            email : mentor_raw[2],
+            phone_num : mentor_raw[3],
+            class_year : mentor_raw[4],
+            college : mentor_raw[5],
+            major : mentor_raw[6],
+            location : mentor_raw[7],
+            time_zone : mentor_raw[8], // phyllis computed hour offsets from EST 
+            subjects_raw : mentor_raw[9],
+            college_raw : mentor_raw[10],
+            other_langs : mentor_raw[11],
+            comments : mentor_raw[12],
+            grade_levels : mentor_raw[13]
         };
         
         /** Cleaning up the form responses */
 
         // TODO: normalize phone number formats
-        tutor.phone = tutor.phone_num;
+        mentor.phone = mentor.phone_num;
 
-        tutor.subjects = tutor.subjects_raw.split(",").map(str => str.trim());
+        mentor.subjects = mentor.subjects_raw.split(",").map(str => str.trim());
         
         // TODO: college prep needs to become a list of strings 
-        // tutor.college_prep = tutor.college_raw.split(",").map(str => str.trim());
+        // mentor.college_prep = mentor.college_raw.split(",").map(str => str.trim());
         
         // TODO: figure out how to parse this
-        // tutor.grade_levels_to_tutor = tutor.grade_levels.split(",").map(str => str.trim());
+        // mentor.grade_levels_to_mentor = mentor.grade_levels.split(",").map(str => str.trim());
 
         // TODO: languages 
-        // tutor.languages_spoken = tutor.other_langs;
+        // mentor.languages_spoken = mentor.other_langs;
 
-        tutors.push(new Tutor(tutor));
+        mentors.push(new Mentor(mentor));
     });
 
-    return tutors;
+    return mentors;
 }
 
 /**
  * 
  * @param {*} mentors 
  */
-async function put_mentors(tutors) {
+async function put_mentors(mentors) {
     // TODO change connection URL after setting up your team database
     const mongoConnectionURL = process.env.MONGO_URI;
     // TODO change database name to the name you chose
-    const databaseName = "Coved-Tutor-Test";
+    const databaseName = "Coved-Mentor-Test";
 
     try {
         // open mongodb connection
@@ -98,8 +98,8 @@ async function put_mentors(tutors) {
                 dbName: databaseName,
             });
         
-        // insert tutors to db
-        const docs = await Tutor.insertMany(tutors);
+        // insert mentors to db
+        const docs = await Mentor.insertMany(mentors);
         console.log("pushed, " +  docs);
 
     } catch (err) {

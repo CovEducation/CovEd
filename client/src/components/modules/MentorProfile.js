@@ -14,7 +14,7 @@ import timeZones from "../Constants";
 
 import { UserContext } from "../../providers/UserProvider";
 
-class TutorProfile extends Component {
+class MentorProfile extends Component {
   static contextType = UserContext;
 
   constructor(props) {
@@ -26,15 +26,15 @@ class TutorProfile extends Component {
       edit: false,
       success: false,
       form: {
-        name: props.tutor.name.trim() || "",
-        email: props.tutor.email || "",
-        timezone: props.tutor.timezone || "GMT-5", // there must be a better way of setting the default values 
-        role: "tutor",
-        subjects: props.tutor.subjects.map(s => { return { value: s, label: s } }) || [],
-        bio: props.tutor.bio || "",
-        major: props.tutor.major || "",
-        tags: props.tutor.tags.map(s => { return { value: s, label: s } }) || [],
-        public: props.tutor.public || false,
+        name: props.mentor.name.trim() || "",
+        email: props.mentor.email || "",
+        timezone: props.mentor.timezone || "GMT-5", // there must be a better way of setting the default values 
+        role: "mentor",
+        subjects: props.mentor.subjects.map(s => { return { value: s, label: s } }) || [],
+        bio: props.mentor.bio || "",
+        major: props.mentor.major || "",
+        tags: props.mentor.tags.map(s => { return { value: s, label: s } }) || [],
+        public: props.mentor.public || false,
       },
     };
   }
@@ -55,7 +55,7 @@ class TutorProfile extends Component {
         form: updatedForm
       }, async () => {
         try {
-          await this.updateTutor();
+          await this.updateMentor();
           this.displaySuccess();
         } catch (error) {
           alert("Error updating user.")
@@ -65,7 +65,7 @@ class TutorProfile extends Component {
     this.setState({ validated: true });
   };
 
-  updateTutor = async () => {
+  updateMentor = async () => {
     const update =
     {
       name: this.state.form.name,
@@ -77,7 +77,7 @@ class TutorProfile extends Component {
       tags: this.state.form.tags_clean,
       public: this.state.form.public,
     };
-    await post("/api/updateTutor", { update: update, token: this.props.tutor.token });
+    await post("/api/updateMentor", { update: update, token: this.props.mentor.token });
     await this.context.refreshUser();
   }
 
@@ -113,7 +113,7 @@ class TutorProfile extends Component {
     this.setState({ success: true, edit: false })
   }
 
-  renderTutorFields() {
+  renderMentorFields() {
     return (
       <>
         <Form.Row>
@@ -133,7 +133,7 @@ class TutorProfile extends Component {
                     onChange={this.handleChange}
                   />
                 </InputGroup>
-                : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.major} />
+                : <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentor.major} />
             }
             <Form.Row>
               <Form.Check checked={this.state.form.public} disabled={!this.state.edit} name="public" onChange={this.handleCheckChange} type="checkbox" label="Listed as an Available Mentor." />
@@ -147,7 +147,7 @@ class TutorProfile extends Component {
 
   render() {
 
-    let extraFields = this.renderTutorFields();
+    let extraFields = this.renderMentorFields();
 
     const tags_options = tags.map(s => { return { value: s, label: s } })
 
@@ -170,7 +170,7 @@ class TutorProfile extends Component {
                       onChange={this.handleChange} />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </>
-                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.name} />
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentor.name} />
                 }
               </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationEmail">
@@ -192,7 +192,7 @@ class TutorProfile extends Component {
                         Please input a valid email.
                     </Form.Control.Feedback>
                     </InputGroup>
-                    : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.email} />
+                    : <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentor.email} />
                 }
               </Form.Group>
             </Form.Row>
@@ -209,7 +209,7 @@ class TutorProfile extends Component {
                         )
                       }))}
                     </Form.Control>
-                    : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.timezone} />
+                    : <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentor.timezone} />
                 }
               </Form.Group>
             </Form.Row>
@@ -217,7 +217,7 @@ class TutorProfile extends Component {
             <Form.Row>
               <Form.Group>
                 <Form.Label>Role</Form.Label>
-                <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.role} />
+                <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentor.role} />
               </Form.Group>
             </Form.Row>
 
@@ -227,7 +227,7 @@ class TutorProfile extends Component {
                 {
                   this.state.edit
                     ? <Form.Control name="bio" value={this.state.form.bio} as="textarea" rows="3" onChange={this.handleChange} placeholder="About Me" />
-                    : <Form.Control as="textarea" readOnly defaultValue={this.props.tutor.bio} />
+                    : <Form.Control as="textarea" readOnly defaultValue={this.props.mentor.bio} />
                 }
               </Form.Group>
             </Form.Row>
@@ -245,7 +245,7 @@ class TutorProfile extends Component {
               :
               <>
                 <Form.Label>Subjects</Form.Label>
-                <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.subjects} />
+                <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentor.subjects} />
               </>
             }
 
@@ -255,7 +255,7 @@ class TutorProfile extends Component {
                 {
                   this.state.edit
                     ? <Select value={this.state.form.tags} options={tags_options} isMulti onChange={this.handleSelectChange("tags")} />
-                    : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutor.tags} />
+                    : <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentor.tags} />
                 }
               </Form.Group>
             </Form.Row>
@@ -274,4 +274,4 @@ class TutorProfile extends Component {
   }
 }
 
-export default TutorProfile;
+export default MentorProfile;

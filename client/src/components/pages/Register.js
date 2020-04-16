@@ -92,10 +92,10 @@ class Register extends Component {
       try {
         await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
         const idToken = await auth.currentUser.getIdToken();
-        if (this.state.form.role === "tutor") {
-          await this.postTutor(idToken);
+        if (this.state.form.role === "mentor") {
+          await this.postMentor(idToken);
         } else if (this.state.form.role === "student") {
-          await this.postTutee(idToken);
+          await this.postMentee(idToken);
         }
         this.props.navigate('/');
       } catch (error) {
@@ -106,8 +106,8 @@ class Register extends Component {
   };
 
 
-  postTutee = async (idToken) => {
-    return await post("/api/addTutee",
+  postMentee = async (idToken) => {
+    return await post("/api/addMentee",
       {
         token: idToken,
         name: this.state.form.firstname + ' ' + this.state.form.lastname,
@@ -121,8 +121,8 @@ class Register extends Component {
   }
 
 
-  postTutor = async (idToken) => {
-    return await post("/api/addTutor",
+  postMentor = async (idToken) => {
+    return await post("/api/addMentor",
       {
         token: idToken,
         name: this.state.form.firstname + ' ' + this.state.form.lastname,
@@ -150,7 +150,7 @@ class Register extends Component {
     }
   }
 
-  renderTutorFields() {
+  renderMentorFields() {
     return (
       <>
         <Form.Row>
@@ -211,8 +211,8 @@ class Register extends Component {
   render() {
 
     let extraFields;
-    if (this.state.form.role === "tutor") {
-      extraFields = this.renderTutorFields();
+    if (this.state.form.role === "mentor") {
+      extraFields = this.renderMentorFields();
     } else if (this.state.form.role === "student") {
       extraFields = this.renderStudentFields();
     } else {
@@ -315,7 +315,7 @@ class Register extends Component {
                 <Form.Label>Role</Form.Label>
                 <Form.Control name="role" value={this.state.form.role} onChange={this.handleChange} as="select">
                   <option value="student">Student/Parent</option>
-                  <option value="tutor">Tutor</option>
+                  <option value="mentor">Mentor</option>
                 </Form.Control>
               </Form.Group>
             </Form.Row>
