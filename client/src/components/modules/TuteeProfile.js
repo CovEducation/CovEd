@@ -32,7 +32,8 @@ class TuteeProfile extends Component {
         role: "student",
         subjects: props.tutee.subjects.map(s => {return {value: s, label: s}}) || [],
         bio: props.tutee.bio || "",
-        tags: [],
+        tags: props.tutee.tags.map(s => {return {value: s, label: s}}) || [],
+
       },
     };
   }
@@ -72,8 +73,9 @@ class TuteeProfile extends Component {
       subjects: this.state.form.subjects_clean,
       guardian_name: this.state.form.parentName,
       guardian_email: this.state.form.parentEmail,
+      tags: this.state.form.tags_clean,
     };
-    const status = await post("/api/updateTutee", {update: update, token: this.props.tutee.token});
+    await post("/api/updateTutee", {update: update, token: this.props.tutee.token});
     await this.context.refreshUser();
   }
 
@@ -83,10 +85,12 @@ class TuteeProfile extends Component {
     this.setState({ form: form });
   }
 
-  handleSelectChange = (selected) => {
-    const form = this.state.form;
-    form["subjects"] = selected;
-    this.setState({ form: form });
+  handleSelectChange = (fieldName) => {
+    return (selected) => {
+      const form = this.state.form;
+      form[fieldName] = selected;
+      this.setState({ form: form });
+    }
   }
 
   handleEdit = () => {
@@ -234,7 +238,7 @@ class TuteeProfile extends Component {
                 <Form.Row>
                   <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
                     <Form.Label>Subjects</Form.Label>
-                    <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange} />
+                    <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange("subjects")} />
                   </Form.Group>
                 </Form.Row>
               </>
@@ -250,7 +254,7 @@ class TuteeProfile extends Component {
                 <Form.Label>Optional tags: </Form.Label>
                 {
                   this.state.edit
-                    ? <Select value={this.state.form.tags} options={tags_options} isMulti onChange={this.handleSelectChange} />
+                    ? <Select value={this.state.form.tags} options={tags_options} isMulti onChange={this.handleSelectChange("tags")} />
                     : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.tags} />
                 }
               </Form.Group>
