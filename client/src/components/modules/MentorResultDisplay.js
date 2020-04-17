@@ -9,10 +9,10 @@ import Typography from '@material-ui/core/Typography';
 import { post, get } from "../../utilities.js";
 import { auth } from "../../firebase-config";
 import { UserContext } from "../../providers/UserProvider";
-import "./TutorResultDisplay.css";
+import "./MentorResultDisplay.css";
 import {Col, Row} from 'react-bootstrap';
 
-class TutorResultDisplay extends Component {
+class MentorResultDisplay extends Component {
   static contextType = UserContext;
   constructor(props) {
     super(props);
@@ -41,11 +41,11 @@ class TutorResultDisplay extends Component {
     event.preventDefault();
     let args = {
       personal_message: this.state.msg,
-      tutor_uid: this.props.tutor.firebase_uid,
+      mentor_uid: this.props.mentor.firebase_uid,
       student: this.state.user ? this.state.user : { email: "test@email.com" },
       token: this.state.token,
     }
-    post("/api/pingTutor", args).then((resp) => {
+    post("/api/pingMentor", args).then((resp) => {
       alert("Send message! Expect a reply within the next couple days");
       this.setState({
         msg: "",
@@ -63,20 +63,20 @@ class TutorResultDisplay extends Component {
         <Card classes={{ label:"hoveryellow"}}>
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
-              Tutor Information
+              Mentor Information
             </Typography>
             <Typography variant="h5" component="h2">
-              {this.props.tutor.name}
+              {this.props.mentor.name}
             </Typography>
             <Typography color="textSecondary">
-              Major: {this.props.tutor.major}
+              Major: {this.props.mentor.major}
             </Typography>
             <Typography variant="body2" component="p">
             <br />
-              {/* {this.props.tutor.bio ? <h4>About: {this.props.tutor.bio}</h4> : <></> }   */}
+              {/* {this.props.mentor.bio ? <h4>About: {this.props.mentor.bio}</h4> : <></> }   */}
             Subjects available for:
             <br />
-              {this.props.tutor.subjects.map((subject) => <>{bull} {subject} <br /></>)}
+              {this.props.mentor.subjects.map((subject) => <>{bull} {subject} <br /></>)}
             </Typography>
           </CardContent>
           <CardActions>
@@ -111,4 +111,4 @@ class TutorResultDisplay extends Component {
 }
 
 
-export default TutorResultDisplay;
+export default MentorResultDisplay;

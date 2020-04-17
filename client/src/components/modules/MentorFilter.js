@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../utilities.css";
-import "./TutorFilter.css";
+import "./MentorFilter.css";
 import Select from "react-select";
 import { subjects, tags } from "../Constants";
 import Form from "react-bootstrap/Form";
@@ -14,7 +14,7 @@ let OPTIONS = subjects.concat( tags.map((tag) => {
 }));
 
 
-class TutorFilter extends Component {
+class MentorFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,4 +44,4 @@ class TutorFilter extends Component {
   }
 }
 
-export default TutorFilter;
+export default MentorFilter;

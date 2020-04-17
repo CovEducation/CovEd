@@ -62,7 +62,7 @@ class Homepage extends Component {
               <Col sm={{span: 4, offset:1}} className="text-center" mt={4} mb={4}>
               <h3><span className="light-h">Be a Mentor</span></h3>
               <br />
-              <p fontWeight="light" className="feature">We are looking for <b>college students</b> to help us mentor and tutor students who no longer have school. Help us help them stay on-track educationally!</p>
+              <p fontWeight="light" className="feature">We are looking for <b>college students</b> to help us mentor and mentor students who no longer have school. Help us help them stay on-track educationally!</p>
               </Col>
               </Row>
               <br />
@@ -72,7 +72,7 @@ class Homepage extends Component {
               <Col sm={{span: 4}} className="text-center" p={5} >
               <h3><span className="light-h">Request a Mentor</span></h3>
               <br />
-              <p fontWeight="light" className="feature">We are offering <b>free mentoring</b> and <b>tutoring services</b> for <b>K-12 students</b>. Our mentors and tutors are volunteer college students from some of the top universities in the world.</p>
+              <p fontWeight="light" className="feature">We are offering <b>free mentoring</b> and <b>mentoring services</b> for <b>K-12 students</b>. Our mentors and mentors are volunteer college students from some of the top universities in the world.</p>
               </Col>
               <Col sm={{span: 4, offset:1}} className="text-center" p={5}>
               <h3><span className="light-h">Know of a learning resource we haven't mentioned?</span></h3>

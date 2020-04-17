@@ -15,7 +15,7 @@ const Resources = lazy(()=>import("./pages/Resources.js"));
 const FAQ = lazy(()=>import("./pages/FAQ.js"));
 const WhoWeAre = lazy(()=>import("./pages/WhoWeAre.js"));
 const Contact = lazy(()=>import("./pages/Contact.js"));
-const FindATutor = lazy(()=>import("./pages/FindATutor.js"));
+const FindAMentor = lazy(()=>import("./pages/FindAMentor.js"));
 const Profile = lazy(()=>import("./pages/Profile.js"));
 const ProtectedPage = lazy(()=>import("./modules/ProtectedPage.js"));
 const NavBar = lazy(()=> import("./modules/NavBar.js"))
@@ -56,7 +56,7 @@ class App extends Component {
                <FAQ path="/faq" />
                <WhoWeAre path="/whoweare" />
                <Contact path="/contact" />
-               <ProtectedPage path="/findatutor" component={FindATutor}/>
+               <ProtectedPage path="/findamentor" component={FindAMentor}/>
                <ProtectedPage path="/profile" component={Profile}/>
                <NotFound default/>
              </Router>

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const TutorSchema = new mongoose.Schema({
+const mentorSchema = new mongoose.Schema({
   firebase_uid: String,
   name: String,
   phone: String,
@@ -14,12 +14,12 @@ const TutorSchema = new mongoose.Schema({
   // these are currently not coming from client
   college_prep: Boolean,
   languages_spoken: [String],
-  grade_levels_to_tutor: [Number],
-  tutees: [mongoose.Types.ObjectId],
+  grade_levels_to_mentor: [Number],
+  mentees: [mongoose.Types.ObjectId],
   public: Boolean,
   last_request: Date,
   tags: [String],
 });
 
 // compile model from schema
-module.exports = mongoose.model("tutor", TutorSchema);
+module.exports = mongoose.model("mentor", mentorSchema);

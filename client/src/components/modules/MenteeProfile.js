@@ -13,7 +13,7 @@ import { subjects, tags } from "../Constants";
 import timeZones from "../Constants"
 import { UserContext } from "../../providers/UserProvider";
 
-class TuteeProfile extends Component {
+class MenteeProfile extends Component {
   static contextType = UserContext;
 
   constructor(props) {
@@ -24,16 +24,15 @@ class TuteeProfile extends Component {
       edit: false,
       success: false,
       form: {
-        name: props.tutee.name.trim() || "",
-        parentName: props.tutee.guardian_name.trim() || "",
-        email: props.tutee.email || "",
-        parentEmail: props.tutee.guardian_email || "",
-        timezone: props.tutee.timezone || "GMT-5", // there must be a better way of setting the default values 
+        name: props.mentee.name.trim() || "",
+        parentName: props.mentee.guardian_name.trim() || "",
+        email: props.mentee.email || "",
+        parentEmail: props.mentee.guardian_email || "",
+        timezone: props.mentee.timezone || "GMT-5", // there must be a better way of setting the default values 
         role: "student",
-        subjects: props.tutee.subjects.map(s => {return {value: s, label: s};}) || [],
-        bio: props.tutee.bio || "",
-        tags: props.tutee.tags.map(s => {return {value: s, label: s};}) || [],
-
+        subjects: props.mentee.subjects.map(s => {return {value: s, label: s};}) || [],
+        bio: props.mentee.bio || "",
+        tags: props.mentee.tags.map(s => {return {value: s, label: s};}) || [],
       },
     };
   }
@@ -53,7 +52,7 @@ class TuteeProfile extends Component {
         form: updatedForm
       }, async () => {
         try {
-          await this.updateTutee();
+          await this.updateMentee();
           this.displaySuccess();
         } catch (error) {
           alert("Error updating user.")
@@ -63,7 +62,7 @@ class TuteeProfile extends Component {
     this.setState({ validated: true });
   };
 
-  updateTutee = async () => {
+  updateMentee = async () => {
     const update = 
     {
       name: this.state.form.name,
@@ -117,7 +116,7 @@ class TuteeProfile extends Component {
               <Form.Control name="parentName" value={this.state.form.parentName} onChange={this.handleChange} required type="text" placeholder="Parent Name" />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </>
-            : <Form.Control name="parentName" plaintext readOnly defaultValue={this.props.tutee.guardian_name} />
+            : <Form.Control name="parentName" plaintext readOnly defaultValue={this.props.mentee.guardian_name} />
           }
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationEmail">
@@ -139,7 +138,7 @@ class TuteeProfile extends Component {
                 Please input a valid email.
               </Form.Control.Feedback>
               </InputGroup>
-            : <Form.Control name="parentEmail" plaintext readOnly defaultValue={this.props.tutee.guardian_email} />
+            : <Form.Control name="parentEmail" plaintext readOnly defaultValue={this.props.mentee.guardian_email} />
           }
 
         </Form.Group>
@@ -148,7 +147,6 @@ class TuteeProfile extends Component {
   }
 
   render() {
-
     let extraFields = this.renderStudentFields();
     const tags_options = tags.map(s => { return { value: s, label: s } })
     return (
@@ -170,7 +168,7 @@ class TuteeProfile extends Component {
                       onChange={this.handleChange} />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </>
-                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.name} />
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentee.name} />
                 }
               </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationEmail">
@@ -192,7 +190,7 @@ class TuteeProfile extends Component {
                       Please input a valid email.
                     </Form.Control.Feedback>
                   </InputGroup>
-                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.email} />
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentee.email} />
                 }
               </Form.Group>
             </Form.Row>
@@ -209,7 +207,7 @@ class TuteeProfile extends Component {
                     )
                   }))}
                 </Form.Control>
-                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.timezone} />
+                  : <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentee.timezone} />
                 }
               </Form.Group>
             </Form.Row>
@@ -217,7 +215,7 @@ class TuteeProfile extends Component {
             <Form.Row>
               <Form.Group>
                 <Form.Label>Role</Form.Label>
-                <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.role} />
+                <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentee.role} />
               </Form.Group>
             </Form.Row>
 
@@ -227,7 +225,7 @@ class TuteeProfile extends Component {
                 {
                   this.state.edit 
                   ? <Form.Control name="bio" value={this.state.form.bio} as="textarea" rows="3" onChange={this.handleChange} placeholder="About Me" />
-                  : <Form.Control as="textarea" readOnly defaultValue={this.props.tutee.bio} />
+                  : <Form.Control as="textarea" readOnly defaultValue={this.props.mentee.bio} />
                 }
               </Form.Group>
             </Form.Row>
@@ -245,7 +243,7 @@ class TuteeProfile extends Component {
               : 
               <>
                 <Form.Label>Subjects</Form.Label>
-                <Form.Control plaintext readOnly type="text" defaultValue={this.props.tutee.subjects} />
+                <Form.Control plaintext readOnly type="text" defaultValue={this.props.mentee.subjects} />
               </>
             }
 
@@ -274,4 +272,4 @@ class TuteeProfile extends Component {
   }
 }
 
-export default TuteeProfile;
+export default MenteeProfile;
