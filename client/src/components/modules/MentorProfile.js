@@ -92,7 +92,7 @@ class MentorProfile extends Component {
     form[event.target.name] = event.target.checked;
     this.setState({ form: form }); 
   }
-  
+
   handleSelectChange = (fieldName) => {
     return (selected) => {
       const form = this.state.form;
@@ -146,9 +146,7 @@ class MentorProfile extends Component {
   }
 
   render() {
-
     let extraFields = this.renderMentorFields();
-
     const tags_options = tags.map(s => { return { value: s, label: s } })
 
     return (

@@ -17,6 +17,7 @@ const menteeSchema = new mongoose.Schema({
   has_reliable_internet: Boolean,
   guardian_present: Boolean,
   mentors: [mongoose.Types.ObjectId],
+  tags: [String],
 });
 
 // compile model from schema
