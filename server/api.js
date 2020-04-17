@@ -10,8 +10,8 @@
 const express = require("express");
 
 // import models so we can interact with the database
-const Tutor = require("./models/tutor");
-const Tutee = require("./models/tutee");
+const Mentor = require("./models/mentor.js");
+const Mentee = require("./models/mentee.js");
 
 // connecting to email service
 const sendEmail = require("./sendEmail.js")
@@ -25,8 +25,8 @@ const firebaseMiddleware = require("./auth");
   GET Endpoints
 */
 
-router.get("/tutor", firebaseMiddleware, (req, res) => {
-  Tutor.find({
+router.get("/mentor", firebaseMiddleware, (req, res) => {
+  Mentor.find({
     firebase_uid: req.user.user_id,
   })
     .then((tutor) => {
@@ -37,8 +37,8 @@ router.get("/tutor", firebaseMiddleware, (req, res) => {
     });
 });
 
-router.get("/tutee", firebaseMiddleware, (req, res) => {
-  Tutee.find({
+router.get("/mentee", firebaseMiddleware, (req, res) => {
+  Mentee.find({
     firebase_uid: req.user.user_id, 
   })
     .then((tutor) => {
@@ -49,34 +49,35 @@ router.get("/tutee", firebaseMiddleware, (req, res) => {
     })
 })
 
-router.get("/getTutors", firebaseMiddleware, (req, res) => {
+router.get("/getMentors", firebaseMiddleware, (req, res) => {
   // We want to return all users which have the required tags and are public, sorted
   // by how recently they were contacted by someone else.
   const required_tags = req.query.subjects ? req.query.subjects.split() : [];
+  // TODO: Also use req.query.tags
   const limit = req.query.limit || 10;
-  Tutor.find({public: true})
+  Mentor.find({public: true})
     .then((tutors) => {
-      tutors = tutors.filter((tutor)=> {
-        let overlapping_subjects = tutor.subjects.filter(
+      tutors = tutors.filter((mentor)=> {
+        let overlapping_subjects = mentor.subjects.filter(
           (subject) => required_tags.includes(subject) && subject !== ""
         );
-        let overlapping_tags = tutor.tags.filter((tag) =>
+        let overlapping_tags = mentor.tags.filter((tag) =>
           (required_tags.includes(tag) && tag !== "")
         )
         return overlapping_tags.length + overlapping_subjects.length === required_tags.length;
       })
       // People that haven't been requested recently go first.
-      let sorted_tutors = tutors.sort((a, b) => {
+      let sorted_mentors = tutors.sort((a, b) => {
           return (a.last_request < b.last_request) ? -1: 1
       });
 
-      sorted_tutors = sorted_tutors.slice(0, limit);
+      sorted_mentors = sorted_mentors.slice(0, limit);
 
-      for (let i = 0; i < sorted_tutors.length; i++) {
-        delete sorted_tutors[i]["i"];
-        sorted_tutors[i] = removeContactInfo(sorted_tutors[i]);
+      for (let i = 0; i < sorted_mentors.length; i++) {
+        delete sorted_mentors[i]["i"];
+        sorted_mentors[i] = removeContactInfo(sorted_mentors[i]);
       }
-      res.send(sorted_tutors);
+      res.send(sorted_mentors);
     })
     .catch(() => {
       res.sendStatus(500);
@@ -87,8 +88,8 @@ router.get("/getTutors", firebaseMiddleware, (req, res) => {
   POST Endpoints
 */
 
-router.post("/addTutee", firebaseMiddleware, (req, res) => {
-  let newTutee = new Tutee({
+router.post("/addMentee", firebaseMiddleware, (req, res) => {
+  let newMentee = new Mentee({
     firebase_uid: req.user.user_id,
     name: req.body.name,
     phone: req.body.phone,
@@ -103,13 +104,13 @@ router.post("/addTutee", firebaseMiddleware, (req, res) => {
     grade_level: req.body.grade_level,
     has_reliable_internet: req.body.has_reliable_internet,
     guardian_present: req.body.guardian_present,
-    tutors: [],
+    mentors: [],
   });
-  newTutee.save().then((tutee) => res.send(tutee));
+  newMentee.save().then((tutee) => res.send(tutee));
 });
 
-router.post("/addTutor", firebaseMiddleware, (req, res) => {
-  let newTutor = new Tutor({
+router.post("/addMentor", firebaseMiddleware, (req, res) => {
+  let newTutor = new Mentor({
     firebase_uid: req.user.user_id,
     name: req.body.name,
     phone: req.body.phone,
@@ -123,7 +124,7 @@ router.post("/addTutor", firebaseMiddleware, (req, res) => {
     college_prep: req.body.college_prep,
     languages_spoken: req.body.languages_spoken,
     grade_levels_to_tutors: req.body.grade_levels_to_tutors,
-    tutees: [],
+    mentees: [],
     last_request: new Date().getTime(), // Newer tutors will show up on top.
     public: req.body.public,
     tags: req.body.tags ? req.body.tags : [],
@@ -132,21 +133,21 @@ router.post("/addTutor", firebaseMiddleware, (req, res) => {
   newTutor.save().then((tutor) => res.send(tutor));
 });
 
-router.post("/updateTutee", firebaseMiddleware, (req, res) => {
+router.post("/updateMentee", firebaseMiddleware, (req, res) => {
   // the object with the update should be included in req.body.update
   let update = req.body.update;
-  Tutee.updateOne({ firebase_uid: req.user.user_id }, update)
-    .then((updated_tutee) => res.send(updated_tutee))
+  Mentee.updateOne({ firebase_uid: req.user.user_id }, update)
+    .then((updated_mentee) => res.send(updated_mentee))
     .catch((error) => {
       return res.sendStatus(400).send("Unable to update user, check UID.")
     });
 });
 
-router.post("/updateTutor", firebaseMiddleware, (req, res) => {
+router.post("/updateMentor", firebaseMiddleware, (req, res) => {
   // the object with the update should be included in req.body.update
   let update = req.body.update;
-  Tutor.updateOne({ firebase_uid: req.user.user_id }, update)
-    .then((updated_tutor) => res.send(updated_tutor))
+  Mentor.updateOne({ firebase_uid: req.user.user_id }, update)
+    .then((updated_mentor) => res.send(updated_mentor))
     .catch(() => {
       return res.sendStatus(400).send("Unable to update user, check UID.");
     });
@@ -156,13 +157,13 @@ router.get("/auth_get", firebaseMiddleware, (req, res) => {
   res.send({ status: "success", user: req.user });
 });
 
-router.post("/pingTutor", firebaseMiddleware, (req, res) => {
+router.post("/pingMentor", firebaseMiddleware, (req, res) => {
   const student_email = req.body.student.email;
-  const tutor_uid = req.body.tutor_uid;
+  const mentor_uid = req.body.mentor_uid;
   const student_message = req.body.personal_message;
-  Tutor.findOne({ firebase_uid: tutor_uid }).then((tutor) => {
-    let tutor_email = tutor.email;
-    sendEmail(tutor_email, tutor.name.split()[0], student_email, student_message)
+  Mentor.findOne({ firebase_uid: mentor_uid }).then((mentor) => {
+    let mentor_email = mentor.email;
+    sendEmail(mentor_email, mentor.name.split()[0], student_email, student_message)
       .then(()=> res.send({}));
   });
 });
