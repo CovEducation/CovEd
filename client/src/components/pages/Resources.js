@@ -42,7 +42,9 @@ const theme={
       4,
       8,
       16,
-      32,
+	  32,
+	  36,
+	  40,
       64,
       128,
       140,
@@ -55,7 +57,7 @@ class Resources extends Component {
 		return (
 			<>
 			<Provider theme={theme}>
-			<Section fontSize={[2]} width={[1]} heading="" subhead="" p={3} mt={2} mb={7}>
+			<Section fontSize={[2]} width={[1]} heading="" subhead="" p={2} mt={1} mb={4}>
 			<h2><span className="light-h2">Resources</span><hr className="hr-primary"/> <br /> <br /></h2>
 			<ReactiveBase
 							app="coved"
