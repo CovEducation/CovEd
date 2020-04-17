@@ -92,12 +92,11 @@ export const theme = {
   },
   fontWeights: {
     light: 300,
+    normish: 500,
     normal: 600,
     bold: 700,
   },
-  fontSizes: [
-    12, 16, 24, 36, 48, 72
-  ],
+  fontSizes: [12, 14, 16, 20, 22, 24, 26, 28, 32, 34, 36, 50],
   space: [
     0,
     4,
