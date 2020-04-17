@@ -10,13 +10,10 @@
     border-color: #F2BE32;
     color: #222;
     background-color: #F2BE32;
-    /* -webkit-transition: all .35s;
-    -moz-transition: all .35s;
-    transition: all .35s; */
-    padding: 15px 30px;
-    margin-top: 20px;
-    margin-right: 12px;
-    margin-left: 12px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-right: 6px;
+    margin-left: 6px;
 }
 .btn-primary.loginButton {
   border-color: #F2BE32;
@@ -69,12 +66,10 @@ a:hover{
 
 .light-h{
   font-weight: 400;
-  font-size: 40px;
 }
 
 .light-h2{
   font-weight: 400;
-  font-size: 50px;
 }
 
 .light-text{
@@ -104,7 +99,6 @@ a.dark-a:hover{
 }
 
 .feature{
-  font-size: 24px;
   font-weight: 200;
 }
 
@@ -133,7 +127,7 @@ a.btn-primary{
   text-transform: uppercase;
   font-family: 'Muli', sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 0.9rem;
 }
 
 a.btn-primary:hover{
