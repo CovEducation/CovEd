@@ -1,4 +1,4 @@
-const timeZones = [
+export const timeZones = [
   {
     value: "GMT-4",
     timezone: "Eastern Daylight Time - Boston (GMT-4)"
@@ -110,7 +110,9 @@ export const theme = {
   ]
 };
 
-export const tags = ["Women in STEM", "FGLI", "SPED: Special Education", "ASL: American Sign Language", "LGBTQ + ", "English as a Second Language", "Underrepresented Minority in STEM(African Americans, American Indians / Alaska Natives, and Latinos)", "Early Childhood Learning", "High School", "Middle School", "Elementary School", "Preschool"];
+export const tags = ["Women in STEM", "FGLI", "SPED: Special Education", "ASL: American Sign Language", "LGBTQ + ", "English as a Second Language", "Underrepresented Minority in STEM(African Americans, American Indians / Alaska Natives, and Latinos)", "Early Childhood Learning", "High School", "Middle School", "Elementary School", "Preschool"]
+                    .map(k => {return {label: k, value: k}});
+
 export const about_us_content =
   "CovED is a community of undergraduates from some of the top colleges/universities across the U.S. who are interested in supporting K-12 students in light of the COVID-19 pandemic. Our goal is to create a virtual platform for pairing mentors from higher ed institutions with K-12 students affected by school closures. We hope that this platform and our resources page will help provide additional academic assistance for students and families who are facing hardships caused by the ongoing pandemic.";
 export const problem_content =

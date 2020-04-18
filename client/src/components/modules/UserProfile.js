@@ -9,9 +9,7 @@ import Col from "react-bootstrap/Col";
 import Select from "react-select";
 import Alert from "react-bootstrap/Alert";
 
-import { subjects, tags } from "../Constants";
-import timeZones from "../Constants";
-
+import { subjects, tags, timeZones } from "../Constants";
 import { UserContext } from "../../providers/UserProvider";
 
 class UserProfile extends Component {
@@ -117,8 +115,7 @@ class UserProfile extends Component {
           <Form.Group>
             <Form.Label>Major</Form.Label>
             {
-              this.state.edit
-                ?
+              this.state.edit ?
                 <InputGroup>
                   <Form.Control
                     name="major"
@@ -137,7 +134,6 @@ class UserProfile extends Component {
             </Form.Row>
           </Form.Group>
         </Form.Row>
-
       </>
     )
   }
