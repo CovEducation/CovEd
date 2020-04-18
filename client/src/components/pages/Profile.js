@@ -35,12 +35,12 @@ class Profile extends Component {
       edit: false,
       success: false,
       form: {}
-    }
-  };
+    };
+  }
 
   componentDidMount() {
     this.syncUserDataAndForm();
-  };
+  }
 /*
 Helper methods for syncing user data and the form.
  */
@@ -52,9 +52,9 @@ Helper methods for syncing user data and the form.
     newForm.name = name;
     newForm.email = email;
     newForm.bio = bio;
-    newForm.tags = tags.map(s => { return { value: s, label: s } });
+    newForm.tags = tags.map(s => { return { value: s, label: s }; });
     newForm.role = role;
-    newForm.subjects = subjects.map(s => { return { value: s, label: s } });
+    newForm.subjects = subjects.map(s => { return { value: s, label: s }; });
     newForm.timezone = timezone;
 
     this.setState({
@@ -65,7 +65,7 @@ Helper methods for syncing user data and the form.
     } else if (this.context.user.role === "mentee") {
       this.loadMenteeData();
     }
-  };
+  }
 
   loadMentorData() {
     let mentor = this.context.user;
@@ -75,7 +75,7 @@ Helper methods for syncing user data and the form.
     this.setState({
       form: newForm,
     });
-  };
+  }
 
   loadMenteeData() {
     let mentee = this.context.user;
@@ -86,7 +86,7 @@ Helper methods for syncing user data and the form.
     this.setState({
       form: newForm,
     });
-  };
+  }
 /*
 Form Logic
  */
@@ -94,21 +94,21 @@ Form Logic
     const form = this.state.form;
     form[event.target.name] = event.target.value
     this.setState({ form: form });
-  };
+  }
 
   handleCheckChange = (event) => {
     const form = this.state.form;
     form[event.target.name] = event.target.checked;
     this.setState({ form: form });
-  };
+  }
 
   handleSelectChange = (fieldName) => {
     return (selected) => {
       const form = this.state.form;
       form[fieldName] = selected;
       this.setState({ form: form });
-    }
-  };
+    };
+  }
 
   handleEdit = () => {
     this.setState({ edit: true, success: false });
@@ -120,7 +120,7 @@ Form Logic
 
   displaySuccess = () => {
     this.setState({ success: true, edit: false });
-  };
+  }
 
   handleSubmit = async (event) => {
     event.preventDefault();
@@ -133,11 +133,11 @@ Form Logic
           await this.updateUser();
           this.displaySuccess();
         } catch (error) {
-          alert("Error updating user.")
+          alert("Error updating user.");
         }
       }
     this.setState({ validated: true });
-  };
+  }
 
   updateUser = async () => {
     let update = this.state.form;
@@ -150,10 +150,10 @@ Form Logic
     // Restoring the option format
     let newForm = this.state.form;
     newForm.subjects = this.state.form.subjects.map(s => {
-      return { value: s, label: s }
+      return { value: s, label: s };
     });
     newForm.tags = this.state.form.tags.map(t => {
-      return { value: t, label: t }
+      return { value: t, label: t };
     });
     this.setState({ form: newForm });
   };
@@ -180,7 +180,7 @@ Form Rendering
         }
       </Form.Group>
     );
-  };
+  }
 
   getEmailField() {
     return (
