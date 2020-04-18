@@ -1,5 +1,12 @@
-import React, { Component } from "react";
+/*
+To refactor:
+ - This component should share the format of Profile.js, breaking down the specific fields into
+ small functions.
+ - It should be guardian not parent
+ - We should ask for just name instead of first and last name.
 
+ */
+import React, { Component } from "react";
 import "./Register.css";
 import "../../utilities.css";
 import { post } from "../../utilities";
@@ -166,7 +173,7 @@ class Register extends Component {
           <Form.Control name="parentLastname" value={this.state.form.parentLastname} onChange={this.handleChange} required type="text" placeholder="Last Name" />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationEmail">
+        <Form.Group as={Col} md="4" controlId="validationEmailGuardian">
           <Form.Label>Email</Form.Label>
           <InputGroup>
             <Form.Control
@@ -198,8 +205,6 @@ class Register extends Component {
       extraFields = null;
     }
 
-    let tag_options = tags; // fix before refactoring.
-
     return (
       <>
         <Provider theme={theme}>
@@ -221,18 +226,38 @@ class Register extends Component {
               <Form.Group as={Col} md="4" controlId="validationEmail">
                 <Form.Label>Email</Form.Label>
                 <InputGroup>
-                  <Form.Control
-                    name="email"
-                    value={this.state.form.email}
-                    onChange={this.handleChange}
-                    type="email"
-                    placeholder="youremail@mail.com"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please input a valid email.
-            </Form.Control.Feedback>
+                  {this.state.form.role === "mentor" ?
+                    (<>
+                        <Form.Control
+                          name="email"
+                          value={this.state.form.email}
+                          onChange={this.handleChange}
+                          type="email"
+                          placeholder="user@domain.edu"
+                          aria-describedby="inputGroupPrepend"
+                          pattern=".+@*.edu"
+                          required
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          Please input a valid .edu email.
+                        </Form.Control.Feedback>
+                      </>
+                    ) :
+                    (<>
+                      <Form.Control
+                        name="email"
+                        value={this.state.form.email}
+                        onChange={this.handleChange}
+                        type="email"
+                        placeholder="user@domain.com"
+                        aria-describedby="inputGroupPrepend"
+                        required
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Please input a valid  email.
+                      </Form.Control.Feedback>
+                    </>)
+                  }
                 </InputGroup>
               </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationPassword">
@@ -313,7 +338,7 @@ class Register extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
                 <Form.Label>Optional tags: </Form.Label>
-                <Select value={this.state.form.tags} options={tag_options} isMulti onChange={this.handleSelectChange("tags")} />
+                <Select value={this.state.form.tags} options={tags} isMulti onChange={this.handleSelectChange("tags")} />
               </Form.Group>
             </Form.Row>
             {extraFields}

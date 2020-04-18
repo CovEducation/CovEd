@@ -162,7 +162,7 @@ Form Logic
 Form Rendering
  */
 
-  getTimeZoneField() {
+  getTimeZoneField = () => {
     return (
       <Form.Group as={Col} controlId="formGridState">
         <Form.Label>Time Zone</Form.Label>
@@ -182,7 +182,7 @@ Form Rendering
     );
   }
 
-  getEmailField() {
+  getEmailField = () => {
     return (
     <Form.Group as={Col} md="4" controlId="validationEmail">
       <Form.Label>Email</Form.Label>
@@ -190,18 +190,39 @@ Form Rendering
         this.state.edit
           ?
           <InputGroup>
-            <Form.Control
-              name="email"
-              value={this.state.form.email}
-              onChange={this.handleChange}
-              type="email"
-              placeholder="youremail@mail.com"
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please input a valid email.
-            </Form.Control.Feedback>
+            {this.state.form.role === "mentor" ?
+              (<>
+                  <Form.Control
+                  name="email"
+                  value={this.state.form.email}
+                  onChange={this.handleChange}
+                  type="email"
+                  placeholder="user@domain.edu"
+                  aria-describedby="inputGroupPrepend"
+                  pattern=".+@*.edu"
+                  required
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please input a valid .edu email.
+                </Form.Control.Feedback>
+              </>
+              ) :
+              (<>
+                <Form.Control
+                name="email"
+                value={this.state.form.email}
+                onChange={this.handleChange}
+                type="email"
+                placeholder="user@domain.com"
+                aria-describedby="inputGroupPrepend"
+                required
+                />
+                <Form.Control.Feedback type="invalid">
+                Please input a valid  email.
+                </Form.Control.Feedback>
+              </>)
+            }
+
           </InputGroup>
           : <Form.Control plaintext readOnly type="text" defaultValue={this.state.form.email} />
       }
@@ -286,7 +307,7 @@ Form Rendering
   - Major
   - Public Checkbox
    */
-  getMentorFields() {
+  getMentorFields = () => {
     return (
       <>
         <Form.Row>
@@ -326,7 +347,7 @@ Form Rendering
   - Guardian Email
   - Guardian Phone
    */
-  getMenteeFields() {
+  getMenteeFields = () => {
     return (
       <Form.Row>
         <Form.Group as={Col} md="4" controlId="validationGuadianName">
