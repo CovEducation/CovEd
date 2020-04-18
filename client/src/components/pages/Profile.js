@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import MenteeProfile from "../modules/MenteeProfile.js";
-import MentorProfile from "../modules/MentorProfile.js";
+import UserProfile from "../modules/UserProfile";
 import "./Profile.css";
 import { UserContext } from "../../providers/UserProvider";
 
@@ -16,7 +15,8 @@ class Profile extends Component {
     let profile = null;
     let { user } = this.props;
     if (user) {
-      profile = user.role === "mentee" ? <MenteeProfile mentee={user}/> : <MentorProfile mentor={user}/>;
+     // profile = user.role === "mentee" ? <MenteeProfile mentee={user}/> : <MentorProfile mentor={user}/>;
+      profile = <UserProfile profile={user}/>;
     }
     return (
       <div className='Profile-form'>
