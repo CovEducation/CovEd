@@ -198,9 +198,7 @@ class Register extends Component {
       extraFields = null;
     }
 
-    let tag_options = tags.map(tag => {
-      return {value: tag, label: tag}
-    })
+    let tag_options = tags; // fix before refactoring.
 
     return (
       <>
