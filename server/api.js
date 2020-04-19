@@ -20,6 +20,14 @@ const sendEmail = require("./sendEmail.js")
 const router = express.Router();
 
 const firebaseMiddleware = require("./auth");
+
+const rateLimit = require("express-rate-limit")
+
+const pingLimiter = rateLimit({
+  windowMs: 60 * 60 * 24 * 1000, // 1 day
+  max: 4,
+  message: "Please wait at least one day for the mentor to respond to your requests."
+});
 const firebase = require("firebase-admin");
 
 
@@ -29,8 +37,8 @@ const firebase = require("firebase-admin");
 
 router.get("/mentor", firebaseMiddleware, (req, res) => {
   Mentor.find({
-    firebase_uid: req.user.user_id,
-  })
+      firebase_uid: req.user.user_id,
+    })
     .then((tutor) => {
       res.send(tutor);
     })
@@ -41,12 +49,12 @@ router.get("/mentor", firebaseMiddleware, (req, res) => {
 
 router.get("/mentee", firebaseMiddleware, (req, res) => {
   Mentee.find({
-    firebase_uid: req.user.user_id, 
-  })
+      firebase_uid: req.user.user_id,
+    })
     .then((tutor) => {
       res.send(tutor);
     })
-    .catch(()=> {
+    .catch(() => {
       res.sendStatus(400).send("Could not find user requested.")
     })
 })
@@ -66,9 +74,11 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
   const required_tags = req.query.subjects ? req.query.subjects.split() : [];
   // TODO: Also use req.query.tags
   const limit = req.query.limit || 10;
-  Mentor.find({public: true})
+  Mentor.find({
+      public: true
+    })
     .then((tutors) => {
-      tutors = tutors.filter((mentor)=> {
+      tutors = tutors.filter((mentor) => {
         let overlapping_subjects = mentor.subjects.filter(
           (subject) => required_tags.includes(subject) && subject !== ""
         );
@@ -79,7 +89,7 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
       })
       // People that haven't been requested recently go first.
       let sorted_mentors = tutors.sort((a, b) => {
-          return (a.last_request < b.last_request) ? -1: 1
+        return (a.last_request < b.last_request) ? -1 : 1
       });
 
       sorted_mentors = sorted_mentors.slice(0, limit);
@@ -99,7 +109,7 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
   POST Endpoints
 */
 
-router.post("/addMentee", firebaseMiddleware, (req, res) => {
+router.post("/addMentee", pingLimiter, firebaseMiddleware, (req, res) => {
   let newMentee = new Mentee({
     firebase_uid: req.user.user_id,
     name: req.body.name,
@@ -147,7 +157,9 @@ router.post("/addMentor", firebaseMiddleware, (req, res) => {
 router.post("/updateMentee", firebaseMiddleware, (req, res) => {
   // the object with the update should be included in req.body.update
   let update = req.body.update;
-  Mentee.updateOne({ firebase_uid: req.user.user_id }, update)
+  Mentee.updateOne({
+      firebase_uid: req.user.user_id
+    }, update)
     .then((updated_mentee) => res.send(updated_mentee))
     .catch((error) => {
       return res.sendStatus(400).send("Unable to update user, check UID.").send(error);
@@ -157,7 +169,9 @@ router.post("/updateMentee", firebaseMiddleware, (req, res) => {
 router.post("/updateMentor", firebaseMiddleware, (req, res) => {
   // the object with the update should be included in req.body.update
   let update = req.body.update;
-  Mentor.updateOne({ firebase_uid: req.user.user_id }, update)
+  Mentor.updateOne({
+      firebase_uid: req.user.user_id
+    }, update)
     .then((updated_mentor) => res.send(updated_mentor))
     .catch(() => {
       return res.sendStatus(400).send("Unable to update user, check UID.");
@@ -165,17 +179,23 @@ router.post("/updateMentor", firebaseMiddleware, (req, res) => {
 });
 
 router.get("/auth_get", firebaseMiddleware, (req, res) => {
-  res.send({ status: "success", user: req.user });
+  res.send({
+    status: "success",
+    user: req.user
+  });
 });
 
-router.post("/pingMentor", firebaseMiddleware, (req, res) => {
+
+router.post("/pingMentor", pingLimiter, firebaseMiddleware, (req, res) => {
   const student_email = req.body.student.email;
   const mentor_uid = req.body.mentor_uid;
   const student_message = req.body.personal_message;
-  Mentor.findOne({ firebase_uid: mentor_uid }).then((mentor) => {
+  Mentor.findOne({
+    firebase_uid: mentor_uid
+  }).then((mentor) => {
     let mentor_email = mentor.email;
     sendEmail(mentor_email, mentor.name.split()[0], student_email, student_message)
-      .then(()=> res.send({}));
+      .then(() => res.send({}));
   });
 });
 
@@ -188,7 +208,9 @@ function removeContactInfo(person) {
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
-  res.status(404).send({ msg: "API route not found" });
+  res.status(404).send({
+    msg: "API route not found"
+  });
 });
 
 module.exports = router;
