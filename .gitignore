@@ -8,3 +8,4 @@ google-credentials-heroku.json
 *.gz
 client/dist/*bundle.js?*
 client/dist/*bundle.js
+env
