@@ -23,13 +23,19 @@ const firebaseMiddleware = require("./auth");
 
 const rateLimit = require("express-rate-limit")
 
-const pingLimiter = rateLimit({
+const emailRequestLimiter = rateLimit({
   windowMs: 60 * 60 * 24 * 1000, // 1 day
   max: 4,
   message: "Please wait at least one day for the mentor to respond to your requests."
 });
-const firebase = require("firebase-admin");
 
+const accountRequestLimiter = rateLimit({
+  windowMs: 60 * 60 * 24 * 1000,
+  max: 4,
+  message: "Please only make up to 4 accounts a day."
+})
+
+const firebase = require("firebase-admin");
 
 /*
   GET Endpoints
@@ -60,12 +66,12 @@ router.get("/mentee", firebaseMiddleware, (req, res) => {
 })
 
 router.post("/removeUser", firebaseMiddleware, async (req, res) => {
-  try {
-    await firebase.auth().deleteUser(req.user.user_id);
-    res.sendStatus(200);
-  } catch (error) {
-    res.sendStatus(500);
-  }
+
+  firebase.auth().deleteUser(req.user.user_id)
+  .then(() => res.sendStatus(200))
+  .catch((error) => {
+    res.sendStatus(400).send(error.errorInfo.message);
+  })
 });
 
 router.get("/getMentors", firebaseMiddleware, (req, res) => {
@@ -109,7 +115,7 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
   POST Endpoints
 */
 
-router.post("/addMentee", pingLimiter, firebaseMiddleware, (req, res) => {
+router.post("/addMentee", accountRequestLimiter, firebaseMiddleware, (req, res) => {
   let newMentee = new Mentee({
     firebase_uid: req.user.user_id,
     name: req.body.name,
@@ -130,7 +136,8 @@ router.post("/addMentee", pingLimiter, firebaseMiddleware, (req, res) => {
   newMentee.save().then((tutee) => res.send(tutee));
 });
 
-router.post("/addMentor", firebaseMiddleware, (req, res) => {
+
+router.post("/addMentor", accountRequestLimiter, firebaseMiddleware, (req, res) => {
   let newMentor = new Mentor({
     firebase_uid: req.user.user_id,
     name: req.body.name,
@@ -186,7 +193,7 @@ router.get("/auth_get", firebaseMiddleware, (req, res) => {
 });
 
 
-router.post("/pingMentor", pingLimiter, firebaseMiddleware, (req, res) => {
+router.post("/pingMentor", emailRequestLimiter, firebaseMiddleware, (req, res) => {
   const student_email = req.body.student.email;
   const mentor_uid = req.body.mentor_uid;
   const student_message = req.body.personal_message;

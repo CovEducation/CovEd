@@ -43,15 +43,15 @@ class Register extends Component {
       form: {
         firstname: "",
         lastname: "",
-        parentFirstname: "",
-        parentLastname: "",
+        parentFirstname: undefined,
+        parentLastname: undefined,
         phone: "",
         email: "",
-        parentEmail: "",
+        parentEmail: undefined,
         password: "",
         confirmPassword: "",
         timezone: "GMT-5", // there must be a better way of setting the default values
-        role: "student",
+        role: "mentee",
         adultname: "",
         adultemail: "",
         subjects: [],
@@ -70,31 +70,25 @@ class Register extends Component {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-    } else {
-      // clean up subject list
-      this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
-      this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
-      try {
-        await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
-        const idToken = await auth.currentUser.getIdToken();
-        if (this.state.form.role === "mentor") {
-          await this.postMentor(idToken);
-        } else if (this.state.form.role === "student") {
-          await this.postMentee(idToken);
-        }
-        this.props.navigate('/');
-      } catch (error) {
-        // alert("Please check all the required fields. Make sure your email was not registered before.");
-        // // Removing user from firebase.
-        // try {
-        //   const idToken = await auth.currentUser.getIdToken();
-        //   await post("/api/removeUser", {token: idToken});
-        // } catch (err) {
-        //   console.log(err);
-        // }
+    } 
+    // clean up subject list
+    this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
+    this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
+    try {
+      await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
+      const idToken = await auth.currentUser.getIdToken();
+      if (this.state.form.role === "mentor") {
+        await this.postMentor(idToken).then(()=> {this.props.navigate("/")});
+      } else if (this.state.form.role === "mentee") {
+        await this.postMentee(idToken).then(()=> {this.props.navigate("/")});
       }
+      
+    } catch (error) {
+      alert("Please check all the required fields. Make sure your email was not registered before.");
+      const idToken = await auth.currentUser.getIdToken();
+      await post("/api/removeUser", {token: idToken}).catch((error) => console.log(error));
     }
-    this.setState({ validated: true });
+    this.setState({ validated: true }); 
   };
 
 
@@ -168,14 +162,14 @@ class Register extends Component {
   renderStudentFields() {
     return (
       <Form.Row>
-        <Form.Group as={Col} md="4" controlId="validationCustom01">
+        <Form.Group as={Col} md="4" controlId="validationGuardianFirst">
           <Form.Label>Parent's First name</Form.Label>
-          <Form.Control name="parentFirstname" value={this.state.form.parentFirstname} onChange={this.handleChange} required type="text" placeholder="First Name" />
+          <Form.Control name="parentFirstname" value={this.state.form.parentFirstname} onChange={this.handleChange} required type="text"/>
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationCustom02">
+        <Form.Group as={Col} md="4" controlId="validationGuardianLast">
           <Form.Label>Parent's Last name</Form.Label>
-          <Form.Control name="parentLastname" value={this.state.form.parentLastname} onChange={this.handleChange} required type="text" placeholder="Last Name" />
+          <Form.Control name="parentLastname" value={this.state.form.parentLastname} onChange={this.handleChange} required type="text"/>
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationEmailGuardian">
@@ -186,7 +180,6 @@ class Register extends Component {
               value={this.state.form.parentEmail}
               onChange={this.handleChange}
               type="email"
-              placeholder="youremail@mail.com"
               aria-describedby="inputGroupPrepend"
               required
             />
@@ -204,7 +197,7 @@ class Register extends Component {
     let extraFields;
     if (this.state.form.role === "mentor") {
       extraFields = this.renderMentorFields();
-    } else if (this.state.form.role === "student") {
+    } else if (this.state.form.role === "mentee") {
       extraFields = this.renderStudentFields();
     } else {
       extraFields = null;
@@ -218,12 +211,12 @@ class Register extends Component {
         <div className="ProfileEdit-form">
           <Form noValidate validated={this.state.validated}>
             <Form.Row>
-              <Form.Group as={Col} md="4" controlId="validationCustom01">
+              <Form.Group as={Col} md="4" controlId="validationFirstName">
                 <Form.Label>First name</Form.Label>
                 <Form.Control name="firstname" value={this.state.form.firstname} onChange={this.handleChange} required type="text" placeholder="First Name" />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group as={Col} md="4" controlId="validationCustom02">
+              <Form.Group as={Col} md="4" controlId="validationLastName">
                 <Form.Label>Last name</Form.Label>
                 <Form.Control name="lastname" value={this.state.form.lastname} onChange={this.handleChange} required type="text" placeholder="Last Name" />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -305,7 +298,7 @@ class Register extends Component {
 
 
             <Form.Row>
-              <Form.Group as={Col} controlId="formGridState">
+              <Form.Group as={Col} controlId="formGridTz">
                 <Form.Label>Time Zone</Form.Label>
                 <Form.Control name="timezone" value={this.state.form.timezone} as="select" onChange={this.handleChange}>
                   {timeZones.map((tz => {
@@ -318,10 +311,10 @@ class Register extends Component {
             </Form.Row>
 
             <Form.Row>
-              <Form.Group as={Col} controlId="formGridState">
+              <Form.Group as={Col} controlId="formGridRole">
                 <Form.Label>Role</Form.Label>
                 <Form.Control name="role" value={this.state.form.role} onChange={this.handleChange} as="select">
-                  <option value="student">Student/Parent</option>
+                  <option value="mentee">Student/Parent</option>
                   <option value="mentor">Mentor</option>
                 </Form.Control>
               </Form.Group>
@@ -343,7 +336,7 @@ class Register extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
                 <Form.Label>Optional tags: </Form.Label>
-                <Select value={this.state.form.tags} options={tags} isMulti onChange={this.handleSelectChange("tags")} />
+                <Select value={this.state.form.tags} options={tags} isMulti  onChange={this.handleSelectChange("tags")} />
               </Form.Group>
             </Form.Row>
             {extraFields}
