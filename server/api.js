@@ -20,6 +20,8 @@ const sendEmail = require("./sendEmail.js")
 const router = express.Router();
 
 const firebaseMiddleware = require("./auth");
+const firebase = require("firebase-admin");
+
 
 /*
   GET Endpoints
@@ -48,6 +50,15 @@ router.get("/mentee", firebaseMiddleware, (req, res) => {
       res.sendStatus(400).send("Could not find user requested.")
     })
 })
+
+router.post("/remove_user", firebaseMiddleware, async (req, res) => {
+  try {
+    await firebase.auth().deleteUser(req.user.user_id);
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 router.get("/getMentors", firebaseMiddleware, (req, res) => {
   // We want to return all users which have the required tags and are public, sorted
