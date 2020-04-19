@@ -74,7 +74,6 @@ class Register extends Component {
       // clean up subject list
       this.state.form.subjects_clean = this.state.form.subjects.map(sub => sub.value);
       this.state.form.tags_clean = this.state.form.tags.map(tag => tag.value);
-
       try {
         await auth.createUserWithEmailAndPassword(this.state.form.email, this.state.form.password);
         const idToken = await auth.currentUser.getIdToken();
@@ -85,7 +84,14 @@ class Register extends Component {
         }
         this.props.navigate('/');
       } catch (error) {
-        alert("Please check all the required fields.");
+        // alert("Please check all the required fields. Make sure your email was not registered before.");
+        // // Removing user from firebase.
+        // try {
+        //   const idToken = await auth.currentUser.getIdToken();
+        //   await post("/api/removeUser", {token: idToken});
+        // } catch (err) {
+        //   console.log(err);
+        // }
       }
     }
     this.setState({ validated: true });
@@ -155,7 +161,6 @@ class Register extends Component {
             </InputGroup>
           </Form.Group>
         </Form.Row>
-
       </>
     )
   }

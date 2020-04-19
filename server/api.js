@@ -20,6 +20,8 @@ const sendEmail = require("./sendEmail.js")
 const router = express.Router();
 
 const firebaseMiddleware = require("./auth");
+const firebase = require("firebase-admin");
+
 
 /*
   GET Endpoints
@@ -48,6 +50,15 @@ router.get("/mentee", firebaseMiddleware, (req, res) => {
       res.sendStatus(400).send("Could not find user requested.")
     })
 })
+
+router.post("/removeUser", firebaseMiddleware, async (req, res) => {
+  try {
+    await firebase.auth().deleteUser(req.user.user_id);
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+});
 
 router.get("/getMentors", firebaseMiddleware, (req, res) => {
   // We want to return all users which have the required tags and are public, sorted
@@ -110,7 +121,7 @@ router.post("/addMentee", firebaseMiddleware, (req, res) => {
 });
 
 router.post("/addMentor", firebaseMiddleware, (req, res) => {
-  let newTutor = new Mentor({
+  let newMentor = new Mentor({
     firebase_uid: req.user.user_id,
     name: req.body.name,
     phone: req.body.phone,
@@ -130,7 +141,7 @@ router.post("/addMentor", firebaseMiddleware, (req, res) => {
     tags: req.body.tags ? req.body.tags : [],
   });
 
-  newTutor.save().then((tutor) => res.send(tutor));
+  newMentor.save().then((newMentor) => res.send(newMentor));
 });
 
 router.post("/updateMentee", firebaseMiddleware, (req, res) => {
@@ -139,7 +150,7 @@ router.post("/updateMentee", firebaseMiddleware, (req, res) => {
   Mentee.updateOne({ firebase_uid: req.user.user_id }, update)
     .then((updated_mentee) => res.send(updated_mentee))
     .catch((error) => {
-      return res.sendStatus(400).send("Unable to update user, check UID.")
+      return res.sendStatus(400).send("Unable to update user, check UID.").send(error);
     });
 });
 
