@@ -12,55 +12,64 @@ import { UserContext } from "../../providers/UserProvider";
 import "./MentorResultDisplay.css";
 import { Col, Row } from "react-bootstrap";
 
+/*
+This component renders mentor info and allows a mentee / guardian to
+send a mentor request.
+Proptypes:
+  mentor - the mentor user object to display
+*/
 class MentorResultDisplay extends Component {
   static contextType = UserContext;
   constructor(props) {
     super(props);
-    // Initialize Default State
     this.state = {
       msg: "",
-      user: undefined,
       token: undefined,
     };
   }
 
   componentDidMount() {
-    // remember -- api calls go here!
     auth.currentUser.getIdToken().then((token) => {
       this.setState({ token: token });
-      get("/api/auth_get", { token: token }).then((resp) => {
-        this.setState({
-          user: resp.user,
-        });
-      });
     });
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const user = this.context.user;
     let args = {
       personal_message: this.state.msg,
       mentor_uid: this.props.mentor.firebase_uid,
-      student: this.state.user ? this.state.user : { email: "test@email.com" },
+      student_email: user.email,
       token: this.state.token,
     };
+
+    let guardianInfo = {
+      guardianName: user.guardian_name,
+      guardianEmail:user.guardian_email,
+      token: this.state.token,
+    }
     post("/api/pingMentor", args)
       .then((resp) => {
-        alert("Send message! Expect a reply within the next couple days");
+        post("/api/pingGuardian", guardianInfo);
+      })
+      .then((resp) => {
         this.setState({
           msg: "",
         });
+        alert("Send message! Expect a reply within the next couple days");
       })
       .catch(() => {
         alert("Please wait at least one day for the mentors to respond.");
       });
   };
+
   handleChange = (event) => {
     this.setState({ msg: event.target.value });
   };
 
   render() {
-    const bull = <span>•</span>;
+    const bullet = <span>•</span>;
     return (
       <>
         <Card classes={{ label: "hoveryellow" }}>
@@ -74,12 +83,11 @@ class MentorResultDisplay extends Component {
             <Typography color="textSecondary">Major: {this.props.mentor.major}</Typography>
             <Typography variant="body2" component="p">
               <br />
-              {/* {this.props.mentor.bio ? <h4>About: {this.props.mentor.bio}</h4> : <></> }   */}
               Subjects available for:
               <br />
               {this.props.mentor.subjects.map((subject) => (
                 <>
-                  {bull} {subject} <br />
+                  {bullet} {subject} <br />
                 </>
               ))}
             </Typography>

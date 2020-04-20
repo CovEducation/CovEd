@@ -15,7 +15,6 @@ const Mentee = require("./models/mentee.js");
 
 // connecting to email service
 const sendEmail = require("./sendEmail.js")
-
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
 
@@ -194,17 +193,29 @@ router.get("/auth_get", firebaseMiddleware, (req, res) => {
 
 
 router.post("/pingMentor", emailRequestLimiter, firebaseMiddleware, (req, res) => {
-  const student_email = req.body.student.email;
+  const student_email = req.body.student_email;
   const mentor_uid = req.body.mentor_uid;
   const student_message = req.body.personal_message;
   Mentor.findOne({
     firebase_uid: mentor_uid
   }).then((mentor) => {
     let mentor_email = mentor.email;
-    sendEmail(mentor_email, mentor.name.split()[0], student_email, student_message)
-      .then(() => res.send({}));
+    sendEmail.emailMentor(mentor_email, mentor.name.split()[0], student_email, student_message)
+      .then(() => res.send({}))
+      .catch(() => res.sendStatus(500));
   });
 });
+
+router.post("/pingGuardian", emailRequestLimiter, firebaseMiddleware, (req, res) => {
+  const guardianName  = req.body.guardianName;
+  const guardianEmail = req.body.guardianEmail;
+  sendEmail.emailGuardian(guardianName, guardianEmail)
+           .then(() => {res.send({})})
+           .catch((error) => {
+             console.log(error);
+             res.sendStatus(500);
+           });
+})
 
 function removeContactInfo(person) {
   person.email = undefined;
