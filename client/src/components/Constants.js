@@ -13,10 +13,6 @@ export const timeZones = [
   },
   {
     value: "GMT-7",
-    timezone: "Mountain Standard Time - Phoenix (GMT-7)"
-  },
-  {
-    value: "GMT-7",
     timezone: "Pacific Daylight Time - Los Angeles (GMT-7)"
   },
   {

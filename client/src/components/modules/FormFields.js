@@ -203,7 +203,7 @@ export const getMenteeFields = (formik) => {
       />
       <Form.Control.Feedback type="invalid">{formik.errors.guardian_name}</Form.Control.Feedback>
     </Form.Group>
-    <Form.Group as={Col} md="6" controlId="validationEmail">
+    <Form.Group as={Col} md="6" controlId="validationEmailGuardian">
       <Form.Label>Parent Email</Form.Label>
       <InputGroup>
         <Form.Control
