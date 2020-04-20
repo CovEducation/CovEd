@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import { post, get } from "../../utilities.js";
+import { post } from "../../utilities.js";
 import { auth } from "../../firebase-config";
 import { UserContext } from "../../providers/UserProvider";
 import "./MentorResultDisplay.css";
