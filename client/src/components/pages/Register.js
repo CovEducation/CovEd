@@ -17,13 +17,14 @@ import Select from "react-select";
 
 import { Provider } from "rebass";
 import { Section } from "react-landing-page";
+import Jumbotron from "react-bootstrap/Jumbotron";
 
-import timeZones, { subjects, tags } from "../Constants";
+import timeZones, { subjects, tags, registerDisclaimer } from "../Constants";
 import TermsDialog from "../modules/TermsOfServiceDialog";
 // auth
 import { auth } from "../../firebase-config";
 import { useNavigate } from "@reach/router";
-import { theme} from "../Constants.js";
+import { theme } from "../Constants.js";
 
 const withNavigate = (Component) => {
   return (props) => {
@@ -199,6 +200,16 @@ class Register extends Component {
     )
   }
 
+  getDisclaimer = () => {
+    return (
+        <Jumbotron>
+          <p>
+            {registerDisclaimer}
+          </p>
+        </Jumbotron>
+      
+    )
+  }
   render() {
 
     let extraFields;
@@ -209,11 +220,12 @@ class Register extends Component {
     } else {
       extraFields = null;
     }
-
+    const disclaimer = this.getDisclaimer();
     return (
       <>
+        {disclaimer}
         <Provider theme={theme}>
-        <Section width={[1]} heading="" subhead="" p={6} mt={2} mb={7}>
+        <Section width={[1]} heading="" subhead="" p={1}  mt={1} mb={4}>
         <h2><span className="light-h2">Register <br /><hr className="hr-primary"/><br /></span></h2>
         <div className="ProfileEdit-form">
           <Form noValidate validated={this.state.validated}>
