@@ -243,7 +243,7 @@ const getMenteeFields = (formik) => {
           {formik.errors.guardian_name}
         </Form.Control.Feedback>
       </Form.Group>
-      <Form.Group as={Col} md="6" controlId="validationEmail">
+      <Form.Group as={Col} md="6" controlId="validationEmailGuardian">
         <Form.Label>Parent Email</Form.Label>
         <InputGroup>
           <Form.Control
@@ -263,6 +263,57 @@ const getMenteeFields = (formik) => {
   );
 };
 
+const deleteFirebaseUser = async (idToken, ) => {
+   alert("Unable to create user, make sure this email was not used before");
+    try {
+      const idToken = await auth.currentUser.getIdToken();
+      await post("/api/removeUser", {token: idToken});
+    } catch (err) {
+      console.log(err);
+    }
+};
+
+let createMentor = async (idToken, values) => {
+  return await post("/api/addMentor",
+    {
+      token: idToken,
+      name: values.name,
+      email: values.email,
+      timezone: values.timezone,
+      bio: values.bio,
+      subjects: values.subjects.map((subject) => subject.value),
+      major: values.major,
+      tags: values.tags.map((tag) => tag.value),
+      public: true,
+    });
+}
+
+let createMentee = async (idToken, values) => {
+  return await post("/api/addMentee",
+    {
+      token: idToken,
+      name: values.name,
+      email: values.email,
+      timezone: values.timezone,
+      bio: values.bio,
+      subjects: values.subjects.map((subject) => subject.value),
+      tags: values.tags.map((tag) => tag.value),
+      guardian_name: values.guardian_name,
+      guardian_email: values.guardian_email,
+    });
+}
+
+
+let createAccount = async (values) => {
+  await auth.createUserWithEmailAndPassword(values.email, values.password)
+  const idToken = await auth.currentUser.getIdToken();
+  if (values.role === "mentor") {
+    await createMentor(idToken, values).catch(() => deleteFirebaseUser());
+  } else if (values.role === "student") {
+    await createMentee(idToken, values).catch(() => {
+      deleteFirebaseUser()});
+  }
+}
 
 const RegisterSchema =
   Yup.object().shape({
@@ -311,15 +362,21 @@ const RegisterSchema =
 
 
 
-const Register = () => {
+const Register = (props) => {
   const formik = useFormik({
     initialValues: {
       role: 'student',
       subjects: [],
+      tags: [],
     },
     validationSchema: RegisterSchema,
     onSubmit: values => {
-      console.log(JSON.stringify(values, null, 2));
+      createAccount(values)
+      .then(() => props.navigate("/"))
+      .catch((err) => {
+        alert("Unable to create account.")
+      })
+      
     },
 
   });
