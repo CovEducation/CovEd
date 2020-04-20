@@ -43,7 +43,7 @@ const RegisterSchema = Yup.object().shape({
   timezone: Yup.string().required("Required"),
   role: Yup.string().required("Required"),
   bio: Yup.string(),
-  subjects: Yup.array().required("Please select at least one subject"),
+  subjects: Yup.array(),
   tags: Yup.array(),
 
   email: Yup.string()
@@ -111,6 +111,15 @@ const Register = () => {
       role: "student",
       subjects: [],
       tags: [],
+      password: '',
+      passwordConfirmation: '',
+      guardian_email: '',
+      guardian_name: '',
+      major: '',
+      name: '',
+      email: '',
+      bio: '',
+
     },
     validationSchema: RegisterSchema,
     onSubmit: handleSubmit,
@@ -127,10 +136,11 @@ const Register = () => {
     getSubjectField,
     getTagField,
   ];
-  const fields = fieldGetters.map((generator) => generator(formik));
+  const mainFields = fieldGetters.map((generator) => generator(formik));
   const roleFields =
     formik.values.role === "mentor" ? getMentorFields(formik) : getMenteeFields(formik);
 
+  const fields = mainFields.concat(roleFields);
   return (
     <Provider theme={theme}>
       <Section width={[1]} heading="" subhead="" p={6} mt={2} mb={7}>
@@ -146,8 +156,6 @@ const Register = () => {
             {fields.map((field, i) => {
               return <Form.Row key={i}>{field}</Form.Row>;
             })}
-
-            {roleFields}
             <Button type="submit">Submit</Button>
           </Form>
         </div>

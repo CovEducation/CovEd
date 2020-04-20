@@ -135,7 +135,7 @@ export const getBioField = (formik) => {
 
 export const getSubjectField = (formik) => {
   return (
-    <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
+    <Form.Group as={Col} controlId="validationSubject">
       <Form.Label>Subjects</Form.Label>
 
       <Select
@@ -154,7 +154,7 @@ export const getSubjectField = (formik) => {
 
 export const getTagField = (formik) => {
   return (
-    <Form.Group as={Col} controlId="exampleForm.ControlSelect2">
+    <Form.Group as={Col} controlId="validationTag">
       <Form.Label>Optional tags: </Form.Label>
       <Select
         value={formik.values.tags}
@@ -172,7 +172,7 @@ export const getTagField = (formik) => {
 
 export const getMentorFields = (formik) => {
   return (
-    <Form.Group md="12" as={Col}>
+    <Form.Group as={Col} controlId="validationMajor">
       <Form.Label>Major</Form.Label>
       <InputGroup>
         <Form.Control
@@ -191,34 +191,34 @@ export const getMentorFields = (formik) => {
 
 export const getMenteeFields = (formik) => {
   return (
-    <Form.Row>
-      <Form.Group as={Col} md="6" controlId="validationGuadianName">
-        <Form.Label>Parent's Name</Form.Label>
+    <>
+    <Form.Group as={Col} md="6" controlId="validationGuadianName">
+      <Form.Label>Parent's Name</Form.Label>
+      <Form.Control
+        name="guardian_name"
+        {...formik.getFieldProps("guardian_name")}
+        isInvalid={formik.touched.guardian_name && formik.errors.guardian_name}
+        type="text"
+        placeholder="Parent Name"
+      />
+      <Form.Control.Feedback type="invalid">{formik.errors.guardian_name}</Form.Control.Feedback>
+    </Form.Group>
+    <Form.Group as={Col} md="6" controlId="validationEmail">
+      <Form.Label>Parent Email</Form.Label>
+      <InputGroup>
         <Form.Control
-          name="guardian_name"
-          {...formik.getFieldProps("guardian_name")}
-          isInvalid={formik.touched.guardian_name && formik.errors.guardian_name}
-          type="text"
-          placeholder="Parent Name"
+          name="guardian_email"
+          {...formik.getFieldProps("guardian_email")}
+          isInvalid={formik.touched.guardian_email && formik.errors.guardian_email}
+          type="email"
+          placeholder="youremail@mail.com"
+          aria-describedby="inputGroupPrepend"
         />
-        <Form.Control.Feedback type="invalid">{formik.errors.guardian_name}</Form.Control.Feedback>
-      </Form.Group>
-      <Form.Group as={Col} md="6" controlId="validationEmail">
-        <Form.Label>Parent Email</Form.Label>
-        <InputGroup>
-          <Form.Control
-            name="guardian_email"
-            {...formik.getFieldProps("guardian_email")}
-            isInvalid={formik.touched.guardian_email && formik.errors.guardian_email}
-            type="email"
-            placeholder="youremail@mail.com"
-            aria-describedby="inputGroupPrepend"
-          />
-          <Form.Control.Feedback type="invalid">
-            {formik.errors.guardian_email}
-          </Form.Control.Feedback>
-        </InputGroup>
-      </Form.Group>
-    </Form.Row>
+        <Form.Control.Feedback type="invalid">
+          {formik.errors.guardian_email}
+        </Form.Control.Feedback>
+      </InputGroup>
+    </Form.Group>
+    </>
   );
 };
