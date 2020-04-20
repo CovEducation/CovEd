@@ -150,16 +150,12 @@ const Register = () => {
             <br />
           </span>
         </h2>
-        <div className="ProfileEdit-form">
-          <Form noValidate onSubmit={formik.handleSubmit}>
-            {fields.map((field, i) => {
-              return <Form.Row key={i}>{field}</Form.Row>;
-            })}
-            <TermsDialog
-              onSubmit={(event) => formik.submitForm()}
-            />
-          </Form>
-        </div>
+        <Form className="Register-form" noValidate onSubmit={formik.handleSubmit}>
+          {fields.map((field, i) => {
+            return <Form.Row key={i}>{field}</Form.Row>;
+          })}
+          <TermsDialog onSubmit={(event) => formik.submitForm()} />
+        </Form>
       </Section>
     </Provider>
   );

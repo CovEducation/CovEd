@@ -66,34 +66,30 @@ export const getPasswordField = (formik) => {
     <>
       <Form.Group as={Col} md="6" controlId="validationPassword">
         <Form.Label>Password</Form.Label>
-        <InputGroup>
-          <Form.Control
-            name="password"
-            {...formik.getFieldProps("password")}
-            isInvalid={formik.touched.password && formik.errors.password}
-            type="password"
-            placeholder="Password"
-            aria-describedby="inputGroupPrepend"
-          />
-          <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
-        </InputGroup>
+        <Form.Control
+          name="password"
+          {...formik.getFieldProps("password")}
+          isInvalid={formik.touched.password && formik.errors.password}
+          type="password"
+          placeholder="Password"
+          aria-describedby="inputGroupPrepend"
+        />
+        <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
       </Form.Group>
       <Form.Group as={Col} md="6" controlId="validationPassword1">
         <Form.Label>Confirm password</Form.Label>
-        <InputGroup>
-          <Form.Control
-            name="passwordConfirmation"
-            {...formik.getFieldProps("passwordConfirmation")}
-            isInvalid={formik.touched.passwordConfirmation && formik.errors.passwordConfirmation}
-            type="password"
-            placeholder="Reenter Password"
-            aria-describedby="inputGroupPrepend"
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            {formik.errors.passwordConfirmation}
-          </Form.Control.Feedback>
-        </InputGroup>
+        <Form.Control
+          name="passwordConfirmation"
+          {...formik.getFieldProps("passwordConfirmation")}
+          isInvalid={formik.touched.passwordConfirmation && formik.errors.passwordConfirmation}
+          type="password"
+          placeholder="Reenter Password"
+          aria-describedby="inputGroupPrepend"
+          required
+        />
+        <Form.Control.Feedback type="invalid">
+          {formik.errors.passwordConfirmation}
+        </Form.Control.Feedback>
       </Form.Group>
     </>
   );
@@ -174,17 +170,15 @@ export const getMentorFields = (formik) => {
   return (
     <Form.Group as={Col} controlId="validationMajor">
       <Form.Label>Major</Form.Label>
-      <InputGroup>
-        <Form.Control
-          name="major"
-          {...formik.getFieldProps("major")}
-          isInvalid={formik.touched.major && formik.errors.major}
-          type="text"
-          placeholder="Learning"
-          aria-describedby="inputGroupPrepend"
-        />
-        <Form.Control.Feedback type="invalid">{formik.errors.major}</Form.Control.Feedback>
-      </InputGroup>
+      <Form.Control
+        name="major"
+        {...formik.getFieldProps("major")}
+        isInvalid={formik.touched.major && formik.errors.major}
+        type="text"
+        placeholder="Learning"
+        aria-describedby="inputGroupPrepend"
+      />
+      <Form.Control.Feedback type="invalid">{formik.errors.major}</Form.Control.Feedback>
     </Form.Group>
   );
 };
@@ -192,20 +186,19 @@ export const getMentorFields = (formik) => {
 export const getMenteeFields = (formik) => {
   return (
     <>
-    <Form.Group as={Col} md="6" controlId="validationGuadianName">
-      <Form.Label>Parent's Name</Form.Label>
-      <Form.Control
-        name="guardian_name"
-        {...formik.getFieldProps("guardian_name")}
-        isInvalid={formik.touched.guardian_name && formik.errors.guardian_name}
-        type="text"
-        placeholder="Parent Name"
-      />
-      <Form.Control.Feedback type="invalid">{formik.errors.guardian_name}</Form.Control.Feedback>
-    </Form.Group>
-    <Form.Group as={Col} md="6" controlId="validationEmailGuardian">
-      <Form.Label>Parent Email</Form.Label>
-      <InputGroup>
+      <Form.Group as={Col} md="6" controlId="validationGuadianName">
+        <Form.Label>Parent's Name</Form.Label>
+        <Form.Control
+          name="guardian_name"
+          {...formik.getFieldProps("guardian_name")}
+          isInvalid={formik.touched.guardian_name && formik.errors.guardian_name}
+          type="text"
+          placeholder="Parent Name"
+        />
+        <Form.Control.Feedback type="invalid">{formik.errors.guardian_name}</Form.Control.Feedback>
+      </Form.Group>
+      <Form.Group as={Col} md="6" controlId="validationEmailGuardian">
+        <Form.Label>Parent Email</Form.Label>
         <Form.Control
           name="guardian_email"
           {...formik.getFieldProps("guardian_email")}
@@ -214,11 +207,8 @@ export const getMenteeFields = (formik) => {
           placeholder="youremail@mail.com"
           aria-describedby="inputGroupPrepend"
         />
-        <Form.Control.Feedback type="invalid">
-          {formik.errors.guardian_email}
-        </Form.Control.Feedback>
-      </InputGroup>
-    </Form.Group>
+        <Form.Control.Feedback type="invalid">{formik.errors.guardian_email}</Form.Control.Feedback>
+      </Form.Group>
     </>
   );
 };
