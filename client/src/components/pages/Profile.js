@@ -5,10 +5,11 @@ import "../modules/ProfileEdit.css";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { subjects, tags, timeZones } from "../Constants";
+import { subjects, tags, timeZones, expectations_mentor_before, expectations_mentor_after } from "../Constants";
 import Select from "react-select";
 import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
+import Alert from "@material-ui/lab/Alert";
+import AlertTitle from "@material-ui/lab/AlertTitle";
 import { post } from "../../utilities";
 import "./Profile.css";
 /*
@@ -302,6 +303,20 @@ Form Rendering
       </Form.Group>
     );
   };
+
+  getExpectationsToast = () => {
+    return (
+      <>
+        <Alert severity="info">
+          <AlertTitle>Expectations</AlertTitle>
+          {expectations_mentor_before}
+          <br/>
+          {expectations_mentor_after}
+        </Alert>
+      </>
+    );
+  };
+
   /*
   Generates the following mentor fields:
   - Major
@@ -398,6 +413,7 @@ Form Rendering
     let optionalTagField = this.getOptionalTagField();
     let mainFields = [nameField, emailField, timezoneField, roleField, bioField, subjectField, optionalTagField];
     let roleBasedFields = this.state.form.role === "mentor" ? this.getMentorFields() : this.getMenteeFields();
+    let expectations = this.getExpectationsToast();
     return (
       <>
       <div className={"ProfileEdit-form"}>
@@ -413,6 +429,9 @@ Form Rendering
         </Form>
         {!this.state.edit && <Button type="button" onClick={this.handleEdit}>Edit</Button>}
         {this.state.success && <Alert variant="success">Profile updated successfully!</Alert>}
+        <div style={{padding: 4}}>
+          {expectations}
+        </div>
       </div>
       </>);
   }
