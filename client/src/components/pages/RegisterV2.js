@@ -270,7 +270,7 @@ const RegisterSchema =
     timeZone: Yup.string().required('Required'),
     role: Yup.string().required('Required'),
     bio: Yup.string(),
-    subjects: Yup.array().required('Please select atleast one subject'),
+    subjects: Yup.array().required('Please select at least one subject'),
     tags: Yup.array(),
 
     email: Yup.string().email().required('Please input a valid email.')
@@ -281,10 +281,14 @@ const RegisterSchema =
       }),
 
     password: Yup.string()
-      .required('Password Required'),
+      .required('Password Required')
+      .matches(
+        /^[A-Za-z0-9\s$&+,:;=?@#|'<>.^*()%!-]{6,}$/,
+        "Password must be at least 6 characters long."
+      ),
     passwordConfirmation: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Password Confirmation Required'),
+      .oneOf([Yup.ref('password'), null], 'Passwords must match.')
+      .required('Password Confirmation Required.'),
 
     guardian_name: Yup.string()
       .when("role", {
