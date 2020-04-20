@@ -17,7 +17,7 @@ By using our service, you are agreeing to assume all risks connected with partic
 not make a claim against, sue or attach the property of CovEd, its directors and volunteers for any claim, judgement, loss,
 liability, costs and expenses, for any injury, however caused, even if by negligence, as a result of the student’s participation. By continuing to submit this form you are voluntarily agreeing to the above listed terms and conditions.`
 
-export default function TermsDialog(props) {
+const TermsDialog = (props) => {
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
 
@@ -70,3 +70,5 @@ export default function TermsDialog(props) {
     </div>
   );
 }
+
+export default TermsDialog;

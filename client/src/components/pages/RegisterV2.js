@@ -111,15 +111,14 @@ const Register = () => {
       role: "student",
       subjects: [],
       tags: [],
-      password: '',
-      passwordConfirmation: '',
-      guardian_email: '',
-      guardian_name: '',
-      major: '',
-      name: '',
-      email: '',
-      bio: '',
-
+      password: "",
+      passwordConfirmation: "",
+      guardian_email: "",
+      guardian_name: "",
+      major: "",
+      name: "",
+      email: "",
+      bio: "",
     },
     validationSchema: RegisterSchema,
     onSubmit: handleSubmit,
@@ -156,7 +155,9 @@ const Register = () => {
             {fields.map((field, i) => {
               return <Form.Row key={i}>{field}</Form.Row>;
             })}
-            <Button type="submit">Submit</Button>
+            <TermsDialog
+              onSubmit={(event) => formik.submitForm()}
+            />
           </Form>
         </div>
       </Section>
