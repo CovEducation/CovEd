@@ -38,16 +38,25 @@ class Profile extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.syncUserDataAndForm();
+  };
+
+  componentDidUpdate() {
+    if (this.state.form.name === undefined) {
+      this.syncUserDataAndForm();
+    }
   }
+
 /*
 Helper methods for syncing user data and the form.
  */
-  syncUserDataAndForm() {
+  async syncUserDataAndForm() {
+    let user = await this.context.refreshUser();
+    if (user === undefined) return; // not logged in.
     const {
       name, email, timezone, subjects, bio, tags, role
-    } = this.context.user;
+    } = user;
     let newForm = this.state.form;
     newForm.name = name;
     newForm.email = email;

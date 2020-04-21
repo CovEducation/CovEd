@@ -18,8 +18,8 @@ class UserProvider extends Component {
   }
 
   async refreshUser() {
-    const token = this.state.user.token;
     try {
+      const token = this.state.user.token;
       let user = await get("/api/mentee", { token: token });
       let role = "mentee";
 
@@ -33,8 +33,9 @@ class UserProvider extends Component {
       user.role = role;
       user.token = token;
       this.setState({ user: user });
+      return user;
     } catch (err) {
-      console.log(err);
+      return;
     }
   }
 
@@ -43,7 +44,6 @@ class UserProvider extends Component {
       if (fbUser) {
         try {
           const token = await fbUser.getIdToken();
-
           let user = await get("/api/mentee", { token: token });
           let role = "mentee";
 

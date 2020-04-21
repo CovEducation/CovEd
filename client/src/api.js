@@ -11,9 +11,7 @@ export const createNewUser = async (values) => {
     } else if (values.role === "student") {
       await postMentee(idToken, values);
     }
-    return "Successfully created new user.";
   } catch (error) {
-    console.log(error);
     if (idToken) await post("/api/removeUser", { token: idToken });
     throw new Error("Error creating new user.");
   }

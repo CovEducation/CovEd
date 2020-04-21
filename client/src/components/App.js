@@ -10,7 +10,7 @@ import UserProvider from "../providers/UserProvider";
 const NotFound = lazy(()=>import("./pages/NotFound.js"));
 const Homepage = lazy(()=>import("./pages/Homepage.js"));
 const SignIn = lazy(()=>import("./pages/SignIn.js"));
-const Register = lazy(()=>import("./pages/RegisterV2.js"));
+const Register = lazy(()=>import("./pages/Register.js"));
 const Resources = lazy(()=>import("./pages/Resources.js"));
 const FAQ = lazy(()=>import("./pages/FAQ.js"));
 const WhoWeAre = lazy(()=>import("./pages/WhoWeAre.js"));
