@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
 import Select from "react-select";
 

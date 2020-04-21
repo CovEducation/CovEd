@@ -1,4 +1,4 @@
-import React, { Component, useContext } from "react";
+import React, { useContext } from "react";
 import "./Register.css";
 
 import Form from "react-bootstrap/Form";
