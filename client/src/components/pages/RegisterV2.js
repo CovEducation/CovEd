@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import "./Register.css";
 
 import Form from "react-bootstrap/Form";
@@ -8,6 +8,7 @@ import { Section } from "react-landing-page";
 
 import TermsDialog from "../modules/TermsOfServiceDialog";
 
+import { UserContext } from "../../providers/UserProvider";
 import { createNewUser } from "../../api";
 
 import { useNavigate } from "@reach/router";
@@ -90,6 +91,7 @@ const RegisterSchema = Yup.object().shape({
  * This page handles user sign up.
  */
 const Register = () => {
+  const userProvider = useContext(UserContext);
   const navigate = useNavigate();
   const handleSubmit = async (values) => {
     const user = { ...values };
@@ -97,7 +99,8 @@ const Register = () => {
     user.tags = user.tags.map((tag) => tag.value);
 
     try {
-      await createNewUser(user);
+      console.log(await createNewUser(user));
+      userProvider.refreshUser(); // force the user provider to refresh to update from mongodb
       navigate("/");
     } catch (error) {
       console.log(error);
