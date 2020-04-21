@@ -398,6 +398,7 @@ Form Rendering
   };
 
   render() {
+    if (this.state.form.name === undefined) return (<div></div>); // Data not loaded yet.
     let nameField = this.getNameField();
     let emailField = this.getEmailField();
     let timezoneField = this.getTimeZoneField();
