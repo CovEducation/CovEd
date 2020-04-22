@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Register.css";
 
 import Form from "react-bootstrap/Form";
@@ -7,7 +7,6 @@ import { Section } from "react-landing-page";
 
 import TermsDialog from "../modules/TermsOfServiceDialog";
 
-import { UserContext } from "../../providers/UserProvider";
 import { createNewUser } from "../../api";
 
 import { useNavigate } from "@reach/router";

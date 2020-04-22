@@ -10,7 +10,7 @@ import { updateUser } from "../../api";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { Provider } from "rebass";
-import { Section, Heading, Subhead } from "react-landing-page";
+import { Section } from "react-landing-page";
 import { theme } from "../Constants";
 import {
     getNameField,
@@ -224,7 +224,7 @@ const Profile = () => {
         }
     }
 
-    const getEditFields = () => {
+    const getEditFields = (formik) => {
         const fieldGetters = [
             getNameField,
             getEmailField,
