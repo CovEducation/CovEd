@@ -6,13 +6,7 @@ import { subjects, tags } from "../Constants";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 
-let OPTIONS = subjects.concat( tags.map((tag) => {
-  return {
-    label: tag,
-    value: tag
-  }
-}));
-
+const OPTIONS = subjects.concat(tags);
 
 class MentorFilter extends Component {
   constructor(props) {
@@ -24,10 +18,8 @@ class MentorFilter extends Component {
 
 
   handleChange = (selected) => {
-    this.setState({ value: selected })
-    if (selected.length == 0) {
-      selected = OPTIONS;
-    }
+    if (selected === null) selected = [];
+    this.setState({ value: selected });
     this.props.onChange(selected.map(sub => sub.value));
   }
 

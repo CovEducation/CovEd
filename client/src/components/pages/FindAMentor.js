@@ -8,27 +8,31 @@ import { get } from "../../utilities.js";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { UserContext } from "../../providers/UserProvider";
 
 class FindAMentor extends Component {
+
+  static contextType = UserContext;
+
   constructor(props) {
     super(props);
     this.state = {
-      subjects: ["Math"], // Default.
+      tags: [],
       selected_mentor: undefined,
       mentors: [],
-      token: undefined,
     };
   }
 
-  updateTags = (subjects) => {
-    const { user } = this.props;
-    if (this.state.subjects !== subjects) {
-      get("/api/getMentors", { subjects: subjects, limit: 10, token: user.token }).then((mentors) => {
-        if (this.state.mentors !== mentors) {
-          this.setState({ mentors: mentors })
-        }
-      });
-      this.setState({ subjects: subjects })
+  componentDidMount() {
+    this.context.refreshUser()
+    .then(this.searchForMentors);
+  }
+
+  updateTags = (tags) => {
+    if (this.state.tags !== tags) {
+      //console.log("Setting state to ")
+      //console.log(tags)
+      this.setState({ tags: tags }, this.searchForMentors);
     }
     // We also want to clear the mentor selection
     this.setState({ selected_mentor: undefined })
@@ -38,18 +42,25 @@ class FindAMentor extends Component {
     if (this.state.selected_mentor != mentor) this.setState({ selected_mentor: mentor });
   };
 
-  componentDidMount() {
-    const { user } = this.props;
-    get("/api/getMentors", { subjects: this.state.subjects, limit: 10, token: user.token }).then((mentors) => {
-      if (this.state.mentors !== mentors) {
-        this.setState({ mentors: mentors })
-      }
-    });
-    
+  searchForMentors = () => {
+    const user = this.context.user;
+    if (user) {
+      console.log("Searching for these tags: ")
+      console.log(this.state.tags);
+      get("/api/getMentors", { subjects: this.state.tags, limit: 10, token: user.token }).then((mentors) => {
+        if (this.state.mentors !== mentors) {
+          this.setState({ mentors: mentors })
+        }
+      });
+    } 
   }
 
-
   render() {
+    if (!this.context.user){ 
+      return <div></div>
+    } else if (this.state.mentors.length === 0 && this.state.tags.length === 0) {
+      this.searchForMentors();
+    }
     return (
       <Container>
       <Row>

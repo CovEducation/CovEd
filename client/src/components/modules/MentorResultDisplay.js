@@ -63,7 +63,7 @@ class MentorResultDisplay extends Component {
     const bull = <span>•</span>;
     return (
       <>
-        <Card classes={{ label: "hoveryellow" }}>
+        <Card label="hoveryellow">
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Mentor Information
@@ -74,13 +74,13 @@ class MentorResultDisplay extends Component {
             <Typography color="textSecondary">Major: {this.props.mentor.major}</Typography>
             <Typography variant="body2" component="p">
               <br />
-              {/* {this.props.mentor.bio ? <h4>About: {this.props.mentor.bio}</h4> : <></> }   */}
               Subjects available for:
               <br />
-              {this.props.mentor.subjects.map((subject) => (
-                <>
-                  {bull} {subject} <br />
-                </>
+              {this.props.mentor.subjects.map((subject, i) => (
+                <div key={subject + i}>
+                  {bull} {subject}
+                  <br />
+                </div> 
               ))}
             </Typography>
           </CardContent>

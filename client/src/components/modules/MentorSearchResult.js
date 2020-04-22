@@ -10,10 +10,10 @@ class MentorSearchResult extends Component {
     };
   }
   
-  make_mentor_card = (mentor) => {
+  make_mentor_card = (mentor, i) => {
     return (
-      <div style={{ padding: "1em" }}>
-        <ProfileCard user={mentor} key={mentor.name} onClick={() => this.setState({ mentor_selected: mentor })} />
+      <div style={{ padding: "1em" }} key={mentor.name + mentor.bio + i}>
+        <ProfileCard user={mentor}  onClick={() => this.setState({ mentor_selected: mentor })} />
       </div>
     );
   };
@@ -25,7 +25,7 @@ class MentorSearchResult extends Component {
   render() {
     return (
       <>
-        <List style={{maxHeight: 700, overflow: 'auto'}}>{this.props.mentors.map((mentor) => this.make_mentor_card(mentor))}</List>
+        <List style={{maxHeight: 700, overflow: 'auto'}}>{this.props.mentors.map((mentor, i) => this.make_mentor_card(mentor, i))}</List>
       </>
     );
   }
