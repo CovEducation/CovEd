@@ -14,10 +14,8 @@ class NavBar extends Component {
 
   static contextType = UserContext;
 
-  componentDidMount() {  }
-
   signOut(event) {
-    auth.signOut().then(()=>{});
+    auth.signOut();
   }
 
   render() {

@@ -8,7 +8,7 @@ export const createNewUser = async (values) => {
     idToken = await auth.currentUser.getIdToken();
     if (values.role === "mentor") {
       await postMentor(idToken, values);
-    } else if (values.role === "student") {
+    } else {
       await postMentee(idToken, values);
     }
   } catch (error) {
@@ -16,6 +16,12 @@ export const createNewUser = async (values) => {
     throw new Error("Error creating new user.");
   }
 };
+
+export const updateUser = async (user, token) => {
+  const endpoint = user.role === "mentor" ? "/api/updateMentor" : "/api/updateMentee";
+  await post(endpoint, { update: user, token: token});
+  return user;
+}
 
 const postMentee = async (idToken, values) => {
   return await post("/api/addMentee", {
@@ -26,7 +32,7 @@ const postMentee = async (idToken, values) => {
     bio: values.bio,
     subjects: values.subjects,
     guardian_name: values.guardian_name,
-    guardian_email: values.guardian_name,
+    guardian_email: values.guardian_email,
   });
 };
 
@@ -43,3 +49,4 @@ const postMentor = async (idToken, values) => {
     public: true,
   });
 };
+
