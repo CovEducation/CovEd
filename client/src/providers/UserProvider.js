@@ -35,7 +35,7 @@ class UserProvider extends Component {
       this.setState({ user: user });
       return user;
     } catch (err) {
-      return;
+      this.setState({user: undefined});
     }
   }
 

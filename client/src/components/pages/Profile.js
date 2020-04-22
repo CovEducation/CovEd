@@ -1,431 +1,305 @@
-import React, { Component } from "react";
-import { UserContext } from "../../providers/UserProvider";
+import React, { useContext, useState } from "react";
+import "./Profile.css";
 
-import "../modules/ProfileEdit.css";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import { subjects, tags, timeZones } from "../Constants";
-import Select from "react-select";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-import { post } from "../../utilities";
-import "./Profile.css";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { UserContext } from "../../providers/UserProvider";
+import { updateUser } from "../../api";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import { Provider } from "rebass";
+import { Section } from "react-landing-page";
+import { theme } from "../Constants";
+import {
+    getNameField,
+    getEmailField,
+    getTimezoneField,
+    getRoleField,
+    getBioField,
+    getSubjectField,
+    getTagField,
+    getMentorFields,
+    getMenteeFields,
+} from "../modules/FormFields";
+
+
+/**
+ * This is logic to validate the form schema.
+ * https://github.com/jquense/yup
+ *
+ * This is the place that you should define the validation and
+ * error messages.
+ */
+const ProfileEditSchema = Yup.object().shape({
+    name: Yup.string().required("Please enter your name."),
+    timezone: Yup.string().required("Required"),
+    role: Yup.string().required("Required"),
+    bio: Yup.string(),
+    subjects: Yup.array(),
+    tags: Yup.array(),
+
+    email: Yup.string()
+        .email()
+        .required("Please input a valid email.")
+        .when("role", {
+            is: (role) => role === "mentor",
+            then: Yup.string()
+                .email()
+                .matches(/.+@*.edu/i, "Mentors are required to use an .edu email.")
+                .required("Please input a valid .edu email."),
+        }),
+
+    guardian_name: Yup.string().when("role", {
+        is: (role) => role !== "mentor",
+        then: Yup.string().required("Please enter a Parent or Guardian's name."),
+    }),
+    guardian_email: Yup.string()
+        .email()
+        .when("role", {
+            is: (role) => role !== "mentor",
+            then: Yup.string().required("Please input a valid email."),
+        }),
+
+    major: Yup.string().when("role", {
+        is: (role) => role === "mentor",
+        then: Yup.string().required("Major is a required field."),
+    }),
+    public: Yup.boolean(),
+});
+
 /*
-* Component to render and edit a mentor or mentee.
-* Proptypes:
-*  - None
-*
-* Implementation details:
-*   - User data is taken from the UserContext.
-*   - This component renders 2 different version of components based on whether
-*   the user wants to edit their profile.
-*   - For every field, there is a method that generates the field component and validation function.
-*   - For the subjects and tags fields, we convert an entry to an
-*   object {value: entry, label: entry}. This is to be compatible with the multi-select dropdown.
-*   When user data is retrieved or about to be updated, we convert the object into the
-*   original array.
+* Profile Page Component
+* This component shows the profile information and allows
+* the user to edit their info.
 */
-class Profile extends Component {
-  static contextType = UserContext;
-  constructor(props){
-    super(props);
-    this.state = {
-      validated: false,
-      edit: false,
-      success: false,
-      form: {}
+const Profile = () => {
+    const userProvider = useContext(UserContext);
+    const [edit, setEdit] = useState(false);
+    const [success, setSuccess] = useState(false);
+
+    
+    const displaySuccess = () => {
+        setEdit(false);
+        setSuccess(true);
+    }
+
+    const handleEdit = () => {
+        setEdit(true);
+        setSuccess(false);
+    }
+
+    const handleCancel = () => {
+        setEdit(false);
+    }
+
+    const handleSubmit = async (values) => {
+        let user = { ...values };
+        user.subjects = user.subjects.map((sub) => sub.value);
+        user.tags = user.tags.map((tag) => tag.value);
+        updateUser(user, userProvider.user.token)
+        .then((user) => {userProvider.user = user})
+        .then(displaySuccess)
+        .catch((err) => {
+            console.log(err);
+        });
     };
-  }
+    
 
-  componentWillMount() {
-    this.syncUserDataAndForm();
-  };
+    /*
+        Form Rendering
+    */
 
-  componentDidUpdate() {
-    if (this.state.form.name === undefined) {
-      this.syncUserDataAndForm();
+    const getStaticTimeZoneField = () => {
+        return (
+            <Form.Group as={Col} controlId="formGridState">
+                <Form.Label>Time Zone</Form.Label>
+                    <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.timezone} />   
+            </Form.Group>
+        );
     }
-  }
 
-/*
-Helper methods for syncing user data and the form.
- */
-  async syncUserDataAndForm() {
-    let user = await this.context.refreshUser();
-    if (user === undefined) return; // not logged in.
-    const {
-      name, email, timezone, subjects, bio, tags, role
-    } = user;
-    let newForm = this.state.form;
-    newForm.name = name;
-    newForm.email = email;
-    newForm.bio = bio;
-    newForm.tags = tags.map(s => { return { value: s, label: s }; });
-    newForm.role = role;
-    newForm.subjects = subjects.map(s => { return { value: s, label: s }; });
-    newForm.timezone = timezone;
-
-    this.setState({
-      form: newForm,
-    });
-    if (this.context.user.role === "mentor") {
-      this.loadMentorData();
-    } else if (this.context.user.role === "mentee") {
-      this.loadMenteeData();
-    }
-  }
-
-  loadMentorData() {
-    let mentor = this.context.user;
-    let newForm = this.state.form;
-    newForm.public = mentor.public;
-    newForm.major = mentor.major;
-    this.setState({
-      form: newForm,
-    });
-  }
-
-  loadMenteeData() {
-    let mentee = this.context.user;
-    let newForm = this.state.form;
-    newForm.guardian_phone = mentee.guardian_phone;
-    newForm.guardian_email = mentee.guardian_email;
-    newForm.guardian_name = mentee.guardian_name;
-    this.setState({
-      form: newForm,
-    });
-  }
-/*
-Form Logic
- */
-  handleChange = (event) => {
-    const form = this.state.form;
-    form[event.target.name] = event.target.value
-    this.setState({ form: form });
-  }
-
-  handleCheckChange = (event) => {
-    const form = this.state.form;
-    form[event.target.name] = event.target.checked;
-    this.setState({ form: form });
-  }
-
-  handleSelectChange = (fieldName) => {
-    return (selected) => {
-      const form = this.state.form;
-      form[fieldName] = selected;
-      this.setState({ form: form });
+    const getStaticEmailField = () => {
+        return (
+            <Form.Group as={Col} md="4" controlId="validationEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.email} />
+            </Form.Group>
+        );
     };
-  }
 
-  handleEdit = () => {
-    this.setState({ edit: true, success: false });
-  }
+    const getStaticNameField = () => {
+        return (
+            <Form.Group as={Col} md="4" controlId="validationCustom01">
+                <Form.Label>Name</Form.Label>
+                <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.name} />
+            </Form.Group>
+        );
+    };
 
-  handleCancel = () => {
-    this.setState({ edit: false });
-  }
+    const getStaticRoleField = () => {
+        const role = userProvider.user.role === "mentor" ? "Mentor" : "Student";
+        return (
+            <Form.Group as={Col} md="4" controlId="formControl.role">
+                <Form.Label>Role</Form.Label>
+                <Form.Control plaintext readOnly type="text" defaultValue={role} />
+            </Form.Group>
+        );
+    };
 
-  displaySuccess = () => {
-    this.setState({ success: true, edit: false });
-  }
+    const getStaticBioField = () => { 
+        return (
+        <Form.Group as={Col} controlId="formBioTextArea">
+            <Form.Label>Introduce Yourself!</Form.Label>
+            <Form.Control as="textarea" readOnly defaultValue={userProvider.user.bio} />
+        </Form.Group>);
+    };
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    } else {
-        try {
-          await this.updateUser();
-          this.displaySuccess();
-        } catch (error) {
-          alert("Error updating user.");
+    const getStaticSubjectField = () => {
+    
+        return (<>
+                <Form.Group as={Col} md="4" controlId="formControl.subjects">
+                    <Form.Label>Subjects</Form.Label>
+                    {userProvider.user.subjects && <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.subjects} />}
+                </Form.Group>
+            </>);
+    };
+
+    const getStaticOptionalTagField = () => {
+        return (
+            <Form.Group as={Col} controlId="exampleForm.ControlOptionalFields">
+                <Form.Label>Optional Tags</Form.Label>
+                {
+                userProvider.user.tags && <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.tags} />
+                }
+            </Form.Group>
+        );
+    };
+
+    const getStaticMentorFields = () => {
+        return (
+            <>
+                    <Form.Group md="4" as={Col}>
+                        <Form.Label>Major</Form.Label>
+                            <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.major} />
+                    </Form.Group>
+                    <Form.Check checked={userProvider.user.public}
+                        name="public"
+                        type="checkbox" label="Listed as an Available Mentor." />
+            </>
+        );
+    };
+
+    const getStaticMenteeFields = () => {
+        return (
+            <>
+                <Form.Group as={Col} md="4" controlId="validationGuadianName">
+                    <Form.Label>Parent's Name</Form.Label>
+                    <Form.Control name="guardian_name" plaintext readOnly defaultValue={userProvider.user.guardian_name} />
+                
+                </Form.Group>
+                <Form.Group as={Col} md="4" controlId="validationEmail">
+                    <Form.Label>Parent Email</Form.Label>
+                    <Form.Control name="guardian_email" plaintext readOnly defaultValue={userProvider.user.guardian_email} />
+                </Form.Group>
+            </>
+        );
+    };
+
+    const getStaticFields = () => {
+        let nameField = getStaticNameField();
+        let emailField = getStaticEmailField();
+        let timezoneField = getStaticTimeZoneField();
+        let roleField = getStaticRoleField();
+        let bioField = getStaticBioField();
+        let subjectField = getStaticSubjectField();
+        let optionalTagField = getStaticOptionalTagField();
+        let mainFields = [nameField, emailField, timezoneField, roleField, bioField, subjectField, optionalTagField];
+
+        if (userProvider.user.role === "mentor") {
+            return mainFields.concat(getStaticMentorFields());
+        } else {
+            return mainFields.concat(getStaticMenteeFields());
         }
-      }
-    this.setState({ validated: true });
-  }
-
-  updateUser = async () => {
-    let update = this.state.form;
-    // Restoring the original format of the document.
-    update.subjects = update.subjects.map(sub => sub.value);
-    update.tags = update.tags.map(tag => tag.value);
-    const endpoint = this.state.form.role === "mentor" ? "/api/updateMentor" : "/api/updateMentee";
-    await post(endpoint, { update: update, token: this.context.user.token });
-    await this.context.refreshUser();
-    // Restoring the option format
-    let newForm = this.state.form;
-    newForm.subjects = this.state.form.subjects.map(s => {
-      return { value: s, label: s };
-    });
-    newForm.tags = this.state.form.tags.map(t => {
-      return { value: t, label: t };
-    });
-    this.setState({ form: newForm });
-  };
-
-/*
-Form Rendering
- */
-
-  getTimeZoneField = () => {
-    return (
-      <Form.Group as={Col} controlId="formGridState">
-        <Form.Label>Time Zone</Form.Label>
-        {
-          this.state.edit
-            ?
-            <Form.Control name="timezone" value={this.state.form.timezone} as="select" onChange={this.handleChange}>
-              {timeZones.map((tz => {
-                return (
-                  <option value={tz.timezone}> {tz.timezone} </option>
-                );
-              }))}
-            </Form.Control>
-            : <Form.Control plaintext readOnly type="text" defaultValue={this.state.form.timezone} />
-        }
-      </Form.Group>
-    );
-  }
-
-  getEmailField = () => {
-    return (
-    <Form.Group as={Col} md="4" controlId="validationEmail">
-      <Form.Label>Email</Form.Label>
-      {
-        this.state.edit
-          ?
-          <InputGroup>
-            {this.state.form.role === "mentor" ?
-              (<>
-                  <Form.Control
-                  name="email"
-                  value={this.state.form.email}
-                  onChange={this.handleChange}
-                  type="email"
-                  placeholder="user@domain.edu"
-                  aria-describedby="inputGroupPrepend"
-                  pattern=".+@*.edu"
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please input a valid .edu email.
-                </Form.Control.Feedback>
-              </>
-              ) :
-              (<>
-                <Form.Control
-                name="email"
-                value={this.state.form.email}
-                onChange={this.handleChange}
-                type="email"
-                placeholder="user@domain.com"
-                aria-describedby="inputGroupPrepend"
-                required
-                />
-                <Form.Control.Feedback type="invalid">
-                Please input a valid  email.
-                </Form.Control.Feedback>
-              </>)
-            }
-
-          </InputGroup>
-          : <Form.Control plaintext readOnly type="text" defaultValue={this.state.form.email} />
-      }
-    </Form.Group>
-    );
-  };
-
-  getNameField = () => {
-    return (
-      <Form.Group as={Col} md="4" controlId="validationCustom01">
-        <Form.Label>Name</Form.Label>
-        {this.state.edit
-          ?
-          <>
-            <Form.Control
-              name="name"
-              value={this.state.form.name}
-              required
-              type="text"
-              placeholder="Your Name"
-              onChange={this.handleChange} />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </>
-          : <Form.Control plaintext readOnly type="text" defaultValue={this.state.form.name} />
-        }
-    </Form.Group>
-    );
-  };
-
-  getRoleField = () => {
-    return (
-      <Form.Group as={Col} md="4" controlId="formControl.role">
-        <Form.Label>Role</Form.Label>
-        <Form.Control plaintext readOnly type="text" defaultValue={this.state.form.role} />
-      </Form.Group>
-    );
-  };
-
-  getBioField = () => {
-    return (<Form.Group as={Col} controlId="formBioTextArea">
-      <Form.Label>Introduce Yourself!</Form.Label>
-      {
-        this.state.edit
-          ? <Form.Control name="bio" value={this.state.form.bio} as="textarea" rows="3" onChange={this.handleChange} placeholder="About Me" />
-          : <Form.Control as="textarea" readOnly defaultValue={this.state.form.bio} />
-      }
-    </Form.Group>);
-  };
-
-  getSubjectField = () => {
-    if (!this.state.edit) {
-      return (<>
-        <Form.Group as={Col} md="4" controlId="formControl.subjects">
-        <Form.Label>Subjects</Form.Label>
-        {this.state.form.subjects && <Form.Control plaintext readOnly type="text" defaultValue={this.state.form.subjects.map(s => s.value)}/>}
-        </Form.Group>
-        </>);
     }
-    return (
-      <>
-        <Form.Group as={Col} md="4" controlId="formControl.subjects">
-          <Form.Label>Subjects</Form.Label>
-          <Select value={this.state.form.subjects} options={subjects} isMulti onChange={this.handleSelectChange("subjects")} />
-        </Form.Group>
-    </>);
-  };
 
-  getOptionalTagField = () => {
-    return (
-      <Form.Group as={Col} controlId="exampleForm.ControlOptionalFields">
-        <Form.Label>Optional Tags</Form.Label>
-        {
-          this.state.edit
-            ? (<Select value={this.state.form.tags} options={tags} isMulti onChange={this.handleSelectChange("tags")} />)
-            : this.state.form.tags && <Form.Control plaintext readOnly type="text" defaultValue={this.state.form.tags.map(t => t.value)} />
-        }
-      </Form.Group>
-    );
-  };
-  /*
-  Generates the following mentor fields:
-  - Major
-  - Public Checkbox
-   */
-  getMentorFields = () => {
-    return (
-      <>
-        <Form.Row>
-          <Form.Group md="4" as={Col}>
-            <Form.Label>Major</Form.Label>
-            {
-              this.state.edit ?
-                <InputGroup>
-                  <Form.Control
-                    name="major"
-                    value={this.state.form.major}
-                    type="text"
-                    placeholder="Learning"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                    onChange={this.handleChange}
-                  />
-                </InputGroup>
-                : <Form.Control plaintext readOnly type="text" defaultValue={this.state.form.major} />
-            }
-            <Form.Row>
-              <Form.Check checked={this.state.form.public}
-                          disabled={!this.state.edit}
-                          name="public"
-                          onChange={this.handleCheckChange}
-                          type="checkbox" label="Listed as an Available Mentor." />
-            </Form.Row>
-          </Form.Group>
-        </Form.Row>
-      </>
-    );
-  };
+    const getEditFields = (formik) => {
+        const fieldGetters = [
+            getNameField,
+            getEmailField,
+            getTimezoneField,
+            getRoleField,
+            getBioField,
+            getSubjectField,
+            getTagField,
+        ];
+        
+        const mainFields = fieldGetters.map((generator) => generator(formik));
+        const roleFields =
+            formik.values.role === "mentor" ? getMentorFields(formik) : getMenteeFields(formik);
+        return mainFields.concat(roleFields);
+        
+    }
+    
+    userProvider.refreshUser();
 
-  /*
-  Generates the following fields for mentees:
-  - Guardian Name
-  - Guardian Email
-  - Guardian Phone
-   */
-  getMenteeFields = () => {
-    return (
-      <Form.Row>
-        <Form.Group as={Col} md="4" controlId="validationGuadianName">
-          <Form.Label>Parent's Name</Form.Label>
-          {
-            this.state.edit
-              ?
-              <>
-                <Form.Control name="guardian_name" value={this.state.form.guardian_name} onChange={this.handleChange} required type="text" placeholder="Parent Name" />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              </>
-              : <Form.Control name="guardian_name" plaintext readOnly defaultValue={this.state.form.guardian_name} />
-          }
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationEmail">
-          <Form.Label>Parent Email</Form.Label>
-          {
-            this.state.edit
-              ?
-              <InputGroup>
-                <Form.Control
-                  name="guardian_email"
-                  value={this.state.form.guardian_email}
-                  onChange={this.handleChange}
-                  type="email"
-                  placeholder="youremail@mail.com"
-                  aria-describedby="inputGroupPrepend"
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please input a valid email.
-                </Form.Control.Feedback>
-              </InputGroup>
-              : <Form.Control name="guardian_email" plaintext readOnly defaultValue={this.state.form.guardian_email}  />
-          }
-        </Form.Group>
-      </Form.Row>
-    );
-  };
+    const user = userProvider.user || {
+        timezone: "",
+        role: "",
+        subjects: [],
+        tags: [],
+        guardian_email: "",
+        guardian_name: "",
+        major: "",
+        name: "",
+        email: "",
+        bio: "",
+        public: true,
+    };
+    let formik = useFormik({
+        initialValues: {
+            timezone: user.timezone,
+            role: user.role,
+            subjects: user.subjects.map(s => { return { value: s, label: s }; }),
+            tags: user.tags.map(s => { return { value: s, label: s }; }),
+            guardian_email: user.guardian_email,
+            guardian_name: user.guardian_name,
+            major: user.major,
+            name: user.name,
+            email: user.email,
+            bio: user.bio,
+            public: user.public,
+        },
+        validationSchema: ProfileEditSchema,
+        onSubmit: handleSubmit,
+        enableReinitialize: true,
+    })
+    if (userProvider.user === undefined ) { return <h1>Loading..</h1> }
+    let fields = edit && userProvider.user ? getEditFields(formik) : getStaticFields();
 
-  render() {
-    if (this.state.form.name === undefined) return (<div></div>); // Data not loaded yet.
-    let nameField = this.getNameField();
-    let emailField = this.getEmailField();
-    let timezoneField = this.getTimeZoneField();
-    let roleField = this.getRoleField();
-    let bioField = this.getBioField();
-    let subjectField = this.getSubjectField();
-    let optionalTagField = this.getOptionalTagField();
-    let mainFields = [nameField, emailField, timezoneField, roleField, bioField, subjectField, optionalTagField];
-    let roleBasedFields = this.state.form.role === "mentor" ? this.getMentorFields() : this.getMenteeFields();
     return (
-      <>
-      <div className={"ProfileEdit-form"}>
-        <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-          {mainFields.map((field, i) => {
-            return (<Form.Row key={i}>{field}</Form.Row>)
-          })}
-          {roleBasedFields}
-          <Form.Row>
-            {this.state.edit && <Button type="submit">Submit</Button>}
-            {this.state.edit && <Button variant="danger" onClick={this.handleCancel}>Cancel</Button>}
-          </Form.Row>
-        </Form>
-        {!this.state.edit && <Button type="button" onClick={this.handleEdit}>Edit</Button>}
-        {this.state.success && <Alert variant="success">Profile updated successfully!</Alert>}
-      </div>
-      </>);
-  }
+        <div className="ProfileEdit-form">
+        <Provider theme={theme}>
+        <Section width={[1]} p={0} mt={0} mb={0}>
+            <h2>
+                    {userProvider.user.name} <br />
+                    <hr className="hr-primary" />
+                    <br />
+            </h2>
+            <Form noValidate onSubmit={formik.handleSubmit}>
+                {fields.map((field, i) => {
+                  return <Form.Row key={i}>{field}</Form.Row>;
+                })}
+                {edit && <Button type="submit">Submit</Button>}
+                {edit && <Button variant="danger" onClick={handleCancel}>Cancel</Button>}
+            </Form>
+            {!edit && <Button type="button" onClick={handleEdit}>Edit</Button>}       
+            {success && <Alert variant="success">Profile updated successfully!</Alert>}
+        </Section>
+        </Provider>
+    </div>
+    )
 }
 
 export default Profile;

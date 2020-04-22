@@ -11,3 +11,7 @@ img {
     text-align: center;
     margin: auto auto;
 }
+
+input {
+    width: fit-content;
+}

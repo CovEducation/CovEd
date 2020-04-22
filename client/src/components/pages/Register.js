@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Register.css";
 
 import Form from "react-bootstrap/Form";
@@ -7,7 +7,6 @@ import { Section } from "react-landing-page";
 
 import TermsDialog from "../modules/TermsOfServiceDialog";
 
-import { UserContext } from "../../providers/UserProvider";
 import { createNewUser } from "../../api";
 
 import { useNavigate } from "@reach/router";
@@ -90,24 +89,15 @@ const RegisterSchema = Yup.object().shape({
  * This page handles user sign up.
  */
 const Register = () => {
-  const userProvider = useContext(UserContext);
   const navigate = useNavigate();
   const handleSubmit = async (values) => {
     const user = { ...values };
     user.subjects = user.subjects.map((sub) => sub.value);
     user.tags = user.tags.map((tag) => tag.value);
-
-    try {
-      createNewUser(user)
-      .then(async () => {
-        // force the user provider to refresh to update from mongodb
-        if (!userProvider.user) userProvider.user = {token:token};
-        await userProvider.refreshUser();
-        navigate("/");
-      })
-    } catch (error) {
-      console.log(error);
-    }
+    createNewUser(user).then( () => navigate("/"))
+    .catch((err) => {
+      alert("Unable to register, make sure this email was not registered before.")
+    });
   };
 
   // Set up the form and validation
@@ -125,6 +115,7 @@ const Register = () => {
       name: "",
       email: "",
       bio: "",
+      public: true,
     },
     validationSchema: RegisterSchema,
     onSubmit: handleSubmit,
