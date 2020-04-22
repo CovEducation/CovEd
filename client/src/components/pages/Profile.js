@@ -310,7 +310,7 @@ const Profile = () => {
             {!edit && <Button type="button" onClick={handleEdit}>Edit</Button>}       
             {success && <Alert variant="success">Profile updated successfully!</Alert>}
 
-            <div style={{ padding: 4 }}>
+            <div style={{ padding: 8 }}>
                 {getExpectationsToast()}
             </div>
         </Section>
