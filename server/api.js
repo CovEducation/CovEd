@@ -127,7 +127,7 @@ router.post("/addMentee", pingLimiter, firebaseMiddleware, (req, res) => {
     guardian_present: req.body.guardian_present,
     mentors: [],
   });
-  newMentee.save().then((tutee) => res.send(tutee));
+  newMentee.save().then((mentee) => res.send(mentee));
 });
 
 router.post("/addMentor", firebaseMiddleware, (req, res) => {

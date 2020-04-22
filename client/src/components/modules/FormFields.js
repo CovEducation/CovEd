@@ -52,7 +52,7 @@ export const getTimezoneField = (formik) => {
         as="select"
       >
         {timeZones.map((tz) => {
-          return <option value={tz.value}> {tz.timezone} </option>;
+          return <option value={tz.timezone}> {tz.timezone} </option>;
         })}
         <Form.Control.Feedback type="invalid">{formik.errors.timezone}</Form.Control.Feedback>
       </Form.Control>
@@ -167,7 +167,8 @@ export const getTagField = (formik) => {
 
 export const getMentorFields = (formik) => {
   return (
-    <Form.Group as={Col} controlId="validationMajor">
+    <>
+    <Form.Group as={Col} md={6} controlId="validationMajor">
       <Form.Label>Major</Form.Label>
       <Form.Control
         name="major"
@@ -179,6 +180,16 @@ export const getMentorFields = (formik) => {
       />
       <Form.Control.Feedback type="invalid">{formik.errors.major}</Form.Control.Feedback>
     </Form.Group>
+    <Form.Group as={Col} md={0} pd={0} controlId="validationPublic">
+          <Form.Label>Privacy</Form.Label>
+          <Form.Check
+            name="public"
+            onChange={() => formik.setFieldValue("public", !formik.values.public)}
+            checked={formik.values.public}
+            type="checkbox" 
+            label="Listed as an Available Mentor." />
+    </Form.Group>
+    </>
   );
 };
 

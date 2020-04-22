@@ -98,6 +98,8 @@ export const theme = {
     4,
     8,
     16,
+    20,
+    24,
     32,
     64,
     128,
@@ -179,7 +181,7 @@ export const FAQS = [
   }
 ]
 
-export const expectations_mentor_before = "Before you mentor, we expect you to...";
+export const expectations_mentor_before = "Before you mentor, we expect you to... ";
 
 export const expectations_mentor_after = "After you mentor, we expect you to...";
 
