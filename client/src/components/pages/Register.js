@@ -4,9 +4,7 @@ import "./Register.css";
 import Form from "react-bootstrap/Form";
 import { Provider } from "rebass";
 import { Section } from "react-landing-page";
-
-import TermsDialog from "../modules/TermsOfServiceDialog";
-
+import Button from "react-bootstrap/Button";
 import { createNewUser } from "../../api";
 
 import { useNavigate } from "@reach/router";
@@ -21,7 +19,7 @@ import {
   getPasswordField,
   getTimezoneField,
   getRoleField,
-  getBioField,
+  getTermsAndConditions,
   getSubjectField,
   getTagField,
   getMentorFields,
@@ -82,6 +80,7 @@ const RegisterSchema = Yup.object().shape({
     is: (role) => role === "mentor",
     then: Yup.string().required("Introduce yourself!"),
   }),
+  agreed: Yup.boolean().required("You must agree to the terms and conditions")
 });
 
 /**
@@ -117,6 +116,7 @@ const Register = () => {
       email: "",
       bio: "",
       public: true,
+      agreed: false,
     },
     validationSchema: RegisterSchema,
     onSubmit: handleSubmit,
@@ -151,7 +151,8 @@ const Register = () => {
           {fields.map((field, i) => {
             return <Form.Row key={i}>{field}</Form.Row>;
           })}
-          <TermsDialog onSubmit={(event) => formik.submitForm()} />
+          {getTermsAndConditions(formik)}
+          <Button onClick={(event) => formik.submitForm()}> Submit </Button>
         </Form>
       </Section>
     </Provider>

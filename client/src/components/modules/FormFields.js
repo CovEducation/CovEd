@@ -3,6 +3,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Select from "react-select";
+import { Link } from "@reach/router";
 
 import timeZones, { subjects, tags } from "../Constants";
 
@@ -186,6 +187,20 @@ export const getMentorFields = (formik) => {
     </Form.Group>
     </>
   );
+};
+
+export const getTermsAndConditions = (formik )=> {
+  return (<Form.Group as={Col} md={0} pd={0} controlId="validationPublic">
+    <Form.Label>Terms and conditions</Form.Label>
+    <Form.Check
+      checked={formik.values.agreed}
+      name="public"
+      onChange={() => formik.setFieldValue("agreed", !formik.values.agreed)}
+      type="checkbox" label={<Link to="/terms" >
+        I have read and agreed to the Terms and Conditions
+      </Link>} />
+      
+  </Form.Group>)
 };
 
 export const getMenteeFields = (formik) => {
