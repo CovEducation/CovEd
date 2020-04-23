@@ -11,6 +11,7 @@ export const createNewUser = async (values) => {
     } else {
       await postMentee(idToken, values);
     }
+    await auth.currentUser.sendEmailVerification();
   } catch (error) {
     if (idToken) await post("/api/removeUser", { token: idToken });
     throw new Error("Error creating new user.");
