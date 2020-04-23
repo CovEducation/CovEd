@@ -41,10 +41,8 @@ const RegisterSchema = Yup.object().shape({
   name: Yup.string().required("Please enter your name."),
   timezone: Yup.string().required("Required"),
   role: Yup.string().required("Required"),
-  bio: Yup.string(),
   subjects: Yup.array(),
   tags: Yup.array(),
-
   email: Yup.string()
     .email()
     .required("Please input a valid email.")
@@ -55,7 +53,6 @@ const RegisterSchema = Yup.object().shape({
         .matches(/.+@*.edu/i, "Mentors are required to use an .edu email.")
         .required("Please input a valid .edu email."),
     }),
-
   password: Yup.string()
     .required("Password Required")
     .matches(
@@ -66,11 +63,11 @@ const RegisterSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), null], "Passwords must match.")
     .required("Password Confirmation Required."),
 
-  guardian_name: Yup.string().when("role", {
+  student_name: Yup.string().when("role", {
     is: (role) => role === "student",
     then: Yup.string().required("Please enter a Parent or Guardian's name."),
   }),
-  guardian_email: Yup.string()
+  student_email: Yup.string()
     .email()
     .when("role", {
       is: (role) => role === "student",
@@ -80,6 +77,10 @@ const RegisterSchema = Yup.object().shape({
   major: Yup.string().when("role", {
     is: (role) => role === "mentor",
     then: Yup.string().required("Major is a required field."),
+  }),
+  bio: Yup.string().when("role", {
+    is: (role) => role === "mentor",
+    then: Yup.string().required("Introduce yourself!"),
   }),
 });
 
@@ -109,8 +110,8 @@ const Register = () => {
       tags: [],
       password: "",
       passwordConfirmation: "",
-      guardian_email: "",
-      guardian_name: "",
+      student_email: "",
+      student_name: "",
       major: "",
       name: "",
       email: "",
@@ -123,12 +124,11 @@ const Register = () => {
 
   // Get all the required fields
   const fieldGetters = [
+    getRoleField,
     getNameField,
     getEmailField,
     getPasswordField,
     getTimezoneField,
-    getRoleField,
-    getBioField,
     getSubjectField,
     getTagField,
   ];

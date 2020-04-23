@@ -17,7 +17,6 @@ import {
     getEmailField,
     getTimezoneField,
     getRoleField,
-    getBioField,
     getSubjectField,
     getTagField,
     getMentorFields,
@@ -36,10 +35,12 @@ const ProfileEditSchema = Yup.object().shape({
     name: Yup.string().required("Please enter your name."),
     timezone: Yup.string().required("Required"),
     role: Yup.string().required("Required"),
-    bio: Yup.string(),
     subjects: Yup.array(),
     tags: Yup.array(),
-
+    bio: Yup.string().when("role", {
+        is: (role) => role === "mentor",
+        then: Yup.string(),
+    }),
     email: Yup.string()
         .email()
         .required("Please input a valid email.")
@@ -51,11 +52,11 @@ const ProfileEditSchema = Yup.object().shape({
                 .required("Please input a valid .edu email."),
         }),
 
-    guardian_name: Yup.string().when("role", {
+    student_name: Yup.string().when("role", {
         is: (role) => role !== "mentor",
         then: Yup.string().required("Please enter a Parent or Guardian's name."),
     }),
-    guardian_email: Yup.string()
+    student_email: Yup.string()
         .email()
         .when("role", {
             is: (role) => role !== "mentor",
@@ -194,14 +195,14 @@ const Profile = () => {
     const getStaticMenteeFields = () => {
         return (
             <>
-                <Form.Group as={Col} md="4" controlId="validationGuadianName">
-                    <Form.Label>Parent's Name</Form.Label>
-                    <Form.Control name="guardian_name" plaintext readOnly defaultValue={userProvider.user.guardian_name} />
+                <Form.Group as={Col} md="4" controlId="validationStudentName">
+                    <Form.Label>Student Name</Form.Label>
+                    <Form.Control name="guardian_name" plaintext readOnly defaultValue={userProvider.user.student_name} />
                 
                 </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationEmail">
-                    <Form.Label>Parent Email</Form.Label>
-                    <Form.Control name="guardian_email" plaintext readOnly defaultValue={userProvider.user.guardian_email} />
+                <Form.Group as={Col} md="4" controlId="validationStudentEmail">
+                    <Form.Label>Student Email</Form.Label>
+                    <Form.Control name="guardian_email" plaintext readOnly defaultValue={userProvider.user.student_email} />
                 </Form.Group>
             </>
         );
@@ -212,10 +213,9 @@ const Profile = () => {
         let emailField = getStaticEmailField();
         let timezoneField = getStaticTimeZoneField();
         let roleField = getStaticRoleField();
-        let bioField = getStaticBioField();
         let subjectField = getStaticSubjectField();
         let optionalTagField = getStaticOptionalTagField();
-        let mainFields = [nameField, emailField, timezoneField, roleField, bioField, subjectField, optionalTagField];
+        let mainFields = [nameField, emailField, timezoneField, roleField, subjectField, optionalTagField];
 
         if (userProvider.user.role === "mentor") {
             return mainFields.concat(getStaticMentorFields());
@@ -230,7 +230,6 @@ const Profile = () => {
             getEmailField,
             getTimezoneField,
             getRoleField,
-            getBioField,
             getSubjectField,
             getTagField,
         ];
@@ -249,8 +248,8 @@ const Profile = () => {
         role: "",
         subjects: [],
         tags: [],
-        guardian_email: "",
-        guardian_name: "",
+        student_email: "",
+        student_name: "",
         major: "",
         name: "",
         email: "",
@@ -263,8 +262,8 @@ const Profile = () => {
             role: user.role,
             subjects: user.subjects.map(s => { return { value: s, label: s }; }),
             tags: user.tags.map(s => { return { value: s, label: s }; }),
-            guardian_email: user.guardian_email,
-            guardian_name: user.guardian_name,
+            student_name: user.student_name,
+            student_email: user.student_email,
             major: user.major,
             name: user.name,
             email: user.email,
