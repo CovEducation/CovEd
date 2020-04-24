@@ -51,3 +51,8 @@ const postMentor = async (idToken, values) => {
   });
 };
 
+export const sendEmailVerification = async () => {
+  if (auth.currentUser) {
+    await auth.currentUser.sendEmailVerification();
+  }
+}
