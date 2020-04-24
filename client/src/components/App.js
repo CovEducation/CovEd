@@ -18,11 +18,11 @@ const Contact = lazy(()=>import("./pages/Contact.js"));
 const FindAMentor = lazy(()=>import("./pages/FindAMentor.js"));
 const Profile = lazy(()=>import("./pages/Profile.js"));
 const ProtectedPage = lazy(()=>import("./modules/ProtectedPage.js"));
-const NavBar = lazy(()=> import("./modules/NavBar.js"))
-const Footer = lazy(()=> import("./modules/Footer.js"))
-const TermsConditions = lazy(()=> import("./pages/TermsConditions.js"))
-const Privacy = lazy(()=> import("./pages/Privacy.js"))
-const MentorGuidelines = lazy(()=> import("./pages/MentorGuidelines.js"))
+const NavBar = lazy(()=> import("./modules/NavBar.js"));
+const Footer = lazy(()=> import("./modules/Footer.js"));
+const TermsConditions = lazy(()=> import("./pages/TermsConditions.js"));
+const Privacy = lazy(()=> import("./pages/Privacy.js"));
+const MentorGuidelines = lazy(()=> import("./pages/MentorGuidelines.js"));
 
 /**
  * Define the "App" component as a class.
