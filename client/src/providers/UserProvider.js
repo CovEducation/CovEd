@@ -32,6 +32,7 @@ class UserProvider extends Component {
       user = user[0];
       user.role = role;
       user.token = token;
+      user.verified = auth.currentUser.emailVerified;
       this.setState({ user: user });
       return user;
     } catch (err) {
@@ -44,6 +45,7 @@ class UserProvider extends Component {
       if (fbUser) {
         try {
           const token = await fbUser.getIdToken();
+          const verified = fbUser.emailVerified;
           let user = await get("/api/mentee", { token: token });
           let role = "mentee";
 
@@ -56,6 +58,7 @@ class UserProvider extends Component {
           user = user[0];
           if (!!user) {
             // this may happen if the user has not been created in mongodb
+            user.verified = verified;
             user.role = role;
             user.token = token;
           } else {
