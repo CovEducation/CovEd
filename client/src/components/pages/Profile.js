@@ -121,7 +121,7 @@ const Profile = () => {
             <>Email Verified</>
           ) : (
             <>
-              Please Verify Your Email and resfresh the page. (
+              Please Verify Your Email and refresh the page. (
               <a href="#resend" onClick={() => sendEmailVerification()}>
                 Resend Verification
               </a>

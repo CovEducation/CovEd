@@ -32,6 +32,7 @@ class UserProvider extends Component {
       user = user[0];
       user.role = role;
       user.token = token;
+      user.verified = auth.currentUser.emailVerified;
       this.setState({ user: user });
       return user;
     } catch (err) {
