@@ -19,6 +19,10 @@ const FindAMentor = lazy(()=>import("./pages/FindAMentor.js"));
 const Profile = lazy(()=>import("./pages/Profile.js"));
 const ProtectedPage = lazy(()=>import("./modules/ProtectedPage.js"));
 const NavBar = lazy(()=> import("./modules/NavBar.js"))
+const Footer = lazy(()=> import("./modules/Footer.js"))
+const TermsConditions = lazy(()=> import("./pages/TermsConditions.js"))
+const Privacy = lazy(()=> import("./pages/Privacy.js"))
+const MentorGuidelines = lazy(()=> import("./pages/MentorGuidelines.js"))
 
 /**
  * Define the "App" component as a class.
@@ -58,10 +62,15 @@ class App extends Component {
                <Contact path="/contact" />
                <ProtectedPage path="/findamentor" component={FindAMentor}/>
                <ProtectedPage path="/profile" component={Profile}/>
+               <TermsConditions path="/termsconditions" />
+               <Privacy path="/privacy" />
+               <MentorGuidelines path="/mentorguidelines" />
                <NotFound default/>
              </Router>
            </Suspense>
-
+           <Suspense fallback={<div/>}>
+             <Footer />
+           </Suspense>
         </UserProvider>
       </div>
     );

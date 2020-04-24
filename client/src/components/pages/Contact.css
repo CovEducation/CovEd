@@ -7,3 +7,19 @@
 .Contact-subtitle {
     padding: 1em;
 }
+
+.hr-primary{
+  max-width: 200px;
+  border-color: #F2BE32;
+  border-width: 3px;
+}
+
+a.dark-a{
+  color: #d19800;
+}
+
+a.dark-a:hover{
+  color: #003c61;
+  font-weight:800;
+  text-decoration: none;
+}
