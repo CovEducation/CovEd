@@ -1,0 +1,17 @@
+a.light{
+  color: #ffffff;
+}
+
+a.light:hover{
+  color: #F2BE32;
+  font-weight:800;
+}
+
+a.dark{
+  color: #003c61;
+}
+
+a.dark:hover{
+  color: #000000;
+  font-weight:800;
+}
