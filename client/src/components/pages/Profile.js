@@ -228,8 +228,13 @@ const Profile = () => {
     }
 
     const getExpectationsToast = () => {
+        var style = {
+            width: '100%',
+            marginBottom: 8
+        };
+        
         return (
-                <Alert severity="info">
+                <Alert style={style} severity="info">
                     <AlertTitle>Expectations</AlertTitle>
                     {expectations_mentor_before}
                     <br />
@@ -301,6 +306,7 @@ const Profile = () => {
                     <br />
             </h2>
             <Form noValidate onSubmit={formik.handleSubmit}>
+                {getExpectationsToast()}
                 {fields.map((field, i) => {
                   return <Form.Row key={i}>{field}</Form.Row>;
                 })}
@@ -310,9 +316,6 @@ const Profile = () => {
             {!edit && <Button type="button" onClick={handleEdit}>Edit</Button>}       
             {success && <Alert variant="success">Profile updated successfully!</Alert>}
 
-            <div style={{ padding: 8 }}>
-                {getExpectationsToast()}
-            </div>
         </Section>
                
         </Provider>
