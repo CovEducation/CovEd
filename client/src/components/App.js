@@ -51,26 +51,30 @@ class App extends Component {
           </Suspense>
            {/* "primary={false}" breaks an accessibility feature of reach router that allows screen readers to work
            https://stackoverflow.com/questions/53058110/stop-reach-router-scrolling-down-the-page-after-navigating-to-new-page*/}
-           <Suspense fallback={loading_component}>
-             <Router primary={false} basepath="/">
-               <Homepage path="/"/>
-               <Resources path="/resources" />
-               <SignIn path="/auth" />
-               <Register path="/register" />
-               <FAQ path="/faq" />
-               <WhoWeAre path="/whoweare" />
-               <Contact path="/contact" />
-               <ProtectedPage path="/findamentor" component={FindAMentor}/>
-               <ProtectedPage path="/profile" component={Profile}/>
-               <TermsConditions path="/termsconditions" />
-               <Privacy path="/privacy" />
-               <MentorGuidelines path="/mentorguidelines" />
-               <NotFound default/>
-             </Router>
-           </Suspense>
-           <Suspense fallback={<div/>}>
-             <Footer />
-           </Suspense>
+           <div className="contentWrap">
+            <Suspense fallback={loading_component}>
+              <Router primary={false} basepath="/">
+                <Homepage path="/"/>
+                <Resources path="/resources" />
+                <SignIn path="/auth" />
+                <Register path="/register" />
+                <FAQ path="/faq" />
+                <WhoWeAre path="/whoweare" />
+                <Contact path="/contact" />
+                <ProtectedPage path="/findamentor" component={FindAMentor}/>
+                <ProtectedPage path="/profile" component={Profile}/>
+                <TermsConditions path="/termsconditions" />
+                <Privacy path="/privacy" />
+                <MentorGuidelines path="/mentorguidelines" />
+                <NotFound default/>
+              </Router>
+            </Suspense>
+           </div>
+           <div className="footer">
+            <Suspense className="footer" fallback={<div/>}>
+              <Footer />
+            </Suspense>
+           </div>
         </UserProvider>
       </div>
     );
