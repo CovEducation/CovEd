@@ -4,7 +4,6 @@ import "./Register.css";
 import Form from "react-bootstrap/Form";
 import { Provider } from "rebass";
 import { Section } from "react-landing-page";
-import Jumbotron from "react-bootstrap/Jumbotron";
 
 import TermsDialog from "../modules/TermsOfServiceDialog";
 
