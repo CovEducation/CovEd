@@ -81,6 +81,7 @@ export const theme = {
     yellow: '#F2BE32',
     white: '#ffffff',
     darkblue: '#003c61',
+    black: '#000000',
     weird: '#E3E1E5'
   },
   fonts:{
@@ -184,5 +185,20 @@ export const FAQS = [
 export const expectations_mentor_before = "Before you mentor, we expect you to... ";
 
 export const expectations_mentor_after = "After you mentor, we expect you to...";
+export const registerDisclaimer = "This service is a completely free volunteer-based service. Those under the age of 13 are required to have a form filled out by a parent or guardian. For all others it is strongly recommended that a parent or guardian fill out this form. If a parent or guardian is unable to fill out the form, please email coveducation@gmail.com. Thanks!";
+export const FOOT = [
+  {
+    name: "Terms and Conditions",
+    link: "/termsconditions"
+  },
+  {
+    name: "Privacy Policy",
+    link: "/privacy"
+  },
+  {
+    name: "Mentor Guidelines",
+    link: "/mentorguidelines"
+  }
+]
 
 export default timeZones;

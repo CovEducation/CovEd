@@ -72,15 +72,16 @@ class Resources extends Component {
 											<div className="rlistitem">
 											<Card variant="outlined">
 											<ResultList href={item.url} key={item._id} className="rlist">
-											 <Col sm={{span:6}} md={{span:3}} className="text-center">
+											<Row>
+											 <Col xs={{span:6}} md={{span:3}} className="text-center">
 												<ResultList.Title>
 												<div className="resourcetitle">
 												{item.name}
 												</div>
 												</ResultList.Title>
 												</Col>
+												<Col xs={{span:6}} md={{span:7}} className="resourcesdesc">
 												<ResultList.Description>
-												<Col md={{span:10}} sm={{span:12}} className="resourcesdesc">
 												{item.description}
 												<br />
 												<br />
@@ -91,8 +92,9 @@ class Resources extends Component {
 															 {tag.type}
 														</span>
 													))}
+													</ResultList.Description>
 													</Col>
-												</ResultList.Description>
+											</Row>
 											</ResultList></Card></div>
 										))}
 									</ReactiveList.ResultListWrapper>

@@ -4,7 +4,18 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Select from "react-select";
 
-import timeZones, { subjects, tags } from "../Constants";
+import timeZones, { subjects, tags, registerDisclaimer } from "../Constants";
+import { Jumbotron } from "react-bootstrap";
+
+export const getDisclaimer = () =>  {
+  return (
+    <Jumbotron>
+      <p>
+        {registerDisclaimer}
+      </p>
+    </Jumbotron>
+  )
+}
 
 export const getNameField = (formik) => {
   return (
