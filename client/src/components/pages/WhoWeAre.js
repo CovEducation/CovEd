@@ -5,7 +5,7 @@ import "./Homepage.css";
 import { theme } from "../Constants.js";
 
 // Landing page library
-import { Provider } from "rebass";
+import { Provider, Box} from "rebass";
 import {
   Hero,
 } from "react-landing-page";
@@ -109,7 +109,7 @@ class WhoWeAre extends Component {
       <>
         <Provider theme={theme}>
           <Hero>
-            <Container fonts="sans">
+            <Box font="sans" mt={3} mb={7}>
               <Row mt={3} mb={3} className="justify-content-center">
                 <Col sm={{span: 12}} className="text-center" p={5}>
                   <Typography variant="h4">
@@ -140,7 +140,7 @@ class WhoWeAre extends Component {
                   {renderTable(technology)}
                 </Col>
               </Row>
-            </Container>
+            </Box>
           </Hero>
         </Provider>
       </>

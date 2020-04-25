@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../utilities.css";
+import "./Homepage.css";
 import { theme } from "../Constants.js";
 
 import { Col, Row, Button, Container } from 'react-bootstrap'
@@ -13,7 +14,7 @@ import {
   Section,
 } from "react-landing-page";
 
-// auth 
+// auth
 import { auth } from "../../firebase-config";
 import { UserContext } from "../../providers/UserProvider";
 import { useNavigate } from "@reach/router"
@@ -59,7 +60,7 @@ class SignIn extends Component {
     return (
       <>
         <Provider theme={theme}>
-          <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1, 2, 2, 2]} mt={7}>
+          <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1, 2, 2, 2]} mt={7} mb={7}>
           <Container fluid="sm">
               <Row>
                 <Col md={{span: 6, offset: 3}}>
