@@ -26,6 +26,7 @@ import {
   getTagField,
   getMentorFields,
   getMenteeFields,
+  getDisclaimer
 } from "../modules/FormFields";
 
 import "./Profile.css";
@@ -147,6 +148,7 @@ const Register = () => {
             <br />
           </span>
         </h2>
+        { getDisclaimer() }
         <Form className="Register-form" noValidate onSubmit={formik.handleSubmit}>
           {fields.map((field, i) => {
             return <Form.Row key={i}>{field}</Form.Row>;
