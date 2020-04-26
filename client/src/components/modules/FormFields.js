@@ -194,10 +194,11 @@ export const getMentorFields = (formik) => {
     <Form.Group as={Col} md={0} pd={0} controlId="validationPublic">
           <Form.Label>Privacy</Form.Label>
           <Form.Check
-            checked={formik.values.public}
             name="public"
             onChange={() => formik.setFieldValue("public", !formik.values.public)}
-            type="checkbox" label="Listed as an Available Mentor." />
+            checked={formik.values.public}
+            type="checkbox" 
+            label="Listed as an Available Mentor." />
     </Form.Group>
     </>
   );

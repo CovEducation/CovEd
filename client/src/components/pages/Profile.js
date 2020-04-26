@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import "./Profile.css";
 
 import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { UserContext } from "../../providers/UserProvider";
@@ -12,6 +11,9 @@ import Form from "react-bootstrap/Form";
 import { Provider } from "rebass";
 import { Section } from "react-landing-page";
 import { theme } from "../Constants";
+import AlertTitle from "@material-ui/lab/AlertTitle";
+import Alert from "@material-ui/lab/Alert";
+import {expectations_mentor_after, expectations_mentor_before} from "../Constants";
 
 import { sendEmailVerification } from "../../api";
 
@@ -277,6 +279,23 @@ const Profile = () => {
     }
   };
 
+    const getExpectationsToast = () => {
+        var style = {
+            width: '100%',
+            marginBottom: 8
+        };
+        
+        return (
+                <Alert style={style} severity="info">
+                    <AlertTitle>Expectations</AlertTitle>
+                    {expectations_mentor_before}
+                    <br />
+                    {expectations_mentor_after}
+                </Alert>
+        );
+    };
+
+
   const getEditFields = (formik) => {
     const fieldGetters = [
       getNameField,
@@ -343,6 +362,7 @@ const Profile = () => {
             <br />
           </h2>
           <Form noValidate onSubmit={formik.handleSubmit}>
+            {getExpectationsToast()}
             {fields.map((field, i) => {
               return <Form.Row key={i}>{field}</Form.Row>;
             })}
