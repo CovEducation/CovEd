@@ -81,6 +81,7 @@ export const theme = {
     yellow: '#F2BE32',
     white: '#ffffff',
     darkblue: '#003c61',
+    black: '#000000',
     weird: '#E3E1E5'
   },
   fonts:{
@@ -178,6 +179,22 @@ export const FAQS = [
     key: "11",
     question: "Is there any way for educators to get involved?",
     answer: "One of CovEd’s goals is to ensure that all students have access to various resources to help stimulate educational growth during this time. On our website’s home page, we have a form where resources can be submitted. We are hoping to find the best resources for students and hope you can help us!"
+  }
+]
+
+export const registerDisclaimer = "This service is a completely free volunteer-based service. Those under the age of 13 are required to have a form filled out by a parent or guardian. For all others it is strongly recommended that a parent or guardian fill out this form. If a parent or guardian is unable to fill out the form, please email coveducation@gmail.com. Thanks!";
+export const FOOT = [
+  {
+    name: "Terms and Conditions",
+    link: "/termsconditions"
+  },
+  {
+    name: "Privacy Policy",
+    link: "/privacy"
+  },
+  {
+    name: "Mentor Guidelines",
+    link: "/mentorguidelines"
   }
 ]
 

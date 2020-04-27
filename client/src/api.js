@@ -11,6 +11,7 @@ export const createNewUser = async (values) => {
     } else {
       await postMentee(idToken, values);
     }
+    await auth.currentUser.sendEmailVerification();
   } catch (error) {
     if (idToken) await post("/api/removeUser", { token: idToken });
     throw new Error("Error creating new user.");
@@ -31,8 +32,8 @@ const postMentee = async (idToken, values) => {
     timezone: values.timezone,
     bio: values.bio,
     subjects: values.subjects,
-    guardian_name: values.guardian_name,
-    guardian_email: values.guardian_email,
+    student_name: values.student_name,
+    student_email: values.student_email,
   });
 };
 
@@ -50,3 +51,8 @@ const postMentor = async (idToken, values) => {
   });
 };
 
+export const sendEmailVerification = async () => {
+  if (auth.currentUser) {
+    await auth.currentUser.sendEmailVerification();
+  }
+}

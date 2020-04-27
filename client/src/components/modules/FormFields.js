@@ -5,7 +5,18 @@ import Col from "react-bootstrap/Col";
 import Select from "react-select";
 import { Link } from "@reach/router";
 
-import timeZones, { subjects, tags } from "../Constants";
+import timeZones, { subjects, tags, registerDisclaimer } from "../Constants";
+import { Jumbotron } from "react-bootstrap";
+
+export const getDisclaimer = () =>  {
+  return (
+    <Jumbotron>
+      <p>
+        {registerDisclaimer}
+      </p>
+    </Jumbotron>
+  )
+}
 
 export const getNameField = (formik) => {
   return (
@@ -180,10 +191,11 @@ export const getMentorFields = (formik) => {
     <Form.Group as={Col} md={0} pd={0} controlId="validationPublic">
           <Form.Label>Privacy</Form.Label>
           <Form.Check
-            checked={formik.values.public}
             name="public"
             onChange={() => formik.setFieldValue("public", !formik.values.public)}
-            type="checkbox" label="Listed as an Available Mentor." />
+            checked={formik.values.public}
+            type="checkbox" 
+            label="Listed as an Available Mentor." />
     </Form.Group>
     </>
   );
@@ -196,10 +208,14 @@ export const getTermsAndConditions = (formik )=> {
       checked={formik.values.agreed}
       name="public"
       onChange={() => formik.setFieldValue("agreed", !formik.values.agreed)}
-      type="checkbox" label={<Link to="/terms" >
-        I have read and agreed to the Terms and Conditions
-      </Link>} />
-      
+      type="checkbox" label={"I have read and agreed to our the following:"} />
+    <a href="/termsconditions" href="/termsconditions" target="_blank">
+      Terms and Conditions
+    </a>
+    <br/>
+    <a href="/privacy" target="_blank">
+      Privacy Policy
+    </a>
   </Form.Group>)
 };
 

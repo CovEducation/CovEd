@@ -14,6 +14,21 @@
 * much after initial creation.
 */
 
+html, body, #root, #root>div {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: relative;
+}
+
+.contentWrap {
+  padding-bottom: 2.5em;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 :root {
   --primary: #396dff;
   --primary--dim: #6987db;
