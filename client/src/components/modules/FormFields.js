@@ -116,8 +116,8 @@ export const getRoleField = (formik) => {
         isInvalid={formik.touched.role && formik.errors.role}
         as="select"
       >
-        <option value="student">Student/Parent</option>
-        <option value="mentor">Mentor</option>
+        <option value="student">I’m a parent or guardian of a student seeking a mentor.</option>
+        <option value="mentor">I’m a college student signing up to be a mentor.</option>
       </Form.Control>
       <Form.Control.Feedback type="invalid">{formik.errors.role}</Form.Control.Feedback>
     </Form.Group>
