@@ -140,7 +140,7 @@ export const getRoleField = (formik) => {
 export const getSubjectField = (formik) => {
   return (
     <Form.Group as={Col} controlId="validationSubject">
-      <Form.Label>{formik.values.role === "student" ? <><i>{subjectMentee}</i><p>Subject</p></> : <><i>{subjectMentor}</i><p>Subject</p></>}</Form.Label>
+      <Form.Label>{formik.values.role === "student" ? <><i>{subjectMentee}</i></> : <><i>{subjectMentor}</i></>}</Form.Label>
       <Select
         value={formik.values.subjects}
         className={!!formik.errors.subjects && formik.touched.subjects ? "is-invalid" : ""}
@@ -158,7 +158,7 @@ export const getSubjectField = (formik) => {
 export const getTagField = (formik) => {
   return (
     <Form.Group as={Col} controlId="validationTag">
-      <Form.Label>{formik.values.role === "student" ? <>School level tags (Optional)</> : <>School levels you are comfortable teaching (Optional))</>}</Form.Label>
+      <Form.Label>{formik.values.role === "student" ? <>School level tags (Optional)</> : <>School levels you are comfortable teaching (Optional)</>}</Form.Label>
       <Select
         value={formik.values.tags}
         className={!!formik.errors.tags && formik.touched.tags ? "is-invalid" : ""}
@@ -188,8 +188,8 @@ export const getMentorFields = (formik) => {
         />
         <Form.Control.Feedback type="invalid">{formik.errors.bio}</Form.Control.Feedback>
     </Form.Group>
-    <Form.Group as={Col} md="6" controlId="validationMajor">
-      <Form.Label>Major</Form.Label>
+    <Form.Group as={Col} md="12" controlId="validationMajor">
+      <Form.Label>Major(s)</Form.Label>
       <Form.Control
         name="major"
         {...formik.getFieldProps("major")}
@@ -201,7 +201,7 @@ export const getMentorFields = (formik) => {
       <Form.Control.Feedback type="invalid">{formik.errors.major}</Form.Control.Feedback>
     </Form.Group>
     <Form.Group as={Col} md={0} pd={0} controlId="validationPublic">
-          <Form.Label>Privacy</Form.Label>
+          <Form.Label><b>Privacy</b></Form.Label>
           <Form.Check
             name="public"
             onChange={() => formik.setFieldValue("public", !formik.values.public)}
@@ -215,7 +215,7 @@ export const getMentorFields = (formik) => {
 
 export const getTermsAndConditions = (formik )=> {
   return (<Form.Group as={Col} md={0} pd={0} controlId="validationPublic">
-    <Form.Label>Terms and conditions</Form.Label>
+    <Form.Label><b>Terms and conditions</b></Form.Label>
     <Form.Check
       checked={formik.values.agreed}
       name="public"
