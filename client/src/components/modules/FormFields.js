@@ -3,6 +3,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Select from "react-select";
+import { Link } from "@reach/router";
 
 import timeZones, { subjects, tags, registerDisclaimer } from "../Constants";
 import { Jumbotron } from "react-bootstrap";
@@ -20,7 +21,7 @@ export const getDisclaimer = () =>  {
 export const getNameField = (formik) => {
   return (
     <Form.Group as={Col} md="12" controlId="validationCustom01">
-      <Form.Label>Name</Form.Label>
+      <Form.Label>{formik.values.role === "student" ? <>Parent Name</> : <>Name</>}</Form.Label>
       <Form.Control
         name="name"
         {...formik.getFieldProps("name")}
@@ -37,7 +38,7 @@ export const getNameField = (formik) => {
 export const getEmailField = (formik) => {
   return (
     <Form.Group as={Col} md="12" controlId="validationEmail">
-      <Form.Label>Email</Form.Label>
+      <Form.Label>{formik.values.role === "student" ? <>Parent Email</> : <>Email</>}</Form.Label>
       <Form.Control
         name="email"
         {...formik.getFieldProps("email")}
@@ -123,21 +124,6 @@ export const getRoleField = (formik) => {
   );
 };
 
-export const getBioField = (formik) => {
-  return (
-    <Form.Group as={Col} controlId="formBioTextArea">
-      <Form.Label>Introduce Yourself!</Form.Label>
-      <Form.Control
-        name="bio"
-        {...formik.getFieldProps("bio")}
-        isInvalid={formik.touched.bio && formik.errors.bio}
-        as="textarea"
-        rows="3"
-      />
-      <Form.Control.Feedback type="invalid">{formik.errors.bio}</Form.Control.Feedback>
-    </Form.Group>
-  );
-};
 
 export const getSubjectField = (formik) => {
   return (
@@ -179,6 +165,17 @@ export const getTagField = (formik) => {
 export const getMentorFields = (formik) => {
   return (
     <>
+    <Form.Group as={Col} md={12} controlId="formBioTextArea">
+        <Form.Label>Introduce Yourself!</Form.Label>
+        <Form.Control
+          name="bio"
+          {...formik.getFieldProps("bio")}
+          isInvalid={formik.touched.bio && formik.errors.bio}
+          as="textarea"
+          rows="3"
+        />
+        <Form.Control.Feedback type="invalid">{formik.errors.bio}</Form.Control.Feedback>
+    </Form.Group>
     <Form.Group as={Col} md={6} controlId="validationMajor">
       <Form.Label>Major</Form.Label>
       <Form.Control
@@ -204,31 +201,49 @@ export const getMentorFields = (formik) => {
   );
 };
 
+export const getTermsAndConditions = (formik )=> {
+  return (<Form.Group as={Col} md={0} pd={0} controlId="validationPublic">
+    <Form.Label>Terms and conditions</Form.Label>
+    <Form.Check
+      checked={formik.values.agreed}
+      name="public"
+      onChange={() => formik.setFieldValue("agreed", !formik.values.agreed)}
+      type="checkbox" label={"I have read and agreed to our the following:"} />
+    <a href="/termsconditions" href="/termsconditions" target="_blank">
+      Terms and Conditions
+    </a>
+    <br/>
+    <a href="/privacy" target="_blank">
+      Privacy Policy
+    </a>
+  </Form.Group>)
+};
+
 export const getMenteeFields = (formik) => {
   return (
     <>
-      <Form.Group as={Col} md="6" controlId="validationGuadianName">
-        <Form.Label>Parent's Name</Form.Label>
+      <Form.Group as={Col} md="6" controlId="validationStudentName">
+        <Form.Label>Student's Name</Form.Label>
         <Form.Control
-          name="guardian_name"
-          {...formik.getFieldProps("guardian_name")}
-          isInvalid={formik.touched.guardian_name && formik.errors.guardian_name}
+          name="student_name"
+          {...formik.getFieldProps("student_name")}
+          isInvalid={formik.touched.student_name && formik.errors.student_name}
           type="text"
-          placeholder="Parent Name"
+          placeholder="Student Name"
         />
-        <Form.Control.Feedback type="invalid">{formik.errors.guardian_name}</Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{formik.errors.student_name}</Form.Control.Feedback>
       </Form.Group>
       <Form.Group as={Col} md="6" controlId="validationEmailGuardian">
-        <Form.Label>Parent Email</Form.Label>
+        <Form.Label>Student's Email</Form.Label>
         <Form.Control
-          name="guardian_email"
-          {...formik.getFieldProps("guardian_email")}
-          isInvalid={formik.touched.guardian_email && formik.errors.guardian_email}
+          name="student_email"
+          {...formik.getFieldProps("student_email")}
+          isInvalid={formik.touched.student_email && formik.errors.student_email}
           type="email"
           placeholder="youremail@mail.com"
           aria-describedby="inputGroupPrepend"
         />
-        <Form.Control.Feedback type="invalid">{formik.errors.guardian_email}</Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{formik.errors.student_email}</Form.Control.Feedback>
       </Form.Group>
     </>
   );

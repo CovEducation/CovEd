@@ -32,8 +32,8 @@ const postMentee = async (idToken, values) => {
     timezone: values.timezone,
     bio: values.bio,
     subjects: values.subjects,
-    guardian_name: values.guardian_name,
-    guardian_email: values.guardian_email,
+    student_name: values.student_name,
+    student_email: values.student_email,
   });
 };
 

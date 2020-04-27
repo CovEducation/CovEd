@@ -8,14 +8,11 @@ const menteeSchema = new mongoose.Schema({
   timezone: String,
   bio: String,
   subjects: [String],
-  guardian_name: String,
-  guardian_phone: String,
-  guardian_email: String,
+  student_name: String,
+  student_phone: String,
+  student_email: String,
   // these fields are not captured by client
-  college_prep: Boolean,
   grade_level: Number,
-  has_reliable_internet: Boolean,
-  guardian_present: Boolean,
   mentors: [mongoose.Types.ObjectId],
   tags: [String],
 });

@@ -4,9 +4,7 @@ import "./Register.css";
 import Form from "react-bootstrap/Form";
 import { Provider } from "rebass";
 import { Section } from "react-landing-page";
-
-import TermsDialog from "../modules/TermsOfServiceDialog";
-
+import Button from "react-bootstrap/Button";
 import { createNewUser } from "../../api";
 
 import { useNavigate } from "@reach/router";
@@ -21,12 +19,11 @@ import {
   getPasswordField,
   getTimezoneField,
   getRoleField,
-  getBioField,
+  getTermsAndConditions,
   getSubjectField,
   getTagField,
   getMentorFields,
   getMenteeFields,
-  getDisclaimer
 } from "../modules/FormFields";
 
 import "./Profile.css";
@@ -42,10 +39,8 @@ const RegisterSchema = Yup.object().shape({
   name: Yup.string().required("Please enter your name."),
   timezone: Yup.string().required("Required"),
   role: Yup.string().required("Required"),
-  bio: Yup.string(),
   subjects: Yup.array(),
   tags: Yup.array(),
-
   email: Yup.string()
     .email()
     .required("Please input a valid email.")
@@ -56,7 +51,6 @@ const RegisterSchema = Yup.object().shape({
         .matches(/.+@*.edu/i, "Mentors are required to use an .edu email.")
         .required("Please input a valid .edu email."),
     }),
-
   password: Yup.string()
     .required("Password Required")
     .matches(
@@ -67,11 +61,11 @@ const RegisterSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), null], "Passwords must match.")
     .required("Password Confirmation Required."),
 
-  guardian_name: Yup.string().when("role", {
+  student_name: Yup.string().when("role", {
     is: (role) => role === "student",
-    then: Yup.string().required("Please enter a Parent or Guardian's name."),
+    then: Yup.string().required("Please enter your student's name."),
   }),
-  guardian_email: Yup.string()
+  student_email: Yup.string()
     .email()
     .when("role", {
       is: (role) => role === "student",
@@ -82,6 +76,11 @@ const RegisterSchema = Yup.object().shape({
     is: (role) => role === "mentor",
     then: Yup.string().required("Major is a required field."),
   }),
+  bio: Yup.string().when("role", {
+    is: (role) => role === "mentor",
+    then: Yup.string().required("Introduce yourself!"),
+  }),
+  agreed: Yup.boolean().required("You must agree to the terms and conditions")
 });
 
 /**
@@ -110,13 +109,14 @@ const Register = () => {
       tags: [],
       password: "",
       passwordConfirmation: "",
-      guardian_email: "",
-      guardian_name: "",
+      student_email: "",
+      student_name: "",
       major: "",
       name: "",
       email: "",
       bio: "",
       public: true,
+      agreed: false,
     },
     validationSchema: RegisterSchema,
     onSubmit: handleSubmit,
@@ -124,12 +124,11 @@ const Register = () => {
 
   // Get all the required fields
   const fieldGetters = [
+    getRoleField,
     getNameField,
     getEmailField,
     getPasswordField,
     getTimezoneField,
-    getRoleField,
-    getBioField,
     getSubjectField,
     getTagField,
   ];
@@ -148,12 +147,12 @@ const Register = () => {
             <br />
           </span>
         </h2>
-        { getDisclaimer() }
         <Form className="Register-form" noValidate onSubmit={formik.handleSubmit}>
           {fields.map((field, i) => {
             return <Form.Row key={i}>{field}</Form.Row>;
           })}
-          <TermsDialog onSubmit={(event) => formik.submitForm()} />
+          {getTermsAndConditions(formik)}
+          <Button onClick={(event) => formik.submitForm()}> Submit </Button>
         </Form>
       </Section>
     </Provider>
