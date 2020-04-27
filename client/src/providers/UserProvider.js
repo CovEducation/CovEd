@@ -44,7 +44,7 @@ class UserProvider extends Component {
     auth.onAuthStateChanged(async (fbUser) => {
       if (fbUser) {
         try {
-          const token = await fbUser.getIdToken();
+          const token = await fbUser.getIdToken(true);
           const verified = fbUser.emailVerified;
           let user = await get("/api/mentee", { token: token });
           let role = "mentee";
