@@ -4,7 +4,7 @@ import "./Register.css";
 import Form from "react-bootstrap/Form";
 import { Provider } from "rebass";
 import { Section } from "react-landing-page";
-import Button from "react-bootstrap/Button";
+import { Button, Col, Row } from "react-bootstrap";
 import { createNewUser } from "../../api";
 
 import { useNavigate } from "@reach/router";
@@ -14,6 +14,7 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 
 import {
+  getParentDisclaimer,
   getNameField,
   getEmailField,
   getPasswordField,
@@ -136,10 +137,15 @@ const Register = () => {
   const roleFields =
     formik.values.role === "mentor" ? getMentorFields(formik) : getMenteeFields(formik);
 
+  const discFields =
+    formik.values.role === "student" ? getParentDisclaimer() : <></>;
+
   const fields = mainFields.concat(roleFields);
   return (
     <Provider theme={theme}>
       <Section width={[1]} heading="" subhead="" p={6} mt={2} mb={7}>
+        <Row className="justify-content-center">
+        <Col>
         <h2>
           <span className="light-h2">
             Register <br />
@@ -147,6 +153,11 @@ const Register = () => {
             <br />
           </span>
         </h2>
+        </Col>
+        </Row>
+        <Row className="justify-content-center">
+        <Col sm={{span:8}} xs={{span:10}}>
+        {discFields}
         <Form className="Register-form" noValidate onSubmit={formik.handleSubmit}>
           {fields.map((field, i) => {
             return <Form.Row key={i}>{field}</Form.Row>;
@@ -154,6 +165,8 @@ const Register = () => {
           {getTermsAndConditions(formik)}
           <Button onClick={(event) => formik.submitForm()}> Submit </Button>
         </Form>
+        </Col>
+        </Row>
       </Section>
     </Provider>
   );

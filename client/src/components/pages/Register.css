@@ -13,3 +13,18 @@ img {
     text-align: center;
     margin: auto auto;
 }
+
+.hr-primary{
+  max-width: 200px;
+  border-color: #F2BE32;
+  border-width: 3px;
+}
+
+a.dark-a{
+  color: #003c61;
+}
+
+a.dark-a:hover{
+  color: #000000;
+  font-weight:800;
+}

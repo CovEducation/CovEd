@@ -5,7 +5,8 @@ import Col from "react-bootstrap/Col";
 import Select from "react-select";
 import { Link } from "@reach/router";
 
-import timeZones, { subjects, tags, registerDisclaimer } from "../Constants";
+import timeZones, { subjects, tags, registerDisclaimer, subjectMentor, subjectMentee} from "../Constants";
+
 import { Jumbotron } from "react-bootstrap";
 
 export const getDisclaimer = () =>  {
@@ -15,6 +16,17 @@ export const getDisclaimer = () =>  {
         {registerDisclaimer}
       </p>
     </Jumbotron>
+  )
+}
+
+export const getParentDisclaimer = () =>  {
+  return (
+    <Jumbotron>
+    <p> <b>For Parents and Guardians:</b> CovEd is a matchmaking platform that connects K-12 students seeking tutoring with volunteer college students offering to mentor students during the COVID-19 pandemic. You can review CovEd’s expectations and requirements for our mentors <a target="_blank" href="/mentorguidelines" className="dark-a">here</a>. </p>
+      <p>Registering a student for mentorship requires that a parent or guardian provide the information requested below and consent to the use of CovEd’s services. This information will be used, among other things, to create a CovEd account and to help you connect to a mentor. For more information on the data we collect and how we use it, please see our <a target="_blank" href="/privacy" className="dark-a">Privacy Policy</a>. </p>
+      <p>When you register, you will receive an email from CovEd with a more information about our privacy practices, including how you can request to delete your information about your child. </p>
+      <p>If you have any questions or have any issues with the registration process, please contact us at <a href="mailto:coveducation@gmail.com" target="_blank" className="dark-a">coveducation@gmail.com.</a></p>
+      </Jumbotron>
   )
 }
 
@@ -38,7 +50,7 @@ export const getNameField = (formik) => {
 export const getEmailField = (formik) => {
   return (
     <Form.Group as={Col} md="12" controlId="validationEmail">
-      <Form.Label>{formik.values.role === "student" ? <>Parent Email</> : <>Email</>}</Form.Label>
+      <Form.Label>{formik.values.role === "student" ? <>Parent Email (Username)</> : <>Email (Username)</>}</Form.Label>
       <Form.Control
         name="email"
         {...formik.getFieldProps("email")}
@@ -128,8 +140,7 @@ export const getRoleField = (formik) => {
 export const getSubjectField = (formik) => {
   return (
     <Form.Group as={Col} controlId="validationSubject">
-      <Form.Label>Subjects</Form.Label>
-
+      <Form.Label>{formik.values.role === "student" ? <><i>{subjectMentee}</i><p>Subject</p></> : <><i>{subjectMentor}</i><p>Subject</p></>}</Form.Label>
       <Select
         value={formik.values.subjects}
         className={!!formik.errors.subjects && formik.touched.subjects ? "is-invalid" : ""}
@@ -147,7 +158,7 @@ export const getSubjectField = (formik) => {
 export const getTagField = (formik) => {
   return (
     <Form.Group as={Col} controlId="validationTag">
-      <Form.Label>Optional tags: </Form.Label>
+      <Form.Label>{formik.values.role === "student" ? <>School level tags (Optional)</> : <>School levels you are comfortable teaching (Optional))</>}</Form.Label>
       <Select
         value={formik.values.tags}
         className={!!formik.errors.tags && formik.touched.tags ? "is-invalid" : ""}
@@ -165,7 +176,7 @@ export const getTagField = (formik) => {
 export const getMentorFields = (formik) => {
   return (
     <>
-    <Form.Group as={Col} md={12} controlId="formBioTextArea">
+    <Form.Group as={Col} md="12" controlId="formBioTextArea">
         <Form.Label>Introduce Yourself!</Form.Label>
         <Form.Control
           name="bio"
@@ -173,17 +184,18 @@ export const getMentorFields = (formik) => {
           isInvalid={formik.touched.bio && formik.errors.bio}
           as="textarea"
           rows="3"
+          placeholder="Feel free to mention any hobbies you have, languages you speak, and any experience you may have working with particular groups/communities!"
         />
         <Form.Control.Feedback type="invalid">{formik.errors.bio}</Form.Control.Feedback>
     </Form.Group>
-    <Form.Group as={Col} md={6} controlId="validationMajor">
+    <Form.Group as={Col} md="6" controlId="validationMajor">
       <Form.Label>Major</Form.Label>
       <Form.Control
         name="major"
         {...formik.getFieldProps("major")}
         isInvalid={formik.touched.major && formik.errors.major}
         type="text"
-        placeholder="Learning"
+        placeholder="Major: avoid abbreviations please!"
         aria-describedby="inputGroupPrepend"
       />
       <Form.Control.Feedback type="invalid">{formik.errors.major}</Form.Control.Feedback>
@@ -194,7 +206,7 @@ export const getMentorFields = (formik) => {
             name="public"
             onChange={() => formik.setFieldValue("public", !formik.values.public)}
             checked={formik.values.public}
-            type="checkbox" 
+            type="checkbox"
             label="Listed as an Available Mentor." />
     </Form.Group>
     </>
@@ -208,7 +220,7 @@ export const getTermsAndConditions = (formik )=> {
       checked={formik.values.agreed}
       name="public"
       onChange={() => formik.setFieldValue("agreed", !formik.values.agreed)}
-      type="checkbox" label={"I have read and agreed to our the following:"} />
+      type="checkbox" label={"By checking this box, I agree to the CovEd Terms of Service and Privacy Policy."} />
     <a href="/termsconditions" href="/termsconditions" target="_blank">
       Terms and Conditions
     </a>
@@ -234,7 +246,7 @@ export const getMenteeFields = (formik) => {
         <Form.Control.Feedback type="invalid">{formik.errors.student_name}</Form.Control.Feedback>
       </Form.Group>
       <Form.Group as={Col} md="6" controlId="validationEmailGuardian">
-        <Form.Label>Student's Email</Form.Label>
+        <Form.Label>Student's Email (Optional)</Form.Label>
         <Form.Control
           name="student_email"
           {...formik.getFieldProps("student_email")}

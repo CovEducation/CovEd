@@ -109,7 +109,7 @@ export const theme = {
   ]
 };
 
-export const tags = ["Women in STEM", "FGLI", "SPED: Special Education", "ASL: American Sign Language", "LGBTQ + ", "English as a Second Language", "Underrepresented Minority in STEM(African Americans, American Indians / Alaska Natives, and Latinos)", "Early Childhood Learning", "High School", "Middle School", "Elementary School", "Preschool"]
+export const tags = ["Early Childhood Learning", "Preschool", "Elementary School", "Middle School","High School"]
                     .map(k => {return {label: k, value: k}});
 
 export const about_us_content =
@@ -183,6 +183,11 @@ export const FAQS = [
 ]
 
 export const registerDisclaimer = "This service is a completely free volunteer-based service. Those under the age of 13 are required to have a form filled out by a parent or guardian. For all others it is strongly recommended that a parent or guardian fill out this form. If a parent or guardian is unable to fill out the form, please email coveducation@gmail.com. Thanks!";
+
+export const subjectMentee = "If you like, please note any subjects with which your student seeks assistance. You will have the option to review specific Mentors after you complete the signup process.";
+
+export const subjectMentor = "Please select the subjects you would like to mentor. These subjects will be listed next to your profile.";
+
 export const FOOT = [
   {
     name: "Terms and Conditions",
