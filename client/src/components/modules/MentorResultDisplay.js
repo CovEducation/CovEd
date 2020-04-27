@@ -80,8 +80,11 @@ class MentorResultDisplay extends Component {
                 <div key={subject + i}>
                   {bull} {subject}
                   <br />
-                </div> 
+                </div>
               ))}
+              <br />
+              <b>Bio: </b>
+              {this.props.mentor.bio}
             </Typography>
           </CardContent>
           <CardActions>
@@ -89,7 +92,7 @@ class MentorResultDisplay extends Component {
               <Col className="text-center">
                 <TextField
                   id="outlined-multiline-flexible"
-                  label="Send a message!!"
+                  label="Send a message to the Mentor!"
                   multiline
                   rowsMax="10"
                   margin="normal"
