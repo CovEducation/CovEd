@@ -23,11 +23,18 @@ const firebaseMiddleware = require("./auth");
 
 const rateLimit = require("express-rate-limit")
 
-const pingLimiter = rateLimit({
+const emailRequestLimiter = rateLimit({
   windowMs: 60 * 60 * 24 * 1000, // 1 day
   max: 4,
   message: "Please wait at least one day for the mentor to respond to your requests."
 });
+
+const accountRequestLimiter = rateLimit({
+  windowMs: 60 * 60 * 24 * 1000,
+  max: 4,
+  message: "Please only make up to 4 accounts a day."
+});
+
 const firebase = require("firebase-admin");
 
 
@@ -109,7 +116,7 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
   POST Endpoints
 */
 
-router.post("/addMentee", pingLimiter, firebaseMiddleware, (req, res) => {
+router.post("/addMentee", accountRequestLimiter, firebaseMiddleware, (req, res) => {
   let newMentee = new Mentee({
     firebase_uid: req.user.user_id,
     name: req.body.name,
@@ -130,7 +137,7 @@ router.post("/addMentee", pingLimiter, firebaseMiddleware, (req, res) => {
   newMentee.save().then((mentee) => res.send(mentee));
 });
 
-router.post("/addMentor", firebaseMiddleware, (req, res) => {
+router.post("/addMentor", accountRequestLimiter, firebaseMiddleware, (req, res) => {
   let newMentor = new Mentor({
     firebase_uid: req.user.user_id,
     name: req.body.name,
@@ -186,7 +193,7 @@ router.get("/auth_get", firebaseMiddleware, (req, res) => {
 });
 
 
-router.post("/pingMentor", pingLimiter, firebaseMiddleware, (req, res) => {
+router.post("/pingMentor", emailRequestLimiter, firebaseMiddleware, (req, res) => {
   const student_email = req.body.student.email;
   const mentor_uid = req.body.mentor_uid;
   const student_message = req.body.personal_message;
@@ -194,13 +201,24 @@ router.post("/pingMentor", pingLimiter, firebaseMiddleware, (req, res) => {
     firebase_uid: mentor_uid
   }).then((mentor) => {
     let mentor_email = mentor.email;
-    sendEmail(mentor_email, mentor.name.split()[0], student_email, student_message)
+    sendEmail.emailMentor(mentor_email, mentor.name.split()[0], student_email, student_message)
       .then(() => {
         mentor.last_request = Date.now();
         mentor.save()
       }).then(res.send({}));
   });
 });
+
+router.post("/pingGuardian", emailRequestLimiter, firebaseMiddleware, (req, res) => {
+  const guardianName = req.body.guardianName;
+  const guardianEmail = req.body.guardianEmail;
+  sendEmail.emailGuardian(guardianName, guardianEmail)
+    .then(() => { res.send({}) })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+})
 
 function removeContactInfo(person) {
   person.email = undefined;
