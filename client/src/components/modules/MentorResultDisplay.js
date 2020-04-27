@@ -12,6 +12,8 @@ import { UserContext } from "../../providers/UserProvider";
 import "./MentorResultDisplay.css";
 import { Col, Row } from "react-bootstrap";
 
+import {CircleButton} from "./UtilityComponents";
+
 class MentorResultDisplay extends Component {
   static contextType = UserContext;
   constructor(props) {
@@ -36,15 +38,14 @@ class MentorResultDisplay extends Component {
     });
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = async () => {
     let args = {
       personal_message: this.state.msg,
       mentor_uid: this.props.mentor.firebase_uid,
       student: this.state.user ? this.state.user : { email: "test@email.com" },
       token: this.state.token,
     };
-    post("/api/pingMentor", args)
+    return post("/api/pingMentor", args)
       .then((resp) => {
         alert("Send message! Expect a reply within the next couple days");
         this.setState({
@@ -55,12 +56,16 @@ class MentorResultDisplay extends Component {
         alert("Please wait at least one day for the mentors to respond.");
       });
   };
+
   handleChange = (event) => {
     this.setState({ msg: event.target.value });
   };
 
+  
+  
   render() {
     const bull = <span>•</span>;
+    const fab = <CircleButton onClick={(event) => this.handleSubmit(event)}/>
     return (
       <>
         <Card label="hoveryellow">
@@ -99,17 +104,11 @@ class MentorResultDisplay extends Component {
                   value={this.state.msg}
                   onChange={this.handleChange}
                 />
-                <Button
-                  variant="contained"
-                  color="primary"
-                  endIcon={<Icon />}
-                  onClick={this.handleSubmit}
-                >
-                  {" "}
-                  Send
-                </Button>
-                <br />
+              
               </Col>
+            </Row>
+            <Row >
+              {fab}
             </Row>
           </CardActions>
         </Card>
