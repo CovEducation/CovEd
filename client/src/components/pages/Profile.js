@@ -17,9 +17,7 @@ import { sendEmailVerification } from "../../api";
 
 import {
   getNameField,
-  getEmailField,
   getTimezoneField,
-  getRoleField,
   getSubjectField,
   getTagField,
   getMentorFields,
