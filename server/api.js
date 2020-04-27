@@ -76,6 +76,9 @@ router.post("/removeUser", firebaseMiddleware, async (req, res) => {
 });
 
 router.get("/getMentors", firebaseMiddleware, (req, res) => {
+  // check if the user has their email verified 
+  if (!req.user.email_verified) { res.sendStatus(403); }
+
   // We want to return all users which have the required tags and are public, sorted
   // by how recently they were contacted by someone else.
   const required_tags = req.query.subjects ? req.query.subjects.split() : [];
