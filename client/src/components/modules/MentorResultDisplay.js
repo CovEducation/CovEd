@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { post, get } from "../../utilities.js";
@@ -45,7 +43,16 @@ class MentorResultDisplay extends Component {
       student: this.state.user ? this.state.user : { email: "test@email.com" },
       token: this.state.token,
     };
+    let guardianInfo = {
+      guardianName: this.state.user.name,
+      guardianEmail: this.state.user.email,
+      token: this.state.token,
+    };
+
     return post("/api/pingMentor", args)
+      .then((resp) => {
+        post("/api/pingGuardian", guardianInfo);
+      })
       .then((resp) => {
         alert("Send message! Expect a reply within the next couple days");
         this.setState({
