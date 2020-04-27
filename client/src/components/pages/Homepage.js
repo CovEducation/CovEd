@@ -91,7 +91,7 @@ class Homepage extends Component {
         <Section p={[1,6,2,2]} mb={2}>
           <Flex flexWrap="wrap" justifyContent="center">
               <Row className="justify-content-center" mb={4}>
-              <Col>
+              <Col align="center">
               <Button href='https://forms.gle/P4n36zh3pdt8nEzM8'>Submit a resource</Button>
               <Button href='/register'>Register</Button>
               </Col>
