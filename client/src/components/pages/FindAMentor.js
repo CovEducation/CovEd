@@ -30,8 +30,6 @@ class FindAMentor extends Component {
 
   updateTags = (tags) => {
     if (this.state.tags !== tags) {
-      //console.log("Setting state to ")
-      //console.log(tags)
       this.setState({ tags: tags }, this.searchForMentors);
     }
     // We also want to clear the mentor selection
@@ -45,9 +43,7 @@ class FindAMentor extends Component {
   searchForMentors = () => {
     const user = this.context.user;
     if (user) {
-      console.log("Searching for these tags: ")
-      console.log(this.state.tags);
-      get("/api/getMentors", { subjects: this.state.tags, limit: 10, token: user.token }).then((mentors) => {
+      get("/api/getMentors", { subjects: this.state.tags, limit: 100, token: user.token }).then((mentors) => {
         if (this.state.mentors !== mentors) {
           this.setState({ mentors: mentors })
         }

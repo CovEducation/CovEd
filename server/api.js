@@ -195,7 +195,10 @@ router.post("/pingMentor", pingLimiter, firebaseMiddleware, (req, res) => {
   }).then((mentor) => {
     let mentor_email = mentor.email;
     sendEmail(mentor_email, mentor.name.split()[0], student_email, student_message)
-      .then(() => res.send({}));
+      .then(() => {
+        mentor.last_request = Date.now();
+        mentor.save()
+      }).then(res.send({}));
   });
 });
 
