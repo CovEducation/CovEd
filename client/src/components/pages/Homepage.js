@@ -23,7 +23,7 @@ class Homepage extends Component {
             bgOpacity={0.5}
           >
             <Heading fontSize={[9,11]} textAlign="center">CovEd<span className="light">ucation</span></Heading>
-            <Subhead mt={3} fontSize={[3,4]} textAlign="center"><span className="light">Continuing K-12 education during the COVID-19 outbreak</span></Subhead>
+            <Subhead mt={3} fontSize={[3,4]} textAlign="center"><span className="light">Continuing K-12 education in the US during the COVID-19 outbreak</span></Subhead>
             <Flex mt={2} p={5}>
             <Button href='/register'>Register</Button>
             </Flex>
