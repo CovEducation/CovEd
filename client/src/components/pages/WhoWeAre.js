@@ -20,11 +20,6 @@ const management = [
     major: "Neuroscience and Spanish Literature"
   },
   {
-    name: "Sarah Dohadwala",
-    school: "MIT, 2021",
-    major: "Biological Engineering"
-  },
-  {
     name: "Dheekshita Kumar",
     school: "MIT, 2020",
     major: "Mechanical Engineering, Electrical Eng. & Computer Science"
@@ -43,6 +38,21 @@ const management = [
     name: "Daniela Velez",
     school: "MIT, 2023",
     major: "Computer Science"
+  },
+  {
+    name: "Sarah Dohadwala",
+    school: "MIT, 2021",
+    major: "Biological Engineering"
+  },
+  {
+    name: "Anne Lheem",
+    school: "Harvard, 2021",
+    major: "Anthropology, Global Health and Health Policy"
+  },
+  {
+    name: "Nicole (Niki) Kim",
+    school: "Harvard, 2023",
+    major: "Computer Science and Neuroscience"
   },
 ];
 const resources = [
@@ -82,6 +92,62 @@ const technology = [
     name: "April Xie",
     school: "MIT, 2021",
     major: "Computer Science"
+  },
+];
+
+const coordinators = [
+  {
+    name: "Tam Nguyen",
+    school: "MIT, 2021",
+    major: "Biological Engineering"
+  },
+  {
+    name: "Nicole (Niki) Kim",
+    school: "Harvard, 2023",
+    major: "Computer Science and Neuroscience"
+  },
+  {
+    name: "Evelyn Wong",
+    school: "Harvard, 2021",
+    major: "Neuroscience, Spanish Literature"
+  },
+  {
+    name: "Pallas Chou",
+    school: "Harvard, 2023",
+    major: "Molecular and Cellular Biology"
+  },
+  {
+    name: "Jin Wong",
+    school: "Southview HS, 2022",
+    major: "Computer Science"
+  },
+  {
+    name: "Nathan Liang",
+    school: "MIT, 2021",
+    major: "Biological Engineering, Comparative Media Studies"
+  },
+  {
+    name: "Srikari Ayyagari",
+    school: "Texas A&M, 2021",
+    major: "Economics"
+  },
+];
+
+const pr = [
+  {
+    name: "Zoya Surani",
+    school: "Harvard, 2022",
+    major: "Neuroscience"
+  },
+  {
+    name: "Grace Yang",
+    school: "UCLA, 2022",
+    major: "Human Biology and Society"
+  },
+  {
+    name: "Alina Dong",
+    school: "Harvard, 2023",
+    major: "Economics"
   },
 ];
 
