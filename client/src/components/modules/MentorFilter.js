@@ -24,12 +24,14 @@ class MentorFilter extends Component {
   }
 
   render() {
-
+    // Makes sure the dropdown appears over other react elements.
+    // https://github.com/JedWatson/react-select/issues/1537
+    const selectStyles = { menu: styles => ({ ...styles, zIndex: 999 }) };
     return (
       <Container fluid>
         <Form.Group controlId="exampleForm.ControlSelect2">
           <Form.Label>Search by Tags:</Form.Label>
-          <Select width='200px' value={this.state.value} options={OPTIONS} isMulti onChange={this.handleChange} />
+          <Select styles={selectStyles} value={this.state.value} options={OPTIONS} isMulti onChange={this.handleChange} />
         </Form.Group>
       </Container>
     );

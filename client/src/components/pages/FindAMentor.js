@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import MentorFilter from "../modules/MentorFilter.js";
-import MentorSearchResult from "../modules/MentorSearchResult.js";
-import MentorResultDisplay from "../modules/MentorResultDisplay.js";
 import "../../utilities.css";
 import "./FindAMentor.css";
 import { get } from "../../utilities.js";
-import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Alert from "@material-ui/lab/Alert";
@@ -16,6 +13,7 @@ import { Provider } from "rebass";
 import { sendEmailVerification } from "../../api";
 import { UserContext } from "../../providers/UserProvider";
 
+import MentorTable from "../modules/MentorTable";
 
 class FindAMentor extends Component {
   static contextType = UserContext;
@@ -82,21 +80,14 @@ class FindAMentor extends Component {
               <p>If you have already verified your email try refreshing the page.</p>
             </Alert>
           ) : (
+            <>
             <Row>
-              <Col className="FindAMentor-filter">
                 <MentorFilter onChange={this.updateTags} />
-              </Col>
-              <Col className="FindAMentor-results">
-                <MentorSearchResult mentors={this.state.mentors} onChange={this.updateMentor} />
-              </Col>
-              <Col className="FindAMentor-results">
-                {this.state.selected_mentor !== undefined ? (
-                  <MentorResultDisplay mentor={this.state.selected_mentor} user={this.props.user} />
-                ) : (
-                  <div> </div>
-                )}
-              </Col>
             </Row>
+            <Row>              
+                <MentorTable mentors={this.state.mentors} onSelect={this.updateMentor}/>
+            </Row>
+            </>
           )}
         </Container>
       </Provider>
