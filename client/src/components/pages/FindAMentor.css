@@ -5,3 +5,9 @@
 .FindAMentor-results {
     padding: 2em;
 }
+
+.hr-primary{
+  max-width: 200px;
+  border-color: #F2BE32;
+  border-width: 3px;
+}

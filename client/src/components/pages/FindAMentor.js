@@ -3,13 +3,14 @@ import MentorFilter from "../modules/MentorFilter.js";
 import "../../utilities.css";
 import "./FindAMentor.css";
 import { get } from "../../utilities.js";
-import Row from "react-bootstrap/Row";
+import { Row, Col} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
 
 import { theme } from "../Constants";
-import { Provider } from "rebass";
+import { Provider, Heading } from "rebass";
+
 import { sendEmailVerification } from "../../api";
 import { UserContext } from "../../providers/UserProvider";
 
@@ -81,11 +82,21 @@ class FindAMentor extends Component {
             </Alert>
           ) : (
             <>
-            <Row>
-                <MentorFilter onChange={this.updateTags} />
+            <Row className="justify-content-center">
+            <Col sm={{span:8}} xs={{span:10}} className="text-center">
+            <br />
+            <Heading fontSize={[5,7]} fontWeight="normish">Find A Mentor <br /><hr className="hr-primary"/><br /></Heading>
+            </Col>
             </Row>
-            <Row>              
+            <Row className="justify-content-center">
+            <Col sm={{span:8}} xs={{span:10}}>
+                <MentorFilter onChange={this.updateTags} />
+            </Col>
+            </Row>
+            <Row className="justify-content-center">
+              <Col sm={{span:8}} xs={{span:10}}>
                 <MentorTable mentors={this.state.mentors} onSelect={this.updateMentor}/>
+              </Col>
             </Row>
             </>
           )}

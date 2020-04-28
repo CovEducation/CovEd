@@ -67,15 +67,14 @@ class MentorResultDisplay extends Component {
     this.setState({ msg: event.target.value });
   };
 
-  
-  
+
+
   render() {
     const bull = <span>•</span>;
     return (
       <div className="MentorResultDisplayContainer">
         <Card label="hoveryellow">
           <CardContent align="center" >
-
             <Typography color="textSecondary" gutterBottom>
               Mentor Information
             </Typography>
@@ -83,9 +82,9 @@ class MentorResultDisplay extends Component {
               {this.props.mentor.name}
             </Typography>
             <Typography color="textSecondary">Major: {this.props.mentor.major}</Typography>
-            <Typography variant="body2" component="p">
+            <Typography variant="body2" component="p" align="left">
               <br />
-              Subjects available for:
+              <b>Subjects available for:</b>
               <br />
               {this.props.mentor.subjects.map((subject, i) => (
                 <div key={subject + i}>
@@ -95,13 +94,17 @@ class MentorResultDisplay extends Component {
               ))}
               <br />
               <b>Bio: </b>
+              <p>
               {this.props.mentor.bio}
+              </p>
             </Typography>
             <Row >
               <Col>
+              <i>Message</i>
+              <br />
                 <TextField
                   id="outlined-multiline-flexible"
-                  label="Send a message to the Mentor!"
+                  label="message the mentor!"
                   multiline
                   rowsMax="10"
                   variant="outlined"
@@ -110,11 +113,11 @@ class MentorResultDisplay extends Component {
                   value={this.state.msg}
                   onChange={this.handleChange}
                 />
-              
+
               </Col>
             </Row>
-            <Row >
-              <CircleButton align="right" onClick={(event) => this.handleSubmit(event)} />
+            <Row className="justify-content-center">
+              <CircleButton align="center" onClick={(event) => this.handleSubmit(event)} />
             </Row>
           </CardContent>
         </Card>

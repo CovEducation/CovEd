@@ -9,8 +9,10 @@ import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Dialog from '@material-ui/core/Dialog';
 import MentorResultDisplay from "./MentorResultDisplay";
+import "./MentorResultDisplay.css"
+import { Col, Row } from "react-bootstrap";
 /*
-Helper component to show the expanded mentor profile 
+Helper component to show the expanded mentor profile
 */
 function MentorDisplay({mentor}) {
     const fullScreen = useMediaQuery("600px");
@@ -20,7 +22,7 @@ function MentorDisplay({mentor}) {
     };
    // return <div>HELLO I'M TEST HOW R U</div>
     return <Dialog open={open} onClose={handleClose} fullScreen={fullScreen} ><MentorResultDisplay mentor={mentor}/></Dialog>
-    
+
 }
 /*
 This component renders a table displaying
@@ -54,10 +56,11 @@ export default function MentorTable({mentors, onSelect}) {
             <TableBody>
                 {mentors.map((mentor, i) => {
                     const isItemSelected = isSelected(mentor.name + i);
-                    
+
                     return (
                     <>
                     <TableRow
+                    hover
                     onClick={(event) => handleClick(event, mentor.name + i)}
                     selected={isItemSelected}
                     key={mentor.name + mentor.major}>
@@ -68,7 +71,7 @@ export default function MentorTable({mentors, onSelect}) {
                         <TableCell align="left">{formatList(mentor.subjects)}</TableCell>
                         <TableCell align="left">{formatList(mentor.tags)}</TableCell>
                         <TableCell align="left">{mentor.timezone}</TableCell>
-                        
+
                     </TableRow>
                     {isItemSelected && (<MentorDisplay mentor={mentor}/>)}
                     </>
