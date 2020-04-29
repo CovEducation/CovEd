@@ -32,7 +32,7 @@ Props:
     mentors - list of mentors
     onSelect - fx(mentor)
 */
-export default function MentorTable({mentors, onSelect}) {
+export default function MentorTable({mentors}) {
     const [selected, setSelected] = React.useState("");
     const [page, setPage] = React.useState(0);
     const rowsPerPage = 5;
@@ -52,7 +52,7 @@ export default function MentorTable({mentors, onSelect}) {
         return mentors.slice(page * rowsPerPage, page*rowsPerPage + rowsPerPage)
     }
     return (
-    <Paper>
+    <>
     <TableContainer component={Paper}>
         <Table stickyHeader aria-label="mentor table">
             <TableHead>
@@ -103,6 +103,6 @@ export default function MentorTable({mentors, onSelect}) {
         page={page}
         onChangePage={handleChangePage}
     />
-    </Paper>
+    </>
     )
 }
