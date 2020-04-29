@@ -9,8 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Dialog from '@material-ui/core/Dialog';
 import MentorResultDisplay from "./MentorResultDisplay";
-import "./MentorResultDisplay.css"
-import { Col, Row } from "react-bootstrap";
+import "./MentorResultDisplay.css";
+import TablePagination from '@material-ui/core/TablePagination';
 /*
 Helper component to show the expanded mentor profile
 */
@@ -34,6 +34,8 @@ Props:
 */
 export default function MentorTable({mentors, onSelect}) {
     const [selected, setSelected] = React.useState("");
+    const [page, setPage] = React.useState(0);
+    const rowsPerPage = 5;
     const formatList = (subjects) => {
         return subjects.map((subject, i) => i === (subjects.length -1) ? subject : subject + ", ");
     };
@@ -41,8 +43,16 @@ export default function MentorTable({mentors, onSelect}) {
         setSelected(name)
     };
     const isSelected = (name) => selected === name;
+    const emptyRows = rowsPerPage - Math.min(rowsPerPage, mentors.length - page * rowsPerPage);
 
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+    const mentors_shown = () => {
+        return mentors.slice(page * rowsPerPage, page*rowsPerPage + rowsPerPage)
+    }
     return (
+    <Paper>
     <TableContainer component={Paper}>
         <Table stickyHeader aria-label="mentor table">
             <TableHead>
@@ -55,7 +65,7 @@ export default function MentorTable({mentors, onSelect}) {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {mentors.map((mentor, i) => {
+                {mentors_shown().map((mentor, i) => {
                     const isItemSelected = isSelected(mentor.name + i);
 
                     return (
@@ -77,8 +87,22 @@ export default function MentorTable({mentors, onSelect}) {
                     </>
                     )
                 })}
+
+                {emptyRows > 0 && (
+                    <TableRow>
+                        <TableCell colspan={6}/>
+                    </TableRow>
+                )}
             </TableBody>
         </Table>
     </TableContainer>
+    <TablePagination
+        component="div"
+        count={mentors.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+    />
+    </Paper>
     )
 }
