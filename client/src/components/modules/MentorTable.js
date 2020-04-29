@@ -14,6 +14,7 @@ import { Col, Row } from "react-bootstrap";
 /*
 Helper component to show the expanded mentor profile
 */
+
 function MentorDisplay({mentor}) {
     const fullScreen = useMediaQuery("600px");
     const [open, setOpen] = React.useState(true);
@@ -62,7 +63,6 @@ export default function MentorTable({mentors, onSelect}) {
                     <TableRow
                     hover
                     onClick={(event) => handleClick(event, mentor.name + i)}
-                    selected={isItemSelected}
                     key={mentor.name + mentor.major}>
                         <TableCell component="th" scope="row">
                             {mentor.name}
