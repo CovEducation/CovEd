@@ -1,21 +1,20 @@
 import React, { Component } from "react";
 import MentorFilter from "../modules/MentorFilter.js";
-import MentorSearchResult from "../modules/MentorSearchResult.js";
-import MentorResultDisplay from "../modules/MentorResultDisplay.js";
 import "../../utilities.css";
 import "./FindAMentor.css";
 import { get } from "../../utilities.js";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import { Row, Col} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
 
 import { theme } from "../Constants";
-import { Provider } from "rebass";
+import { Provider, Heading } from "rebass";
+
 import { sendEmailVerification } from "../../api";
 import { UserContext } from "../../providers/UserProvider";
 
+import MentorTable from "../modules/MentorTable";
 
 class FindAMentor extends Component {
   static contextType = UserContext;
@@ -49,8 +48,6 @@ class FindAMentor extends Component {
   searchForMentors = () => {
     const user = this.context.user;
     if (user && user.verified) {
-      console.log("Searching for these tags: ");
-      console.log(this.state.tags);
       get("/api/getMentors", { subjects: this.state.tags, limit: 100, token: user.token }).then(
         (mentors) => {
           if (this.state.mentors !== mentors) {
@@ -82,21 +79,24 @@ class FindAMentor extends Component {
               <p>If you have already verified your email try refreshing the page.</p>
             </Alert>
           ) : (
-            <Row>
-              <Col className="FindAMentor-filter">
+            <>
+            <Row className="justify-content-center">
+            <Col sm={{span:8}} xs={{span:10}} className="text-center">
+            <br />
+            <Heading fontSize={[5,7]} fontWeight="normish">Find A Mentor <br /><hr className="hr-primary"/><br /></Heading>
+            </Col>
+            </Row>
+            <Row className="justify-content-center">
+            <Col sm={{span:8}} xs={{span:10}}>
                 <MentorFilter onChange={this.updateTags} />
-              </Col>
-              <Col className="FindAMentor-results">
-                <MentorSearchResult mentors={this.state.mentors} onChange={this.updateMentor} />
-              </Col>
-              <Col className="FindAMentor-results">
-                {this.state.selected_mentor !== undefined ? (
-                  <MentorResultDisplay mentor={this.state.selected_mentor} user={this.props.user} />
-                ) : (
-                  <div> </div>
-                )}
+            </Col>
+            </Row>
+            <Row className="justify-content-center">
+              <Col sm={{span:8}} xs={{span:10}}>
+                <MentorTable mentors={this.state.mentors}/>
               </Col>
             </Row>
+            </>
           )}
         </Container>
       </Provider>

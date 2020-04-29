@@ -22,10 +22,47 @@
   font-family: 'Muli', sans-serif !important;
   font-weight: 700 !important;
   text-align: center;
-  padding: 10px 5px 20px 5px;
+  padding: 10px 5px 10px 5px;
 }
 
 .MuiTextField-root	{
   padding: 7px 5px 20px 5px !important;
   text-align: center !important;
+}
+/* Todo */
+.MentorResultDisplayContainer {
+  font-family: 'Muli', sans-serif !important;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+.MuiCard-root{
+  padding: 10px 15px 5px 15px;
+}
+
+.MuiTableCell-root{
+  font-family: 'Muli', sans-serif !important;
+}
+
+.MuiTableCell-body{
+  font-weight: 400;
+}
+
+.MuiTableCell-head{
+  font-weight: 700 !important;
+}
+
+.MuiTableCell-stickyHeader{
+  background-color: #ededed !important;
+}
+
+.MuiTableRow-root.MuiTableRow-hover:hover {
+  background-color: rgba(242, 190, 50, 0.2) !important;
+}
+
+.MuiTableRow-root.Mui-selected, .MuiTableRow-root.Mui-selected:hover {
+    background-color: rgba(94, 145, 94, 0.15) !important;
+}
+
+.MuiTableContainer-root{
+  margin: 50px 0px 70px 0px;
 }

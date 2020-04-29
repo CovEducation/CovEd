@@ -8,13 +8,8 @@ import CheckIcon from '@material-ui/icons/Check';
 import SendIcon from '@material-ui/icons/Send';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        alignItems: 'center',
-    },
     wrapper: {
         margin: theme.spacing(1),
-        position: 'relative',
     },
     buttonSuccess: {
         backgroundColor: green[500],

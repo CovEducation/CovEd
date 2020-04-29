@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { post, get } from "../../utilities.js";
@@ -68,15 +67,14 @@ class MentorResultDisplay extends Component {
     this.setState({ msg: event.target.value });
   };
 
-  
-  
+
+
   render() {
     const bull = <span>•</span>;
-    const fab = <CircleButton onClick={(event) => this.handleSubmit(event)}/>
     return (
-      <>
+      <div className="MentorResultDisplayContainer">
         <Card label="hoveryellow">
-          <CardContent>
+          <CardContent align="center" >
             <Typography color="textSecondary" gutterBottom>
               Mentor Information
             </Typography>
@@ -84,9 +82,9 @@ class MentorResultDisplay extends Component {
               {this.props.mentor.name}
             </Typography>
             <Typography color="textSecondary">Major: {this.props.mentor.major}</Typography>
-            <Typography variant="body2" component="p">
+            <Typography variant="body2" component="p" align="left">
               <br />
-              Subjects available for:
+              <b>Subjects available for:</b>
               <br />
               {this.props.mentor.subjects.map((subject, i) => (
                 <div key={subject + i}>
@@ -96,33 +94,34 @@ class MentorResultDisplay extends Component {
               ))}
               <br />
               <b>Bio: </b>
+              <p>
               {this.props.mentor.bio}
+              </p>
             </Typography>
-          </CardContent>
-          <CardActions>
-            <Row className="justify-content-sm-center">
-              <Col className="text-center">
+            <Row >
+              <Col>
+              <i>Message</i>
+              <br />
                 <TextField
                   id="outlined-multiline-flexible"
-                  label="Send a message to the Mentor!"
+                  label="message the mentor!"
                   multiline
                   rowsMax="10"
-                  margin="normal"
                   variant="outlined"
                   rows="4"
                   fullWidth="true"
                   value={this.state.msg}
                   onChange={this.handleChange}
                 />
-              
+
               </Col>
             </Row>
-            <Row >
-              {fab}
+            <Row className="justify-content-center">
+              <CircleButton align="center" onClick={(event) => this.handleSubmit(event)} />
             </Row>
-          </CardActions>
+          </CardContent>
         </Card>
-      </>
+      </div>
     );
   }
 }
