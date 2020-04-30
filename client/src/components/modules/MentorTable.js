@@ -35,7 +35,7 @@ Props:
 export default function MentorTable({mentors}) {
     const [selected, setSelected] = React.useState("");
     const [page, setPage] = React.useState(0);
-    const rowsPerPage = 5;
+    const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const formatList = (subjects) => {
         return subjects.map((subject, i) => i === (subjects.length -1) ? subject : subject + ", ");
     };
@@ -48,6 +48,12 @@ export default function MentorTable({mentors}) {
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
+
     const mentors_shown = () => {
         return mentors.slice(page * rowsPerPage, page*rowsPerPage + rowsPerPage)
     }
@@ -97,11 +103,13 @@ export default function MentorTable({mentors}) {
         </Table>
     </TableContainer>
     <TablePagination
+        rowsPerPageOptions={[10, 25, 50]}
         component="div"
         count={mentors.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
     />
     </>
     )
