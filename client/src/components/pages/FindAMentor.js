@@ -48,8 +48,6 @@ class FindAMentor extends Component {
   searchForMentors = () => {
     const user = this.context.user;
     if (user && user.verified) {
-      console.log("Searching for these tags: ");
-      console.log(this.state.tags);
       get("/api/getMentors", { subjects: this.state.tags, limit: 100, token: user.token }).then(
         (mentors) => {
           if (this.state.mentors !== mentors) {
@@ -95,7 +93,7 @@ class FindAMentor extends Component {
             </Row>
             <Row className="justify-content-center">
               <Col sm={{span:8}} xs={{span:10}}>
-                <MentorTable mentors={this.state.mentors} onSelect={this.updateMentor}/>
+                <MentorTable mentors={this.state.mentors}/>
               </Col>
             </Row>
             </>

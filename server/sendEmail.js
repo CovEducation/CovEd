@@ -23,6 +23,10 @@ const verificationFilepath = path.join(__dirname, "templates/verification.html")
 const verificationSource = fs.readFileSync(verificationFilepath, "utf-8").toString();
 const verificationTemplate = handlebars.compile(verificationSource);
 
+const reminderFilepath = path.join(__dirname, 'templates/reminder.html');
+const reminderSource = fs.readFileSync(reminderFilepath, 'utf-8').toString();
+const reminderTemplate = handlebars.compile(reminderSource);
+
 /**
  * Sends an email to a mentor based on the CovEd match template.
  * @param {string} email - Email address of the mentor
@@ -65,7 +69,23 @@ async function emailGuardian(guardianName, guardianEmail) {
     await transporter.sendMail(mailOptions);
 }
 
+/**
+ * Sends a reminder email to users which have verified their email.
+ * @param {string} userEmail
+ */
+async function sendPrivacyReminderEmail(userEmail) {
+    const htmlToSend = reminderTemplate({});
+    const mailOptions = {
+        from: "CovEd <coveducation@gmail.com",
+        to: userEmail,
+        subject: "Thank you for signing up with CovEd!",
+        html: htmlToSend,
+    }
+    await transporter.sendMail(mailOptions);
+};
+
 module.exports = {
     emailMentor: emailMentor,
     emailGuardian: emailGuardian,
+    sendPrivacyReminderEmail: sendPrivacyReminderEmail,
 }
