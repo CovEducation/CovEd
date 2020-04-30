@@ -230,6 +230,14 @@ class WhoWeAre extends Component {
             <Box font="sans" mt={3} mb={7}>
               <Row mt={3} mb={3} className="justify-content-center">
                 <Col sm={{ span: 12 }} className="text-center" p={5}>
+                  <Typography variant="h4">Management</Typography>
+                </Col>
+                <Col xs={12} md={10}>
+                  {renderTable(management)}
+                </Col>
+              </Row>
+              <Row mt={3} mb={3} className="justify-content-center">
+                <Col sm={{ span: 12 }} className="text-center" p={5}>
                   <Typography variant="h4">Coordinators</Typography>
                 </Col>
                 <Col xs={12} md={10}>
