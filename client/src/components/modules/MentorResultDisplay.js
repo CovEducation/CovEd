@@ -100,11 +100,11 @@ class MentorResultDisplay extends Component {
             </Typography>
             <Row >
               <Col>
-              <i>Message</i>
+              <i>Request Mentor</i>
               <br />
                 <TextField
                   id="outlined-multiline-flexible"
-                  label="Message the mentor!"
+                  label="Add a personal message! Please note you are allowed to request a maximum of 1 mentor per student."
                   multiline
                   rowsMax="10"
                   variant="outlined"
