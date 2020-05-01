@@ -196,11 +196,14 @@ const outreach = [
     name: "Charlotte Wickert",
     school: "MIT, 2023",
     major: "Physics and Nuclear Science",
+<<<<<<< HEAD
   },
   {
     name: "Huong Le",
     school: "Harvard, 2022",
     major: "Neuroscience",
+=======
+>>>>>>> 004568a01ea9a27ca751bb5cc8e851a32534655b
   },
 ];
 
@@ -214,7 +217,6 @@ const renderTable = (list) => {
               <td>
                 {(person.fun)?<>{person.fun}<br></br></>:<></>}
                 <b>{person.name}</b>
-
               </td>
               <td>{person.school}</td>
               <td>{person.major}</td>

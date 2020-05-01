@@ -218,9 +218,12 @@ export const getTermsAndConditions = (formik )=> {
     <Form.Label><b>Terms and conditions</b></Form.Label>
     <Form.Check
       checked={formik.values.agreed}
-      name="public"
+      name="agreed"
       onChange={() => formik.setFieldValue("agreed", !formik.values.agreed)}
-      type="checkbox" label={"By checking this box, I agree to the CovEd Terms of Service and Privacy Policy."} />
+      isInvalid={formik.touched.agreed && formik.errors.agreed}
+      type="checkbox" 
+      label="By checking this box, I agree to the CovEd Terms of Service and Privacy Policy." 
+      feedback={formik.errors.agreed}/>
     <a href="/termsconditions" href="/termsconditions" target="_blank">
       Terms and Conditions
     </a>
