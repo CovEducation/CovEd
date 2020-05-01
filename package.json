@@ -45,6 +45,7 @@
     "mongoose": "^5.7.7",
     "node-cron": "^2.0.3",
     "nodemailer": "^6.4.6",
+    "nodemailer-mandrill-transport": "^1.2.0",
     "nodemon": "^1.19.4",
     "pace": "0.0.4",
     "pace-js": "^1.0.2",
