@@ -50,12 +50,12 @@ async function emailMentor(mentorEmail, mentorFirst, studentEmail, message) {
     };
     const htmlToSend = matchTemplate(replacements);
     const mailOptions = {
-        from: "CovEd <coveducation@gmail.com>",
+        from: "CovEd <coved@coved.org>",
         to: mentorEmail,
         subject: "CovEd Match!",
         html: htmlToSend,
     };
-    await transporter.sendMail(mailOptions);
+    await massTransporter.sendMail(mailOptions);
 }
 
 /**
@@ -69,12 +69,12 @@ async function emailGuardian(guardianName, guardianEmail) {
     };
     const htmlToSend = verificationTemplate(replacements);
     const mailOptions = {
-        from: "CovEd <coveducation@gmail.com>",
+        from: "CovEd <coved@coved.org>",
         to: guardianEmail,
         subject: "CovEd Mentor Request",
         html: htmlToSend,
     };
-    await transporter.sendMail(mailOptions);
+    await massTransporter.sendMail(mailOptions);
 }
 
 /**
@@ -84,12 +84,12 @@ async function emailGuardian(guardianName, guardianEmail) {
 async function sendPrivacyReminderEmail(userEmail) {
     const htmlToSend = reminderTemplate({});
     const mailOptions = {
-        from: "CovEd <coveducation@gmail.com",
+        from: "CovEd <coved@coved.org>",
         to: userEmail,
         subject: "Thank you for signing up with CovEd!",
         html: htmlToSend,
     }
-    await transporter.sendMail(mailOptions);
+    await massTransporter.sendMail(mailOptions);
 };
 
 async function testEmail(recipient, subject, html) {
