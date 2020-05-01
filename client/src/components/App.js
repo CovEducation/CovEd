@@ -23,7 +23,7 @@ const Footer = lazy(()=> import("./modules/Footer.js"));
 const TermsConditions = lazy(()=> import("./pages/TermsConditions.js"));
 const Privacy = lazy(()=> import("./pages/Privacy.js"));
 const MentorGuidelines = lazy(()=> import("./pages/MentorGuidelines.js"));
-
+const ParentAcknowledgement = lazy(()=> import("./pages/ParentAcknowledgement.js"));
 /**
  * Define the "App" component as a class.
  */
@@ -66,6 +66,7 @@ class App extends Component {
                 <TermsConditions path="/termsconditions" />
                 <Privacy path="/privacy" />
                 <MentorGuidelines path="/mentorguidelines" />
+                <ParentAcknowledgement path="/parentacknowledgement" />
                 <NotFound default/>
               </Router>
             </Suspense>
