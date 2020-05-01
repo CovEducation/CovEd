@@ -87,12 +87,12 @@ export const subjects = [
     label: "AP Physics C"
   },
   {
-    value: "AP Math AB",
-    label: "AP Math AB"
+    value: "AP Calculus AB",
+    label: "AP Calculus AB"
   },
   {
-    value: "AP Math BC",
-    label: "AP Math BC"
+    value: "AP Calculus BC",
+    label: "AP Calculus BC"
   },
   {
     value: "AP Statistics",
