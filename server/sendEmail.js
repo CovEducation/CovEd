@@ -5,15 +5,6 @@ const path = require("path");
 const mandrillTransport = require("nodemailer-mandrill-transport");
 
 require('dotenv').config();
-const email_user = process.env.EMAIL_USER;
-const email_pass = process.env.EMAIL_PASS;
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: email_user,
-        pass: email_pass,
-    }
-});
 
 const massTransporter = nodemailer.createTransport(mandrillTransport({
     auth: {
@@ -92,19 +83,6 @@ async function sendPrivacyReminderEmail(userEmail) {
     await massTransporter.sendMail(mailOptions);
 };
 
-async function testEmail(recipient, subject, html) {
-    let mailOptions = {
-        from: 'coved@coved.org',
-        to: recipient,
-        subject: subject,
-        html: html,
-    }
-
-    massTransporter.sendMail(mailOptions, (err, resp) => {
-        console.log(err);
-        console.log(resp);
-    })
-}
 module.exports = {
     emailMentor: emailMentor,
     emailGuardian: emailGuardian,
