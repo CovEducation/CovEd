@@ -71,8 +71,56 @@ export const subjects = [
     label: "Economics"
   },
   {
-    value: "Computer Science",
-    label: "Computer Science"
+    value: "Computer Science - Python",
+    label: "Computer Science - Python"
+  },
+  {
+    value: "Computer Science - C/C++",
+    label: "Computer Science - C/C++"
+  },
+  {
+    value: "Computer Science - Java",
+    label: "Computer Science - Java"
+  },
+  {
+    value: "AP Physics C",
+    label: "AP Physics C"
+  },
+  {
+    value: "AP Math AB",
+    label: "AP Math AB"
+  },
+  {
+    value: "AP Math BC",
+    label: "AP Math BC"
+  },
+  {
+    value: "AP Statistics",
+    label: "AP Statistics"
+  },
+  {
+    value: "AP English Literature",
+    label: "AP English Literature"
+  },
+  {
+    value: "AP English Language",
+    label: "AP English Language"
+  },
+  {
+    value: "AP World History",
+    label: "AP World History"
+  },
+  {
+    value: "AP US History",
+    label: "AP US History"
+  },
+  {
+    value: "AP Chemistry",
+    label: "AP Chemistry"
+  },
+  {
+    value: "AP Biology",
+    label: "AP Biology"
   }
 ]
 export const theme = {
