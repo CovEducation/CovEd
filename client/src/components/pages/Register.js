@@ -81,7 +81,7 @@ const RegisterSchema = Yup.object().shape({
     is: (role) => role === "mentor",
     then: Yup.string().required("Introduce yourself!"),
   }),
-  agreed: Yup.boolean().required("You must agree to the terms and conditions")
+  agreed: Yup.boolean().oneOf([true], "You must agree to the Terms of Service and Privacy Policy")
 });
 
 /**
