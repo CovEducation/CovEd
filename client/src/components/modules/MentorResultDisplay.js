@@ -104,7 +104,7 @@ class MentorResultDisplay extends Component {
               <br />
                 <TextField
                   id="outlined-multiline-flexible"
-                  label="message the mentor!"
+                  label="Message the mentor!"
                   multiline
                   rowsMax="10"
                   variant="outlined"
