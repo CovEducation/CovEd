@@ -17,8 +17,11 @@ const mentorSchema = new mongoose.Schema({
   grade_levels_to_mentor: [Number],
   mentees: [mongoose.Types.ObjectId],
   public: Boolean,
+  verified_date: Date,
+  reminder_sent: Boolean,
   last_request: Date,
   tags: [String],
+  
 });
 
 // compile model from schema

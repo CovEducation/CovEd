@@ -27,10 +27,13 @@ const session = require("express-session"); // library that stores info about ea
 const mongoose = require("mongoose"); // library to connect to MongoDB
 const compression = require("compression");
 const firebase = require("firebase-admin");
-const fs = require("fs");
+const fs = require("fs"); // I/O
 const path = require("path"); // provide utilities for working with file and directory paths
-const api = require("./api");
+const api = require("./api"); 
+const cron = require("node-cron"); // Needed to send periodic emails
 
+const Mentee = require("./models/mentee");
+const sendEmail = require("./sendEmail");
 
 // initialize firebase admin
 const firebaseConfigPath = path.join(__dirname, '..','/google-credentials-heroku.json');
@@ -88,6 +91,34 @@ app.use(
 
 // connect user-defined routes
 app.use("/api", api);
+
+// Every 3 hours send an email to parents who 
+// have verified their email >= 3 days ago and not
+// been sent a privacy reminder email.
+cron.schedule('0 0 */3 * * *', () => {
+  const millis_in_a_day = 1000 * 60 * 60 * 24;
+  Mentee.find({}).then((mentees) => mentees.map((mentee) => {
+    firebase.auth().getUser(mentee.firebase_uid).then((user) => {
+      // We need the firebase record to check if they're validated
+      const is_verified = user.emailVerified;
+      const verified_date = mentee.verified_date;
+      const reminder_sent = mentee.reminder_sent;
+      if (reminder_sent) {
+        return;
+      } else if (verified_date === undefined && is_verified) {
+        // If we don't know when they verified, assign it and move on.
+        mentee.verified_date = Date.now()
+        return mentee.save();
+      } else if (is_verified && ((Date.now() - verified_date) / (millis_in_a_day)) > 3) {
+        // More than three days since verication, send reminder.
+        sendEmail.sendPrivacyReminderEmail(mentee.email);
+        mentee.reminder_sent = true;
+        return mentee.save();
+      };
+    });
+  })
+  );
+});
 
 // load the compiled react files, which will serve /index.html and /bundle.js
 const reactPath = path.resolve(__dirname, "..", "client", "dist");
