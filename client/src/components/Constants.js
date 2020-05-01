@@ -121,6 +121,10 @@ export const subjects = [
   {
     value: "AP Biology",
     label: "AP Biology"
+  },
+  {
+    value: "AP European History",
+    label: "AP European History"
   }
 ]
 export const theme = {
