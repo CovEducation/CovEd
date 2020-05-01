@@ -81,7 +81,7 @@ const RegisterSchema = Yup.object().shape({
     is: (role) => role === "mentor",
     then: Yup.string().required("Introduce yourself!"),
   }),
-  agreed: Yup.boolean().oneOf([true], "You must agree to the Terms of Service and Privacy Policy")
+  agreed: Yup.boolean().oneOf([true], "You must agree to the Terms of Service and Privacy Policy"),
 });
 
 /**
@@ -95,10 +95,17 @@ const Register = () => {
     const user = { ...values };
     user.subjects = user.subjects.map((sub) => sub.value);
     user.tags = user.tags.map((tag) => tag.value);
-    createNewUser(user).then( () => navigate("/"))
-    .catch((err) => {
-      alert("Unable to register, make sure this email was not registered before.")
-    });
+    createNewUser(user)
+      .then(() => {
+        if (user.role === "student") {
+          navigate("/parentacknowledgement");
+        } else {
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        alert("Unable to register, make sure this email was not registered before.");
+      });
   };
 
   // Set up the form and validation
