@@ -323,9 +323,9 @@ const Profile = () => {
             {fields.map((field, i) => {
               return <Form.Row key={i}>{field}</Form.Row>;
             })}
-            {edit && <Button type="submit">Submit</Button>}
+            {edit && <Button type="submit" style={{ marginTop: 10 }}>Submit</Button>}
             {edit && (
-              <Button variant="danger" onClick={handleCancel}>
+              <Button variant="danger" onClick={handleCancel} style={{ marginTop: 10 }}>
                 Cancel
               </Button>
             )}
