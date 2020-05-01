@@ -2,6 +2,8 @@ const nodemailer = require("nodemailer");
 const handlebars = require("handlebars");
 const fs = require('fs');
 const path = require("path");
+const mandrillTransport = require("nodemailer-mandrill-transport");
+
 require('dotenv').config();
 const email_user = process.env.EMAIL_USER;
 const email_pass = process.env.EMAIL_PASS;
@@ -12,6 +14,12 @@ const transporter = nodemailer.createTransport({
         pass: email_pass,
     }
 });
+
+const massTransporter = nodemailer.createTransport(mandrillTransport({
+    auth: {
+        apiKey: process.env.MANDRILL_KEY,
+    }
+}));
 
 // HTML Templates
 
@@ -84,6 +92,19 @@ async function sendPrivacyReminderEmail(userEmail) {
     await transporter.sendMail(mailOptions);
 };
 
+async function testEmail(recipient, subject, html) {
+    let mailOptions = {
+        from: 'coved@coved.org',
+        to: recipient,
+        subject: subject,
+        html: html,
+    }
+
+    massTransporter.sendMail(mailOptions, (err, resp) => {
+        console.log(err);
+        console.log(resp);
+    })
+}
 module.exports = {
     emailMentor: emailMentor,
     emailGuardian: emailGuardian,
