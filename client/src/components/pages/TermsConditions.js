@@ -32,7 +32,7 @@ class TermsConditions extends Component {
             <p>
             Welcome to CovEd!  Please carefully read on to learn the rules and restrictions that govern your use of our web-application and all related services (the “Services”).<br /><br />
             These Terms of Service (the “Terms”) are a binding contract between you and the creators and organizers of CovEducation, a volunteer educational response group (“CovEd,” “we” and “us”).  Your access to and use of the Services are conditioned upon your acceptance of and compliance with these Terms. By using the Services in any way, you agree to accept and comply with all of these Terms.<br /><br />
-            <b>Note: CovEd is a service that connects volunteers who agree to provide mentoring and tutoring services (“Mentors”) with students who are registered by their parents to receive such services (“Mentees”). CovEd does guarantee that it will find a Mentor for any Mentee, and does not make any representations or warranties regarding the availability, fitness, appropriateness, or other characteristics of the mentoring services that are arranged through the platform. CovEd does not monitor or control the conduct of Mentors and Mentees, and disclaims all liability with respect to these agreements to the maximum extent permitted by law.</b>
+            <b>Note: CovEd is a service that connects volunteers who agree to provide mentoring and tutoring services (“Mentors”) with students who are registered by their parents to receive such services (“Mentees”). CovEd does not guarantee that it will find a Mentor for any Mentee, and does not make any representations or warranties regarding the availability, fitness, appropriateness, or other characteristics of the mentoring services that are arranged through the platform. CovEd does not monitor or control the conduct of Mentors and Mentees, and disclaims all liability with respect to these agreements to the maximum extent permitted by law.</b>
             </p>
             <h4>2. Modification </h4>
             <p>
@@ -40,14 +40,14 @@ class TermsConditions extends Component {
             </p>
             <h4>3. Privacy Policy</h4>
             <p>
-            Our <a className="dark-a" href="/policy"> Privacy Policy </a> discusses how we collect, process, and disclose personal information through these Services. Please read that policy carefully. Please note that the Children’s Online Privacy Protection Act of 1998 and regulations enacted under it by the Federal Trade Commission (collectively, “COPPA”) provide parents certain rights regarding the collection, use, and disclosure of personal information collected from children below the age of 13. For more information on these practices, please view our <a className="dark-a" href="/policy">Privacy Policy</a>.
+            Our <a className="dark-a" href="/privacy"> Privacy Policy </a> discusses how we collect, process, and disclose personal information through these Services. Please read that policy carefully. Please note that the Children’s Online Privacy Protection Act of 1998 and regulations enacted under it by the Federal Trade Commission (collectively, “COPPA”) provide parents certain rights regarding the collection, use, and disclosure of personal information collected from children below the age of 13. For more information on these practices, please view our <a className="dark-a" href="/privacy">Privacy Policy</a>.
             </p>
             <h4>4.Eligibility</h4>
             <p>
             <b>For Parents, Guardians, and Mentees:</b><br />
             No child under the age of 18 may use the Services unless they have been registered by a parent or legal guardian. CovEd may choose to use any method to validate your identity as a parent or legal guardian and to confirm your consent approved by the Federal Trade Commission, including without limitation engaging third parties to provide verification services. CovEd reserves all rights to take legal actions against anyone who misrepresents personal information or is otherwise untruthful about their identity. <br /><br />
             <b>For Mentors:</b>
-            By using the Services or volunteering to be a Mentor you agree to be bound by these Terms and the CovEd Mentor Agreement [[add link]]. You are solely responsible for your own conduct and use of the Services.
+            By using the Services or volunteering to be a Mentor you agree to be bound by these Terms and the CovEd <a className="dark-a" href="/mentorguidelines">Mentor Agreement</a>. You are solely responsible for your own conduct and use of the Services.
             </p>
             <h4>5.	Acceptable Use </h4>
             <p>

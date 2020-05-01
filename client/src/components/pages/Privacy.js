@@ -40,7 +40,9 @@ class Privacy extends Component {
             <br />
             As set forth in our  <a className="dark-a" href="/termsconditions" target="_blank">Terms of Service</a>, only a parent or guardian may sign up a Mentee under the age of 18. The Children’s Online Privacy Protection Act of 1998 and regulations enacted under it by the Federal Trade Commission (“COPPA”) require us to obtain verifiable parental consent in order to collect, use, and disclose personal information of individuals under the age of 13. We do not knowingly collect personal information from individuals under 13 years of age without parental consent. If we learn we have collected or received personal information about an individual under 13 years of age without verification of parental consent, we will delete that information. If you believe we might have any information from or about an individual under 13 years of age, please contact us at <a className="dark-a" href="mailto:coveducation@gmail.com">coveducation@gmail.com </a>.
             <br />
+            <br />
             The information collected is as follows:
+            <br />
             <br />
             </p>
             <h5> 2.1.	Information Collected for All Users </h5>
@@ -107,14 +109,16 @@ class Privacy extends Component {
             You may access, and, in some cases, edit or delete your information through your account and profile settings. The information you can view, update, and delete may change over time. You may request that we delete your account and your data from CovEd by contacting us at<a className="dark-a" href="mailto:coved.management@gmail.com"> coved.management@gmail.com</a>. Please note that if you request removal of your information you may be unable to continue to utilize the Services.
             </p>
             <h4>7.	Parental Rights Under COPPA </h4>
+            <p>
             CovEd does not require a child or a child’s parents or guardians to disclose more information about the child than is reasonably necessary to participate in any part of the Services, and does not share personally identifiable information of a child with third parties who are not part of the Services except as provided in section 4 above. Parents and guardians, with a child or children under the age of 13, have certain rights that include the right to:
             <ul>
               <li>Review their child’s personal information collected by CovEd;</li>
               <li>Request that CovEd delete collected information about their child;</li>
-              <li>Request that CovEd no longer collect or use information about their child;</li> 
+              <li>Request that CovEd no longer collect or use information about their child;</li>
               <li>Request that CovEd no longer share information about their child with third parties that are not part of Services.</li> 
             </ul>
             Parents may exercise any of these rights listed above by contacting CovEd at <a className="dark-a" href="mailto:coved.management@gmail.com">coved.management@gmail.com</a>.
+            </p>
             <h4>8.	Changes to the Policy</h4>
             <p>
             It is our policy to post any changes we make to our privacy policy on this page. If we make material changes to how we treat our users' personal information, we will notify you by email to address specified in your account or through a notice on the web-application home page. The date the privacy policy was last revised is identified at beginning of this policy. You are responsible for ensuring we have an up-to-date active and deliverable email address for you.

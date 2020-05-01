@@ -26,7 +26,7 @@ class Footer extends Component {
           {FOOT.map((foot) => {
             return (
               <Col className="text-center" xs="auto">
-              <a target="_blank" className="light" href={foot.link}> {foot.name} </a>
+              <a className="light" href={foot.link}> {foot.name} </a>
               </Col>
             )
           })}

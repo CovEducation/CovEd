@@ -49,7 +49,7 @@ const management = [
   },
   {
     name: "Nicole (Niki) Kim",
-    school: "Harvard, 2023",
+    school: "MIT, 2023",
     major: "Computer Science and Neuroscience",
   },
 ];
@@ -107,7 +107,7 @@ const coordinators = [
   },
   {
     name: "Nicole (Niki) Kim",
-    school: "Harvard, 2023",
+    school: "MIT, 2023",
     major: "Computer Science and Neuroscience",
   },
   {
@@ -197,6 +197,11 @@ const outreach = [
     school: "MIT, 2023",
     major: "Physics and Nuclear Science",
   },
+  {
+    name: "Huong Le",
+    school: "Harvard, 2022",
+    major: "Neuroscience",
+  },
 ];
 
 const renderTable = (list) => {
@@ -209,7 +214,6 @@ const renderTable = (list) => {
               <td>
                 {(person.fun)?<>{person.fun}<br></br></>:<></>}
                 <b>{person.name}</b>
-                
               </td>
               <td>{person.school}</td>
               <td>{person.major}</td>

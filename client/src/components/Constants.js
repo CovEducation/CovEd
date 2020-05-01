@@ -113,9 +113,9 @@ export const tags = ["Early Childhood Learning", "Preschool", "Elementary School
                     .map(k => {return {label: k, value: k}});
 
 export const about_us_content =
-  "CovED is a community of undergraduates from some of the top colleges/universities across the U.S. who are interested in supporting K-12 students in light of the COVID-19 pandemic. Our goal is to create a virtual platform for pairing mentors from higher ed institutions with K-12 students affected by school closures. We hope that this platform and our resources page will help provide additional academic assistance for students and families who are facing hardships caused by the ongoing pandemic.";
+  "CovED is a community of undergraduates, postgrads, students, and educators from colleges/universities across the U.S. who are interested in supporting K-12 students in light of the COVID-19 pandemic. Our goal is to create a free virtual platform for pairing mentors from higher ed institutions with K-12 students affected by school closures. We hope that this platform and our resources page will help provide additional academic assistance for students and families who are facing hardships caused by the ongoing pandemic.";
 export const problem_content =
-  "Many of us have been grappling with how we can meaningfully support our home communities during COVID-19 school shutdowns. As this pandemic is intensifying, many middle and high school students are faced with financial, familial, and logistical challenges that may impact their learning experience.";
+  "Many of us have been grappling with how we can meaningfully support our home communities during COVID-19 school shutdowns. As this pandemic is intensifying, many K-12 students are faced with financial, familial, and logistical challenges that may impact their learning experience.";
 export const solution_content =
   "The goal of this virtual service is to provide a resource for students including academic mentoring, college preparation, and personalized mentorship. We are working to compile free, web-based educational resources for students, families, and educators, as well as partner with schools and other non-profits to improve the learning experience of K-12 students.";
 
@@ -142,8 +142,8 @@ export const FAQS = [
   },
   {
     key: "4",
-    question: "How do I get matched with a mentor/ mentee? How does the matching process work?",
-    answer: "After filling out the registration form, parents/students will receive details on mentorship pairs and how to connect with his/her/their mentor. We are currently manually pairing the mentors and mentees based on a variety of factors including (but not limited to): subjects needed/offered, time zones, accomodations needed (i.e. SPED), future goals of the mentee and current course of study of the mentor, and any special comments left by the individual that filled out the registration form."
+    question: "How do I get matched with a mentor/mentee? How does the matching process work?",
+    answer: "After filling out the registration form and verifying their emails, parents/guardians will be able to access our 'Find a Mentor' page to find a mentor for their child. From there, they will be able to send messages to any of the mentors in our database. Please do not request more than 1 mentor per student per 24 hour period."
   },
   {
     key: "5",
@@ -163,12 +163,12 @@ export const FAQS = [
   {
     key: "8",
     question: "How are you addressing concerns of student safety?",
-    answer: "Our safety guidelines during our mentoring sessions include (but are not limited to): receiving consent from the mentee’s parent or legal guardian, having a parent or guardian present during the lessons, having mentors record the lessons, and instituting a “no social media contact with your mentee” policy. All mentors will receive and be assessed on information about expectations and safety guidelines prior to their first meeting with their mentee."
+    answer: "Our safety guidelines during our mentoring sessions include (but are not limited to): receiving consent from the mentee’s parent or legal guardian, having a parent or guardian present during the lessons, having mentors record the lessons, and instituting a “no social media contact with your mentee” policy. For further information please check our Privacy Policy and the Mentor Guidelines. Links to both can be found at the bottom of this page!"
   },
   {
     key: "9",
     question: "How are you reaching students in disadvantaged situations?",
-    answer: "We have an outreach team that is actively working on recruiting students around the world. In our registration form, we ask questions pertaining to socioeconomic status, allowing us to ensure that these students are matched first."
+    answer: "We have an outreach team that is actively working on recruiting students around the USA. In our registration form, we ask questions pertaining to socioeconomic status, allowing us to ensure that these students are matched first."
   },
   {
     key: "10",
@@ -179,6 +179,11 @@ export const FAQS = [
     key: "11",
     question: "Is there any way for educators to get involved?",
     answer: "One of CovEd’s goals is to ensure that all students have access to various resources to help stimulate educational growth during this time. On our website’s home page, we have a form where resources can be submitted. We are hoping to find the best resources for students and hope you can help us!"
+  },
+  {
+    key: "12",
+    question: "Is this service free?",
+    answer: "Yes! This service is completely free and all of our mentors are volunteering."
   }
 ]
 
@@ -190,7 +195,7 @@ export const subjectMentor = "Please select the subjects you would like to mento
 
 export const FOOT = [
   {
-    name: "Terms and Conditions",
+    name: "Terms of Service",
     link: "/termsconditions"
   },
   {
