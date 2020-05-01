@@ -27,7 +27,7 @@ class Homepage extends Component {
             <Flex mt={2} p={5}>
             <Button href='/register'>Register</Button>
             </Flex>
-            <ScrollDownIndicator />
+            <ScrollDownIndicator/>
         </Hero>
         <Section fontSize={[2]} width={[1]} heading="" subhead="" p={6} mt={3} mb={4} justifyContent="center">
           <Row className="justify-content-sm-center" >

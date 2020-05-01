@@ -31,7 +31,9 @@ class MentorGuidelines extends Component {
             <p>
             Hello,
             <br />
+            <br />
             Thank you so much for agreeing to be a mentor for CovEd during these months! We are thankful for all your passion for helping the community in these hard times, especially helping those that need it the most. Email covedmentors@gmail.com if you have any questions!
+            <br />
             <br />
             This document provides CovEd’s rules and guidelines for interacting with your mentees. We hope that these procedures and expectations work to foster greater uniformity in mentor-mentee interactions and to ensure all mentoring services are conducted safely, securely, and effectively.
             <br />
