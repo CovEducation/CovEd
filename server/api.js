@@ -75,13 +75,19 @@ router.post("/removeUser", firebaseMiddleware, async (req, res) => {
   }
 });
 
+/**
+ * Authenticated endpoint.
+ * API Endpoint Details:
+ * subjects: comma-separated list of subjects the mentors must have
+ * limit: (default 10) Max number of mentors to return
+ */
 router.get("/getMentors", firebaseMiddleware, (req, res) => {
   // check if the user has their email verified 
   if (!req.user.email_verified) { res.sendStatus(403); }
 
   // We want to return all users which have the required tags and are public, sorted
   // by how recently they were contacted by someone else.
-  const required_tags = req.query.subjects ? req.query.subjects.split() : [];
+  const required_tags = req.query.subjects ? req.query.subjects.split(",") : [];
   // TODO: Also use req.query.tags
   const limit = req.query.limit || 10;
   Mentor.find({
