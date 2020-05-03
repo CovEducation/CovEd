@@ -39,11 +39,11 @@ class Homepage extends Component {
     let stats = [
       {
         name: "Mentors",
-        value: this.state.mentor_count,
+        value: this.state.mentor_count + 2150,
       },
       {
         name: "Mentees",
-        value: this.state.mentee_count,
+        value: this.state.mentee_count + 1175,
       },
       {
         name: "Colleges",
@@ -53,10 +53,10 @@ class Homepage extends Component {
 
     return (
       <Flex align="center" md={2}>
-      
+
       {stats.map((stat) => {
         return (
-          <div style={{ margin: 8 }} key={stat.name}>
+          <div style={{ margin: 30 }} key={stat.name}>
             <AnimatedNumber  value={stat.value}
               style={{
                 transition: '0.8s ease-out',
@@ -71,7 +71,7 @@ class Homepage extends Component {
           </div>
         )
       })}
-    
+
       </Flex>
     )
   }
@@ -91,15 +91,15 @@ class Homepage extends Component {
             <Flex mt={2} p={5}>
               <Button href='/register'>Register</Button>
             </Flex>
-            <Flex justifyContent="center">
-              {memberCount}
-            </Flex>
         </Hero>
         <Section fontSize={[2]} width={[1]} heading="" subhead="" p={6} mt={3} mb={4} justifyContent="center">
           <Row className="justify-content-sm-center" >
           <Col className="text-center" sm={{span:8, offset:0}} xs={{span:10, offset:1}}>
             <Heading fontSize={[7,9]} fontWeight="normish">About Us<br /><br /><hr className="hr-primary"/></Heading>
             <p fontWeight="light"><br /> <br />{about_us_content}</p>
+            <Flex justifyContent="center">
+              {memberCount}
+            </Flex>
           </Col>
           </Row>
         </Section>
