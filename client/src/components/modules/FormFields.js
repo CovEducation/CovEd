@@ -33,7 +33,7 @@ export const getParentDisclaimer = () =>  {
 export const getNameField = (formik) => {
   return (
     <Form.Group as={Col} md="12" controlId="validationCustom01">
-      <Form.Label>{formik.values.role === "student" ? <>Parent Name</> : <>Name</>}</Form.Label>
+      <Form.Label>{formik.values.role === "mentee" ? <>Parent Name</> : <>Name</>}</Form.Label>
       <Form.Control
         name="name"
         {...formik.getFieldProps("name")}
@@ -50,7 +50,7 @@ export const getNameField = (formik) => {
 export const getEmailField = (formik) => {
   return (
     <Form.Group as={Col} md="12" controlId="validationEmail">
-      <Form.Label>{formik.values.role === "student" ? <>Parent Email (Username)</> : <>Email (Username)</>}</Form.Label>
+      <Form.Label>{formik.values.role === "mentee" ? <>Parent Email (Username)</> : <>Email (Username)</>}</Form.Label>
       <Form.Control
         name="email"
         {...formik.getFieldProps("email")}
@@ -140,7 +140,7 @@ export const getRoleField = (formik) => {
 export const getSubjectField = (formik) => {
   return (
     <Form.Group as={Col} controlId="validationSubject">
-      <Form.Label>{formik.values.role === "student" ? <><i>{subjectMentee}</i></> : <><i>{subjectMentor}</i></>}</Form.Label>
+      <Form.Label>{formik.values.role === "mentee" ? <><i>{subjectMentee}</i></> : <><i>{subjectMentor}</i></>}</Form.Label>
       <Select
         value={formik.values.subjects}
         className={!!formik.errors.subjects && formik.touched.subjects ? "is-invalid" : ""}
@@ -158,7 +158,7 @@ export const getSubjectField = (formik) => {
 export const getTagField = (formik) => {
   return (
     <Form.Group as={Col} controlId="validationTag">
-      <Form.Label>{formik.values.role === "student" ? <>School level tags (Optional)</> : <>School levels you are comfortable teaching (Optional)</>}</Form.Label>
+      <Form.Label>{formik.values.role === "mentee" ? <>School level tags (Optional)</> : <>School levels you are comfortable teaching (Optional)</>}</Form.Label>
       <Select
         value={formik.values.tags}
         className={!!formik.errors.tags && formik.touched.tags ? "is-invalid" : ""}
