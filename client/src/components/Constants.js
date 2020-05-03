@@ -165,32 +165,32 @@ export const tags = ["Early Childhood Learning", "Preschool", "Elementary School
                     .map(k => {return {label: k, value: k}});
 
 export const about_us_content =
-  "CovED is a community of undergraduates, postgrads, students, and educators from colleges/universities across the U.S. who are interested in supporting K-12 students in light of the COVID-19 pandemic. Our goal is to create a free virtual platform for pairing mentors from higher ed institutions with K-12 students affected by school closures. We hope that this platform and our resources page will help provide additional academic assistance for students and families who are facing hardships caused by the ongoing pandemic.";
+  "CovEd is a community of undergraduates, postgraduates, students, and educators from colleges/universities across the U.S. who are interested in supporting K-12 students in light of the COVID-19 pandemic. Our goal is to create a free virtual platform for pairing mentors from higher education institutions with K-12 students affected by school closures. We hope that this platform and our resources page will help students who are currently struggling with classes during the ongoing COVID-19 pandemic.";
 export const problem_content =
-  "Many of us have been grappling with how we can meaningfully support our home communities during COVID-19 school shutdowns. As this pandemic is intensifying, many K-12 students are faced with financial, familial, and logistical challenges that may impact their learning experience.";
+  "As schools shutdowns across the US contiue due to the ongoing pandemic, many K-12 students are faced with financial, familial, logistical, or other difficulties that may impact their learning experience.";
 export const solution_content =
-  "The goal of this virtual service is to provide a resource for students including academic mentoring, college preparation, and personalized mentorship. We are working to compile free, web-based educational resources for students, families, and educators, as well as partner with schools and other non-profits to improve the learning experience of K-12 students.";
+  "Many of us want to help support K-12 students who are currently struggling with classes during the pandemic. The goal of this virtual service is to provide a platform for parents and guardians to match their K-12 students with academic mentors. We are also working to compile free, web-based educational resources for students, families, and educators, as well as partner with schools and other non-profits to improve the learning experience of K-12 students.";
 
 export const FAQS = [
   {
     key: "0",
-    question: "Who is eligible to register?",
-    answer: "If you are a K-12 student, you are eligible to register as a mentee for personalized mentorship and academic support from an undergraduate or postgraduate mentor. For students under 18 years old, we require that parents be present during mentoring sessions."
+    question: "Who is eligible to be mentored?",
+    answer: "All K-12 students in the US who are currently struggling with classes are eligible to be matched with an undergraduate or postgraduate mentor for personalized mentorship and academic support. We are especially committed to supporting underprivileged students. For students under the age of 18, we require that a parent or guardian be present during all mentoring sessions."
   },
   {
     key: "1",
-    question: "What mentoring services are available?",
-    answer: "We provide mentoring services for all school subjects from K-12 (including some AP and Honors classes), mentorship, and college preparation (including help with college essays or preparing for the SAT/ACT/Subject Test exams)."
+    question: "What services are available?",
+    answer: "Our mentors provide tutoring services for K-12 school subjects, including many Honors and AP classes. Additionally, some of our mentors are willing to help with college preparation, such as standardized testing (SAT, ACT, AP, etc.)."
   },
   {
     key: "2",
     question: "How does mentoring work?",
-    answer: "Due to the COVID-19 outbreak, our mentoring sessions will be conducted online via video chat. We suggest using Skype, Google Hangouts, or Zoom, although this can be decided on a one-to-one basis between the mentor and mentee."
+    answer: "Mentoring sessions will be conducted online via video chat. We suggest using Skype, Google Hangouts, or Zoom, although the the decision is up to the parent or guardian, student, and mentor."
   },
   {
     key: "3",
     question: "What if I do not have access to Wi-Fi?",
-    answer: "Spectrum is providing free Wi-Fi services for students during the school shutdown. Their number is 1-844-488-8398. Mentoring lessons are also able to be held via phone calling."
+    answer: "Spectrum is providing free Wi-Fi services for students during the school shutdown. Their number is 1-844-488-8398. Mentoring lessons can also be held via phone call."
   },
   {
     key: "4",
@@ -220,7 +220,7 @@ export const FAQS = [
   {
     key: "9",
     question: "How are you reaching students in disadvantaged situations?",
-    answer: "We have an outreach team that is actively working on recruiting students around the USA. In our registration form, we ask questions pertaining to socioeconomic status, allowing us to ensure that these students are matched first."
+    answer: "Our outreach team is actively publicizing CovEd to school districts across the US, and we strive to be a useful resource for students in all situations. We especially encourage parents of underprivileged students to register their students for academic support through CovEd."
   },
   {
     key: "10",
@@ -235,7 +235,7 @@ export const FAQS = [
   {
     key: "12",
     question: "Is this service free?",
-    answer: "Yes! This service is completely free and all of our mentors are volunteering."
+    answer: "Yes! This service is completely free and all of our mentors are volunteers."
   }
 ]
 
