@@ -41,6 +41,42 @@ const firebase = require("firebase-admin");
 /*
   GET Endpoints
 */
+/**
+ * Returns public mentor / mentee stats to show on the website.
+ * Current stats:
+ *  - Mentor count
+ *  - Mentee count
+ *  - College count
+ */
+router.get("/stats", (req, res) => {
+
+  const extractCollege = (email) => {
+    return email.split("@").pop();
+  };
+  let resp = {
+    mentor_count : 0,
+    mentee_count : 0,
+    college_count : 0,
+  }
+
+  Mentor.find({})
+  .then((mentors) => {
+    resp.mentor_count = mentors.length
+    // Assumption: People with different email domains are from different colleges.
+    let colleges = new Set()
+    mentors.map((mentor) => colleges.add(extractCollege(mentor.email)));
+    resp.college_count = colleges.size;
+
+    Mentee.find({})
+    .then((mentees) => {
+      resp.mentee_count = mentees.length
+      console.log(resp)
+      res.send(resp);
+    })
+    
+  });
+});
+
 
 router.get("/mentor", firebaseMiddleware, (req, res) => {
   Mentor.find({
@@ -66,18 +102,16 @@ router.get("/mentee", firebaseMiddleware, (req, res) => {
     })
 })
 
-router.post("/removeUser", firebaseMiddleware, async (req, res) => {
-  try {
-    await firebase.auth().deleteUser(req.user.user_id);
-    res.sendStatus(200);
-  } catch (error) {
-    res.sendStatus(500);
-  }
-});
+
 
 /**
  * Authenticated endpoint.
  * API Endpoint Details:
+ * This endpoint retrieves up to {limit} mentors from our mentor database.
+ * The mentors will be sorted by the last time they were requested 
+ * (newer / recently requested mentors will be shown last). All the mentors
+ * retrived are guaranteed to have all subjects if specified in the arguments.
+ * 
  * subjects: comma-separated list of subjects the mentors must have
  * limit: (default 10) Max number of mentors to return
  */
@@ -93,8 +127,8 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
   Mentor.find({
       public: true
     })
-    .then((tutors) => {
-      tutors = tutors.filter((mentor) => {
+    .then((mentors) => {
+      mentors = mentors.filter((mentor) => {
         let overlapping_subjects = mentor.subjects.filter(
           (subject) => required_tags.includes(subject) && subject !== ""
         );
@@ -104,17 +138,19 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
         return overlapping_tags.length + overlapping_subjects.length === required_tags.length;
       })
       // People that haven't been requested recently go first.
-      let sorted_mentors = tutors.sort((a, b) => {
-        return (a.last_request < b.last_request) ? -1 : 1
+      let sorted_mentors = mentors.sort((mentorA, mentorB) => {
+        const date1 = mentorA.last_request;
+        const date2 = mentorB.last_request;
+        if (date1 > date2) return 1;
+        if (date1 < date2) return -1;
+        return 0;
+      })
+      sorted_mentors = sorted_mentors.slice(0, limit)
+      let mentors_retrieved = sorted_mentors.map((mentor) => {
+        delete mentor["i"]; // We don't need the counter var.
+        return removeContactInfo(mentor); // Privacy purposes.
       });
-
-      sorted_mentors = sorted_mentors.slice(0, limit);
-
-      for (let i = 0; i < sorted_mentors.length; i++) {
-        delete sorted_mentors[i]["i"];
-        sorted_mentors[i] = removeContactInfo(sorted_mentors[i]);
-      }
-      res.send(sorted_mentors);
+      res.send(mentors_retrieved);
     })
     .catch(() => {
       res.sendStatus(500);
@@ -194,6 +230,15 @@ router.post("/updateMentor", firebaseMiddleware, (req, res) => {
     });
 });
 
+router.post("/removeUser", firebaseMiddleware, async (req, res) => {
+  try {
+    await firebase.auth().deleteUser(req.user.user_id);
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+});
+
 router.get("/auth_get", firebaseMiddleware, (req, res) => {
   res.send({
     status: "success",
@@ -213,8 +258,8 @@ router.post("/pingMentor", emailRequestLimiter, firebaseMiddleware, (req, res) =
     sendEmail.emailMentor(mentor_email, mentor.name.split()[0], student_email, student_message)
       .then(() => {
         mentor.last_request = Date.now();
-        mentor.save()
-      }).then(res.send({}));
+        mentor.save().then(res.send({}));
+      });
   });
 });
 
