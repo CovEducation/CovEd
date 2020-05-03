@@ -6,7 +6,7 @@ import { get } from "../../utilities";
 
 import { Button, Col, Row } from "react-bootstrap";
 // Landing page library
-import { Heading, Provider, Subhead } from "rebass";
+import { Heading, Provider, Subhead, Text } from "rebass";
 import { Flex, Hero, Section } from "react-landing-page";
 // Assets
 import header from "../../public/img/header.jpg";
@@ -47,20 +47,20 @@ class Homepage extends Component {
       },
       {
         name: "Colleges",
-        value: this.state.college_count,
+        value: Math.max(this.state.college_count,250),
       }
     ];
 
     return (
-      <Flex align="center" md={2}>
-
+      <Row className="justify-content-center">
       {stats.map((stat) => {
         return (
-          <div style={{ margin: 30 }} key={stat.name}>
+          <Col sm={{span:4}} xs={{span:10}} className="text-center">
+          <div key={stat.name} style={{margin:'50px', align:'center'}}>
             <AnimatedNumber  value={stat.value}
               style={{
                 transition: '0.8s ease-out',
-                fontSize: 54,
+                fontSize: '4rem',
                 transitionProperty:
                   'backgroundColor, color, opacity'
               }}
@@ -69,10 +69,11 @@ class Homepage extends Component {
             <br />
             <h3> {stat.name} </h3>
           </div>
+          </Col>
         )
       })}
 
-      </Flex>
+      </Row>
     )
   }
   render() {
@@ -92,41 +93,33 @@ class Homepage extends Component {
               <Button href='/register'>Register</Button>
             </Flex>
         </Hero>
-        <Section fontSize={[2]} width={[1]} heading="" subhead="" p={6} mt={3} mb={4} justifyContent="center">
-          <Row className="justify-content-sm-center" >
-          <Col className="text-center" sm={{span:8, offset:0}} xs={{span:10, offset:1}}>
+        <Section fontSize={[4,3]} heading="" subhead="" p={[6,5,6,6]} mt={3} mb={4} justifyContent="center">
+          <Row className="justify-content-center" >
+          <Col className="text-center" sm={{span:8}} xs={{span:10}}>
             <Heading fontSize={[7,9]} fontWeight="normish">About Us<br /><br /><hr className="hr-primary"/></Heading>
-            <p style={{
-              fontWeight: "light",
-              fontSize: 24
-            }}><br /> <br />{about_us_content}</p>
-            <Flex justifyContent="center">
-              {memberCount}
-            </Flex>
+            <Text fontWeight='light'>
+            <br /> <br />{about_us_content} <br /><br /></Text>
           </Col>
           </Row>
         </Section>
-        <Section fontSize={[2]} bg="blue" heading="" subhead="" p={[6,5,6,6]}>
-          <Row bg="blue" className="justify-content-sm-center">
-          <Col sm={{span:8, offset:0}} xs={{span:10, offset:1}} className="light-text text-center">
+        <Section heading="" subhead="" p={[6,5,6,6]} mt={3} mb = {4}>
+          {memberCount}
+        </Section>
+        <Section fontSize={[4,3]} bg="blue" heading="" subhead="" p={[6,5,8,6]}>
+          <Row bg="blue" className="justify-content-center">
+          <Col sm={{span:8}} xs={{span:10}} className="light-text text-center">
             <Heading fontSize={[7,9]} fontWeight="normish">Problem<br /><br /></Heading>
-            <p style={{
-                  fontWeight: "light",
-                  fontSize: 24
-                }}>
+            <Text fontWeight="light">
                   {problem_content} <br /><br /><br />
-            </p>
+            </Text>
             <Heading fontSize={[7,9]} fontWeight="normish">Solution<br /><br /></Heading>
-            <p style={{
-                  fontWeight: "light",
-                  fontSize: 24
-                }}>
+            <Text fontWeight="light">
                   {solution_content}
-            </p>
+            </Text>
           </Col>
           </Row>
         </Section>
-        <Section p={[6,3,6,1]} mt={5} mb={1} bg="white" fontSize={[2]}>
+        <Section p={[6,3,6,1]} mt={5} mb={1} bg="white" fontSize={[4,3]}>
             <Heading fontSize={[7,9]} fontWeight="normish">Interested? <br /><br /><hr className="hr-primary"/></Heading>
             <br />
             <br />
@@ -177,7 +170,7 @@ class Homepage extends Component {
               </Row>
           </Flex>
         </Section>
-        <Section fontSize={[2,3]} bg="darkblue" heading="" subhead="" p={[6,6,6,8]} mt={7}>
+        <Section fontSize={[3]} bg="darkblue" heading="" subhead="" p={[6,6,6,8]} mt={7}>
           <Row bg="blue" className="justify-content-sm-center">
           <Col sm={{span: 8}} className="light-text text-center">
             <Heading fontSize={[7,9]} fontWeight="normish">Questions? Contact Us! <br /><br /><hr className="hr-light"/></Heading>
