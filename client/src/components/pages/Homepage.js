@@ -2,17 +2,81 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../utilities.css";
 import "./Homepage.css";
+import { get } from "../../utilities";
 
 import { Button, Col, Row } from "react-bootstrap";
 // Landing page library
 import { Heading, Provider, Subhead } from "rebass";
-import { Flex, Hero, ScrollDownIndicator, Section } from "react-landing-page";
+import { Flex, Hero, Section } from "react-landing-page";
 // Assets
 import header from "../../public/img/header.jpg";
 import { theme, about_us_content, problem_content, solution_content } from "../Constants.js";
+import AnimatedNumber from 'react-animated-number';
 
 class Homepage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mentor_count : 0,
+      mentee_count : 0,
+      college_count : 0,
+    }
+  }
+
+  async componentWillMount() {
+    let stats = await get("/api/stats");
+
+    this.setState({
+      mentor_count: stats.mentor_count,
+      mentee_count: stats.mentee_count,
+      college_count: stats.college_count,
+    })
+  };
+
+  getMemberCount = () => {
+
+    const animation_duration = 2000; // 2 seconds.
+    let stats = [
+      {
+        name: "Mentors",
+        value: this.state.mentor_count,
+      },
+      {
+        name: "Mentees",
+        value: this.state.mentee_count,
+      },
+      {
+        name: "Colleges",
+        value: this.state.college_count,
+      }
+    ];
+
+    return (
+      <Flex align="center" md={2}>
+      
+      {stats.map((stat) => {
+        return (
+          <div style={{ margin: 8 }} key={stat.name}>
+            <AnimatedNumber  value={stat.value}
+              style={{
+                transition: '0.8s ease-out',
+                fontSize: 54,
+                transitionProperty:
+                  'backgroundColor, color, opacity'
+              }}
+              duration={animation_duration}
+              formatValue={(n) => Math.round(n)} />
+            <br />
+            <h3> {stat.name} </h3>
+          </div>
+        )
+      })}
+    
+      </Flex>
+    )
+  }
   render() {
+    let memberCount = this.getMemberCount();
     return (
       <>
         <Provider theme={theme}>
@@ -25,9 +89,11 @@ class Homepage extends Component {
             <Heading fontSize={[9,11]} textAlign="center">CovEd<span className="light">ucation</span></Heading>
             <Subhead mt={3} fontSize={[3,4]} textAlign="center"><span className="light">Continuing K-12 education in the US during the COVID-19 outbreak</span></Subhead>
             <Flex mt={2} p={5}>
-            <Button href='/register'>Register</Button>
+              <Button href='/register'>Register</Button>
             </Flex>
-            <ScrollDownIndicator/>
+            <Flex justifyContent="center">
+              {memberCount}
+            </Flex>
         </Hero>
         <Section fontSize={[2]} width={[1]} heading="" subhead="" p={6} mt={3} mb={4} justifyContent="center">
           <Row className="justify-content-sm-center" >

@@ -25,8 +25,8 @@ class Footer extends Component {
         <Row className="justify-content-center">
           {FOOT.map((foot) => {
             return (
-              <Col className="text-center" xs="auto">
-              <a className="light" href={foot.link}> {foot.name} </a>
+              <Col className="text-center" xs="auto" key={foot.name}>
+                <a className="light" href={foot.link}> {foot.name} </a>
               </Col>
             )
           })}

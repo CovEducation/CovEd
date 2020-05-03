@@ -41,6 +41,42 @@ const firebase = require("firebase-admin");
 /*
   GET Endpoints
 */
+/**
+ * Returns public mentor / mentee stats to show on the website.
+ * Current stats:
+ *  - Mentor count
+ *  - Mentee count
+ *  - College count
+ */
+router.get("/stats", (req, res) => {
+
+  const extractCollege = (email) => {
+    return email.split("@").pop();
+  };
+  let resp = {
+    mentor_count : 0,
+    mentee_count : 0,
+    college_count : 0,
+  }
+
+  Mentor.find({})
+  .then((mentors) => {
+    resp.mentor_count = mentors.length
+    // Assumption: People with different email domains are from different colleges.
+    let colleges = new Set()
+    mentors.map((mentor) => colleges.add(extractCollege(mentor.email)));
+    resp.college_count = colleges.size;
+
+    Mentee.find({})
+    .then((mentees) => {
+      resp.mentee_count = mentees.length
+      console.log(resp)
+      res.send(resp);
+    })
+    
+  });
+});
+
 
 router.get("/mentor", firebaseMiddleware, (req, res) => {
   Mentor.find({
@@ -66,14 +102,7 @@ router.get("/mentee", firebaseMiddleware, (req, res) => {
     })
 })
 
-router.post("/removeUser", firebaseMiddleware, async (req, res) => {
-  try {
-    await firebase.auth().deleteUser(req.user.user_id);
-    res.sendStatus(200);
-  } catch (error) {
-    res.sendStatus(500);
-  }
-});
+
 
 /**
  * Authenticated endpoint.
@@ -199,6 +228,15 @@ router.post("/updateMentor", firebaseMiddleware, (req, res) => {
     .catch(() => {
       return res.sendStatus(400).send("Unable to update user, check UID.");
     });
+});
+
+router.post("/removeUser", firebaseMiddleware, async (req, res) => {
+  try {
+    await firebase.auth().deleteUser(req.user.user_id);
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+  }
 });
 
 router.get("/auth_get", firebaseMiddleware, (req, res) => {

@@ -33,9 +33,12 @@ class App extends Component {
   render() {
     const loading_component =
       (<table id="wrapper">
-        <tr>
-          <td><Heart color={"#F2BE32"}/></td>
-        </tr>
+        <tbody>
+
+          <tr>
+            <td><Heart color={"#F2BE32"} /></td>
+          </tr>
+        </tbody>
       </table>)
     return (
       <div className="App Fade">
