@@ -260,4 +260,9 @@ export const FOOT = [
   }
 ]
 
+export const announcement = {
+  description: "",
+  link: "",
+} 
+
 export default timeZones;
