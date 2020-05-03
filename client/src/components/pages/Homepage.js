@@ -96,7 +96,10 @@ class Homepage extends Component {
           <Row className="justify-content-sm-center" >
           <Col className="text-center" sm={{span:8, offset:0}} xs={{span:10, offset:1}}>
             <Heading fontSize={[7,9]} fontWeight="normish">About Us<br /><br /><hr className="hr-primary"/></Heading>
-            <p fontWeight="light"><br /> <br />{about_us_content}</p>
+            <p style={{
+              fontWeight: "light",
+              fontSize: 24
+            }}><br /> <br />{about_us_content}</p>
             <Flex justifyContent="center">
               {memberCount}
             </Flex>
@@ -107,9 +110,19 @@ class Homepage extends Component {
           <Row bg="blue" className="justify-content-sm-center">
           <Col sm={{span:8, offset:0}} xs={{span:10, offset:1}} className="light-text text-center">
             <Heading fontSize={[7,9]} fontWeight="normish">Problem<br /><br /></Heading>
-            <p fontWeight="light">{problem_content} <br /><br /><br /></p>
+            <p style={{
+                  fontWeight: "light",
+                  fontSize: 24
+                }}>
+                  {problem_content} <br /><br /><br />
+            </p>
             <Heading fontSize={[7,9]} fontWeight="normish">Solution<br /><br /></Heading>
-            <p fontWeight="light">{solution_content}</p>
+            <p style={{
+                  fontWeight: "light",
+                  fontSize: 24
+                }}>
+                  {solution_content}
+            </p>
           </Col>
           </Row>
         </Section>
