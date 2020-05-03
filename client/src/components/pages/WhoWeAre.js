@@ -97,6 +97,12 @@ const technology = [
     school: "MIT, 2021",
     major: "Computer Science",
   },
+  {
+    fun: "👶 Infant Infantry",
+    name: "Ojasw Upadhyay",
+    school: "AHS, 2021",
+    major: "Computer Science",
+  },
 ];
 
 const coordinators = [
