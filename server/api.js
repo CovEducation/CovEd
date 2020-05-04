@@ -107,13 +107,12 @@ router.get("/mentee", firebaseMiddleware, (req, res) => {
 /**
  * Authenticated endpoint.
  * API Endpoint Details:
- * This endpoint retrieves up to {limit} mentors from our mentor database.
+ * This endpoint retrieves up to 100 mentors from our mentor database.
  * The mentors will be sorted by the last time they were requested 
  * (newer / recently requested mentors will be shown last). All the mentors
  * retrived are guaranteed to have all subjects if specified in the arguments.
  * 
  * subjects: comma-separated list of subjects the mentors must have
- * limit: (default 10) Max number of mentors to return
  */
 router.get("/getMentors", firebaseMiddleware, (req, res) => {
   // check if the user has their email verified 
@@ -123,7 +122,7 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
   // by how recently they were contacted by someone else.
   const required_tags = req.query.subjects ? req.query.subjects.split(",") : [];
   // TODO: Also use req.query.tags
-  const limit = req.query.limit || 10;
+  const limit = 100;
   Mentor.find({
       public: true
     })

@@ -48,7 +48,7 @@ class FindAMentor extends Component {
   searchForMentors = () => {
     const user = this.context.user;
     if (user && user.verified) {
-      get("/api/getMentors", { subjects: this.state.tags, limit: 100, token: user.token }).then(
+      get("/api/getMentors", { subjects: this.state.tags, token: user.token }).then(
         (mentors) => {
           if (this.state.mentors !== mentors) {
             this.setState({ mentors: mentors });
