@@ -199,41 +199,46 @@ export const FAQS = [
   },
   {
     key: "5",
+    question: "What if I have multiple students I want to request mentors for?",
+    answer: "Parents/guardians are able to request up to 4 students, with a maximum of one mentor request per student. Be sure to mention the name of the student you're requesting for."
+  },
+  {
+    key: "6",
     question: "How many hours a week do I have to commit?",
     answer: "We suggest students and mentors meet between 1-2 hours a week, although this can be decided among mentorship pairs. This may depend on the student’s needs as well as the mentor’s availability."
   },
   {
-    key: "6",
+    key: "7",
     question: "How long will CovEd mentors provide mentoring?",
     answer: "We expect mentors to be able to help until the end of the academic year for the student. After the academic year is over, discussions between the mentor and mentee can help determine possible plans and whether or not the mentoring will continue."
   },
   {
-    key: "7",
+    key: "8",
     question: "What are the responsibilities of a mentor?",
     answer: "Mentors are responsible for volunteering a minimum of one to two hours a week of their time to help their matched mentee with the subjects the mentee requests help in. While a mentor is only matched with one mentee, they can reach out if they would like to mentor more. Mentors are expected to help their mentee until the end of the 2020 academic school year. Additionally, all mentors must comply with the CovEd safety guidelines and expectations provided to them at all times."
   },
   {
-    key: "8",
+    key: "9",
     question: "How are you addressing concerns of student safety?",
     answer: "Our safety guidelines during our mentoring sessions include (but are not limited to): receiving consent from the mentee’s parent or legal guardian, having a parent or guardian present during the lessons, having mentors document the lessons, and instituting a “no social media contact with your mentee” policy. For further information please check our Privacy Policy and the Mentor Guidelines. Links to both can be found at the bottom of this page!"
   },
   {
-    key: "9",
+    key: "10",
     question: "How are you reaching students in disadvantaged situations?",
     answer: "Our outreach team is actively publicizing CovEd to school districts across the US, and we strive to be a useful resource for students in all situations. We especially encourage parents of underprivileged students to register their students for academic support through CovEd."
   },
   {
-    key: "10",
+    key: "11",
     question: "Can you help students that do not speak English very well?",
     answer: "Yes! We have mentors that are fluent in various languages and if this is a concern, be sure to mention this in the special requests/concerns portion of the registration form and we will definitely work to accommodate this. Additionally, we are working on translating all flyers and publicity materials into different languages to reach students regardless of their first language."
   },
   {
-    key: "11",
+    key: "12",
     question: "Is there any way for educators to get involved?",
     answer: "One of CovEd’s goals is to ensure that all students have access to various resources to help stimulate educational growth during this time. On our website’s home page, we have a form where resources can be submitted. We are hoping to find the best resources for students and hope you can help us!"
   },
   {
-    key: "12",
+    key: "13",
     question: "Is this service free?",
     answer: "Yes! This service is completely free and all of our mentors are volunteers."
   }
