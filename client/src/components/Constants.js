@@ -167,7 +167,7 @@ export const tags = ["Early Childhood Learning", "Preschool", "Elementary School
 export const about_us_content =
   "CovEd is a community of undergraduates, postgraduates, students, and educators from colleges/universities across the U.S. who are interested in supporting K-12 students in light of the COVID-19 pandemic. Our goal is to create a free virtual platform for pairing mentors from higher education institutions with K-12 students affected by school closures. We hope that this platform and our resources page will help students who are currently struggling with classes during the ongoing COVID-19 pandemic.";
 export const problem_content =
-  "As schools shutdowns across the US contiue due to the ongoing pandemic, many K-12 students are faced with financial, familial, logistical, or other difficulties that may impact their learning experience.";
+  "As schools shutdown across the US contiue due to the ongoing pandemic, many K-12 students are faced with financial, familial, logistical, or other difficulties that may impact their learning experience.";
 export const solution_content =
   "Many of us want to help support K-12 students who are currently struggling with classes during the pandemic. The goal of this virtual service is to provide a platform for parents and guardians to match their K-12 students with academic mentors. We are also working to compile free, web-based educational resources for students, families, and educators, as well as partner with schools and other non-profits to improve the learning experience of K-12 students.";
 
