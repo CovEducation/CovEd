@@ -43,7 +43,7 @@ class Homepage extends Component {
       },
       {
         name: "Mentees",
-        value: this.state.mentee_count + 1175,
+        value: this.state.mentee_count + 1407,
       },
       {
         name: "Colleges",

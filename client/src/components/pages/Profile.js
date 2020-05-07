@@ -216,11 +216,9 @@ const Profile = () => {
           <Form.Label>Major</Form.Label>
           <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.major} />
         </Form.Group>
-        
         <Form.Check checked={userProvider.user.public}
           name="public"
           type="checkbox" label="Listed as an Available Mentor." />
-        
       </>
     );
   };
