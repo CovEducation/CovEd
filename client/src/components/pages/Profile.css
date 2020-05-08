@@ -15,3 +15,9 @@ img {
 input {
     width: fit-content;
 }
+
+.hr-primary{
+  max-width: 200px;
+  border-color: #F2BE32;
+  border-width: 3px;
+}

@@ -115,7 +115,14 @@ class MentorGuidelines extends Component {
             <p>Dear [Mentee Name] and family,</p>
             <p>My name is [your name], a [title/year, if comfortable] studying [field of study or occupation], and I am looking forward to working with you as a mentor through CovEducation!</p>
             <p>A bit about me: I am from [hometown/state], and … [introduce yourself - could be favorite hobbies, activities involved with in school, about your siblings/pets, etc.]</p>
-            <p>I’d love to schedule an initial 30-minute Zoom meeting between me, [Mentee Name], and a parent/guardian to go over any suggestions and expectations. This meeting would give us the opportunity to get to know each other, and it would be very helpful for me to know what [Mentee Name] is looking for in terms of specific content, frequency, and duration of mentoring sessions. If it’s easier for you, we can continue this discussion over phone or video call. You can also read CovEd’s <a target="_blank" className="dark-a" href="/termsconditions">terms of service</a>, <a target="_blank" className="dark-a" href="/privacy">privacy policy</a>, and <a target="_blank" className="dark-a" href="/mentorguidelines">mentor guidelines</a> [be sure to add the links!] for more information about this service.</p>
+            <p>I’d love to schedule an initial 30-minute Zoom meeting between me, [Mentee Name], and a parent/guardian to go over any suggestions and expectations. This meeting would give us the opportunity to get to know each other, and it would be very helpful for me to know what [Mentee Name] is looking for in terms of specific content, frequency, and duration of mentoring sessions. If it’s easier for you, we can continue this discussion over phone or video call. You can also read CovEd’s <a target="_blank" className="dark-a" href="/termsconditions">terms of service</a>, <a target="_blank" className="dark-a" href="/privacy">privacy policy</a>, and <a target="_blank" className="dark-a" href="/mentorguidelines">mentor guidelines</a> for more information about this service.</p>
+            <p>
+            <ul>
+              <li><b>Mentor Guidelines: </b>www.coved.org/mentorguidelines</li>
+              <li><b>Terms of Service: </b>www.coved.org/termsconditions</li>
+              <li><b>Privacy Policy: </b>www.coved.org/privacy</li>
+            </ul>
+            </p>
             <p>Here is my availability for the upcoming week: [offer blocks of time that you are free, as well as your time zone].</p>
             I hope your family is staying safe and healthy - look forward to meeting you all soon!<br />
             Best,<br />
