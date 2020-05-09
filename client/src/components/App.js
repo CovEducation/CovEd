@@ -24,6 +24,9 @@ const TermsConditions = lazy(()=> import("./pages/TermsConditions.js"));
 const Privacy = lazy(()=> import("./pages/Privacy.js"));
 const MentorGuidelines = lazy(()=> import("./pages/MentorGuidelines.js"));
 const ParentAcknowledgement = lazy(()=> import("./pages/ParentAcknowledgement.js"));
+const Event = lazy(() => import("./pages/Event.js"));
+const AnnouncementHeader = lazy( () => import("./modules/AnnouncementHeader.js"));
+
 /**
  * Define the "App" component as a class.
  */
@@ -50,6 +53,7 @@ class App extends Component {
         />
         <UserProvider>
           <Suspense fallback={<div/>}>
+            <AnnouncementHeader />
             <NavBar />
           </Suspense>
            {/* "primary={false}" breaks an accessibility feature of reach router that allows screen readers to work
@@ -70,6 +74,7 @@ class App extends Component {
                 <Privacy path="/privacy" />
                 <MentorGuidelines path="/mentorguidelines" />
                 <ParentAcknowledgement path="/parentacknowledgement" />
+                <Event path="/event"/>
                 <NotFound default/>
               </Router>
             </Suspense>
