@@ -56,3 +56,7 @@ export const sendEmailVerification = async () => {
     await auth.currentUser.sendEmailVerification();
   }
 }
+
+export const sendPasswordReset = async (email) =>  {
+  return await auth.sendPasswordResetEmail(email);
+}

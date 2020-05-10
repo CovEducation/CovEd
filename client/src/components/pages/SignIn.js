@@ -80,6 +80,8 @@ class SignIn extends Component {
                       Sign In
                     </Button>
                     {this.state.error}
+
+                    <a href="/reset-password-request">Forgot Password?</a>
                   </Form>
                 </Col>
               </Row>
