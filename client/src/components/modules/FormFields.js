@@ -33,7 +33,7 @@ export const getParentDisclaimer = () =>  {
 export const getNameField = (formik) => {
   return (
     <Form.Group as={Col} md="12" controlId="validationCustom01">
-      <Form.Label>{formik.values.role === "mentee" ? <>Parent Name</> : <>Name</>}</Form.Label>
+      <Form.Label>{formik.values.role === "student" ? <>Parent Name</> : <>Name</>}</Form.Label>
       <Form.Control
         name="name"
         {...formik.getFieldProps("name")}
@@ -50,7 +50,7 @@ export const getNameField = (formik) => {
 export const getEmailField = (formik) => {
   return (
     <Form.Group as={Col} md="12" controlId="validationEmail">
-      <Form.Label>{formik.values.role === "mentee" ? <>Parent Email (Username)</> : <>Email (Username)</>}</Form.Label>
+      <Form.Label>{formik.values.role === "student" ? <>Parent Email (Username)</> : <>Email (Username)</>}</Form.Label>
       <Form.Control
         name="email"
         {...formik.getFieldProps("email")}
