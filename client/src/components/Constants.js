@@ -55,8 +55,8 @@ export const subjects = [
     label: "Biology"
   },
   {
-    value: "College Prep - SATs, ACTs",
-    label: "College Prep - SATs, ACTs",
+    value: "College Prep - SATs/ACTs",
+    label: "College Prep - SATs/ACTs",
   },
   {
     value: "College Prep - Essays",
@@ -69,6 +69,22 @@ export const subjects = [
   {
     value: "Economics",
     label: "Economics"
+  },
+  {
+    value: "Studio/Visual Art",
+    label: "Studio/Visual Art"
+  },
+  {
+    value: "Music",
+    label: "Music"
+  },
+  {
+    value: "Theatre",
+    label: "Theatre"
+  },
+  {
+    value: "Design",
+    label: "Design"
   },
   {
     value: "Computer Science - Python",
@@ -268,6 +284,6 @@ export const FOOT = [
 export const announcement = {
   description: "",
   link: "",
-} 
+}
 
 export default timeZones;
