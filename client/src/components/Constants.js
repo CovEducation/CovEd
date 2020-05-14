@@ -141,6 +141,30 @@ export const subjects = [
   {
     value: "AP European History",
     label: "AP European History"
+  },
+  {
+    value: "Spanish",
+    label: "Spanish"
+  },
+  {
+    value: "French",
+    label: "French"
+  },
+  {
+    value: "Chinese",
+    label: "Chinese"
+  },
+  {
+    value: "German",
+    label: "German"
+  },
+  {
+    value: "Latin",
+    label: "Latin"
+  },
+  {
+    value: "Japanese",
+    label: "Japanese"
   }
 ]
 export const theme = {
