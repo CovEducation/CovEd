@@ -289,6 +289,14 @@ class WhoWeAre extends Component {
               </Row>
               <Row mt={3} mb={3} className="justify-content-center">
                 <Col md={{ span: 12 }} className="text-center" p={3}>
+                  <Typography variant="h4">Speaker Series</Typography>
+                </Col>
+                <Col xs={12} md={10}>
+                  {renderTable(speakerseries)}
+                </Col>
+              </Row>
+              <Row mt={3} mb={3} className="justify-content-center">
+                <Col md={{ span: 12 }} className="text-center" p={3}>
                   <Typography variant="h4">👩‍💻Technology Team 👨‍💻</Typography>
                 </Col>
                 <Col xs={12} md={10}>
