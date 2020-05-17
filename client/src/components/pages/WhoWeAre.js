@@ -202,6 +202,29 @@ const outreach = [
     school: "Harvard, 2022",
     major: "Neuroscience",
   },
+  {
+    name: "Monica Chang",
+    school: "Harvard, 2023",
+    major: "Applied Math and Economics, Global Health and Health Policy",
+  },
+];
+
+const speakerseries = [
+  {
+    name: "Charlotte Wickert",
+    school: "MIT, 2023",
+    major: "Physics and Nuclear Science",
+  },
+  {
+    name: "Huong Le",
+    school: "Harvard, 2022",
+    major: "Neuroscience",
+  },
+  {
+    name: "Monica Chang",
+    school: "Harvard, 2023",
+    major: "Applied Math and Economics, Global Health and Health Policy",
+  },
 ];
 
 const renderTable = (list) => {
