@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import YouTube from 'react-youtube';
 import "./SpeakerSeries.css";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -32,9 +31,9 @@ class SpeakerSeries extends Component {
         <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1,2,2,2]} mt={7} mb={7}>
           <Row className="justify-content-sm-center">
           <Col sm={{span: 8}} className="text-center">
-            <h2>Speaker Series<br></h2>
-            <br>
-            <br>
+            <h2>Speaker Series<br /></h2>
+            <br />
+            <br />
             <p>In addition to our tutoring service, we’re starting a Speaker
                Series initiative within CovEd to further support students. Our
                educational webinars cover a variety of topics - ranging from tips
@@ -42,8 +41,8 @@ class SpeakerSeries extends Component {
                certain career fields. Our hope is to provide students from
                underserved communities with exposure to content beyond the classroom
                to further inspire and empower them while they’re learning from home. </p>
-            <h3>Upcoming Events<br><hr className="hr-primary"/></h3>
-            <h4><span className="webinar-name">Career Day<br><hr className="hr-primary"/></span></h3>
+            <h3>Upcoming Events<br /><hr className="hr-primary"/></h3>
+            <h4><span className="webinar-name">Career Day<br /><hr className="hr-primary"/></span></h4>
             <p>We are hosting a Virtual Career Day this upcoming weekend (May 23-24).
                This event will feature seven panels with professionals offering their insight
                and experience to CovEd students. These panels include
@@ -56,11 +55,11 @@ class SpeakerSeries extends Component {
                (7) Education. </p>
             <p>To register to attend our upcoming Career Day (May 23-24),
                click <a className="dark-a" href='TODO: insert link'>here</a></p>
-            <h3>Past Events<br><hr className="hr-primary"/></h3>
+            <h3>Past Events<br /><hr className="hr-primary"/></h3>
             <p>Check out the following recordings of our previous Speaker Series events.</p>
-            <br>
-            <h4><span className="webinar-name">Public Speaking Workshop with Dr. Allison Coffin<br><hr className="hr-primary"/></span></h3>
-            <h5>Webinar Date: Monday, May 4th, 2020</h4>
+            <br />
+            <h4><span className="webinar-name">Public Speaking Workshop with Dr. Allison Coffin<br /><hr className="hr-primary"/></span></h4>
+            <h5>Webinar Date: Monday, May 4th, 2020</h5>
             <p>Join Dr. Allison Coffin to learn best practices around public speaking -
                from reducing filler words to projecting confidence to making a
                successful elevator pitch. </p>
@@ -69,10 +68,10 @@ class SpeakerSeries extends Component {
                She is the president and co-founder of Science Talk, a national
                science communication professional society, and has over 15 years
                of experience teaching communication skills around the country. </p>
-            <YouTube videoId="dQw4w9WgXcQ" opts={opts} onReady={this._onReady} />
-            <br>
-            <h4><span className="webinar-name">Virtual Mentoring 101 with Laura Nicholson<br><hr className="hr-primary"/></span></h3>
-            <h5>Webinar Date: Friday, April 24th, 2020</h4>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/iKMsllsH0zI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br />
+            <h4><span className="webinar-name">Virtual Mentoring 101 with Laura Nicholson<br /><hr className="hr-primary"/></span></h4>
+            <h5>Webinar Date: Friday, April 24th, 2020</h5>
             <p>Join Laura Nicholson to learn best practices for virtual mentoring -
                from tips on how to structure your sessions to strategies for choosing
                curriculum. </p>
@@ -83,8 +82,8 @@ class SpeakerSeries extends Component {
                including test prep for AP, IB, SAT, and ACT. Over the years she
                has honed her expertise through practice as well as a focused study
                of the science of learning, with an emphasis on evidence-based education.</p>
-            <YouTube videoId="dQw4w9WgXcQ" opts={opts} onReady={this._onReady} />;
-            <br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/uQ0ODCMC6xs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>;
+            <br />
             <p>If you have any questions about the CovEd Speaker Series or would
                like to offer your professional expertise and help host a workshop,
                please contact <a className="dark-a" href='mailto:covedspeakerseries@gmail.com'>
