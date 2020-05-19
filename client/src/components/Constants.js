@@ -306,8 +306,8 @@ export const FOOT = [
 ]
 
 export const announcement = {
-  description: "",
-  link: "",
+  description: "We're having a virtual Career Day this weekend (May 23-24)!",
+  link: "/event",
 }
 
 export default timeZones;
