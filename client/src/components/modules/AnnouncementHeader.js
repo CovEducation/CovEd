@@ -15,6 +15,7 @@ import { announcement, theme } from "../Constants.js";
              backgroundColor: theme.colors.blue,
              textAlign: "center",
              color: theme.colors.white,
+             font: theme.fonts.sans,
          }}>
             { announcement.description }
             - <a href={announcement.link} style={{color: theme.colors.yellow}}>{" read more"}</a>

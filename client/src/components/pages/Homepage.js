@@ -47,7 +47,7 @@ class Homepage extends Component {
       },
       {
         name: "Colleges",
-        value: Math.max(this.state.college_count,250),
+        value: this.state.college_count,
       }
     ];
 
