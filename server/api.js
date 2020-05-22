@@ -169,13 +169,11 @@ router.post("/addMentee", accountRequestLimiter, firebaseMiddleware, (req, res) 
     timezone: req.body.timezone,
     bio: req.body.bio,
     subjects: req.body.subjects,
-    guardian_name: req.body.guardian_name,
-    guardian_phone: req.body.guardian_phone,
-    guardian_email: req.body.guardian_email,
+    student_name: req.body.student_name,
+    student_email: req.body.student_email,
     college_prep: req.body.college_prep,
     grade_level: req.body.grade_level,
     has_reliable_internet: req.body.has_reliable_internet,
-    guardian_present: req.body.guardian_present,
     mentors: [],
   });
   newMentee.save().then((mentee) => res.send(mentee));
@@ -263,8 +261,11 @@ router.post("/pingMentor", emailRequestLimiter, firebaseMiddleware, (req, res) =
 });
 
 router.post("/pingGuardian", emailRequestLimiter, firebaseMiddleware, (req, res) => {
-  const guardianName = req.body.guardianName;
-  const guardianEmail = req.body.guardianEmail;
+  if (req.user.role === "mentor") {
+    res.sendStatus(401);
+  }
+  const guardianName = req.body.name;
+  const guardianEmail = req.body.email;
   sendEmail.emailGuardian(guardianName, guardianEmail)
     .then(() => { res.send({}) })
     .catch((error) => {

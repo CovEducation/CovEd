@@ -228,12 +228,12 @@ const Profile = () => {
       <>
         <Form.Group as={Col} md="4" controlId="validationStudentName">
           <Form.Label>Student Name</Form.Label>
-          <Form.Control name="guardian_name" plaintext readOnly defaultValue={userProvider.user.student_name} />
+          <Form.Control name="student_name" plaintext readOnly defaultValue={userProvider.user.student_name} />
 
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationStudentEmail">
           <Form.Label>Student Email</Form.Label>
-          <Form.Control name="guardian_email" plaintext readOnly defaultValue={userProvider.user.student_email} />
+          <Form.Control name="student_email" plaintext readOnly defaultValue={userProvider.user.student_email} />
         </Form.Group>
       </>
     );
@@ -287,6 +287,7 @@ const Profile = () => {
     bio: "",
     public: true,
   };
+  
   let formik = useFormik({
     initialValues: {
       timezone: user.timezone,
