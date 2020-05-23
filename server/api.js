@@ -26,7 +26,8 @@ const rateLimit = require("express-rate-limit")
 const emailRequestLimiter = rateLimit({
   windowMs: 60 * 60 * 24 * 1000, // 1 day
   max: 4,
-  message: "Please wait at least one day for the mentor to respond to your requests."
+  message: "Please wait at least one day for the mentor to respond to your requests.",
+  keyGenerator: (req, res) => { req.user.user_id || req.ip }
 });
 
 const accountRequestLimiter = rateLimit({
@@ -244,7 +245,7 @@ router.get("/auth_get", firebaseMiddleware, (req, res) => {
 });
 
 
-router.post("/pingMentor", emailRequestLimiter, firebaseMiddleware, (req, res) => {
+router.post("/pingMentor", firebaseMiddleware, emailRequestLimiter, (req, res) => {
   const student_email = req.body.student.email;
   const mentor_uid = req.body.mentor_uid;
   const student_message = req.body.personal_message;
@@ -260,7 +261,7 @@ router.post("/pingMentor", emailRequestLimiter, firebaseMiddleware, (req, res) =
   });
 });
 
-router.post("/pingGuardian", emailRequestLimiter, firebaseMiddleware, (req, res) => {
+router.post("/pingGuardian",firebaseMiddleware, emailRequestLimiter, (req, res) => {
   if (req.user.role === "mentor") {
     res.sendStatus(401);
   }
