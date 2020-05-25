@@ -47,8 +47,7 @@ class NavBar extends Component {
           <Nav>
             <Nav.Link as={Link} to="/resources">Resources</Nav.Link>
             <Nav.Link as={Link} to="/faq">FAQ</Nav.Link>
-            <Nav.Link as={Link} to="/whoweare">Who We Are</Nav.Link>
-            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+            <Nav.Link as={Link} to="/about">About Us</Nav.Link>
             { userLinks }
           </Nav>
         </Navbar.Collapse>
