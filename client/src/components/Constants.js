@@ -306,7 +306,7 @@ export const FOOT = [
 ]
 
 export const announcement = {
-  description: "We're having a virtual Career Day this weekend (May 23-24)!",
+  description: "",
   link: "/event",
 }
 
