@@ -25,7 +25,7 @@ class FAQ extends Component {
       <Section p={[2,6,2,2]} mt={6} mb={6}>
       <Col className="col-sm-8 col-sm-offset-2">
       <h2 className="text-center"><span className="light-h2">Frequently Asked Questions</span><hr className="hr-primary"/></h2><br />
-      <h5 className="text-center">Still have questions? Visit our Contact Us page to get in touch.</h5>
+      <h5 className="text-center">Still have questions? Visit our About page to get in touch.</h5>
       <br />
       <h3 className="text-center"><span className="light-h2">General</span></h3>
             {FAQS.filter((f) => f.category == "general").map((faq) => {
