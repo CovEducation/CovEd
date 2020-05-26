@@ -31,9 +31,9 @@ class NavBar extends Component {
     } else {
       userLinks = (
         <>
+          <Nav.Link as={Link} to="/" onClick={this.signOut}>Sign Out</Nav.Link>
           <Nav.Link as={Link} to="/findamentor">Find a Mentor</Nav.Link>
           <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-          <Nav.Link as={Link} to="/" onClick={this.signOut}>Sign Out</Nav.Link>
         </>
       )
     }
@@ -45,10 +45,10 @@ class NavBar extends Component {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto"/>
           <Nav>
+          { userLinks }
             <Nav.Link as={Link} to="/resources">Resources</Nav.Link>
             <Nav.Link as={Link} to="/faq">FAQ</Nav.Link>
             <Nav.Link as={Link} to="/about">About Us</Nav.Link>
-            { userLinks }
           </Nav>
         </Navbar.Collapse>
       </Navbar>

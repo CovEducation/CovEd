@@ -254,7 +254,7 @@ class WhoWeAre extends Component {
     return (
       <>
         <Provider theme={theme}>
-          <Section p={[2, 6, 2, 2]} mt={6} mb={6}>
+          <Section p={[2, 6, 2, 2]} mt={6} mb={1}>
             <h1><span className="light-h1">About Us</span><br /><hr className="hr-primary" /><br /></h1>
           <Hero>
               <h3 className="light-h3"><span>Who We Are</span><br /></h3>
