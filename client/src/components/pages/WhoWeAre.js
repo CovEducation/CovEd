@@ -2,11 +2,12 @@ import React, { Component } from "react";
 
 import "../../utilities.css";
 import "./Homepage.css";
+import "./WhoWeAre.css";
 import { theme } from "../Constants.js";
 
 // Landing page library
 import { Provider, Box } from "rebass";
-import { Hero } from "react-landing-page";
+import { Hero, Section } from "react-landing-page";
 
 import { Container, Row, Col, Table } from "react-bootstrap";
 import { Typography } from "@material-ui/core";
@@ -233,7 +234,7 @@ const renderTable = (list) => {
       <tbody>
         {list.map((person) => {
           return (
-            <tr>
+            <tr className="table-text">
               <td>
                 {(person.fun)?<>{person.fun}<br></br></>:<></>}
                 <b>{person.name}</b>
@@ -253,11 +254,14 @@ class WhoWeAre extends Component {
     return (
       <>
         <Provider theme={theme}>
+          <Section p={[2, 6, 2, 2]} mt={6} mb={6}>
+            <h1><span className="light-h1">About Us</span><br /><hr className="hr-primary" /><br /></h1>
           <Hero>
+              <h3 className="light-h3"><span>Who We Are</span><br /></h3>
             <Box font="sans" mt={3} mb={7}>
               <Row mt={3} mb={3} className="justify-content-center">
-                <Col sm={{ span: 12 }} className="text-center" p={5}>
-                  <Typography variant="h4">Management</Typography>
+                <Col sm={{ span: 8 }} className="text-center" p={5}>
+                  <Typography variant="h5" className="team-title">Management</Typography>
                 </Col>
                 <Col xs={12} md={10}>
                   {renderTable(management)}
@@ -265,7 +269,7 @@ class WhoWeAre extends Component {
               </Row>
               <Row mt={3} mb={3} className="justify-content-center">
                 <Col sm={{ span: 12 }} className="text-center" p={5}>
-                  <Typography variant="h4">Coordinators</Typography>
+                  <Typography variant="h5" className="team-title">Coordinators</Typography>
                 </Col>
                 <Col xs={12} md={10}>
                   {renderTable(coordinators)}
@@ -273,7 +277,7 @@ class WhoWeAre extends Component {
               </Row>
               <Row mt={3} mb={3} className="justify-content-center">
                 <Col sm={{ span: 12 }} className="text-center" p={3}>
-                  <Typography variant="h4">Public Relations</Typography>
+                  <Typography variant="h5" className="team-title">Public Relations</Typography>
                 </Col>
                 <Col xs={12} md={10}>
                   {renderTable(pr)}
@@ -281,7 +285,7 @@ class WhoWeAre extends Component {
               </Row>
               <Row mt={3} mb={3} className="justify-content-center">
                 <Col md={{ span: 12 }} className="text-center" p={3}>
-                  <Typography variant="h4">Outreach</Typography>
+                  <Typography variant="h5" className="team-title">Outreach</Typography>
                 </Col>
                 <Col xs={12} md={10}>
                   {renderTable(outreach)}
@@ -289,7 +293,7 @@ class WhoWeAre extends Component {
               </Row>
               <Row mt={3} mb={3} className="justify-content-center">
                 <Col md={{ span: 12 }} className="text-center" p={3}>
-                  <Typography variant="h4">Speaker Series</Typography>
+                  <Typography variant="h5" className="team-title">Speaker Series</Typography>
                 </Col>
                 <Col xs={12} md={10}>
                   {renderTable(speakerseries)}
@@ -297,14 +301,15 @@ class WhoWeAre extends Component {
               </Row>
               <Row mt={3} mb={3} className="justify-content-center">
                 <Col md={{ span: 12 }} className="text-center" p={3}>
-                  <Typography variant="h4">👩‍💻Technology Team 👨‍💻</Typography>
+                  <Typography variant="h5" className="team-title">👩‍💻Technology Team 👨‍💻</Typography>
                 </Col>
                 <Col xs={12} md={10}>
                   {renderTable(technology)}
                 </Col>
               </Row>
             </Box>
-          </Hero>
+            </Hero>
+          </Section>
         </Provider>
       </>
     );

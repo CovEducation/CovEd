@@ -12,8 +12,8 @@ class About extends Component {
   render() {
     return (
       <div>
-        <Contact />
         <WhoWeAre />
+        <Contact />
       </div>
     );
   }
