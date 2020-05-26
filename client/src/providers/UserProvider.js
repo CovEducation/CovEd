@@ -21,7 +21,7 @@ class UserProvider extends Component {
     try {
       const token = this.state.user.token;
       let user = await get("/api/mentee", { token: token });
-      let role = "mentee";
+      let role = "student";
 
       // if the user is not a student
       if (user.length == 0) {
@@ -47,7 +47,7 @@ class UserProvider extends Component {
           const token = await fbUser.getIdToken(true);
           const verified = fbUser.emailVerified;
           let user = await get("/api/mentee", { token: token });
-          let role = "mentee";
+          let role = "student";
 
           // if the user is not a student
           if (user.length == 0) {
