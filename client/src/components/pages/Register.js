@@ -67,11 +67,7 @@ const RegisterSchema = Yup.object().shape({
     then: Yup.string().required("Please enter your student's name."),
   }),
   student_email: Yup.string()
-    .email()
-    .when("role", {
-      is: (role) => role === "student",
-      then: Yup.string(),
-    }),
+    .email("Please input a valid email."),
 
   major: Yup.string().when("role", {
     is: (role) => role === "mentor",
