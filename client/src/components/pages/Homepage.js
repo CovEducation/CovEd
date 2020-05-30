@@ -3,14 +3,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../utilities.css";
 import "./Homepage.css";
 import { get } from "../../utilities";
+import Image from 'react-bootstrap/Image'
 
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import GroupIcon from '@material-ui/icons/Group';
-import FindInPageIcon from '@material-ui/icons/FindInPage';
+import accountcircle from "../../public/img/account_circle.svg";
+import personsearch from "../../public/img/person_search.svg";
+import group from "../../public/img/group.svg";
+import editprofile from "../../public/img/grading.svg";
+import email from "../../public/img/email.svg";
 
 // Landing page library
 import { Heading, Provider, Subhead, Text } from "rebass";
@@ -116,12 +119,12 @@ class Homepage extends Component {
         <Section p={[6,3,6,3]} mt={5} mb={1} bg="white" fontSize={[4,3]}>
             <Heading fontSize={[7,9]} fontWeight="normish">How It Works <br /><hr className="hr-primary"/></Heading>
             <br />
-            <Heading fontSize={[5,7]} fontWeight="normish">For Parents and Students<br /><br /></Heading>
+            <Heading fontSize={[5,7]} fontWeight="bold">For Parents and Students<br /><br /></Heading>
             <br />
           <Flex flexWrap="wrap" justifyContent="center">
               <Row className="justify-content-center" mt={5} mb={4}>
               <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
-              <AccountCircleIcon fontSize="large" color="primary"/>
+              <Image src={accountcircle}/>
               <br />
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Register<br /></Heading>
@@ -132,7 +135,7 @@ class Homepage extends Component {
               <br />
               </Col>
               <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
-              <FindInPageIcon fontSize="large" color="primary"/>
+              <Image src={personsearch}/>
               <br />
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Find A Mentor<br /></Heading>
@@ -140,12 +143,46 @@ class Homepage extends Component {
               <p fontWeight="light" className="feature"> <b>Ensure you have logged in</b>. Visit the <a className="dark-a" href="/findamentor"> Find A Mentor page </a> where you will be able to search for mentors and request a mentor. Please only contact <b> one mentor per student </b>.</p>
               </Col>
               <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
-              <GroupIcon fontSize="large" color="primary"/>
+              <Image src={group}/>
               <br />
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Meet Mentor<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature">Within 48 hours of requesting a mentor, you will recieve an email from the mentor asking to meet. Schedule a time to meet! If you do not hear from the mentor within 48 hours, please request another mentor.</p>
+              <p fontWeight="light" className="feature">Upon requesting a mentor you will recieve an email confirmation Within 48 hours of requesting a mentor, you will recieve an email from the mentor asking to meet. Schedule a time to meet! If you do not hear from the mentor within 48 hours, please request another mentor.</p>
+              </Col>
+              </Row>
+          </Flex>
+          <br />
+          <Heading fontSize={[5,7]} fontWeight="bold">For College Students<br /><br /></Heading>
+          <br />
+          <Flex flexWrap="wrap" justifyContent="center">
+              <Row className="justify-content-center" mt={5} mb={4}>
+              <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
+              <Image src={accountcircle}/>
+              <br />
+              <br />
+              <Heading fontSize={[6,8]} fontWeight="normish">Register<br /></Heading>
+              <br />
+              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/resources">here</a>! Make sure you put in the correct email because you will recieve an email-verification link! </p>
+              <br />
+              <br />
+              <br />
+              </Col>
+              <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
+              <Image src={editprofile}/>
+              <br />
+              <br />
+              <Heading fontSize={[6,8]} fontWeight="normish">Edit Profile<br /></Heading>
+              <br />
+              <p fontWeight="light" className="feature"> <b>Ensure you have logged in</b>. Visit your <a className="dark-a" href="/profile"> Profile page </a> where you will be able to edit your information including a bio. Make sure you have checked off "Listed as Available Mentor".</p>
+              </Col>
+              <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
+              <Image src={email}/>
+              <br />
+              <br />
+              <Heading fontSize={[6,8]} fontWeight="normish">Contact Mentee<br /></Heading>
+              <br />
+              <p fontWeight="light" className="feature"> When a parent requests you as a mentor, you will recieve an email with further instructions and contact information. Be sure to contact them as soon as possible if you are able to be a mentor!</p>
               </Col>
               </Row>
           </Flex>
