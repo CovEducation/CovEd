@@ -14,12 +14,12 @@ import personsearch from "../../public/img/person_search.svg";
 import group from "../../public/img/group.svg";
 import editprofile from "../../public/img/grading.svg";
 import email from "../../public/img/email.svg";
+import header from "../../public/img/header.jpg";
 
 // Landing page library
-import { Heading, Provider, Subhead, Text } from "rebass";
+import { Heading, Provider, Subhead} from "rebass";
 import { Flex, Hero, Section } from "react-landing-page";
 // Assets
-import header from "../../public/img/header.jpg";
 import { theme, about_us_content, problem_content, solution_content } from "../Constants.js";
 import AnimatedNumber from 'react-animated-number';
 
@@ -107,8 +107,8 @@ class Homepage extends Component {
           <Row className="justify-content-center" >
           <Col className="text-center" sm={{span:8}} xs={{span:10}}>
             <Heading fontSize={[7,9]} fontWeight="normish">About Us<br /><hr className="hr-primary"/></Heading>
-            <Text fontWeight='light'>
-            <br /> <br />{about_us_content} <br /><br /></Text>
+            <p fontWeight='light'>
+            <br /> <br />{about_us_content} <br /><br /></p>
           </Col>
           </Row>
         </Section>
@@ -129,8 +129,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Register<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/resources">here</a>! Make sure you put in the correct email because you will recieve an email-verification link! </p>
-              <br />
+              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure you put in the correct email because you will recieve an email-verification link! </p>
               <br />
               <br />
               </Col>
@@ -140,7 +139,9 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Find A Mentor<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> <b>Ensure you have logged in</b>. Visit the <a className="dark-a" href="/findamentor"> Find A Mentor page </a> where you will be able to search for mentors and request a mentor. Please only contact <b> one mentor per student </b>.</p>
+              <p fontWeight="light" className="feature"> <b>Log in</b>  to visit the <a className="dark-a" href="/findamentor"> Find A Mentor page </a> where you will be able to search for mentors and request a mentor. Please only contact <b> one mentor per student </b>.</p>
+              <br />
+              <br />
               </Col>
               <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
               <Image src={group}/>
@@ -148,7 +149,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Meet Mentor<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature">Upon requesting a mentor you will recieve an email confirmation Within 48 hours of requesting a mentor, you will recieve an email from the mentor asking to meet. Schedule a time to meet! If you do not hear from the mentor within 48 hours, please request another mentor.</p>
+              <p fontWeight="light" className="feature"> The mentor will email you to set up a meeting time. If you do not hear from the mentor within 48 hours, please request another mentor.</p>
               </Col>
               </Row>
           </Flex>
@@ -163,8 +164,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Register<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/resources">here</a>! Make sure you put in the correct email because you will recieve an email-verification link! </p>
-              <br />
+              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure you put in the correct email because you will recieve an email-verification link! </p>
               <br />
               <br />
               </Col>
@@ -174,7 +174,9 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Edit Profile<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> <b>Ensure you have logged in</b>. Visit your <a className="dark-a" href="/profile"> Profile page </a> where you will be able to edit your information including a bio. Make sure you have checked off "Listed as Available Mentor".</p>
+              <p fontWeight="light" className="feature"> <b>Log in to</b> visit your <a className="dark-a" href="/profile"> Profile page </a> where you will be able to edit your information including a bio. Make sure you have checked off "Listed as Available Mentor".</p>
+              <br />
+              <br />
               </Col>
               <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
               <Image src={email}/>
@@ -193,7 +195,7 @@ class Homepage extends Component {
             <Heading fontSize={[7,9]} fontWeight="normish">Questions? Contact Us! <br /><br /><hr className="hr-light"/></Heading>
             <br />
             <br />
-            <p>Check out the <a className="light-a" href="/faq"> FAQs </a> page to see if we've already answered your question. If you don't see your question there, shoot us an email <a className="light-a" href='mailto:coveducation@gmail.com'>coveducation@gmail.com</a>! We're excited to hear from you~</p>
+            <p>Check out the <a className="light-a" href="/faq"> FAQs </a> page to see if we've already answered your question. If you don't see your question there, find our contact information on the <a className="light-a" href='/about'>About Us page</a>! We're excited to hear from you~</p>
           </Col>
           </Row>
         </Section>
