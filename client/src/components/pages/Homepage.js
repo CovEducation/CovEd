@@ -129,7 +129,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Register<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure you put in the correct email because you will recieve an email-verification link! </p>
+              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure to input the correct parent email because you will recieve an email-verification link! </p>
               <br />
               <br />
               </Col>
@@ -137,9 +137,9 @@ class Homepage extends Component {
               <Image src={personsearch}/>
               <br />
               <br />
-              <Heading fontSize={[6,8]} fontWeight="normish">Find A Mentor<br /></Heading>
+              <Heading fontSize={[6,8]} fontWeight="normish">Find Mentor<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> <b>Log in</b>  to visit the <a className="dark-a" href="/findamentor"> Find A Mentor page </a> where you will be able to search for mentors and request a mentor. Please only contact <b> one mentor per student </b>.</p>
+              <p fontWeight="light" className="feature"> <a className="dark-a" href="/auth">Log in </a>to visit the <a className="dark-a" href="/findamentor"> Find A Mentor page </a>, where you will be able to search for and request a mentor. Please only contact <b> one mentor per student </b>.</p>
               <br />
               <br />
               </Col>
@@ -149,7 +149,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Meet Mentor<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> The mentor will email you to set up a meeting time. If you do not hear from the mentor within 48 hours, please request another mentor.</p>
+              <p fontWeight="light" className="feature"> Your mentor will email you to set up an initial meeting time. If you do not hear from your mentor within 48 hours, please request another mentor.</p>
               </Col>
               </Row>
           </Flex>
@@ -164,7 +164,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Register<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure you put in the correct email because you will recieve an email-verification link! </p>
+              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure you input your correct institutional email because you will recieve an email-verification link! </p>
               <br />
               <br />
               </Col>
@@ -174,7 +174,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Edit Profile<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> <b>Log in to</b> visit your <a className="dark-a" href="/profile"> Profile page </a> where you will be able to edit your information including a bio. Make sure you have checked off "Listed as Available Mentor".</p>
+              <p fontWeight="light" className="feature"> <a className="dark-a" href="/auth">Log in </a>to visit your <a className="dark-a" href="/profile"> Profile page </a>, where you will be able to edit your information including a bio. Make sure you check off "Listed as Available Mentor".</p>
               <br />
               <br />
               </Col>
@@ -184,7 +184,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Contact Mentee<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> When a parent requests you as a mentor, you will recieve an email with further instructions and contact information. Be sure to contact them as soon as possible if you are able to be a mentor!</p>
+              <p fontWeight="light" className="feature"> When a parent requests you as a mentor, you will recieve an email with further instructions and contact information. Be sure to contact them as soon as possible to introduce yourself!</p>
               </Col>
               </Row>
           </Flex>
