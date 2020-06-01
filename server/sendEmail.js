@@ -30,11 +30,13 @@ const reminderTemplate = handlebars.compile(reminderSource);
  * Sends an email to a mentor based on the CovEd match template.
  * @param {string} email - Email address of the mentor
  * @param {string} mentorFirst- First name of the mentor
+ * @param {string} studentName Name of the mentee
  * @param {string} studentEmail Email of the mentee
  * @param {string} message Personalized messsage from the mentee to mentor
  */
-async function emailMentor(mentorEmail, mentorFirst, studentEmail, message) {
+async function emailMentor(mentorEmail, mentorFirst, studentEmail, studentName, message) {
     const replacements = {
+        studentname: studentName,
         mentorfirst: mentorFirst,
         studentemail: studentEmail,
         message: message,
