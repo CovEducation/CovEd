@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import career_day_img from "../../public/img/careerday.png";
 import Image from "react-bootstrap/Image";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -35,6 +36,39 @@ class SpeakerSeries extends Component {
             <br />
             <p>Check out recordings of our previous Speaker Series events!</p>
             <br />
+            <h4><span className="webinar-name">Career Exploration Day</span></h4>
+            <p><b>Webinar Dates:</b> Saturday, May 24th - Sunday, May 25th, 2020</p><hr className="hr-primary"/>
+            <br />
+            <Row className="justify-content-center">
+              <Col md={{span:6}} xs={{span:10}} className="text-right">
+                <Image src={career_day_img} style={{height: '420px'}} />
+              </Col>
+              <Col md={{span:6}} xs={{span:10}} className="text-left">
+                <iframe src="https://drive.google.com/file/d/1QAwyDn-MVmIGowoFbHdKTalpwTgD7_Qq/preview" height="420px" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+              </Col>
+            </Row>
+            <br />
+            <p className="text-left">CovEd’s Career Exploration Day featured 7
+            different panels with 45 professionals in healthcare, technology,
+            arts and humanities, nonprofit work, politics, law, and more.
+            Through intimate conversations and Q&A discussions, panelists shared
+            their career experience, offered insightful advice, and inspired over
+            230 CovEd mentees that signed up to attend our live panels. Below,
+            you can watch the recordings for any panels you might have missed:
+            <br />
+            <br />
+            <ul>
+              <li> Nonprofit, Advocacy, & Global Health </li>
+              <li> STEM </li>
+              <li> Medicine & Healthcare </li>
+              <li> Diversity & Inclusion </li>
+              <li> Education </li>
+              <li> Arts and Humanities </li>
+              <li> Economics, Law, & Politics </li>
+            </ul>
+            </p>
+            <br />
+            <br />
             <h4><span className="webinar-name">Public Speaking Workshop with Dr. Allison Coffin</span></h4>
             <p><b>Webinar Date:</b> Monday, May 4th, 2020</p><hr className="hr-primary"/>
             <p className="text-left">Join Dr. Allison Coffin to learn best practices around public speaking -
@@ -45,7 +79,6 @@ class SpeakerSeries extends Component {
                She is the president and co-founder of Science Talk, a national
                science communication professional society, and has over 15 years
                of experience teaching communication skills around the country.</i></p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/iKMsllsH0zI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <br />
             <br />
             <br />
@@ -61,7 +94,6 @@ class SpeakerSeries extends Component {
                including test prep for AP, IB, SAT, and ACT. Over the years she
                has honed her expertise through practice as well as a focused study
                of the science of learning, with an emphasis on evidence-based education.</i></p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/uQ0ODCMC6xs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>;
             <br />
             <br />
             <p className="text-left">If you have any questions about the CovEd Speaker Series or would
