@@ -14,6 +14,7 @@ const Register = lazy(()=>import("./pages/Register.js"));
 const Resources = lazy(()=>import("./pages/Resources.js"));
 const SpeakerSeries = lazy(()=>import("./pages/SpeakerSeries.js"));
 const VirtualMentoring = lazy(()=>import("./pages/VirtualMentoring.js"));
+const PublicSpeaking = lazy(()=>import("./pages/PublicSpeaking.js"));
 const NonprofitPanel = lazy(()=>import("./pages/NonprofitPanel.js"));
 const StemPanel = lazy(()=>import("./pages/StemPanel.js"));
 const MedicinePanel = lazy(()=>import("./pages/MedicinePanel.js"));
@@ -75,6 +76,7 @@ class App extends Component {
                 <Resources path="/resources" />
                 <SpeakerSeries path="/speakerseries" />
                 <VirtualMentoring path="/virtualmentoring" />
+                <PublicSpeaking path="/publicspeaking" />
                 <NonprofitPanel path="/nonprofitpanel" />
                 <StemPanel path="/stempanel" />
                 <MedicinePanel path="/medicinepanel" />

@@ -72,7 +72,7 @@ class SpeakerSeries extends Component {
             </p>
             <br />
             <br />
-            <h4><span className="webinar-name">Public Speaking Workshop with Dr. Allison Coffin</span></h4>
+            <h4><a className="dark-a" href="/publicspeaking"><span className="webinar-name">Public Speaking Workshop with Dr. Allison Coffin</span></a></h4>
             <p><b>Webinar Date:</b> Monday, May 4th, 2020</p><hr className="hr-primary"/>
             <p className="text-left">Join Dr. Allison Coffin to learn best practices around public speaking -
                from reducing filler words to projecting confidence to making a
