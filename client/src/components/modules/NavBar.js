@@ -33,6 +33,7 @@ class NavBar extends Component {
         <>
           <Nav.Link as={Link} to="/findamentor">Find a Mentor</Nav.Link>
           <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+          <Nav.Link as={Link} to="/speakerseries">Speaker Series</Nav.Link>
           <Nav.Link as={Link} to="/" onClick={this.signOut}>Sign Out</Nav.Link>
         </>
       )
