@@ -61,13 +61,13 @@ class SpeakerSeries extends Component {
             <br />
             <br />
             <ul>
-              <li> <a href="/nonprofitpanel"> Nonprofit, Advocacy, & Global Health </a> </li>
-              <li> <a href="/stempanel"> STEM </a> </li>
-              <li> <a href="/medicinepanel"> Medicine & Healthcare </a> </li>
-              <li> <a href="/diversitypanel"> Diversity & Inclusion </a> </li>
-              <li> <a href="/educationpanel"> Education </a> </li>
-              <li> <a href="/artshumpanel"> Arts and Humanities </a> </li>
-              <li> <a href="/econlawpanel"> Economics, Law, & Politics </a> </li>
+              <li> <a className="dark-a" href="/nonprofitpanel"> Nonprofit, Advocacy, & Global Health </a> </li>
+              <li> <a className="dark-a" href="/stempanel"> STEM </a> </li>
+              <li> <a className="dark-a" href="/medicinepanel"> Medicine & Healthcare </a> </li>
+              <li> <a className="dark-a" href="/diversitypanel"> Diversity & Inclusion </a> </li>
+              <li> <a className="dark-a" href="/educationpanel"> Education </a> </li>
+              <li> <a className="dark-a" href="/artshumpanel"> Arts and Humanities </a> </li>
+              <li> <a className="dark-a" href="/econlawpanel"> Economics, Law, & Politics </a> </li>
             </ul>
             </p>
             <br />
@@ -85,7 +85,7 @@ class SpeakerSeries extends Component {
             <br />
             <br />
             <br />
-            <h4><a href="/virtualmentoring"><span className="webinar-name">Virtual Mentoring 101 with Laura Nicholson</span></a></h4>
+            <h4><a className="dark-a" href="/virtualmentoring"><span className="webinar-name">Virtual Mentoring 101 with Laura Nicholson</span></a></h4>
             <p><b>Webinar Date:</b> Friday, April 24th, 2020</p><hr className="hr-primary"/>
             <p className="text-left">Join Laura Nicholson to learn best practices for virtual mentoring -
                from tips on how to structure your sessions to strategies for choosing
