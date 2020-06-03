@@ -40,7 +40,7 @@ class SpeakerSeries extends Component {
             <p>Check out recordings of our previous Speaker Series events!</p>
             <br />
             <h4><span className="webinar-name">Career Exploration Day</span></h4>
-            <p><b>Webinar Dates:</b> Saturday, May 24th - Sunday, May 25th, 2020</p><hr className="hr-primary"/>
+            <p><b>Webinar Dates:</b> Saturday, May 23rd - Sunday, May 24th, 2020</p><hr className="hr-primary"/>
             <br />
             <Row className="justify-content-center">
               <Col md={{span:6}} xs={{span:10}} className="text-right">

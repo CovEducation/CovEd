@@ -24,7 +24,7 @@ class NonprofitPanel extends Component {
           <Row className="justify-content-sm-center">
           <Col sm={{span:12}}  xs={{span:12}}className="text-center">
             <h4><span className="webinar-name">Nonprofit, Advocacy, & Global Health Panel</span></h4>
-            <p><b>Webinar Date: </b>Saturday, May 24th, 2020 </p><hr className="hr-primary"/>
+            <p><b>Webinar Date: </b>Saturday, May 23rd, 2020 </p><hr className="hr-primary"/>
             <p className="text-left">Our panelists:
             <br />
             <br />
