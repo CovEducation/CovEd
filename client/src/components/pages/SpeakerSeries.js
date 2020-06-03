@@ -32,7 +32,10 @@ class SpeakerSeries extends Component {
                - ranging from tips for remote learning to public speaking skills
                to introductions to career fields. Our hope is to provide students from
                underserved communities with exposure to content beyond the classroom
-               to further inspire and empower them while they’re learning from home. </p>
+               to further inspire and empower them while they’re learning from home.
+               If you have any questions or would like to offer your professional
+               expertise to help host a workshop, please contact <a className="dark-a" href='mailto:covedspeakerseries@gmail.com'>
+               covedspeakerseries@gmail.com</a>.</p>
             <br />
             <p>Check out recordings of our previous Speaker Series events!</p>
             <br />
@@ -58,13 +61,13 @@ class SpeakerSeries extends Component {
             <br />
             <br />
             <ul>
-              <li> Nonprofit, Advocacy, & Global Health </li>
-              <li> STEM </li>
-              <li> Medicine & Healthcare </li>
-              <li> Diversity & Inclusion </li>
-              <li> Education </li>
-              <li> Arts and Humanities </li>
-              <li> Economics, Law, & Politics </li>
+              <li> <a href="/nonprofitpanel"> Nonprofit, Advocacy, & Global Health </a> </li>
+              <li> <a href="/stempanel"> STEM </a> </li>
+              <li> <a href="/medicinepanel"> Medicine & Healthcare </a> </li>
+              <li> <a href="/diversitypanel"> Diversity & Inclusion </a> </li>
+              <li> <a href="/educationpanel"> Education </a> </li>
+              <li> <a href="/artshumpanel"> Arts and Humanities </a> </li>
+              <li> <a href="/econlawpanel"> Economics, Law, & Politics </a> </li>
             </ul>
             </p>
             <br />
@@ -82,7 +85,7 @@ class SpeakerSeries extends Component {
             <br />
             <br />
             <br />
-            <h4><span className="webinar-name">Virtual Mentoring 101 with Laura Nicholson</span></h4>
+            <h4><a href="/virtualmentoring"><span className="webinar-name">Virtual Mentoring 101 with Laura Nicholson</span></a></h4>
             <p><b>Webinar Date:</b> Friday, April 24th, 2020</p><hr className="hr-primary"/>
             <p className="text-left">Join Laura Nicholson to learn best practices for virtual mentoring -
                from tips on how to structure your sessions to strategies for choosing
@@ -96,10 +99,6 @@ class SpeakerSeries extends Component {
                of the science of learning, with an emphasis on evidence-based education.</i></p>
             <br />
             <br />
-            <p className="text-left">If you have any questions about the CovEd Speaker Series or would
-               like to offer your professional expertise and help host a workshop,
-               please contact <a className="dark-a" href='mailto:covedspeakerseries@gmail.com'>
-               covedspeakerseries@gmail.com</a>.</p>
           </Col>
           </Row>
         </Section>

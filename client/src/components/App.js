@@ -13,6 +13,14 @@ const SignIn = lazy(()=>import("./pages/SignIn.js"));
 const Register = lazy(()=>import("./pages/Register.js"));
 const Resources = lazy(()=>import("./pages/Resources.js"));
 const SpeakerSeries = lazy(()=>import("./pages/SpeakerSeries.js"));
+const VirtualMentoring = lazy(()=>import("./pages/VirtualMentoring.js"));
+const NonprofitPanel = lazy(()=>import("./pages/NonprofitPanel.js"));
+const StemPanel = lazy(()=>import("./pages/StemPanel.js"));
+const MedicinePanel = lazy(()=>import("./pages/MedicinePanel.js"));
+const DiversityPanel = lazy(()=>import("./pages/DiversityPanel.js"));
+const EducationPanel = lazy(()=>import("./pages/EducationPanel.js"));
+const ArtsHumPanel = lazy(()=>import("./pages/ArtsHumPanel.js"));
+const EconLawPanel = lazy(()=>import("./pages/EconLawPanel.js"));
 const FAQ = lazy(()=>import("./pages/FAQ.js"));
 const WhoWeAre = lazy(()=>import("./pages/WhoWeAre.js"));
 const Contact = lazy(()=>import("./pages/Contact.js"));
@@ -66,6 +74,14 @@ class App extends Component {
                 <Homepage path="/"/>
                 <Resources path="/resources" />
                 <SpeakerSeries path="/speakerseries" />
+                <VirtualMentoring path="/virtualmentoring" />
+                <NonprofitPanel path="/nonprofitpanel" />
+                <StemPanel path="/stempanel" />
+                <MedicinePanel path="/medicinepanel" />
+                <DiversityPanel path="/diversitypanel" />
+                <EducationPanel path="/educationpanel" />
+                <ArtsHumPanel path="/artshumpanel" />
+                <EconLawPanel path="/econlawpanel" />
                 <SignIn path="/auth" />
                 <ResetPassword path="/reset-password-request" />
                 <Register path="/register" />
