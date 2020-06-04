@@ -13,6 +13,15 @@ const SignIn = lazy(()=>import("./pages/SignIn.js"));
 const Register = lazy(()=>import("./pages/Register.js"));
 const Resources = lazy(()=>import("./pages/Resources.js"));
 const SpeakerSeries = lazy(()=>import("./pages/SpeakerSeries.js"));
+const VirtualMentoring = lazy(()=>import("./pages/VirtualMentoring.js"));
+const PublicSpeaking = lazy(()=>import("./pages/PublicSpeaking.js"));
+const NonprofitPanel = lazy(()=>import("./pages/NonprofitPanel.js"));
+const StemPanel = lazy(()=>import("./pages/StemPanel.js"));
+const MedicinePanel = lazy(()=>import("./pages/MedicinePanel.js"));
+const DiversityPanel = lazy(()=>import("./pages/DiversityPanel.js"));
+const EducationPanel = lazy(()=>import("./pages/EducationPanel.js"));
+const ArtsHumPanel = lazy(()=>import("./pages/ArtsHumPanel.js"));
+const EconLawPanel = lazy(()=>import("./pages/EconLawPanel.js"));
 const FAQ = lazy(()=>import("./pages/FAQ.js"));
 const WhoWeAre = lazy(()=>import("./pages/WhoWeAre.js"));
 const Contact = lazy(()=>import("./pages/Contact.js"));
@@ -66,7 +75,16 @@ class App extends Component {
               <Router primary={false} basepath="/">
                 <Homepage path="/"/>
                 <Resources path="/resources" />
-                <SpeakerSeries path="/speakerseries" />
+                <ProtectedPage path="/speakerseries" component={SpeakerSeries}/>
+                <ProtectedPage path="/virtualmentoring" component={VirtualMentoring}/>
+                <ProtectedPage path="/publicspeaking" component={PublicSpeaking}/>
+                <ProtectedPage path="/nonprofitpanel" component={NonprofitPanel}/>
+                <ProtectedPage path="/stempanel" component={StemPanel}/>
+                <ProtectedPage path="/medicinepanel" component={MedicinePanel}/>
+                <ProtectedPage path="/diversitypanel" component={DiversityPanel}/>
+                <ProtectedPage path="/educationpanel" component={EducationPanel}/>
+                <ProtectedPage path="/artshumpanel" component={ArtsHumPanel}/>
+                <ProtectedPage path="/econlawpanel" component={EconLawPanel}/>
                 <SignIn path="/auth" />
                 <ResetPassword path="/reset-password-request" />
                 <Register path="/register" />
