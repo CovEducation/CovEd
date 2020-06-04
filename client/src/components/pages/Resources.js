@@ -6,7 +6,6 @@ import {
 	MultiList,
 } from '@appbaseio/reactivesearch';
 
-import "../../utilities.css";
 import "./Homepage.css";
 
 import {Col, Row } from 'react-bootstrap'

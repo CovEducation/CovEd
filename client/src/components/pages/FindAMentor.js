@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import MentorFilter from "../modules/MentorFilter.js";
-import "../../utilities.css";
 import "./FindAMentor.css";
 import { get } from "../../utilities.js";
 import { Row, Col} from "react-bootstrap";

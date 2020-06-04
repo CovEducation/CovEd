@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import "../../utilities.css";
 import "./Homepage.css";
 import "./WhoWeAre.css";
 import { theme } from "../Constants.js";

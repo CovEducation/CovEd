@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../utilities.css";
 import "./MentorFilter.css";
 import Select from "react-select";
 import { subjects, tags } from "../Constants";
