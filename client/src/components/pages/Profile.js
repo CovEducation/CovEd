@@ -57,12 +57,7 @@ const ProfileEditSchema = Yup.object().shape({
     then: Yup.string().required("Please enter a Parent or Guardian's name."),
   }),
   student_email: Yup.string()
-    .email()
-    .when("role", {
-      is: (role) => role !== "mentor",
-      then: Yup.string().required("Please input a valid email."),
-    }),
-
+    .email("Please input a valid email. "),
   major: Yup.string().when("role", {
     is: (role) => role === "mentor",
     then: Yup.string().required("Major is a required field."),
@@ -228,12 +223,12 @@ const Profile = () => {
       <>
         <Form.Group as={Col} md="4" controlId="validationStudentName">
           <Form.Label>Student Name</Form.Label>
-          <Form.Control name="guardian_name" plaintext readOnly defaultValue={userProvider.user.student_name} />
+          <Form.Control name="student_name" plaintext readOnly defaultValue={userProvider.user.student_name} />
 
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationStudentEmail">
           <Form.Label>Student Email</Form.Label>
-          <Form.Control name="guardian_email" plaintext readOnly defaultValue={userProvider.user.student_email} />
+          <Form.Control name="student_email" plaintext readOnly defaultValue={userProvider.user.student_email} />
         </Form.Group>
       </>
     );
@@ -287,6 +282,7 @@ const Profile = () => {
     bio: "",
     public: true,
   };
+  
   let formik = useFormik({
     initialValues: {
       timezone: user.timezone,

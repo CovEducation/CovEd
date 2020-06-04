@@ -221,8 +221,8 @@ export const getTermsAndConditions = (formik )=> {
       name="agreed"
       onChange={() => formik.setFieldValue("agreed", !formik.values.agreed)}
       isInvalid={formik.touched.agreed && formik.errors.agreed}
-      type="checkbox" 
-      label="By checking this box, I agree to the CovEd Terms of Service and Privacy Policy." 
+      type="checkbox"
+      label="By checking this box, I agree to the CovEd Terms of Service and Privacy Policy."
       feedback={formik.errors.agreed}/>
     <a href="/termsconditions" href="/termsconditions" target="_blank">
       Terms and Conditions
@@ -248,7 +248,7 @@ export const getMenteeFields = (formik) => {
         />
         <Form.Control.Feedback type="invalid">{formik.errors.student_name}</Form.Control.Feedback>
       </Form.Group>
-      <Form.Group as={Col} md="6" controlId="validationEmailGuardian">
+      <Form.Group as={Col} md="6" controlId="validationStudentEmail">
         <Form.Label>Student's Email (Optional)</Form.Label>
         <Form.Control
           name="student_email"

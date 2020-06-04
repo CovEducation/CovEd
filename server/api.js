@@ -13,6 +13,8 @@ const express = require("express");
 const Mentor = require("./models/mentor.js");
 const Mentee = require("./models/mentee.js");
 
+const {SUBJECTS, TAGS} = require("./models/constants");
+
 // connecting to email service
 const sendEmail = require("./sendEmail.js")
 
@@ -26,7 +28,8 @@ const rateLimit = require("express-rate-limit")
 const emailRequestLimiter = rateLimit({
   windowMs: 60 * 60 * 24 * 1000, // 1 day
   max: 4,
-  message: "Please wait at least one day for the mentor to respond to your requests."
+  message: "Please wait at least one day for the mentor to respond to your requests.",
+  keyGenerator: (req, res) => { req.user.user_id || req.ip }
 });
 
 const accountRequestLimiter = rateLimit({
@@ -118,42 +121,29 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
   // check if the user has their email verified 
   if (!req.user.email_verified) { res.sendStatus(403); }
 
-  // We want to return all users which have the required tags and are public, sorted
-  // by how recently they were contacted by someone else.
-  const required_tags = req.query.subjects ? req.query.subjects.split(",") : [];
-  // TODO: Also use req.query.tags
-  const limit = 100;
-  Mentor.find({
-      public: true
-    })
+  const keys = req.query.subjects ? req.query.subjects.split(",") : undefined;
+  
+  let query = {public: true};
+
+  if (keys) {
+    const subjects = keys.filter((subject) => SUBJECTS.includes(subject));
+    const tags = keys.filter((tags) => TAGS.includes(tags));
+
+    if (subjects.length > 0) query.subjects = {$all: subjects};
+    if (tags.length > 0) query.tags = {$all: tags};
+  }
+
+  Mentor.find(query)
+    .sort({last_request: 1})
     .then((mentors) => {
-      mentors = mentors.filter((mentor) => {
-        let overlapping_subjects = mentor.subjects.filter(
-          (subject) => required_tags.includes(subject) && subject !== ""
-        );
-        let overlapping_tags = mentor.tags.filter((tag) =>
-          (required_tags.includes(tag) && tag !== "")
-        )
-        return overlapping_tags.length + overlapping_subjects.length === required_tags.length;
-      })
-      // People that haven't been requested recently go first.
-      let sorted_mentors = mentors.sort((mentorA, mentorB) => {
-        const date1 = mentorA.last_request;
-        const date2 = mentorB.last_request;
-        if (date1 > date2) return 1;
-        if (date1 < date2) return -1;
-        return 0;
-      })
-      sorted_mentors = sorted_mentors.slice(0, limit)
-      let mentors_retrieved = sorted_mentors.map((mentor) => {
-        delete mentor["i"]; // We don't need the counter var.
-        return removeContactInfo(mentor); // Privacy purposes.
+      mentors = mentors.map((mentor) => {
+        delete mentor["i"];
+        return removeContactInfo(mentor)
       });
-      res.send(mentors_retrieved);
+
+      res.send(mentors);
     })
-    .catch(() => {
-      res.sendStatus(500);
-    });
+    .catch(() => res.sendStatus(500));
 });
 
 /* 
@@ -169,13 +159,11 @@ router.post("/addMentee", accountRequestLimiter, firebaseMiddleware, (req, res) 
     timezone: req.body.timezone,
     bio: req.body.bio,
     subjects: req.body.subjects,
-    guardian_name: req.body.guardian_name,
-    guardian_phone: req.body.guardian_phone,
-    guardian_email: req.body.guardian_email,
+    student_name: req.body.student_name,
+    student_email: req.body.student_email,
     college_prep: req.body.college_prep,
     grade_level: req.body.grade_level,
     has_reliable_internet: req.body.has_reliable_internet,
-    guardian_present: req.body.guardian_present,
     mentors: [],
   });
   newMentee.save().then((mentee) => res.send(mentee));
@@ -246,7 +234,7 @@ router.get("/auth_get", firebaseMiddleware, (req, res) => {
 });
 
 
-router.post("/pingMentor", emailRequestLimiter, firebaseMiddleware, (req, res) => {
+router.post("/pingMentor", firebaseMiddleware, emailRequestLimiter, (req, res) => {
   const student_email = req.body.student.email;
   const mentor_uid = req.body.mentor_uid;
   const student_message = req.body.personal_message;
@@ -262,9 +250,12 @@ router.post("/pingMentor", emailRequestLimiter, firebaseMiddleware, (req, res) =
   });
 });
 
-router.post("/pingGuardian", emailRequestLimiter, firebaseMiddleware, (req, res) => {
-  const guardianName = req.body.guardianName;
-  const guardianEmail = req.body.guardianEmail;
+router.post("/pingGuardian",firebaseMiddleware, emailRequestLimiter, (req, res) => {
+  if (req.user.role === "mentor") {
+    res.sendStatus(401);
+  }
+  const guardianName = req.body.name;
+  const guardianEmail = req.body.email;
   sendEmail.emailGuardian(guardianName, guardianEmail)
     .then(() => { res.send({}) })
     .catch((error) => {

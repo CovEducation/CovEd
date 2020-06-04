@@ -37,6 +37,7 @@ const ParentAcknowledgement = lazy(()=> import("./pages/ParentAcknowledgement.js
 const Event = lazy(() => import("./pages/Event.js"));
 const AnnouncementHeader = lazy( () => import("./modules/AnnouncementHeader.js"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword.js"));
+const About = lazy(() => import("./pages/About.js"));
 
 /**
  * Define the "App" component as a class.
@@ -88,8 +89,6 @@ class App extends Component {
                 <ResetPassword path="/reset-password-request" />
                 <Register path="/register" />
                 <FAQ path="/faq" />
-                <WhoWeAre path="/whoweare" />
-                <Contact path="/contact" />
                 <ProtectedPage path="/findamentor" component={FindAMentor}/>
                 <ProtectedPage path="/profile" component={Profile}/>
                 <TermsConditions path="/termsconditions" />
@@ -97,6 +96,7 @@ class App extends Component {
                 <MentorGuidelines path="/mentorguidelines" />
                 <ParentAcknowledgement path="/parentacknowledgement" />
                 <Event path="/event"/>
+                <About path="/about" />
                 <NotFound default/>
               </Router>
             </Suspense>

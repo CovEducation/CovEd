@@ -214,71 +214,85 @@ export const solution_content =
 export const FAQS = [
   {
     key: "0",
+    category: "mentee",
     question: "Who is eligible to be mentored?",
     answer: "All K-12 students in the US who are currently struggling with classes are eligible to be matched with an undergraduate or postgraduate mentor for personalized mentorship and academic support. We are especially committed to supporting underprivileged students. For students under the age of 18, we require that a parent or guardian be present during all mentoring sessions."
   },
   {
     key: "1",
+    category: "general",
     question: "What services are available?",
     answer: "Our mentors provide tutoring services for K-12 school subjects, including many Honors and AP classes. Additionally, some of our mentors are willing to help with college preparation, such as standardized testing (SAT, ACT, AP, etc.)."
   },
   {
     key: "2",
+    category: "general",
     question: "How does mentoring work?",
     answer: "Mentoring sessions will be conducted online via video chat. We suggest using Skype, Google Hangouts, or Zoom, although the the decision is up to the parent or guardian, student, and mentor."
   },
   {
     key: "3",
+    category: "mentee",
     question: "What if I do not have access to Wi-Fi?",
     answer: "Spectrum is providing free Wi-Fi services for students during the school shutdown. Their number is 1-844-488-8398. Mentoring lessons can also be held via phone call."
   },
   {
     key: "4",
-    question: "How do I get matched with a mentor/mentee? How does the matching process work?",
+    category: "mentee",
+    question: "How do I get matched with a mentor? How does the matching process work?",
     answer: "After filling out the registration form and verifying their emails, parents/guardians will be able to access our 'Find a Mentor' page to find a mentor for their child. From there, they will be able to send messages to any of the mentors in our database. Please do not request more than 1 mentor per student per 24 hour period."
   },
   {
     key: "5",
+    category: "mentee",
     question: "What if I have multiple students I want to request mentors for?",
     answer: "Parents/guardians are able to request up to 4 students, with a maximum of one mentor request per student. Be sure to mention the name of the student you're requesting for."
   },
   {
     key: "6",
+    category: "mentor",
     question: "How many hours a week do I have to commit?",
     answer: "We suggest students and mentors meet between 1-2 hours a week, although this can be decided among mentorship pairs. This may depend on the student’s needs as well as the mentor’s availability."
   },
   {
     key: "7",
+    category: "mentee",
     question: "How long will CovEd mentors provide mentoring?",
     answer: "We expect mentors to be able to help until the end of the academic year for the student. After the academic year is over, discussions between the mentor and mentee can help determine possible plans and whether or not the mentoring will continue."
   },
   {
     key: "8",
+    category: "mentor",
     question: "What are the responsibilities of a mentor?",
-    answer: "Mentors are responsible for volunteering a minimum of one to two hours a week of their time to help their matched mentee with the subjects the mentee requests help in. While a mentor is only matched with one mentee, they can reach out if they would like to mentor more. Mentors are expected to help their mentee until the end of the 2020 academic school year. Additionally, all mentors must comply with the CovEd safety guidelines and expectations provided to them at all times."
+    answer: "Mentors are responsible for volunteering a minimum of 45 mins a week of their time to help their matched mentee with the subjects the mentee requests help in. While a mentor is only matched with one mentee, they can reach out if they would like to mentor more. Mentors are expected to help their mentee until the end of the 2020 academic school year. Additionally, all mentors must comply with the CovEd safety guidelines and expectations provided to them at all times."
   },
   {
     key: "9",
+    category: "mentee",
     question: "How are you addressing concerns of student safety?",
     answer: "Our safety guidelines during our mentoring sessions include (but are not limited to): receiving consent from the mentee’s parent or legal guardian, having a parent or guardian present during the lessons, having mentors document the lessons, and instituting a “no social media contact with your mentee” policy. For further information please check our Privacy Policy and the Mentor Guidelines. Links to both can be found at the bottom of this page!"
   },
   {
     key: "10",
+    category: "general",
     question: "How are you reaching students in disadvantaged situations?",
     answer: "Our outreach team is actively publicizing CovEd to school districts across the US, and we strive to be a useful resource for students in all situations. We especially encourage parents of underprivileged students to register their students for academic support through CovEd."
   },
   {
     key: "11",
+    category: "mentee",
     question: "Can you help students that do not speak English very well?",
     answer: "Yes! We have mentors that are fluent in various languages and if this is a concern, be sure to mention this in the special requests/concerns portion of the registration form and we will definitely work to accommodate this. Additionally, we are working on translating all flyers and publicity materials into different languages to reach students regardless of their first language."
   },
   {
     key: "12",
+    category: "general",
     question: "Is there any way for educators to get involved?",
     answer: "One of CovEd’s goals is to ensure that all students have access to various resources to help stimulate educational growth during this time. On our website’s home page, we have a form where resources can be submitted. We are hoping to find the best resources for students and hope you can help us!"
   },
   {
     key: "13",
+    category: "general",
     question: "Is this service free?",
     answer: "Yes! This service is completely free and all of our mentors are volunteers."
   }
@@ -307,7 +321,7 @@ export const FOOT = [
 
 export const announcement = {
   description: "",
-  link: "",
+  link: "/event",
 }
 
 export default timeZones;
