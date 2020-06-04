@@ -174,7 +174,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Edit Profile<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> <a className="dark-a" href="/auth">Log in </a>to visit your <a className="dark-a" href="/profile"> Profile page </a>, where you will be able to edit your information including a bio. Make sure you check off "Listed as Available Mentor".</p>
+              <p fontWeight="light" className="feature"> <a className="dark-a" href="/auth">Log in </a>to visit your <a className="dark-a" href="/profile"> Profile page</a>, where you will be able to edit your information including a bio. Make sure you check off "Listed as Available Mentor".</p>
               <br />
               <br />
               </Col>
