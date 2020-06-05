@@ -37,7 +37,7 @@ class SpeakerSeries extends Component {
                expertise to help host a workshop, please contact <a className="dark-a" href='mailto:covedspeakerseries@gmail.com'>
                covedspeakerseries@gmail.com</a>.</p>
             <br />
-            <p>Check out recordings of our previous Speaker Series events!</p>
+            <p>Check out recordings of our previous Speaker Series events! You must be signed in to your CovEd account to view these recordings.</p>
             <br />
             <h4><span className="webinar-name">Career Exploration Day</span></h4>
             <p><b>Webinar Dates:</b> Saturday, May 23rd - Sunday, May 24th, 2020</p><hr className="hr-primary"/>

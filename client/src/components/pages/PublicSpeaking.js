@@ -35,7 +35,7 @@ class PublicSpeaking extends Component {
                and has over 15 years of experience teaching communication skills
                around the country.</i></p>
             <br />
-            <iframe src="https://drive.google.com/file/d/1O38TeYEtnT-gZW441LABwq4wJjzv2vUS/preview" width="640" height="480"></iframe>
+            <iframe src="https://drive.google.com/file/d/1T1sYvdQi5fdWCUwVLvXXRuKMUJh3HHrD/preview" width="640" height="480"></iframe>
             <br />
           </Col>
           </Row>
