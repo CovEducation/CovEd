@@ -86,7 +86,7 @@ a.light-a{
 
 a.light-a:hover{
   color: #fff;
-  font-weight:800;
+  font-weight:400;
 }
 
 a.dark-a{
@@ -95,7 +95,7 @@ a.dark-a{
 
 a.dark-a:hover{
   color: #003c61;
-  font-weight:800;
+  font-weight:400;
 }
 
 .feature{
@@ -256,4 +256,17 @@ a.btn-primary:hover{
   margin: 10px 0px 10px 0px !important;
   padding-top: 10px !important;
   padding-bottom: 10px !important;
+}
+
+.MuiSvgIcon-fontSizeLarge{
+  font-size: 8rem !important;
+}
+
+.MuiSvgIcon-colorPrimary{
+  color: #00568C !important;
+}
+
+.featurebox{
+  margin-left: 30px !important;
+  margin-right: 30px !important;
 }

@@ -3,13 +3,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../utilities.css";
 import "./Homepage.css";
 import { get } from "../../utilities";
+import Image from 'react-bootstrap/Image'
 
-import { Button, Col, Row } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+
+import accountcircle from "../../public/img/account_circle.svg";
+import personsearch from "../../public/img/person_search.svg";
+import group from "../../public/img/group.svg";
+import editprofile from "../../public/img/grading.svg";
+import email from "../../public/img/email.svg";
+import header from "../../public/img/header.jpg";
+
 // Landing page library
-import { Heading, Provider, Subhead, Text } from "rebass";
+import { Heading, Provider, Subhead} from "rebass";
 import { Flex, Hero, Section } from "react-landing-page";
 // Assets
-import header from "../../public/img/header.jpg";
 import { theme, about_us_content, problem_content, solution_content } from "../Constants.js";
 import AnimatedNumber from 'react-animated-number';
 
@@ -96,76 +106,85 @@ class Homepage extends Component {
         <Section fontSize={[4,3]} heading="" subhead="" p={[6,5,6,6]} mt={3} mb={4} justifyContent="center">
           <Row className="justify-content-center" >
           <Col className="text-center" sm={{span:8}} xs={{span:10}}>
-            <Heading fontSize={[7,9]} fontWeight="normish">About Us<br /><br /><hr className="hr-primary"/></Heading>
-            <Text fontWeight='light'>
-            <br /> <br />{about_us_content} <br /><br /></Text>
+            <Heading fontSize={[7,9]} fontWeight="normish">About Us<br /><hr className="hr-primary"/></Heading>
+            <p fontWeight='light'>
+            <br /> <br />{about_us_content} <br /><br /></p>
           </Col>
           </Row>
         </Section>
-        <Section heading="" subhead="" p={[6,5,6,6]} mt={3} mb = {4}>
+        <Section bg = "blue" heading="" subhead="" p={[4,5,4,6]} mt={3} mb={3} color="white">
+        <Heading fontSize={[7,9]} fontWeight="normish">Our Community<br /><hr className="hr-light"/></Heading>
           {memberCount}
         </Section>
-        <Section fontSize={[4,3]} bg="blue" heading="" subhead="" p={[6,5,8,6]}>
-          <Row bg="blue" className="justify-content-center">
-          <Col sm={{span:8}} xs={{span:10}} className="light-text text-center">
-            <Heading fontSize={[7,9]} fontWeight="normish">Problem<br /><br /></Heading>
-            <Text fontWeight="light">
-                  {problem_content} <br /><br /><br />
-            </Text>
-            <Heading fontSize={[7,9]} fontWeight="normish">Solution<br /><br /></Heading>
-            <Text fontWeight="light">
-                  {solution_content}
-            </Text>
-          </Col>
-          </Row>
-        </Section>
-        <Section p={[6,3,6,1]} mt={5} mb={1} bg="white" fontSize={[4,3]}>
-            <Heading fontSize={[7,9]} fontWeight="normish">Interested? <br /><br /><hr className="hr-primary"/></Heading>
+        <Section p={[6,3,6,3]} mt={5} mb={1} bg="white" fontSize={[4,3]}>
+            <Heading fontSize={[7,9]} fontWeight="normish">How It Works <br /><hr className="hr-primary"/></Heading>
             <br />
-            <br />
+            <Heading fontSize={[5,7]} fontWeight="bold">For Parents and Students<br /><br /></Heading>
             <br />
           <Flex flexWrap="wrap" justifyContent="center">
-              <Row className="justify-content-sm-center" mt={5} mb={4}>
-              <Col sm={{span:4, offset:0}} xs={{span:10, offset:1}} p={5} className="text-center">
-              <Heading fontSize={[6,8]} fontWeight="normish">Access Free Resources<br /></Heading>
-              <br />
-              <p fontWeight="light" className="feature">Check out our <a className="dark-a" href="/resources">resources page</a>! We have several links listed already.</p>
+              <Row className="justify-content-center" mt={5} mb={4}>
+              <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
+              <Image src={accountcircle}/>
               <br />
               <br />
+              <Heading fontSize={[6,8]} fontWeight="normish">Register<br /></Heading>
               <br />
-              </Col>
-              <Col sm={{span:4, offset:1}} xs={{span:10, offset:1}} className="text-center" mt={5} mb={4}>
-              <Heading fontSize={[6,8]} fontWeight="normish">Be a Mentor<br /></Heading>
-              <br />
-              <p fontWeight="light" className="feature">We are looking for <b>college students</b> to help us mentor and mentor students who no longer have school. Help us help them stay on-track educationally!</p>
-              </Col>
-              </Row>
-              <br />
-              <br />
-              <br />
-              <Row className="justify-content-sm-center">
-              <Col sm={{span:4, offset:0}} xs={{span:10, offset:1}} className="text-center" p={5}>
-              <Heading fontSize={[6,8]} fontWeight="normish">Request a Mentor<br /></Heading>
-              <br />
-              <p fontWeight="light" className="feature">We are offering <b>free mentoring</b> and <b>mentoring services</b> for <b>K-12 students</b>. Our mentors and mentors are volunteer college students from some of the top universities in the world.</p>
-              <br />
+              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure to input the correct parent email because you will recieve an email-verification link! </p>
               <br />
               <br />
               </Col>
-              <Col sm={{span:4, offset:1}} xs={{span:10, offset:1}} className="text-center" p={3}>
-              <Heading fontSize={[6,8]} fontWeight="normish">Suggest a Resource<br /></Heading>
+              <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
+              <Image src={personsearch}/>
               <br />
-              <p fontWeight="light" className="feature">Definitely let us know!</p>
+              <br />
+              <Heading fontSize={[6,8]} fontWeight="normish">Find Mentor<br /></Heading>
+              <br />
+              <p fontWeight="light" className="feature"> <a className="dark-a" href="/auth">Log in </a>to visit the <a className="dark-a" href="/findamentor"> Find A Mentor page </a>, where you will be able to search for and request a mentor. Please only contact <b> one mentor per student </b>.</p>
+              <br />
+              <br />
+              </Col>
+              <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
+              <Image src={group}/>
+              <br />
+              <br />
+              <Heading fontSize={[6,8]} fontWeight="normish">Meet Mentor<br /></Heading>
+              <br />
+              <p fontWeight="light" className="feature"> Your mentor will email you to set up an initial meeting time. If you do not hear from your mentor within 48 hours, please request another mentor.</p>
               </Col>
               </Row>
           </Flex>
-        </Section>
-        <Section p={[1,6,2,2]} mb={2}>
+          <br />
+          <Heading fontSize={[5,7]} fontWeight="bold">For College Students<br /><br /></Heading>
+          <br />
           <Flex flexWrap="wrap" justifyContent="center">
-              <Row className="justify-content-center" mb={4}>
-              <Col align="center">
-              <Button href='https://forms.gle/P4n36zh3pdt8nEzM8'>Submit a resource</Button>
-              <Button href='/register'>Register</Button>
+              <Row className="justify-content-center" mt={5} mb={4}>
+              <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
+              <Image src={accountcircle}/>
+              <br />
+              <br />
+              <Heading fontSize={[6,8]} fontWeight="normish">Register<br /></Heading>
+              <br />
+              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure you input your correct institutional email because you will recieve an email-verification link! </p>
+              <br />
+              <br />
+              </Col>
+              <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
+              <Image src={editprofile}/>
+              <br />
+              <br />
+              <Heading fontSize={[6,8]} fontWeight="normish">Edit Profile<br /></Heading>
+              <br />
+              <p fontWeight="light" className="feature"> <a className="dark-a" href="/auth">Log in </a>to visit your <a className="dark-a" href="/profile"> Profile page</a>, where you will be able to edit your information including a bio. Make sure you check off "Listed as Available Mentor".</p>
+              <br />
+              <br />
+              </Col>
+              <Col sm={{span:3}} xs={{span:10}} className="text-center featurebox">
+              <Image src={email}/>
+              <br />
+              <br />
+              <Heading fontSize={[6,8]} fontWeight="normish">Contact Mentee<br /></Heading>
+              <br />
+              <p fontWeight="light" className="feature"> When a parent requests you as a mentor, you will recieve an email with further instructions and contact information. Be sure to contact them as soon as possible to introduce yourself!</p>
               </Col>
               </Row>
           </Flex>
@@ -176,7 +195,7 @@ class Homepage extends Component {
             <Heading fontSize={[7,9]} fontWeight="normish">Questions? Contact Us! <br /><br /><hr className="hr-light"/></Heading>
             <br />
             <br />
-            <p>Check out the <a className="light-a" href="/faq"> FAQs </a> page to see if we've already answered your question. If you don't see your question there, shoot us an email <a className="light-a" href='mailto:coveducation@gmail.com'>coveducation@gmail.com</a>! We're excited to hear from you~</p>
+            <p>Check out the <a className="light-a" href="/faq"> FAQs </a> page to see if we've already answered your question. If you don't see your question there, find our contact information on the <a className="light-a" href='/about'>About Us page</a>! We're excited to hear from you~</p>
           </Col>
           </Row>
         </Section>

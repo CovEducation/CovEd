@@ -13,10 +13,6 @@ import {theme} from "../Constants.js";
 
 
 class SpeakerSeries extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <>

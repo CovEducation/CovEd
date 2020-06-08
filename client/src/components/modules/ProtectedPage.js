@@ -7,9 +7,10 @@ class ProtectedPage extends Component {
     static contextType = UserContext;
     render() {
         const Component = this.props.component;
+        let authorized = this.context.user !== undefined;
         return (
             <>  
-                {this.context ? <Component user={this.context.user}/> : <Redirect to="/auth"/>}
+                {authorized? <Component user={this.context.user}/> : <Redirect to="/auth"/>}
             </>
         )
     }
