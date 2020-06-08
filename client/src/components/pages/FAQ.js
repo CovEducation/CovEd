@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../utilities.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 

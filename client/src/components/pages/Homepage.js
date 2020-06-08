@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../../utilities.css";
 import "./Homepage.css";
 import { get } from "../../utilities";
 import Image from 'react-bootstrap/Image'
