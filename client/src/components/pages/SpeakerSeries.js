@@ -9,6 +9,20 @@ import { Provider } from "rebass";
 import {
   Section,
 } from "react-landing-page";
+
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import NonprofitPanel from "./NonprofitPanel.js";
+import StemPanel from "./StemPanel.js";
+import MedicinePanel from "./MedicinePanel.js";
+import DiversityPanel from "./DiversityPanel.js";
+import EducationPanel from "./EducationPanel.js";
+import ArtsHumPanel from "./ArtsHumPanel.js";
+import EconLawPanel from "./EconLawPanel.js";
+
 import {theme} from "../Constants.js";
 
 
@@ -18,8 +32,8 @@ class SpeakerSeries extends Component {
       <>
         <Provider theme={theme}>
         <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1,2,2,2]} mt={7} mb={7}>
-          <Row className="justify-content-sm-center">
-          <Col sm={{span: 8}}  xs={{span:10}}className="text-center">
+          <Row className="justify-content-center">
+          <Col sm={{span: 8}} xs={{span:10}} className="text-center">
             <h2>Speaker Series</h2>
             <br />
             <p className="text-left"> In addition to our tutoring service,
@@ -38,6 +52,8 @@ class SpeakerSeries extends Component {
             <h4><span className="webinar-name">Career Exploration Day</span></h4>
             <p><b>Webinar Dates:</b> Saturday, May 23rd - Sunday, May 24th, 2020</p><hr className="hr-primary"/>
             <br />
+          </Col>
+          </Row>
             <Row className="justify-content-center">
               <Col md={{span:6}} xs={{span:10}} className="text-right">
                 <Image src={career_day_img} style={{height: '420px'}} />
@@ -46,6 +62,8 @@ class SpeakerSeries extends Component {
                 <iframe src="https://drive.google.com/file/d/1QAwyDn-MVmIGowoFbHdKTalpwTgD7_Qq/preview" height="420px" frameborder="0" marginwidth="0" marginheight="0"></iframe>
               </Col>
             </Row>
+          <Row className="justify-content-center">
+          <Col sm={{span: 8}} xs={{span:10}} className="text-center">
             <br />
             <p className="text-left">CovEd’s Career Exploration Day featured 7
             different panels with 45 professionals in healthcare, technology,
@@ -56,15 +74,96 @@ class SpeakerSeries extends Component {
             you can watch the recordings for any panels you might have missed:
             <br />
             <br />
-            <ul>
-              <li> <a className="dark-a" href="/nonprofitpanel"> Nonprofit, Advocacy, & Global Health </a> </li>
-              <li> <a className="dark-a" href="/stempanel"> STEM </a> </li>
-              <li> <a className="dark-a" href="/medicinepanel"> Medicine & Healthcare </a> </li>
-              <li> <a className="dark-a" href="/diversitypanel"> Diversity & Inclusion </a> </li>
-              <li> <a className="dark-a" href="/educationpanel"> Education </a> </li>
-              <li> <a className="dark-a" href="/artshumpanel"> Arts and Humanities </a> </li>
-              <li> <a className="dark-a" href="/econlawpanel"> Economics, Law, & Politics </a> </li>
-            </ul>
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Non-Profit, Advocacy, & Global Health"
+                id="0"
+              >
+              Non-Profit, Advocacy, & Global Health
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <NonprofitPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="STEM"
+                id="1"
+              >
+              STEM
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <StemPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Medicine & Healthcare"
+                id="1"
+              >
+              Medicine & Healthcare
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <MedicinePanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Diversity & Inclusion"
+                id="1"
+              >
+              Diversity & Inclusion
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <DiversityPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Education"
+                id="1"
+              >
+              Education
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <EducationPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Arts and Humanities"
+                id="1"
+              >
+              Arts and Humanities
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <ArtsHumPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Economics, Law, & Politics"
+                id="1"
+              >
+              Economics,Law, & Politics
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <EconLawPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
             </p>
             <br />
             <br />

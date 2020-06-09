@@ -70,15 +70,6 @@ class App extends Component {
                 <Homepage path="/"/>
                 <Resources path="/resources" />
                 <ProtectedPage path="/speakerseries" component={SpeakerSeries}/>
-                <ProtectedPage path="/virtualmentoring" component={VirtualMentoring}/>
-                <ProtectedPage path="/publicspeaking" component={PublicSpeaking}/>
-                <ProtectedPage path="/nonprofitpanel" component={NonprofitPanel}/>
-                <ProtectedPage path="/stempanel" component={StemPanel}/>
-                <ProtectedPage path="/medicinepanel" component={MedicinePanel}/>
-                <ProtectedPage path="/diversitypanel" component={DiversityPanel}/>
-                <ProtectedPage path="/educationpanel" component={EducationPanel}/>
-                <ProtectedPage path="/artshumpanel" component={ArtsHumPanel}/>
-                <ProtectedPage path="/econlawpanel" component={EconLawPanel}/>
                 <SignIn path="/auth" />
                 <ResetPassword path="/reset-password-request" />
                 <Register path="/register" />

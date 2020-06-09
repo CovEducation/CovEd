@@ -12,18 +12,14 @@ import {theme} from "../Constants.js";
 
 
 class EconLawPanel extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <>
         <Provider theme={theme}>
         <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1,2,2,2]} mt={7} mb={7}>
-          <Row className="justify-content-sm-center">
+          <Row className="justify-content-center">
           <Col sm={{span:12}}  xs={{span:12}}className="text-center">
-            <h4><span className="webinar-name">Medicine & Healthcare Panel</span></h4>
+            <h4><span className="webinar-name">Economics, Law, and Politics Panel</span></h4>
             <p><b>Webinar Date: </b>Sunday, May 24th, 2020</p><hr className="hr-primary"/>
             <p className="text-left">Our panelists:
             <br />
@@ -38,7 +34,7 @@ class EconLawPanel extends Component {
             </ul>
             </p>
             <br />
-            <iframe src="https://drive.google.com/file/d/1A8suIpVp0ULCTt0ChNpO-708VoWJgmb8/preview" width="640" height="480"></iframe>
+            <iframe className="panel" src="https://drive.google.com/file/d/1A8suIpVp0ULCTt0ChNpO-708VoWJgmb8/preview"></iframe>
             <br />
           </Col>
           </Row>

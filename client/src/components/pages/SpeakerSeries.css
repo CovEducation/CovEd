@@ -23,3 +23,49 @@ a.dark-a:hover{
   font-weight:800;
   text-decoration: none;
 }
+
+.MuiPaper-outlined{
+  border: 1px solid rgba(0,0,0,0.5) !important;
+}
+
+.MuiPaper-outlined:hover{
+  border: 3px solid rgba(242, 190, 50,1) !important;
+}
+
+.filters{
+  padding: 0 20px 0 50px !important;
+}
+
+.MuiExpansionPanel-root{
+  border: 1px solid rgba(255, 255, 255, .125) !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
+
+.MuiExpansionPanel-root::before{
+  display: none !important;
+}
+
+.MuiExpansionPanel-root .Mui-expanded{
+  margin: auto !important;
+}
+
+.MuiExpansionPanelSummary-root{
+  background-color: rgba(48, 49, 51, .05) !important;
+  margin: 10px 0px 10px 0px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+iframe.panel{
+  width: 620px !important;
+  height: 480px !important;
+}
+
+
+@media only screen and (max-width: 768px){
+  iframe.panel{
+    width: 80% !important;
+    height: auto !important;
+  }
+}
