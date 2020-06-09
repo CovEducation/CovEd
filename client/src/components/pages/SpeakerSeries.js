@@ -9,6 +9,20 @@ import { Provider } from "rebass";
 import {
   Section,
 } from "react-landing-page";
+
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import NonprofitPanel from "./NonprofitPanel.js";
+import StemPanel from "./StemPanel.js";
+import MedicinePanel from "./MedicinePanel.js";
+import DiversityPanel from "./DiversityPanel.js";
+import EducationPanel from "./EducationPanel.js";
+import ArtsHumPanel from "./ArtsHumPanel.js";
+import EconLawPanel from "./EconLawPanel.js";
+
 import {theme} from "../Constants.js";
 
 
@@ -33,7 +47,7 @@ class SpeakerSeries extends Component {
                expertise to help host a workshop, please contact <a className="dark-a" href='mailto:covedspeakerseries@gmail.com'>
                covedspeakerseries@gmail.com</a>.</p>
             <br />
-            <p>Check out recordings of our previous Speaker Series events! You must be signed in to your CovEd account to view these recordings.</p>
+            <p>Check out recordings of our previous Speaker Series events!</p>
             <br />
             <h4><span className="webinar-name">Career Exploration Day</span></h4>
             <p><b>Webinar Dates:</b> Saturday, May 23rd - Sunday, May 24th, 2020</p><hr className="hr-primary"/>
@@ -56,15 +70,96 @@ class SpeakerSeries extends Component {
             you can watch the recordings for any panels you might have missed:
             <br />
             <br />
-            <ul>
-              <li> <a className="dark-a" href="/nonprofitpanel"> Nonprofit, Advocacy, & Global Health </a> </li>
-              <li> <a className="dark-a" href="/stempanel"> STEM </a> </li>
-              <li> <a className="dark-a" href="/medicinepanel"> Medicine & Healthcare </a> </li>
-              <li> <a className="dark-a" href="/diversitypanel"> Diversity & Inclusion </a> </li>
-              <li> <a className="dark-a" href="/educationpanel"> Education </a> </li>
-              <li> <a className="dark-a" href="/artshumpanel"> Arts and Humanities </a> </li>
-              <li> <a className="dark-a" href="/econlawpanel"> Economics, Law, & Politics </a> </li>
-            </ul>
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Non-Profit, Advocacy, & Global Health"
+                id="0"
+              >
+              Non-Profit, Advocacy, & Global Health
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <NonprofitPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="STEM"
+                id="1"
+              >
+              STEM
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <StemPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Medicine & Healthcare"
+                id="1"
+              >
+              Medicine & Healthcare
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <MedicinePanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Diversity & Inclusion"
+                id="1"
+              >
+              Diversity & Inclusion
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <DiversityPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Education"
+                id="1"
+              >
+              Education
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <EducationPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Arts and Humanities"
+                id="1"
+              >
+              Arts and Humanities
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <ArtsHumPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Economics, Law, & Politics"
+                id="1"
+              >
+              Economics,Law, & Politics
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <EconLawPanel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
             </p>
             <br />
             <br />

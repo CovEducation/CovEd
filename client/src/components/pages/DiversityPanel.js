@@ -12,10 +12,6 @@ import {theme} from "../Constants.js";
 
 
 class DiversityPanel extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <>
