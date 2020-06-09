@@ -32,8 +32,8 @@ class SpeakerSeries extends Component {
       <>
         <Provider theme={theme}>
         <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1,2,2,2]} mt={7} mb={7}>
-          <Row className="justify-content-sm-center">
-          <Col sm={{span: 8}}  xs={{span:10}}className="text-center">
+          <Row className="justify-content-center">
+          <Col sm={{span: 8}} xs={{span:10}} className="text-center">
             <h2>Speaker Series</h2>
             <br />
             <p className="text-left"> In addition to our tutoring service,
@@ -52,6 +52,8 @@ class SpeakerSeries extends Component {
             <h4><span className="webinar-name">Career Exploration Day</span></h4>
             <p><b>Webinar Dates:</b> Saturday, May 23rd - Sunday, May 24th, 2020</p><hr className="hr-primary"/>
             <br />
+          </Col>
+          </Row>
             <Row className="justify-content-center">
               <Col md={{span:6}} xs={{span:10}} className="text-right">
                 <Image src={career_day_img} style={{height: '420px'}} />
@@ -60,6 +62,8 @@ class SpeakerSeries extends Component {
                 <iframe src="https://drive.google.com/file/d/1QAwyDn-MVmIGowoFbHdKTalpwTgD7_Qq/preview" height="420px" frameborder="0" marginwidth="0" marginheight="0"></iframe>
               </Col>
             </Row>
+          <Row className="justify-content-center">
+          <Col sm={{span: 8}} xs={{span:10}} className="text-center">
             <br />
             <p className="text-left">CovEd’s Career Exploration Day featured 7
             different panels with 45 professionals in healthcare, technology,
