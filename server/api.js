@@ -254,8 +254,8 @@ router.post("/pingGuardian",firebaseMiddleware, emailRequestLimiter, (req, res) 
   if (req.user.role === "mentor") {
     res.sendStatus(401);
   }
-  const guardianName = req.body.name;
-  const guardianEmail = req.body.email;
+  const guardianName = req.body.guardianName;
+  const guardianEmail = req.body.guardianEmail;
   sendEmail.emailGuardian(guardianName, guardianEmail)
     .then(() => { res.send({}) })
     .catch((error) => {
