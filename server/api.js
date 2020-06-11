@@ -242,7 +242,7 @@ router.post("/pingMentor", firebaseMiddleware, emailRequestLimiter, (req, res) =
     firebase_uid: mentor_uid
   }).then((mentor) => {
     let mentor_email = mentor.email;
-    sendEmail.emailMentor(mentor_email, mentor.name.split()[0], student_email, student_message)
+    sendEmail.emailMentor(mentor_email, mentor.name.split()[0], student_email, student_name, student_message)
       .then(() => {
         mentor.last_request = Date.now();
         mentor.save().then(res.send({}));
