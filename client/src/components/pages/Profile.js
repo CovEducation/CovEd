@@ -56,8 +56,7 @@ const ProfileEditSchema = Yup.object().shape({
     is: (role) => role !== "mentor",
     then: Yup.string().required("Please enter a Parent or Guardian's name."),
   }),
-  student_email: Yup.string()
-    .email("Please input a valid email. "),
+  student_email: Yup.string().email("Please input a valid email. "),
   major: Yup.string().when("role", {
     is: (role) => role === "mentor",
     then: Yup.string().required("Major is a required field."),
@@ -66,42 +65,43 @@ const ProfileEditSchema = Yup.object().shape({
 });
 
 /*
-* Profile Page Component
-* This component shows the profile information and allows
-* the user to edit their info.
-*/
+ * Profile Page Component
+ * This component shows the profile information and allows
+ * the user to edit their info.
+ */
 const Profile = () => {
   const userProvider = useContext(UserContext);
   const [edit, setEdit] = useState(false);
   const [success, setSuccess] = useState(false);
 
-
   const displaySuccess = () => {
     setEdit(false);
     setSuccess(true);
-  }
+  };
 
   const handleEdit = () => {
     setEdit(true);
     setSuccess(false);
-  }
+  };
 
   const handleCancel = () => {
     setEdit(false);
-  }
+  };
 
   const handleSubmit = async (values) => {
     let user = { ...values };
     user.subjects = user.subjects.map((sub) => sub.value);
     user.tags = user.tags.map((tag) => tag.value);
     updateUser(user, userProvider.user.token)
-      .then((user) => { userProvider.user = user })
+      .then((user) => {
+        userProvider.user = user;
+        userProvider.refreshUser();
+      })
       .then(displaySuccess)
       .catch((err) => {
         console.log(err);
       });
   };
-
 
   /*
       Form Rendering
@@ -114,7 +114,7 @@ const Profile = () => {
         <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.timezone} />
       </Form.Group>
     );
-  }
+  };
 
   const getStaticEmailField = () => {
     return (
@@ -132,31 +132,29 @@ const Profile = () => {
           {userProvider.user.verified ? (
             <>Email Verified</>
           ) : (
-              <>
-                Please Verify Your Email and refresh the page. (
+            <>
+              Please Verify Your Email and refresh the page. (
               <a href="#resend" onClick={() => sendEmailVerification()}>
-                  Resend Verification
+                Resend Verification
               </a>
               )
             </>
-            )}
+          )}
         </Form.Label>
       </Form.Group>
     );
   };
   const getExpectationsToast = () => {
     var style = {
-      width: '100%',
-      marginBottom: 8
+      width: "100%",
+      marginBottom: 8,
     };
 
     return (
       <Alert style={style} severity="info">
         <AlertTitle>Important</AlertTitle>
         {"Please take time to review our "}
-        <a href="/mentorguidelines">
-          Mentor Guidelines
-        </a>
+        <a href="/mentorguidelines">Mentor Guidelines</a>
       </Alert>
     );
   };
@@ -180,22 +178,30 @@ const Profile = () => {
   };
 
   const getStaticSubjectField = () => {
-
-    return (<>
-      <Form.Group as={Col} md="4" controlId="formControl.subjects">
-        <Form.Label>Subjects</Form.Label>
-        {userProvider.user.subjects && <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.subjects} />}
-      </Form.Group>
-    </>);
+    return (
+      <>
+        <Form.Group as={Col} md="4" controlId="formControl.subjects">
+          <Form.Label>Subjects</Form.Label>
+          {userProvider.user.subjects && (
+            <Form.Control
+              plaintext
+              readOnly
+              type="text"
+              defaultValue={userProvider.user.subjects}
+            />
+          )}
+        </Form.Group>
+      </>
+    );
   };
 
   const getStaticOptionalTagField = () => {
     return (
       <Form.Group as={Col} controlId="exampleForm.ControlOptionalFields">
         <Form.Label>Optional Tags</Form.Label>
-        {
-          userProvider.user.tags && <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.tags} />
-        }
+        {userProvider.user.tags && (
+          <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.tags} />
+        )}
       </Form.Group>
     );
   };
@@ -211,9 +217,12 @@ const Profile = () => {
           <Form.Label>Major</Form.Label>
           <Form.Control plaintext readOnly type="text" defaultValue={userProvider.user.major} />
         </Form.Group>
-        <Form.Check checked={userProvider.user.public}
+        <Form.Check
+          checked={userProvider.user.public}
           name="public"
-          type="checkbox" label="Listed as an Available Mentor." />
+          type="checkbox"
+          label="Listed as an Available Mentor."
+        />
       </>
     );
   };
@@ -223,12 +232,21 @@ const Profile = () => {
       <>
         <Form.Group as={Col} md="4" controlId="validationStudentName">
           <Form.Label>Student Name</Form.Label>
-          <Form.Control name="student_name" plaintext readOnly defaultValue={userProvider.user.student_name} />
-
+          <Form.Control
+            name="student_name"
+            plaintext
+            readOnly
+            defaultValue={userProvider.user.student_name}
+          />
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationStudentEmail">
           <Form.Label>Student Email</Form.Label>
-          <Form.Control name="student_email" plaintext readOnly defaultValue={userProvider.user.student_email} />
+          <Form.Control
+            name="student_email"
+            plaintext
+            readOnly
+            defaultValue={userProvider.user.student_email}
+          />
         </Form.Group>
       </>
     );
@@ -243,31 +261,32 @@ const Profile = () => {
     let roleField = getStaticRoleField();
     let subjectField = getStaticSubjectField();
     let optionalTagField = getStaticOptionalTagField();
-    let mainFields = [expectations, nameField, emailField, emailVerified, timezoneField, roleField, subjectField, optionalTagField];
+    let mainFields = [
+      expectations,
+      nameField,
+      emailField,
+      emailVerified,
+      timezoneField,
+      roleField,
+      subjectField,
+      optionalTagField,
+    ];
 
     if (userProvider.user.role === "mentor") {
       return mainFields.concat(getStaticMentorFields());
     } else {
       return mainFields.concat(getStaticMenteeFields());
     }
-  }
+  };
 
   const getEditFields = (formik) => {
-    const fieldGetters = [
-      getNameField,
-      getTimezoneField,
-      getSubjectField,
-      getTagField,
-    ];
+    const fieldGetters = [getNameField, getTimezoneField, getSubjectField, getTagField];
 
     const mainFields = fieldGetters.map((generator) => generator(formik));
     const roleFields =
       formik.values.role === "mentor" ? getMentorFields(formik) : getMenteeFields(formik);
     return mainFields.concat(roleFields);
-
-  }
-
-  userProvider.refreshUser();
+  };
 
   const user = userProvider.user || {
     timezone: "",
@@ -282,13 +301,17 @@ const Profile = () => {
     bio: "",
     public: true,
   };
-  
+
   let formik = useFormik({
     initialValues: {
       timezone: user.timezone,
       role: user.role,
-      subjects: user.subjects.map(s => { return { value: s, label: s }; }),
-      tags: user.tags.map(s => { return { value: s, label: s }; }),
+      subjects: user.subjects.map((s) => {
+        return { value: s, label: s };
+      }),
+      tags: user.tags.map((s) => {
+        return { value: s, label: s };
+      }),
       student_name: user.student_name,
       student_email: user.student_email,
       major: user.major,
@@ -300,8 +323,10 @@ const Profile = () => {
     validationSchema: ProfileEditSchema,
     onSubmit: handleSubmit,
     enableReinitialize: true,
-  })
-  if (userProvider.user === undefined) { return <h1>Loading..</h1> }
+  });
+  if (userProvider.user === undefined) {
+    return <h1>Loading..</h1>;
+  }
   let fields = edit && userProvider.user ? getEditFields(formik) : getStaticFields();
 
   return (
@@ -317,7 +342,11 @@ const Profile = () => {
             {fields.map((field, i) => {
               return <Form.Row key={i}>{field}</Form.Row>;
             })}
-            {edit && <Button type="submit" style={{ marginTop: 10 }}>Submit</Button>}
+            {edit && (
+              <Button type="submit" style={{ marginTop: 10 }}>
+                Submit
+              </Button>
+            )}
             {edit && (
               <Button variant="danger" onClick={handleCancel} style={{ marginTop: 10 }}>
                 Cancel

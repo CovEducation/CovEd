@@ -13,12 +13,14 @@ class UserProvider extends Component {
     this.refreshUser = this.refreshUser.bind(this);
     this.state = {
       user: undefined,
+      firstLoad: true,
       refreshUser: this.refreshUser,
     };
   }
 
   async refreshUser() {
     try {
+      // Note: this.state.user === undefined on first render
       const token = this.state.user.token;
       let user = await get("/api/mentee", { token: token });
       let role = "student";
@@ -36,7 +38,7 @@ class UserProvider extends Component {
       this.setState({ user: user });
       return user;
     } catch (err) {
-      this.setState({user: undefined});
+      this.setState({ user: undefined });
     }
   }
 
@@ -65,13 +67,13 @@ class UserProvider extends Component {
             user = { token: token };
           }
 
-          this.setState({ user: user });
+          this.setState({ user: user, firstLoad: false });
         } catch (error) {
           // TODO:handle error
           console.log(error);
         }
       } else {
-        this.setState({ user: undefined });
+        this.setState({ user: undefined, firstLoad: false });
       }
     });
   }
