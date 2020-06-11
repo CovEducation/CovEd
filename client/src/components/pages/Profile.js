@@ -93,9 +93,9 @@ const Profile = () => {
     user.subjects = user.subjects.map((sub) => sub.value);
     user.tags = user.tags.map((tag) => tag.value);
     updateUser(user, userProvider.user.token)
-      .then((user) => {
+      .then(async (user) => {
+        await userProvider.refreshUser();
         userProvider.user = user;
-        userProvider.refreshUser();
       })
       .then(displaySuccess)
       .catch((err) => {
