@@ -17,7 +17,7 @@ class VirtualMentoring extends Component {
       <>
         <Provider theme={theme}>
         <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1,2,2,2]} mt={7} mb={7}>
-          <Row className="justify-content-sm-center">
+          <Row className="justify-content-center">
           <Col sm={{span: 8}}  xs={{span:10}}className="text-center">
             <h4><span className="webinar-name">Virtual Mentoring 101 with Laura Nicholson</span></h4>
             <p><b>Webinar Date:</b> Friday, April 24th, 2020</p><hr className="hr-primary"/>
@@ -32,7 +32,7 @@ class VirtualMentoring extends Component {
                has honed her expertise through practice as well as a focused study
                of the science of learning, with an emphasis on evidence-based education.</i></p>
             <br />
-            <iframe src="https://drive.google.com/file/d/1mwRcBXa5MCr6Z5G_dD9N02z_Hv_5IMUr/preview" width="640" height="480"></iframe>
+            <iframe className="panel" src="https://drive.google.com/file/d/1mwRcBXa5MCr6Z5G_dD9N02z_Hv_5IMUr/preview"></iframe>
             <br />
           </Col>
           </Row>
