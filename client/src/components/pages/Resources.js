@@ -24,7 +24,14 @@ class Resources extends Component {
 			<>
 			<Provider theme={theme}>
 			<Section fontSize={[2]} width={[1]} heading="" subhead="" p={2} mt={1} mb={4}>
-			<h2><span className="light-h2">Resources</span><hr className="hr-primary"/> <br /> <br /></h2>
+			<Row className="justify-content-center">
+			<Col sm={{span:8}} xs={{span:10}} className="text-center filters">
+			<h2><span className="light-h2">Resources</span><hr className="hr-primary"/> <br /></h2>
+			<p> Welcome to our resources page! Here you will be able to find links to more online learning resources. Don't have a mentor yet, but need help in a particular subject? No problem! Check out our <a className="dark-a" target="_blank" href="https://www.piazza.com/coveducation/other/coved1/home"> Piazza page</a>! To join the piazza forum, simply follow these <a className="dark-a" href="http://tinyurl.com/menteeguideline" target="_blank">written instructions</a>, or follow the <a className="dark-a" href="http://tinyurl.com/piazzavid" target="_blank">instructions in this video.</a></p>
+			<br />
+			<br />
+			</Col>
+			</Row>
 			<ReactiveBase
 							app="coved"
 							credentials="sJ8zoOmW3:f3dbcd79-4ab9-437c-936d-d1d37b46073e"

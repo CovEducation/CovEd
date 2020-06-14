@@ -53,13 +53,13 @@ class MentorResultDisplay extends Component {
         post("/api/pingGuardian", guardianInfo);
       })
       .then((resp) => {
-        alert("Send message! Expect a reply within the next couple days");
+        alert("Sent message! Expect a reply within the next couple days. While you are waiting for a mentor, feel free to use our online forum, Piazza, in which you can ask for help 24/7. Instructions for gaining access to our Piazza forum can be found on our Resources page. Our piazza page is also available for use after you are matched with a mentor!");
         this.setState({
           msg: "",
         });
       })
       .catch(() => {
-        alert("Please wait at least one day for the mentors to respond.");
+        alert("Please wait at least one day for the mentors to respond. While you are waiting for a mentor, feel free to use our online forum, Piazza, in which you can ask for help 24/7. Instructions for gaining access to our Piazza forum can be found on our Resources page. Our piazza page is also available for use after you are matched with a mentor!");
       });
   };
 
