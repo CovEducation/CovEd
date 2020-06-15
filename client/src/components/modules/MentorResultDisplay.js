@@ -53,13 +53,13 @@ class MentorResultDisplay extends Component {
         post("/api/pingGuardian", guardianInfo);
       })
       .then((resp) => {
-        alert("Sent message! Expect a reply within the next couple days. While you are waiting for a mentor, feel free to use our online forum, Piazza, in which you can ask for help 24/7. Instructions for gaining access to our Piazza forum can be found on our Resources page. Our piazza page is also available for use after you are matched with a mentor!");
+        alert("Send message! You should recieve a confirmation email with the subject CovEd Mentor Request. Expect a reply within the next couple days.  \n\nWhile you are waiting for a mentor, feel free to use our online forum, Piazza, in which you can ask for help 24/7. \n\nInstructions can be found both on our Resources page and here: tinyurl.com/menteeguideline. A video tutorial can be found here: tinyurl.com/piazzavid. Our piazza page is also available for use after you are matched with a mentor!");
         this.setState({
           msg: "",
         });
       })
       .catch(() => {
-        alert("Please wait at least one day for the mentors to respond. While you are waiting for a mentor, feel free to use our online forum, Piazza, in which you can ask for help 24/7. Instructions for gaining access to our Piazza forum can be found on our Resources page. Our piazza page is also available for use after you are matched with a mentor!");
+        alert("You should recieve a confirmation email with the subject CovEd Mentor Request. Please wait at least one day for the mentors to respond. \n\nWhile you are waiting for a mentor, feel free to use our online forum, Piazza, in which you can ask for help 24/7.\n\n Instructions can be found both on our Resources page and here: tinyurl.com/menteeguideline. A video tutorial can be found here: tinyurl.com/piazzavid. Our piazza page is also available for use after you are matched with a mentor!");
       });
   };
 
