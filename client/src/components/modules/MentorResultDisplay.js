@@ -53,7 +53,7 @@ class MentorResultDisplay extends Component {
         post("/api/pingGuardian", guardianInfo);
       })
       .then((resp) => {
-        alert("Press OK to send message! You should recieve a confirmation email with the subject CovEd Mentor Request. Expect a reply within the next couple days.  \n\nWhile you are waiting for a mentor, feel free to use our online forum, Piazza, in which you can ask for help 24/7. \n\nInstructions can be found both on our Resources page and here: tinyurl.com/menteeguideline. A video tutorial can be found here: tinyurl.com/piazzavid. Our piazza page is also available for use after you are matched with a mentor!");
+        alert("Sent message! You should recieve a confirmation email with the subject CovEd Mentor Request. Expect a reply within the next couple days.  \n\nWhile you are waiting for a mentor, feel free to use our online forum, Piazza, in which you can ask for help 24/7. \n\nInstructions can be found both on our Resources page and here: tinyurl.com/menteeguideline. A video tutorial can be found here: tinyurl.com/piazzavid. Our piazza page is also available for use after you are matched with a mentor!");
         this.setState({
           msg: "",
         });
