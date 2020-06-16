@@ -24,7 +24,11 @@ class Contact extends Component {
             <h3><span className="light-h3">Contact Us <br /></span></h3>
             <br />
             <br />
-            <p>Check out the <a className="dark-a" href="/faq"> FAQs </a> page to see if we've already answered your question. If you don't see your question there, for general questions, please email us at <a className="dark-a" href='mailto:coveducation@gmail.com'>coveducation@gmail.com</a>! <br /><br /> For any inquiries related to media/news releases, please contact us at <a className="dark-a" href='mailto:covedpr@gmail.com'>covedpr@gmail.com</a>. <br /> For technical issues related to your account please contact us at <a className="dark-a" href='mailto:coved.dev@gmail.com'>coved.dev@gmail.com</a>. <br /><br /> We're excited to hear from you~</p>
+            <p>Check out the <a className="dark-a" href="/faq"> FAQs </a> page to see if we've already answered your question. If you don't see your question there, for general questions, please email us at <a className="dark-a" href='mailto:coveducation@gmail.com'>coveducation@gmail.com</a>!
+            <br /><br /> We have an outreach team of over 100 members who help us reach out to their local areas as well as areas of high need across the country, contacting school officials and organizations. If you'd like to help with outreach, please contact us at <a className="dark-a" href='mailto:covedoutreach@gmail.com'>covedoutreach@gmail.com</a>!
+            <br /><br /> For any inquiries related to media/news releases, please contact us at <a className="dark-a" href='mailto:covedpr@gmail.com'>covedpr@gmail.com</a>.
+            <br /> For technical issues related to your account please contact us at <a className="dark-a" href='mailto:coved.dev@gmail.com'>coved.dev@gmail.com</a>.
+            <br /><br /> We're excited to hear from you~</p>
             <p>If you wish to file a complaint, please contact <a className="dark-a" href='mailto:coved.management@gmail.com'>coved.management@gmail.com</a>
             </p>
           </Col>
