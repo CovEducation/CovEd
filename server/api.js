@@ -26,8 +26,8 @@ const firebaseMiddleware = require("./auth");
 const rateLimit = require("express-rate-limit")
 
 const emailRequestLimiter = rateLimit({
-  windowMs: 60 * 60 * 24 * 1000, // 1 day
-  max: 4,
+  windowMs: 60 * 1000, // 1 min
+  max: 10,
   message: "Please wait at least one day for the mentor to respond to your requests.",
   keyGenerator: (req, res) => { req.user.user_id || req.ip }
 });
@@ -76,7 +76,7 @@ router.get("/stats", (req, res) => {
       console.log(resp)
       res.send(resp);
     })
-    
+
   });
 });
 
@@ -111,18 +111,18 @@ router.get("/mentee", firebaseMiddleware, (req, res) => {
  * Authenticated endpoint.
  * API Endpoint Details:
  * This endpoint retrieves up to 100 mentors from our mentor database.
- * The mentors will be sorted by the last time they were requested 
+ * The mentors will be sorted by the last time they were requested
  * (newer / recently requested mentors will be shown last). All the mentors
  * retrived are guaranteed to have all subjects if specified in the arguments.
- * 
+ *
  * subjects: comma-separated list of subjects the mentors must have
  */
 router.get("/getMentors", firebaseMiddleware, (req, res) => {
-  // check if the user has their email verified 
+  // check if the user has their email verified
   if (!req.user.email_verified) { res.sendStatus(403); }
 
   const keys = req.query.subjects ? req.query.subjects.split(",") : undefined;
-  
+
   let query = {public: true};
 
   if (keys) {
@@ -146,7 +146,7 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
     .catch(() => res.sendStatus(500));
 });
 
-/* 
+/*
   POST Endpoints
 */
 
