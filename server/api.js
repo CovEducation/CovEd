@@ -26,9 +26,9 @@ const firebaseMiddleware = require("./auth");
 const rateLimit = require("express-rate-limit")
 
 const emailRequestLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 min
-  max: 10,
-  message: "Please wait at least one day for the mentor to respond to your requests.",
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 4,
+  message: "Please only request one mentor per student and wait at least one day for the mentor to respond to your requests.",
   keyGenerator: (req, res) => { req.user.user_id || req.ip }
 });
 
