@@ -18,7 +18,7 @@ import { announcement, theme } from "../Constants.js";
              font: theme.fonts.sans,
          }}>
             { announcement.description }
-            - <a href={announcement.link} style={{color: theme.colors.yellow}}>{" read more"}</a>
+            - <a href={announcement.link} style={{color: theme.colors.yellow}}>{"here!"}</a>
          </div>
      )
 

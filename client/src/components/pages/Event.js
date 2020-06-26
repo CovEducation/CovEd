@@ -24,38 +24,46 @@ class Event extends Component {
         <Provider theme={theme}>
         <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1,2,2,2]} mt={7} mb={7}>
           <Row className="justify-content-center">
-          <Col sm={{span: 6}}  xs={{span:10}} className="text-center">
-            <h4><span className="webinar-name">Career Day<br /><hr className="hr-primary"/></span></h4>
-            <p className="text-left">We are hosting a Virtual Career Day as a part of our Speaker Series this upcoming weekend (May 23-24).
-               This event will feature seven panels with professionals offering their insight
-               and experience to CovEd students. Panel topics include:
+          <Col sm={{span: 10}}  xs={{span:10}} className="text-center">
+            <h4><span className="webinar-name">Maximize Your Virtual Summer<br /><hr className="hr-primary"/></span></h4>
+            <p className="text-left">We are hosting a workshop to help you maximize your virtual summer as a part of our Speaker Series on July 2nd from 3:00 to 4:30pm EST, our panelists will go over tips and tricks to make your summer more interesting and productive!
                <br />
                <br />
-               <ul>
-               <li> STEM </li>
-               <li> Medicine and Healthcare</li>
-               <li> Economics, Law, and Politics </li>
-               <li> Arts and Humanities </li>
-               <li> Non-profit/Advocacy </li>
-               <li> Diversity and Inclusion </li>
-               <li> Education </li>
-               </ul>
                </p>
-            <p><b>To register to attend our upcoming Career Day (May 23-24),
-               click <a className="dark-a" href='https://docs.google.com/forms/d/e/1FAIpQLSeBte3YAb_qnuScJq9USezmQZAurU6XA5ixrwPl0okHCvMBVw/viewform'>here</a></b></p>
+            <p><b>To register to attend our upcoming workshop (July 2nd),
+               click <a className="dark-a" href='https://docs.google.com/forms/d/e/1FAIpQLSdsVJeiyND9-MtbXaO-3kjKnkEO6wJxlAkT4J7FveEXDXQe3w/viewform'>here</a></b></p>
             <p>And checkout our <a className="dark-a" href="https://www.facebook.com/events/236350171151111/"> facebook event page!</a></p>
             <br />
-            <p> Can't make the event? Don't worry! We'll have more events in the future!</p>
+            <p> Can't make the event? Don't worry! We'll be recording it, and we'll have more events in the future!</p>
             <br />
             </Col>
             </Row>
             <Row className="justify-content-center">
-            <Col md={{span:6}} xs={{span:10}} className="text-center">
-            <Image src={event_img} style={{height: '420px'}} />
+            <iframe src="https://drive.google.com/file/d/1H79e991-5bCFE4npbmytH-6bXa9zG3gv/preview" width="640" height="480"></iframe>
+            
+          </Row>
+          <br />
+          <br />
+          <br />
+          <br />
+          <Row className="justify-content-center">
+          <Col sm={{span: 20}}  xs={{span:15}} className="text-center">
+            <h4><span className="webinar-name">The Science of Happiness and Mental Health<br /><hr className="hr-primary"/></span></h4>
+            <p className="text-left"> Join us for our Science of Happiness and Mental Health workshop with Dr. Laurie Santos from Yale University on July 10th from 3:00 to 4:00 EST.
+               <br />
+               <br />
+               </p>
+            <p><b>To register to attend our upcoming workshop (July 10th),
+               click <a className="dark-a" href='https://docs.google.com/forms/d/e/1FAIpQLScXxmrt9fBnncEIg4UG2Bxb3zZjTYymOsr3j6aNFq-2R1pz3w/viewform'>here</a></b></p>
+            <p>And checkout our <a className="dark-a" href="https://www.facebook.com/events/236350171151111/"> facebook event page!</a></p>
+            <br />
+            <p> Can't make the event? Don't worry! We'll be recording it, and we'll have more events in the future!</p>
+            <br />
             </Col>
-            <Col md={{span:6}} xs={{span:10}} className="text-center">
-            <iframe src="https://drive.google.com/file/d/1QAwyDn-MVmIGowoFbHdKTalpwTgD7_Qq/preview" height="420px" frameborder="0" marginwidth="0" marginheight="0"></iframe>
-            </Col>
+            </Row>
+            <Row className="justify-content-center">
+            <iframe src="https://drive.google.com/file/d/1wZgdzy9gPubIkueV2jGFEHiLq7ydkl63/preview" width="640" height="480"></iframe>
+            
           </Row>
         </Section>
         </Provider>
