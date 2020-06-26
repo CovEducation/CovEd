@@ -167,7 +167,7 @@ class SpeakerSeries extends Component {
             </p>
             <br />
             <br />
-            <h4><a className="dark-a" href="/publicspeaking"><span className="webinar-name">Public Speaking Workshop with Dr. Allison Coffin</span></a></h4>
+            <h4><a className="dark-a" href="https://drive.google.com/file/d/1T1sYvdQi5fdWCUwVLvXXRuKMUJh3HHrD/view?usp=sharing"><span className="webinar-name">Public Speaking Workshop with Dr. Allison Coffin</span></a></h4>
             <p><b>Webinar Date:</b> Monday, May 4th, 2020</p><hr className="hr-primary"/>
             <p className="text-left">Join Dr. Allison Coffin to learn best practices around public speaking -
                from reducing filler words to projecting confidence to making a
@@ -180,7 +180,7 @@ class SpeakerSeries extends Component {
             <br />
             <br />
             <br />
-            <h4><a className="dark-a" href="/virtualmentoring"><span className="webinar-name">Virtual Mentoring 101 with Laura Nicholson</span></a></h4>
+            <h4><a className="dark-a" href="https://drive.google.com/file/d/1mwRcBXa5MCr6Z5G_dD9N02z_Hv_5IMUr/view"><span className="webinar-name">Virtual Mentoring 101 with Laura Nicholson</span></a></h4>
             <p><b>Webinar Date:</b> Friday, April 24th, 2020</p><hr className="hr-primary"/>
             <p className="text-left">Join Laura Nicholson to learn best practices for virtual mentoring -
                from tips on how to structure your sessions to strategies for choosing
