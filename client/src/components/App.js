@@ -1,5 +1,5 @@
 import React, { Component, lazy, Suspense } from "react";
-import { Router } from "@reach/router";
+import { Router, createHistory } from "@reach/router";
 // Styling
 import "../utilities.css";
 import "./App.css";
@@ -39,6 +39,10 @@ const AnnouncementHeader = lazy( () => import("./modules/AnnouncementHeader.js")
 const ResetPassword = lazy(() => import("./pages/ResetPassword.js"));
 const About = lazy(() => import("./pages/About.js"));
 
+// Page Usage Analytics.
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-161827116-2");
+const history = createHistory(window);
 /**
  * Define the "App" component as a class.
  */
@@ -46,6 +50,9 @@ class App extends Component {
   // makes props available in this component
 
   render() {
+    history.listen(window=>{
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    })
     const loading_component =
       (<table id="wrapper">
         <tbody>
