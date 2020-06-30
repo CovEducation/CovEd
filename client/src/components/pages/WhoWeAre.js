@@ -225,6 +225,26 @@ const speakerseries = [
     school: "Harvard, 2023",
     major: "Applied Math and Economics, Global Health and Health Policy",
   },
+  {
+    name: "Joshua Geronimo",
+    school: "UC Irvine, 2022",
+    major: "Civil Engineering",
+  },
+  {
+    name: "Dhathri Srungaram",
+    school: "SUNY at Bufalo, 2022",
+    major: "Biotechnology and Computer Science",
+  },
+  {
+    name: "Charles Ding",
+    school: "USC, 2024",
+    major: "Health Promotion and Disease Prevention",
+  },
+  {
+    name: "Pragat Jay Muthu",
+    school: "University of Texas at Austin, 2021",
+    major: "Biology and the Business of Healthcare",
+  }
 ];
 
 const renderTable = (list) => {
