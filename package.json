@@ -50,6 +50,7 @@
     "react-animated-number": "^0.4.4",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.7.0",
+    "react-ga": "^3.0.0",
     "react-landing-page": "^2.0.2",
     "react-select": "^3.1.0",
     "rebass": "^2.1.0",

@@ -15,6 +15,10 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import ScienceWorkshop from "./ScienceWorkshop.js";
+import CodingWorkshop from "./CodingWorkshop.js";
+import WritingWorkshop from "./WritingWorkshop.js";
+
 import NonprofitPanel from "./NonprofitPanel.js";
 import StemPanel from "./StemPanel.js";
 import MedicinePanel from "./MedicinePanel.js";
@@ -49,6 +53,65 @@ class SpeakerSeries extends Component {
             <br />
             <p>Check out recordings of our previous Speaker Series events! You must be signed in to your CovEd account to view these recordings.</p>
             <br />
+            <br />
+            <h4><span className="webinar-name">Summer Workshops</span></h4>
+            <p><b>Dates:</b> Every Week in July</p><hr className="hr-primary"/>
+            <br />
+            <Row className="justify-content-center">
+              <Col md={{span:8}} xs={{span:10}} className="text-right">
+              </Col>
+            </Row>
+
+            <br />
+            <p className="text-left">The CovEd workshop series is a four week program composed of weekly science experiments, coding instruction, and creative writing discussions all led by amazing CovEd mentors. You can register for one workshop or all three at any time during July to improve your skills this summer! Fill out the form below to register for one or more of the workshops!</p>
+            <br />
+            <h5 className="text-center"><a className="dark-a" href="https://forms.gle/imLycth6HbTEcmV9A" target="_blank">Workshop Registration Form</a></h5>
+            <br />
+            <p><b>Please join our Remind so the workshop mentors can communicate with you better about the workshops moving forward. To join, please text @coveds to 81010!</b></p>
+            <br />
+            <p>Remind is a secure communication platform that does not share any of your personal information with us. You can download the app on your phone. During the 4-week span of the workshop, we will communicate with you through the platform.</p>
+            <br />
+            <br />
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Science Workshops"
+                id="0"
+              >
+              Science Workshops
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <ScienceWorkshop />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Coding Workshops"
+                id="1"
+              >
+              Coding Workshops
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <CodingWorkshop />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+      
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="Writing Workshops"
+                id="1"
+              >
+              Writing Workshops
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <WritingWorkshop />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <br />
+
             <h4><span className="webinar-name">Career Exploration Day</span></h4>
             <p><b>Webinar Dates:</b> Saturday, May 23rd - Sunday, May 24th, 2020</p><hr className="hr-primary"/>
             <br />
@@ -56,10 +119,6 @@ class SpeakerSeries extends Component {
           </Row>
             <Row className="justify-content-center">
               <Col md={{span:6}} xs={{span:10}} className="text-right">
-                <Image src={career_day_img} style={{height: '420px'}} />
-              </Col>
-              <Col md={{span:6}} xs={{span:10}} className="text-left">
-                <iframe src="https://drive.google.com/file/d/1QAwyDn-MVmIGowoFbHdKTalpwTgD7_Qq/preview" height="420px" frameborder="0" marginwidth="0" marginheight="0"></iframe>
               </Col>
             </Row>
           <Row className="justify-content-center">
@@ -74,6 +133,7 @@ class SpeakerSeries extends Component {
             you can watch the recordings for any panels you might have missed:
             <br />
             <br />
+
             <ExpansionPanel>
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -185,7 +245,7 @@ class SpeakerSeries extends Component {
             <p className="text-left">Join Laura Nicholson to learn best practices for virtual mentoring -
                from tips on how to structure your sessions to strategies for choosing
                curriculum. </p>
-            <p className="text-left"><i>Laura Nicholson has a bachelor’s degree in mechanical engineering
+            <p className="text-left"><i>Laura Nicholson has a bachelor’s degree in mechanical engineering
                from MIT and a Master of Public Affairs from Indiana University.
                She has 5 years of experience working one-on-one with students,
                focusing on high school students in advanced math and science subjects,
