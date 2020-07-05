@@ -53,6 +53,7 @@ class SpeakerSeries extends Component {
             <br />
             <p>Check out recordings of our previous Speaker Series events! You must be signed in to your CovEd account to view these recordings.</p>
             <br />
+            <br />
             <h4><span className="webinar-name">Summer Workshops</span></h4>
             <p><b>Dates:</b> Every Week in July</p><hr className="hr-primary"/>
             <br />
