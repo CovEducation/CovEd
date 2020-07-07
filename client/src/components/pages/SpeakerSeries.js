@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import career_day_img from "../../public/img/careerday.png";
-import Image from "react-bootstrap/Image";
+import EventCalendar from './EventCalendar';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import "./SpeakerSeries.css";
@@ -51,8 +50,24 @@ class SpeakerSeries extends Component {
                expertise to help host a workshop, please contact <a className="dark-a" href='mailto:covedspeakerseries@gmail.com'>
                covedspeakerseries@gmail.com</a>.</p>
             <br />
+            <p>You can view and attend our upcoming events with this <a className="dark-a" href="https://calendar.google.com/calendar/embed?src=4nglqv9q9mhfj9rhenpc8dadgk%40group.calendar.google.com&ctz=America%2FNew_York"><span className="webinar-name">calendar!</span></a></p>
+            <br />
             <p>Check out recordings of our previous Speaker Series events! You must be signed in to your CovEd account to view these recordings.</p>
             <br />
+            <iframe src="https://calendar.google.com/calendar/embed?src=4nglqv9q9mhfj9rhenpc8dadgk%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+            <br />
+            <h4><a className="dark-a" href="https://drive.google.com/file/d/1dgU-tLuJB08JAdS6m_6Uj19X5xkuks7w/view"><span className="webinar-name">How to Maximize Your Virtual Summer</span></a></h4><p><b>Webinar Date:</b> Thursday, July 2nd, 2020</p><hr className="hr-primary"/>
+            <p className="text-left">Are you bored and stuck inside this summer? Our mentors have a ton of cool ideas for you through the top 10 tips given out in the panel.
+            <br />
+            <p className="text-center">To view the pdf slides from the presentation,<a className="dark-a" href="https://drive.google.com/file/d/1J9XPYejl31YreAxzZEUnD60PHSNG8ChV/view" target="_blank"> click here</a></p> </p>
+            <p className="text-left"><i>
+            <ul>
+              <li>Free online classes to keep up your academics</li>
+              <li>New hobbies to pick up</li>
+              <li> New games to try</li>
+              <li>& a lot more!</li>
+            </ul>
+            </i></p>
             <br />
             <h4><span className="webinar-name">Summer Workshops</span></h4>
             <p><b>Dates:</b> Every Week in July</p><hr className="hr-primary"/>
@@ -66,6 +81,8 @@ class SpeakerSeries extends Component {
             <p className="text-left">The CovEd workshop series is a four week program composed of weekly science experiments, coding instruction, and creative writing discussions all led by amazing CovEd mentors. You can register for one workshop or all three at any time during July to improve your skills this summer! Fill out the form below to register for one or more of the workshops!</p>
             <br />
             <h5 className="text-center"><a className="dark-a" href="https://forms.gle/imLycth6HbTEcmV9A" target="_blank">Workshop Registration Form</a></h5>
+            <br />
+            <h5 className="text-center">Click<a className="dark-a" href="https://forms.gle/imLycth6HbTEcmV9A" target="_blank">here</a>for information on week 1 of the series!</h5>
             <br />
             <p><b>Please join our Remind so the workshop mentors can communicate with you better about the workshops moving forward. To join, please text @coveds to 81010!</b></p>
             <br />
