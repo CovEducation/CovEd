@@ -25,7 +25,15 @@ class WritingWorkshop extends Component {
 
             <br />
             <br />
-            <p>Every week we will be posting lessons to help you work on your writing, the dates, times, and links for these sessions will be listed below.</p>
+            <p>This weeks assignment:</p>
+            <p>Write a short piece of fiction (up to 2 pages double-spaced) to bring to the first session and introduce yourself! Use one of the prompts below!</p>
+            <ul>
+              <li>Describe a moment/thing that had an impact on you.</li>
+              <li>Things you carry -- what is typically in your bag (can be metaphorical or literal)? Tell us about yourself through that!</li>
+              <li>Make up your own!</li>
+            </ul>
+            <br />
+            <p>Please submit your writing via this <a className="dark-a" href="https://forms.gle/qwMkCRXREzv9X3hz6" target="_blank"> google form</a> and join us <a className="dark-a" href="https://mit.zoom.us/j/91072905067?pwd=cTF4dEh4bE01a1I2T1cyK0ZkazNrdz09" target="_blank"> here</a> on Wednesday, July 8 for our first session!</p>
             <br />
             </p>
             <p>All of our mentors will be available on our <a className="dark-a" target="_blank" href="https://www.piazza.com/coveducation/other/coved1/home"> Piazza page</a> to help answer your questions!To get started with piazza follow these <a className="dark-a" href="http://tinyurl.com/menteeguideline" target="_blank">written instructions</a> or watch <a className="dark-a" href="http://tinyurl.com/piazzavid" target="_blank">this video</a>!</p>
