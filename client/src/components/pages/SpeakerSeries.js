@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import EventCalendar from './EventCalendar';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import "./SpeakerSeries.css";
