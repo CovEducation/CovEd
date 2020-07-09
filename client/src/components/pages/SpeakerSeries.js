@@ -53,8 +53,6 @@ class SpeakerSeries extends Component {
             <br />
             <p>Check out recordings of our previous Speaker Series events! You must be signed in to your CovEd account to view these recordings.</p>
             <br />
-            <iframe src="https://calendar.google.com/calendar/embed?src=4nglqv9q9mhfj9rhenpc8dadgk%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-            <br />
             <h4><a className="dark-a" href="https://drive.google.com/file/d/1dgU-tLuJB08JAdS6m_6Uj19X5xkuks7w/view"><span className="webinar-name">How to Maximize Your Virtual Summer</span></a></h4><p><b>Webinar Date:</b> Thursday, July 2nd, 2020</p><hr className="hr-primary"/>
             <p className="text-left">Are you bored and stuck inside this summer? Our mentors have a ton of cool ideas for you through the top 10 tips given out in the panel.
             <br />
@@ -81,7 +79,7 @@ class SpeakerSeries extends Component {
             <br />
             <h5 className="text-center"><a className="dark-a" href="https://forms.gle/imLycth6HbTEcmV9A" target="_blank">Workshop Registration Form</a></h5>
             <br />
-            <h5 className="text-center">Click<a className="dark-a" href="https://forms.gle/imLycth6HbTEcmV9A" target="_blank">here</a>for information on week 1 of the series!</h5>
+            <h5 className="text-center">Click<a className="dark-a" href="https://forms.gle/imLycth6HbTEcmV9A" target="_blank"> here </a>for information on week 1 of the series!</h5>
             <br />
             <p><b>Please join our Remind so the workshop mentors can communicate with you better about the workshops moving forward. To join, please text @coveds to 81010!</b></p>
             <br />
