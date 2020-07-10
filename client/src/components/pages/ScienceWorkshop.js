@@ -22,6 +22,10 @@ class ScienceWorkshop extends Component {
             <h4><span className="webinar-name">Science Workshops</span></h4>
             <p><b>When: </b>Every Monday in July</p><hr className="hr-primary"/>
             <p className="text-left">Interested in creating lava lamps, and squishing Oebleck slime? Join CovEd every Monday from July 6th to July 27th for guided science projects! Not only will you have fun with simple, hands-on experiments, but you will also learn about the science behind them and gain a broadened perspective towards the forces ruling nature. Our first experiment will be creating DIY lava lamps, and the pre-recorded video guide will be available on Monday July 6th. We hope you’ll join us— FOR SCIENCE!
+
+            Please have a parent or guardian with you when performing these experiments!
+
+            <p>You can join us <a className="dark-a" href="https://mit.zoom.us/j/91515065868?pwd=b2JhMVFsSHNTNnJJOTBqYnRrZUhXQT09" target="_blank"> here</a> us on Monday, July 13 at 3:00 PM EST for a review of the lava lamp experiment led by two of our CovEd mentors! This is an oppurtunity for you to learn more about the science tht makes this happen as well as ask your own questions. Be sure to check the calendar above for more information!</p>
             <br />
             <br />  
             <h5>Week 1 Experiment: DIY Lava Lamp</h5>
@@ -33,12 +37,26 @@ class ScienceWorkshop extends Component {
               <li> Effervescent Tablet*</li>
               <li> Salt (optional)</li>
               <li> Clear (plastic/glass) jar/container</li>
-              <li> A parent/guardian</li>
             </ul>
             <p>*There are lots of effevescent tablets! Some common examples include Alka Seltzer and denture cleaning tablets!</p>
             </p>
             <br />
-            <p><b>The experiment will be posted on Monday July 6th along with a worksheet for you to follow along with. Once you've got the materials, you should be ready to go on the 6th! We will be holding a live review of this experiment on Monday July 13th at 3:00PM EST/GMT-5.</b></p>
+            <h6 className="text-left">You can use <a className="dark-a" href="https://drive.google.com/file/d/1WJ-vOOodFqekadKfEp6web2cHE3-5v6G/view" target="_blank"> this worksheet</a> to follow along with the video below on your own! </h6>
+            <br />
+            <iframe src="https://drive.google.com/file/d/14iD1lfVjrpxGMIr579TTx6M56PDB_T6E/preview" width="640" height="480"></iframe>
+            <br />
+            <br />
+            <h5 className="text-left">Week 2 Experiment: Oobleck!</h5>
+            <br />
+            <p className="text-left">We will be posting the video and worksheet for experiment 2 on Monday, July 13. If you've got all of these materials you should be all set to make oobleck with us next week!</p>
+            <br />
+            <p className="text-left">Materials for the Oobleck Experiment
+            <ul>
+              <li> 1 cup Water </li>
+              <li> 1.5-2 cups cornstarch </li>
+              <li> Few drops of food coloring (optional)</li>
+              <li> 2 bowls</li>
+            </ul></p>
             <br />
             <p>Have additional questions about the experiment or the materials? Unsure if something is an effervescent tablet? Ask us on our <a className="dark-a" target="_blank" href="https://www.piazza.com/coveducation/other/coved1/home"> Piazza page</a>! To get started with piazza follow these <a className="dark-a" href="http://tinyurl.com/menteeguideline" target="_blank">written instructions</a> or watch <a className="dark-a" href="http://tinyurl.com/piazzavid" target="_blank">this video</a>!</p>
           </Col>

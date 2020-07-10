@@ -138,6 +138,32 @@ a.btn-primary:hover{
   border-width: medium;
 }
 
+a.btn-outline-primary{
+  border-color: #F2BE32;
+  color: #000;
+  background-color: transparent;
+  padding: 20px 40px;
+  margin-top: 20px;
+  margin-right: 40px;
+  margin-left: 40px;
+  border-radius: 20px;
+  border-width: medium;
+  text-transform: uppercase;
+  font-family: 'Muli', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+a.btn-outline-primary:hover{
+  border-color: #F2BE32;
+  color: #000;
+  background-color: #F2BE32;
+}
+
+a.btn-outline-primary:focus{
+  outline: none;
+}
+
 .MuiTypography-h4{
   font-family: 'Muli', sans-serif !important;
   font-weight: 500 !important;
