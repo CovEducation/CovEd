@@ -323,6 +323,20 @@ export const FAQS = [
     question: "What if I can no longer mentor my mentee?",
     answer: <div>We ask that you let the parent of your mentee know that you can no longer be a mentor, and then work with them to help them request a new mentor. Once they have been contacted by a new mentor, please set up a time to meet the new mentor and bring them up-to-speed on your mentee's progress and needs.</div>
   }
+  ,
+  {
+    key: "18",
+    category: "general",
+    question: "What do you use donations for?",
+    answer: <div> This year we need donations for applying to be a non-profit and for our technological operation expenses. To see a further breakdown of our costs and projected costs, please visit <a target="_blank" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJPlD1iXGjSdVbyiPoEETMNBDUEkYbyoHpMO1CHfpJbl5zqRCgvy5O_QC9ElQpCm0aNAfYrei1F3__/pubhtml?gid=1646064687&single=true"> this spreadsheet </a>.</div>
+  }
+  ,
+  {
+    key: "19",
+    category: "general",
+    question: "Is CovEducation a 501(c)(3) nonprofit?",
+    answer: <div> Yes! </div>
+  }
 ]
 
 export const registerDisclaimer = "This service is a completely free volunteer-based service. Those under the age of 13 are required to have a form filled out by a parent or guardian. For all others it is strongly recommended that a parent or guardian fill out this form. If a parent or guardian is unable to fill out the form, please email coveducation@gmail.com. Thanks!";

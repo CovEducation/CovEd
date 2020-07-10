@@ -48,6 +48,15 @@ class NavBar extends Component {
             <Nav.Link as={Link} to="/resources">Resources</Nav.Link>
             <Nav.Link as={Link} to="/faq">FAQ</Nav.Link>
             <Nav.Link as={Link} to="/about">About Us</Nav.Link>
+            <Nav.Link
+              as={"a"}
+              className="donation-link"
+              href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L2N2SU326PZDY&source=url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Donate
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

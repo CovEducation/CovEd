@@ -38,6 +38,7 @@ const Event = lazy(() => import("./pages/Event.js"));
 const AnnouncementHeader = lazy( () => import("./modules/AnnouncementHeader.js"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword.js"));
 const About = lazy(() => import("./pages/About.js"));
+const DonationCompleted = lazy(() => import("./pages/DonationCompleted.js"));
 
 // Page Usage Analytics.
 import ReactGA from "react-ga";
@@ -89,6 +90,7 @@ class App extends Component {
                 <ParentAcknowledgement path="/parentacknowledgement" />
                 <Event path="/event"/>
                 <About path="/about" />
+                <DonationCompleted path="/completed" />
                 <NotFound default/>
               </Router>
             </Suspense>
