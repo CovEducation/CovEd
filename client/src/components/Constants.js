@@ -330,6 +330,13 @@ export const FAQS = [
     question: "What do you use donations for?",
     answer: <div> This year we need donations for applying to be a non-profit and for our technological operation expenses. To see a further breakdown of our costs and projected costs, please visit <a target="_blank" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJPlD1iXGjSdVbyiPoEETMNBDUEkYbyoHpMO1CHfpJbl5zqRCgvy5O_QC9ElQpCm0aNAfYrei1F3__/pubhtml?gid=1646064687&single=true"> this spreadsheet </a>.</div>
   }
+  ,
+  {
+    key: "19",
+    category: "general",
+    question: "Is CovEducation a 501(c)(3) nonprofit?",
+    answer: <div> Yes! </div>
+  }
 ]
 
 export const registerDisclaimer = "This service is a completely free volunteer-based service. Those under the age of 13 are required to have a form filled out by a parent or guardian. For all others it is strongly recommended that a parent or guardian fill out this form. If a parent or guardian is unable to fill out the form, please email coveducation@gmail.com. Thanks!";
