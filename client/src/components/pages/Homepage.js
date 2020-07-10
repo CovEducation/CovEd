@@ -97,8 +97,17 @@ class Homepage extends Component {
           >
             <Heading fontSize={[9,11]} textAlign="center">CovEd<span className="light">ucation</span></Heading>
             <Subhead mt={3} fontSize={[3,4]} textAlign="center"><span className="light">Continuing K-12 education in the US during the COVID-19 outbreak</span></Subhead>
-            <Flex mt={2} p={5}>
+            <Flex mt={2} p={5} flexDirection="column">
               <Button href='/register'>Register</Button>
+              <Button
+                as="a"
+                variant="outline-primary"
+                href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L2N2SU326PZDY&source=url'
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Donate
+              </Button>
             </Flex>
         </Hero>
         <Section fontSize={[4,3]} heading="" subhead="" p={[6,5,6,6]} mt={3} mb={4} justifyContent="center">
