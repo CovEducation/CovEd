@@ -167,6 +167,14 @@ export const subjects = [
   {
     value: "Japanese",
     label: "Japanese"
+  },
+  {
+    value: "Experienced in Special Education (SPED)",
+    label: "Experienced in Special Education (SPED)"
+  },
+  {
+    value: "English as a Second Language (ESL)",
+    label: "English as a Second Language (ESL)"
   }
 ]
 export const theme = {
