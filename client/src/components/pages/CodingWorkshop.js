@@ -23,9 +23,17 @@ class CodingWorkshop extends Component {
             <p><b>When: </b>Every Week in July</p><hr className="hr-primary"/>
             <p className="text-left">The Coding Workshops’ attendees will follow the curriculum from Carnegie Mellon’s introductory CS0 course. The workshop will last for 4 weeks from July 6th-August 1st, 2020. Each week mentors will hold office hours to answer questions and discuss concepts. Participants may take the course at their own pace, or follow the 4 week curriculum guide created by coding workshop mentors.    
             <br />
-            <p>We will be meeting for office hours every Thursday from 6-7PM EST, you can join us <a className="dark-a" href="https://mit.zoom.us/j/96252536319?pwd=OU9LOUlYNDY2YkNaVm1IZmtOVzcxUT09" target="_blank"> here</a> on July 8th!</p>
+            <p>We will be meeting for office hours every Thursday from 6-7PM EST, you can join us <a className="dark-a" href="https://mit.zoom.us/j/96252536319?pwd=OU9LOUlYNDY2YkNaVm1IZmtOVzcxUT09" target="_blank"> here</a>!</p>
             <br />
-            <h6>To join the workshop:</h6>
+            <h6>Week 2:</h6>
+            <ul>
+              <li>Create an account for <a className="dark-a" target="_blank" href="https://academy.cs.cmu.edu/register"> CMU CS Academy</a> with the registration code <b>YJ56-SY43</b> </li>
+              <li>Look over Week 2 Materials</li>
+              <li>Begin working on Unit 2: Basic Animations, and proceed in chronological order</li>
+            </ul>
+            <br />
+            <br />
+            <h6>Week 1:</h6>
             <ul>
               <li>Create an account for <a className="dark-a" target="_blank" href="https://academy.cs.cmu.edu/register"> CMU CS Academy</a> with the registration code <b>YJ56-SY43</b> </li>
               <li>Verify they meet the minimum age requirement of 13 and have parental permission to take the course</li>
