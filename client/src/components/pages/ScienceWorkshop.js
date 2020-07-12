@@ -25,7 +25,7 @@ class ScienceWorkshop extends Component {
             <p>
             Please have a parent or guardian with you when performing these experiments!
             </p>
-            <p>You can join us <a className="dark-a" href="https://mit.zoom.us/j/91515065868?pwd=b2JhMVFsSHNTNnJJOTBqYnRrZUhXQT09" target="_blank"> here</a> us on Mondays at 3:00 PM EST for a review of the lava lamp experiment led by two of our CovEd mentors! This is an oppurtunity for you to learn more about the science that makes this happen as well as ask your own questions. Be sure to check the calendar above for more information!</p>
+            <p>You can join us <a className="dark-a" href="https://mit.zoom.us/j/91515065868?pwd=b2JhMVFsSHNTNnJJOTBqYnRrZUhXQT09" target="_blank"> here</a> us on Mondays at 3:30 PM EST for a review of the lava lamp experiment led by two of our CovEd mentors! This is an oppurtunity for you to learn more about the science that makes this happen as well as ask your own questions. Be sure to check the calendar above for more information!</p>
             <br />
             <h5 className="text-left">Week 2 Experiment: Oobleck!</h5>
             <br />
