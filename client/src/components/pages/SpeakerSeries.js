@@ -53,6 +53,9 @@ class SpeakerSeries extends Component {
             <br />
             <p>Check out recordings of our previous Speaker Series events! You must be signed in to your CovEd account to view these recordings.</p>
             <br />
+            <h4><a className="dark-a" href="https://www.dropbox.com/s/ucu1wtgf5za5x5r/zoom_0.mp4?dl=0"><span className="webinar-name">The Science of Happiness and Mental Health</span></a></h4><p><b>Webinar Date:</b> Friday, July 10th, 2020</p><hr className="hr-primary"/>
+            <p className="text-left">Dr. Laurie Santos is Professor of Psychology and Head of Silliman College at Yale University. Dr. Santos is an expert on human cognition and the cognitive biases that impede better choices. Her new course, Psychology and the Good Life, teaches students how the science of psychology can provide important hints about how to make wiser choices and live a life that’s happier and more fulfilling. Her course recently became Yale’s most popular course in over 300 years, with almost one of our four students at Yale enrolled.</p>
+            <br />
             <h4><a className="dark-a" href="https://drive.google.com/file/d/1dgU-tLuJB08JAdS6m_6Uj19X5xkuks7w/view"><span className="webinar-name">How to Maximize Your Virtual Summer</span></a></h4><p><b>Webinar Date:</b> Thursday, July 2nd, 2020</p><hr className="hr-primary"/>
             <p className="text-left">Are you bored and stuck inside this summer? Our mentors have a ton of cool ideas for you through the top 10 tips given out in the panel.
             <br />
@@ -79,7 +82,7 @@ class SpeakerSeries extends Component {
             <br />
             <h5 className="text-center"><a className="dark-a" href="https://forms.gle/imLycth6HbTEcmV9A" target="_blank">Workshop Registration Form</a></h5>
             <br />
-            <h5 className="text-center">Click<a className="dark-a" href="https://forms.gle/imLycth6HbTEcmV9A" target="_blank"> here </a>for information on week 1 of the series!</h5>
+            <h5 className="text-center">Click<a className="dark-a" href="https://docs.google.com/document/d/186vvqCRVM5JAT-buyLZ_IfzREctqt3kokXAhqNKEtpQ/edit" target="_blank"> here </a>for information on week 2 of the series!</h5>
             <br />
             <p><b>Please join our Remind so the workshop mentors can communicate with you better about the workshops moving forward. To join, please text @coveds to 81010!</b></p>
             <br />
