@@ -39,7 +39,7 @@ class ScienceWorkshop extends Component {
             <br />
             <h6 className="text-left">You can use <a className="dark-a" href="https://drive.google.com/file/d/10ko50kdhIGL-o0Ud3_mq_CwUq-ST-a-H/view" target="_blank"> this worksheet</a> to follow along with the video below on your own! </h6>
             <br />
-            <iframe src="https://drive.google.com/file/d/1eFBF_HTH52iCGEqzRccX7Y4gx4SMhrX0/view" width="640" height="480"></iframe>
+            <iframe src="https://drive.google.com/file/d/1eFBF_HTH52iCGEqzRccX7Y4gx4SMhrX0/preview" width="640" height="480"></iframe>
             <br />
             <br />
             <p className="text-left">We will be posting the video and worksheet for experiment 3 on Monday, July 20. If you've got all of these materials you should be all set to join us next week for the capillary action experiment!</p>
