@@ -48,8 +48,7 @@ const ProfileEditSchema = Yup.object().shape({
       is: (role) => role === "mentor",
       then: Yup.string()
         .email()
-        .matches(/.+@*.edu/i, "Mentors are required to use an .edu email.")
-        .required("Please input a valid .edu email."),
+        .required("Please input an email."),
     }),
 
   student_name: Yup.string().when("role", {
