@@ -45,6 +45,7 @@ class MentorResultDisplay extends Component {
     let guardianInfo = {
       guardianName: this.state.user.name,
       guardianEmail: this.state.user.email,
+      mentorName: this.props.mentor.name,
       token: this.state.token,
     };
 
