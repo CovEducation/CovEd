@@ -274,9 +274,8 @@ class WhoWeAre extends Component {
       <>
         <Provider theme={theme}>
           <Section p={[2, 6, 2, 2]} mt={6} mb={1}>
-            <h1><span className="light-h1">About Us</span><br /><hr className="hr-primary" /><br /></h1>
+            <h1><span className="light-h3">Who We Are</span><br /><hr className="hr-primary" /><br /></h1>
           <Hero>
-              <h3 className="light-h3"><span>Who We Are</span><br /></h3>
             <Box font="sans" mt={3} mb={7}>
               <Row mt={3} mb={3} className="justify-content-center">
                 <Col sm={{ span: 8 }} className="text-center" p={5}>
