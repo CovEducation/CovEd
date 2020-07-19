@@ -344,6 +344,12 @@ export const FAQS = [
     category: "general",
     question: "Is CovEducation a 501(c)(3) nonprofit?",
     answer: <div> Yes! </div>
+  },
+  {
+    key: "20",
+    category: "mentee",
+    question: "What if I don't hear back from my requested mentor?",
+    answer: <div> Our CovEd Coordinators Team is here to help ensure that you are matched with a mentor that fits your subject needs and interests. If you have requested 2 or more mentors and not received a response from them - please fill out <a href="https://forms.gle/z5GxEUoyWzfyceHu9"> this form </a> and we will directly match you. </div>
   }
 ]
 
