@@ -37,34 +37,31 @@ class ScienceWorkshop extends Component {
               <li> 2 bowls</li>
             </ul></p>
             <br />
-            <h6 className="text-left">You can use <a className="dark-a" href="https://drive.google.com/file/d/10ko50kdhIGL-o0Ud3_mq_CwUq-ST-a-H/view" target="_blank"> this worksheet</a> to follow along with the video below on your own! </h6>
+            <h6 className="text-left">You can use <a className="dark-a" href="https://drive.google.com/file/d/1Oap2cEvCErxKV7iV9XvK47SuG_dVXsZj/view" target="_blank"> this worksheet</a> to follow along with the video below on your own! </h6>
             <br />
-            <iframe src="https://drive.google.com/file/d/1eFBF_HTH52iCGEqzRccX7Y4gx4SMhrX0/preview" width="640" height="480"></iframe>
+            <iframe src="https://drive.google.com/file/d/1xX8L3HWC1jhkGsjsy9ULsZQr6LVJKsOm/preview" width="640" height="480"></iframe>
             <br />
             <br />
-            <p className="text-left">We will be posting the video and worksheet for experiment 3 on Monday, July 20. If you've got all of these materials you should be all set to join us next week for the capillary action experiment!</p>
+            <p className="text-left">We will be posting the video and worksheet for experiment 4 on Monday, July 27. If you've got all of these materials you should be all set to join us next week for the capillary action experiment!</p>
             <br />
-            <h5 className="text-left">Week 3 Experiment: Capillary Action</h5>
-            <br />
-            <p className="text-left">Materials for Capillary Action Experiment
-            <ul>
-            <br />
-              <li> 1 cup Water </li>
-              <li> Daisy (flower) or celery </li>
-              <li> Few drops of food coloring</li>
-              <li> clear jar/glass</li>
-            </ul></p>
             <br />
             <h5>Week 1 Experiment: DIY Lava Lamp</h5>
             <br />
             <ul>
               <li> <a className="dark-a" href="https://drive.google.com/file/d/10ko50kdhIGL-o0Ud3_mq_CwUq-ST-a-H/view" target="_blank"> Worksheet</a> </li>
-              <li>  <a className="dark-a" href="https://drive.google.com/file/d/14iD1lfVjrpxGMIr579TTx6M56PDB_T6E/preview" target="_blank"> Video</a> </li>
+              <li><a className="dark-a" href="https://drive.google.com/file/d/14iD1lfVjrpxGMIr579TTx6M56PDB_T6E/preview" target="_blank"> Video</a> </li>
+              <li><a className="dark-a" href="https://drive.google.com/file/d/151s9cQnC9i4-R2aMt_UmkA62qbdxtyZD/view" target="_blank"> Review</a></li>
+            </ul>
+            <br />
+            <h5>Week 2 Experiment: Oobleck</h5>
+            <br />
+            <ul>
+              <li> <a className="dark-a" href="https://drive.google.com/file/d/10ko50kdhIGL-o0Ud3_mq_CwUq-ST-a-H/view" target="_blank"> Worksheet</a> </li>
+              <li>  <a className="dark-a" href="https://drive.google.com/file/d/1eFBF_HTH52iCGEqzRccX7Y4gx4SMhrX0/preview" target="_blank"> Video</a> </li>
             </ul>
             </p>
             <br />
-            <br />
-            <p>Have additional questions about the experiment or the materials? Unsure if something is an effervescent tablet? Ask us on our <a className="dark-a" target="_blank" href="https://www.piazza.com/coveducation/other/coved1/home"> Piazza page</a>! To get started with piazza follow these <a className="dark-a" href="http://tinyurl.com/menteeguideline" target="_blank">written instructions</a> or watch <a className="dark-a" href="http://tinyurl.com/piazzavid" target="_blank">this video</a>!</p>
+            <p>Have additional questions about the experiment or the materials? Ask us on our <a className="dark-a" target="_blank" href="https://www.piazza.com/coveducation/other/coved1/home"> Piazza page</a>! To get started with piazza follow these <a className="dark-a" href="http://tinyurl.com/menteeguideline" target="_blank">written instructions</a> or watch <a className="dark-a" href="http://tinyurl.com/piazzavid" target="_blank">this video</a>!</p>
           </Col>
           </Row>
         </Section>
