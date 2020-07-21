@@ -25,6 +25,14 @@ class CodingWorkshop extends Component {
             <br />
             <p>We will be meeting for office hours every Thursday from 6-7PM EST, you can join us <a className="dark-a" href="https://mit.zoom.us/j/96252536319?pwd=OU9LOUlYNDY2YkNaVm1IZmtOVzcxUT09" target="_blank"> here</a>!</p>
             <br />
+            <br />
+            <h6>Week 3:</h6>
+            <ul>
+              <li>Create an account for <a className="dark-a" target="_blank" href="https://academy.cs.cmu.edu/register"> CMU CS Academy</a> with the registration code <b>YJ56-SY43</b> </li>
+              <li>Look over Week 3 Materials</li>
+              <li>Begin working on Unit 3: Conditionals and Animations</li>
+            </ul>
+            <br />
             <h6>Week 2:</h6>
             <ul>
               <li>Create an account for <a className="dark-a" target="_blank" href="https://academy.cs.cmu.edu/register"> CMU CS Academy</a> with the registration code <b>YJ56-SY43</b> </li>
