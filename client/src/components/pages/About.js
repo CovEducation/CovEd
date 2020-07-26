@@ -12,9 +12,9 @@ class About extends Component {
   render() {
     return (
       <div>
-        <WhoWeAre />
         <Contact />
         <Partners />
+        <WhoWeAre />
       </div>
     );
   }

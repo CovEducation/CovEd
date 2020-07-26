@@ -19,6 +19,7 @@ class Contact extends Component {
       <>
         <Provider theme={theme}>
         <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1,2,2,2]} mt={1} mb={7}>
+        <h1><span className="light-h1">About Us</span><br /><hr className="hr-primary" /><br /></h1>
           <Row className="justify-content-sm-center">
           <Col sm={{span: 8}} className="text-center">
             <h3><span className="light-h3">Contact Us <br /></span></h3>

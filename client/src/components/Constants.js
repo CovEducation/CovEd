@@ -211,7 +211,7 @@ export const theme = {
   ]
 };
 
-export const tags = ["Early Childhood Learning", "Preschool", "Elementary School", "Middle School","High School", "FE-Unite"]
+export const tags = ["Early Childhood Learning", "Preschool", "Elementary School", "Middle School","High School", "Fe-Unite"]
                     .map(k => {return {label: k, value: k}});
 
 export const about_us_content =
