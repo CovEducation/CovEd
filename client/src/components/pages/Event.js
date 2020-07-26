@@ -25,14 +25,13 @@ class Event extends Component {
         <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1,2,2,2]} mt={7} mb={7}>
           <Row className="justify-content-center">
           <Col sm={{span: 10}}  xs={{span:10}} className="text-center">
-            <h4><span className="webinar-name">Grit: The Power of PAssion and Perseverance<br /><hr className="hr-primary"/></span></h4>
+            <h4><span className="webinar-name">Grit: The Power of Passion and Perseverance<br /><hr className="hr-primary"/></span></h4>
             <p className="text-left">Join us on August 5th with Angela Duckworth, the cofounder and CEO of Character Lab, to learn about grit. 
                <br />
                <br />
                </p>
             <p><b>To register to attend our upcoming workshop (August 5th),
                click <a className="dark-a" href='https://docs.google.com/forms/d/e/1FAIpQLSfg12XntmYX10sJ8rPZtafNGrnlT8bxWwQ10JlGTlmu0sVXDg/viewform'>here</a></b></p>
-            <p>And checkout our <a className="dark-a" href="https://www.facebook.com/events/236350171151111/"> facebook event page!</a></p>
             <br />
             <p> Can't make the event? Don't worry! We'll be recording it, and we'll have more events in the future!</p>
             <br />
@@ -55,7 +54,6 @@ class Event extends Component {
                </p>
             <p><b>To register to attend our upcoming workshop (Auhust 14th),
                click <a className="dark-a" href='https://docs.google.com/forms/d/e/1FAIpQLSckgMY8_ZqKYhP6JTYNO8aoD87iuwvbqzsVrG9GaS25EHFxEg/viewform'>here</a></b></p>
-            <p>And checkout our <a className="dark-a" href="https://www.facebook.com/events/236350171151111/"> facebook event page!</a></p>
             <br />
             <p> Can't make the event? Don't worry! We'll be recording it, and we'll have more events in the future!</p>
             <br />
