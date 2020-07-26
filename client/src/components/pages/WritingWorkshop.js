@@ -24,7 +24,7 @@ class WritingWorkshop extends Component {
             <p className="text-left">Writing Workshops attendees will focus on components of writing short stories and include writing dialogue, character, setting, and speculative fiction (writing about race, class, and other social issues). The workshop will last for 4 weeks from July 6th-August 1st, 2020. The weekly structure of the workshop will include a writing prompt for each week, anonymous submission and feedback of each other’s work based on this prompt, as well as a short lecture on the mechanics of creative writing. The mentors will organize weekly office hours, where attendees can receive feedback about their writing related to the writing prompt or other writing.
             <br />
             <br />
-            <p><a className="dark-a" href="https://forms.gle/qwMkCRXREzv9X3hz6" target="_blank"> Click here for this weeks assignment</a></p>
+            <p><a className="dark-a" href="https://drive.google.com/file/d/1fFfVi3xYyskcmyyeGiI2PtFKVDI8ihQL/view" target="_blank"> Click here for this weeks assignment</a></p>
             <br />
             <p>Please submit your writing via this <a className="dark-a" href="https://forms.gle/qwMkCRXREzv9X3hz6" target="_blank"> google form</a> and join us <a className="dark-a" href="https://mit.zoom.us/j/91072905067?pwd=cTF4dEh4bE01a1I2T1cyK0ZkazNrdz09" target="_blank"> here</a> on Wednesday, for our first session!</p>
             <br />
