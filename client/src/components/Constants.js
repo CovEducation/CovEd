@@ -211,8 +211,8 @@ export const theme = {
   ]
 };
 
-export const tags = ["Early Childhood Learning", "Preschool", "Elementary School", "Middle School", "High School"]
-  .map(k => { return { label: k, value: k } });
+export const tags = ["Early Childhood Learning", "Preschool", "Elementary School", "Middle School","High School", "FE-Unite"]
+                    .map(k => {return {label: k, value: k}});
 
 export const about_us_content =
   "With many schools across the U.S. closing their doors, students and families, who have been affected by the pandemic, struggle to continue their education from home. Our initiative, CovEducation, aims to promote greater access to web-based curricula and academic support for K-12 students, facilitating the transition to virtual learning for students with limited access to resources.";
