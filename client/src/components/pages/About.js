@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Contact from "./Contact.js";
 import WhoWeAre from "./WhoWeAre.js";
-
+import Partners from "./Partners.js"
 
 class About extends Component {
   constructor(props) {
@@ -12,8 +12,9 @@ class About extends Component {
   render() {
     return (
       <div>
-        <WhoWeAre />
         <Contact />
+        <Partners />
+        <WhoWeAre />
       </div>
     );
   }
