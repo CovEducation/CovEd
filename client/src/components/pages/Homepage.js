@@ -136,7 +136,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Register<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure to input the correct parent email because you will recieve an email-verification link! </p>
+              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure to input the correct parent email because you will receive an email-verification link! </p>
               <br />
               <br />
               </Col>
@@ -171,7 +171,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Register<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure you input your correct institutional email because you will recieve an email-verification link! </p>
+              <p fontWeight="light" className="feature"> Register for an account <a className="dark-a" href="/register">here</a>! Make sure you input your correct institutional email because you will receive an email-verification link! </p>
               <br />
               <br />
               </Col>
@@ -191,7 +191,7 @@ class Homepage extends Component {
               <br />
               <Heading fontSize={[6,8]} fontWeight="normish">Contact Mentee<br /></Heading>
               <br />
-              <p fontWeight="light" className="feature"> When a parent requests you as a mentor, you will recieve an email with further instructions and contact information. Be sure to contact them as soon as possible to introduce yourself!</p>
+              <p fontWeight="light" className="feature"> When a parent requests you as a mentor, you will receive an email with further instructions and contact information. Be sure to contact them as soon as possible to introduce yourself!</p>
               </Col>
               </Row>
           </Flex>
