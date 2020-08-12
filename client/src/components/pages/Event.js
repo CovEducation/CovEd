@@ -25,7 +25,7 @@ class Event extends Component {
         <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1,2,2,2]} mt={7} mb={7}>
           <Row className="justify-content-center">
           <Col sm={{span: 10}}  xs={{span:10}} className="text-center">
-            <h4><span className="webinar-name">Grit: The Power of PAssion and Perseverance<br /><hr className="hr-primary"/></span></h4>
+            <h4><span className="webinar-name">Grit: The Power of Passion and Perseverance<br /><hr className="hr-primary"/></span></h4>
             <p className="text-left">Join us on August 5th with Angela Duckworth, the cofounder and CEO of Character Lab, to learn about grit. 
                <br />
                <br />

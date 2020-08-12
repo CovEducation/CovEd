@@ -25,24 +25,6 @@ class ScienceWorkshop extends Component {
             <p>
             Please have a parent or guardian with you when performing these experiments!
             </p>
-            <p>You can join us <a className="dark-a" href="https://mit.zoom.us/j/91515065868?pwd=b2JhMVFsSHNTNnJJOTBqYnRrZUhXQT09" target="_blank"> here</a> us on Mondays at 3:30 PM EST for a review of the lava lamp experiment led by two of our CovEd mentors! This is an oppurtunity for you to learn more about the science that makes this happen as well as ask your own questions. Be sure to check the calendar above for more information!</p>
-            <br />
-            <h5 className="text-left">Week 4 Experiment: Model Lungs!</h5>
-            <br />
-            <p className="text-left">Materials for the Oobleck Experiment
-            <ul>
-              <li> Empty soda bottle </li>
-              <li> 2 Balloons </li>
-              <li> Tape/ Rubber band (optional)</li>
-            </ul></p>
-            <br />
-            <h6 className="text-left">You can use <a className="dark-a" href="https://drive.google.com/file/d/1_JABx4O28wUEKVB6CqTyyWDtrP-n5e05/view" target="_blank"> this worksheet</a> to follow along with the video below on your own! </h6>
-            <br />
-            <iframe src="https://drive.google.com/file/d/1giAfTxzdqG0_Mz2qQrNLr5vMyYXXr2wm/preview" width="640" height="480"></iframe>
-            <br />
-            <br />
-            <p className="text-left">We will be posting the video and worksheet for experiment 4 on Monday, July 27. If you've got all of these materials you should be all set to join us next week for the capillary action experiment!</p>
-            <br />
             <br />
             <h5>Week 1 Experiment: DIY Lava Lamp</h5>
             <br />
@@ -65,6 +47,15 @@ class ScienceWorkshop extends Component {
             <ul>
               <li> <a className="dark-a" href="https://drive.google.com/file/d/1Oap2cEvCErxKV7iV9XvK47SuG_dVXsZj/view" target="_blank"> Worksheet</a> </li>
               <li>  <a className="dark-a" href="https://drive.google.com/file/d/1xX8L3HWC1jhkGsjsy9ULsZQr6LVJKsOm/view" target="_blank"> Video</a> </li>
+              <li><a className="dark-a" href="https://drive.google.com/file/d/1DLPSg8zhf5FxMbNf1C1LCNQZNZurYwrY/view" target="_blank"> Review</a></li>
+            </ul>
+            <br />
+            <h5>Week 4 Experiment: Model Lungs</h5>
+            <br />
+            <ul>
+              <li> <a className="dark-a" href="https://drive.google.com/file/d/1_JABx4O28wUEKVB6CqTyyWDtrP-n5e05/view" target="_blank"> Worksheet</a> </li>
+              <li>  <a className="dark-a" href="https://drive.google.com/file/d/1giAfTxzdqG0_Mz2qQrNLr5vMyYXXr2wm/view" target="_blank"> Video</a> </li>
+              <li><a className="dark-a" href="https://drive.google.com/file/d/1vS5SlfKHX8Jl5ySa-LMHjzRNbyagGxt_/view" target="_blank"> Review</a></li>
             </ul>
             </p>
             <br />
