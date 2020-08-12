@@ -32,7 +32,6 @@ class Event extends Component {
                </p>
             <p><b>To register to attend our upcoming workshop (August 5th),
                click <a className="dark-a" href='https://docs.google.com/forms/d/e/1FAIpQLSfg12XntmYX10sJ8rPZtafNGrnlT8bxWwQ10JlGTlmu0sVXDg/viewform'>here</a></b></p>
-            <p>And checkout our <a className="dark-a" href="https://www.facebook.com/events/236350171151111/"> facebook event page!</a></p>
             <br />
             <p> Can't make the event? Don't worry! We'll be recording it, and we'll have more events in the future!</p>
             <br />
@@ -55,7 +54,6 @@ class Event extends Component {
                </p>
             <p><b>To register to attend our upcoming workshop (Auhust 14th),
                click <a className="dark-a" href='https://docs.google.com/forms/d/e/1FAIpQLSckgMY8_ZqKYhP6JTYNO8aoD87iuwvbqzsVrG9GaS25EHFxEg/viewform'>here</a></b></p>
-            <p>And checkout our <a className="dark-a" href="https://www.facebook.com/events/236350171151111/"> facebook event page!</a></p>
             <br />
             <p> Can't make the event? Don't worry! We'll be recording it, and we'll have more events in the future!</p>
             <br />
