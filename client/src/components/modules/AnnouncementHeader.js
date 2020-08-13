@@ -20,6 +20,6 @@ import { announcement, theme } from "../Constants.js";
             { announcement.description }
             - <a href={announcement.link} style={{color: theme.colors.yellow}}>{"here!"}</a>
          </div>
-     )
+        )
 
  }
