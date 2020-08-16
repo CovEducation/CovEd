@@ -25,6 +25,9 @@ const firebaseMiddleware = require("./auth");
 
 const rateLimit = require("express-rate-limit")
 
+// Returning all mentors on every query makes it very slow.
+const MENTOR_QUERY_LIMIT = 250; 
+
 const emailRequestLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
   max: 4,
@@ -134,6 +137,7 @@ router.get("/getMentors", firebaseMiddleware, (req, res) => {
   }
 
   Mentor.find(query)
+    .limit(MENTOR_QUERY_LIMIT)
     .sort({last_request: 1})
     .then((mentors) => {
       mentors = mentors.map((mentor) => {
