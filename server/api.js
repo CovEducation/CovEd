@@ -12,6 +12,7 @@ const express = require("express");
 // import models so we can interact with the database
 const Mentor = require("./models/mentor.js");
 const Mentee = require("./models/mentee.js");
+const College = require("./models/collegecount");
 
 const {SUBJECTS, TAGS} = require("./models/constants");
 
@@ -40,6 +41,26 @@ const accountRequestLimiter = rateLimit({
 
 const firebase = require("firebase-admin");
 
+const extractCollege = (email) => {
+  return email.split("@").pop();
+};
+
+const initializeCollegeCollection = () => {
+  Mentor.find({}).then((mentors) => {
+    let colleges = new Set()
+    mentors.map((mentor) => colleges.add(extractCollege(mentor.email)));
+    colleges.forEach(async (collegeName) => {
+      const newCollege = new College({name: collegeName});
+      await newCollege.save();
+    });
+  });
+}
+
+College.countDocuments({}, (err, count) => {
+  if (count === 0) {
+    initializeCollegeCollection();
+  }
+});
 
 /*
   GET Endpoints
@@ -52,32 +73,25 @@ const firebase = require("firebase-admin");
  *  - College count
  */
 router.get("/stats", (req, res) => {
-
-  const extractCollege = (email) => {
-    return email.split("@").pop();
-  };
   let resp = {
     mentor_count : 0,
     mentee_count : 0,
     college_count : 0,
   }
 
-  Mentor.find({})
-  .then((mentors) => {
-    resp.mentor_count = mentors.length
-    // Assumption: People with different email domains are from different colleges.
-    let colleges = new Set()
-    mentors.map((mentor) => colleges.add(extractCollege(mentor.email)));
-    resp.college_count = colleges.size;
-
-    Mentee.find({})
-    .then((mentees) => {
-      resp.mentee_count = mentees.length
-      console.log(resp)
-      res.send(resp);
+  Mentee.countDocuments({}, (err, count) => {
+    resp.mentee_count = count;
+  }).then(async () => {
+    await Mentor.countDocuments({}, (err, count) => {
+      resp.mentor_count = count;
     })
-
-  });
+  }).then(async () => {
+    await College.countDocuments({}, (err, count) => {
+      resp.college_count = count;
+    })
+  }).then(() => {
+    res.send(resp);
+  })
 });
 
 
@@ -190,6 +204,14 @@ router.post("/addMentor", accountRequestLimiter, firebaseMiddleware, (req, res) 
     tags: req.body.tags ? req.body.tags : [],
   });
 
+  // Add to the college collection if not there yet.
+  const collegeName = extractCollege(req.body.email);
+  College.find({name: collegeName}).then(async (colleges) => {
+    if (colleges.length === 0) {
+      const newCollege = new College({name: collegeName});
+      await newCollege.save();
+    }
+  });
   newMentor.save().then((newMentor) => res.send(newMentor));
 });
 
