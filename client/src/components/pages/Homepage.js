@@ -21,12 +21,16 @@ import { Flex, Hero, Section } from "react-landing-page";
 import { theme, about_us_content, problem_content, solution_content } from "../Constants.js";
 import AnimatedNumber from 'react-animated-number';
 
+// Stats we had before launching the site.
+const PREVIOUS_MENTOR_COUNT = 2150;
+const PREVIOUS_MENTEE_COUNT = 1407;
+
 class Homepage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mentor_count : 0,
-      mentee_count : 0,
+      mentor_count : PREVIOUS_MENTOR_COUNT,
+      mentee_count : PREVIOUS_MENTEE_COUNT,
       college_count : 0,
     }
   }
@@ -35,8 +39,8 @@ class Homepage extends Component {
     let stats = await get("/api/stats");
 
     this.setState({
-      mentor_count: stats.mentor_count,
-      mentee_count: stats.mentee_count,
+      mentor_count: stats.mentor_count + PREVIOUS_MENTOR_COUNT,
+      mentee_count: stats.mentee_count + PREVIOUS_MENTEE_COUNT,
       college_count: stats.college_count,
     })
   };
@@ -47,11 +51,11 @@ class Homepage extends Component {
     let stats = [
       {
         name: "Mentors",
-        value: this.state.mentor_count + 2150,
+        value: this.state.mentor_count,
       },
       {
         name: "Mentees",
-        value: this.state.mentee_count + 1407,
+        value: this.state.mentee_count,
       },
       {
         name: "Colleges",
