@@ -375,7 +375,7 @@ export const FOOT = [
 ]
 
 export const announcement = {
-  description: "Sign up for our upcoming workshops on July 2nd and July 10th",
+  description: "",
   link: "/event",
 }
 

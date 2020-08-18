@@ -53,6 +53,13 @@ class SpeakerSeries extends Component {
             <br />
             <p>Check out recordings of our previous Speaker Series events! You must be signed in to your CovEd account to view these recordings.</p>
             <br />
+            <h4><a className="dark-a" href="https://drive.google.com/file/d/1Uboyf8t-cvdbazzDs0sbY_KNVxawvGNC/view"><span className="webinar-name">Grit: The Power of Passion and Perseverance</span></a></h4><p><b>Webinar Date:</b> August 5th, 2020</p><hr className="hr-primary"/>
+            <p className="text-left">Angela Duckworth is co-founder and CEO of Character Lab, a nonprofit that uses psychological science to help children thrive. She is also the Christopher H. Browne Distinguished Professor of Psychology at the University of Pennsylvania, faculty co-director of the Penn-Wharton Behavior Change for Good Initiative, and faculty co-director of Wharton People Analytics. A 2013 MacArthur Fellow, Angela has advised the White House, the World Bank, NBA and NFL teams, and Fortune 500 CEOs. Prior to her career in research, Angela founded a summer school for low-income children that was profiled as a Harvard Kennedy School case study and, in 2018, celebrated its 25th anniversary. She has also been a McKinsey management consultant and a math and science teacher at public schools in New York City, San Francisco, and Philadelphia. Angela completed her undergraduate degree in Advanced Studies Neurobiology at Harvard, graduating magna cum laude. With the support of a Marshall Scholarship, she completed an MSc with Distinction in Neuroscience from Oxford University. She completed her PhD in Psychology as a National Science Foundation Graduate Fellow at the University of Pennsylvania. Angela has received numerous awards for her contributions to K-12 education, including a Beyond Z Award from the KIPP Foundation. Angela’s TED talk is among the most-viewed of all time. Her book Grit: The Power of Passion and Perseverance is a #1 New York Times best seller</p>
+            <br />
+            <br />
+            <h4><a className="dark-a" href="https://www.dropbox.com/s/ucu1wtgf5za5x5r/zoom_0.mp4?dl=0"><span className="webinar-name">The Science of Happiness and Mental Health</span></a></h4><p><b>Webinar Date:</b> Friday, July 10th, 2020</p><hr className="hr-primary"/>
+            <p className="text-left">Dr. Laurie Santos is Professor of Psychology and Head of Silliman College at Yale University. Dr. Santos is an expert on human cognition and the cognitive biases that impede better choices. Her new course, Psychology and the Good Life, teaches students how the science of psychology can provide important hints about how to make wiser choices and live a life that’s happier and more fulfilling. Her course recently became Yale’s most popular course in over 300 years, with almost one of our four students at Yale enrolled.</p>
+            <br />
             <h4><a className="dark-a" href="https://drive.google.com/file/d/1dgU-tLuJB08JAdS6m_6Uj19X5xkuks7w/view"><span className="webinar-name">How to Maximize Your Virtual Summer</span></a></h4><p><b>Webinar Date:</b> Thursday, July 2nd, 2020</p><hr className="hr-primary"/>
             <p className="text-left">Are you bored and stuck inside this summer? Our mentors have a ton of cool ideas for you through the top 10 tips given out in the panel.
             <br />
@@ -76,14 +83,6 @@ class SpeakerSeries extends Component {
 
             <br />
             <p className="text-left">The CovEd workshop series is a four week program composed of weekly science experiments, coding instruction, and creative writing discussions all led by amazing CovEd mentors. You can register for one workshop or all three at any time during July to improve your skills this summer! Fill out the form below to register for one or more of the workshops!</p>
-            <br />
-            <h5 className="text-center"><a className="dark-a" href="https://forms.gle/imLycth6HbTEcmV9A" target="_blank">Workshop Registration Form</a></h5>
-            <br />
-            <h5 className="text-center">Click<a className="dark-a" href="https://forms.gle/imLycth6HbTEcmV9A" target="_blank"> here </a>for information on week 1 of the series!</h5>
-            <br />
-            <p><b>Please join our Remind so the workshop mentors can communicate with you better about the workshops moving forward. To join, please text @coveds to 81010!</b></p>
-            <br />
-            <p>Remind is a secure communication platform that does not share any of your personal information with us. You can download the app on your phone. During the 4-week span of the workshop, we will communicate with you through the platform.</p>
             <br />
             <br />
             <ExpansionPanel>

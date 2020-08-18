@@ -57,7 +57,7 @@ async function emailMentor(mentorEmail, mentorFirst, studentEmail, message) {
 async function emailGuardian(guardianName, guardianEmail, mentorFirst) {
     const replacements = {
         guardianName: guardianName,
-        mentorfirst: mentorFirst,
+        mentorFirst: mentorFirst,
     };
     const htmlToSend = verificationTemplate(replacements);
     const mailOptions = {
