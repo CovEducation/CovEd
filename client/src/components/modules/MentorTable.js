@@ -66,7 +66,7 @@ export default function MentorTable({mentors}) {
                     <TableCell>Name</TableCell>
                     <TableCell align="left">Major</TableCell>
                     <TableCell align="left">Subjects</TableCell>
-                    <TableCell align="left">Tags</TableCell>
+                    <TableCell align="left">Willing to Mentor</TableCell>
                     <TableCell align="left">Timezone</TableCell>
                 </TableRow>
             </TableHead>
@@ -76,20 +76,20 @@ export default function MentorTable({mentors}) {
 
                     return (
                     <>
-                    <TableRow
-                    hover
-                    onClick={(event) => handleClick(event, mentor.name + i)}
-                    key={mentor.name + mentor.major}>
-                        <TableCell component="th" scope="row">
-                            {mentor.name}
-                        </TableCell>
-                        <TableCell align="left">{mentor.major}</TableCell>
-                        <TableCell align="left">{formatList(mentor.subjects)}</TableCell>
-                        <TableCell align="left">{formatList(mentor.tags)}</TableCell>
-                        <TableCell align="left">{mentor.timezone}</TableCell>
+                        <TableRow
+                        hover
+                        onClick={(event) => handleClick(event, mentor.name + i)}
+                        key={mentor.name + mentor.major}>
+                            <TableCell component="th" scope="row">
+                                {mentor.name}
+                            </TableCell>
+                            <TableCell align="left">{mentor.major}</TableCell>
+                            <TableCell align="left">{formatList(mentor.subjects)}</TableCell>
+                            <TableCell align="left">{formatList(mentor.tags)}</TableCell>
+                            <TableCell align="left">{mentor.timezone}</TableCell>
 
-                    </TableRow>
-                    {isItemSelected && (<MentorDisplay mentor={mentor}/>)}
+                        </TableRow>
+                        {isItemSelected && (<MentorDisplay mentor={mentor}/>)}
                     </>
                     )
                 })}

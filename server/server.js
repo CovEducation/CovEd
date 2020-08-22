@@ -82,7 +82,7 @@ if (process.env.NODE_ENV === 'production') {
 // set up a session, which will persist login data across requests
 app.use(
   session({
-    secret: "session-secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })
