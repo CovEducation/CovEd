@@ -43,7 +43,13 @@ const ProfileEditSchema = Yup.object().shape({
   }),
   email: Yup.string()
     .email()
-    .required("Please input a valid email."),
+    .required("Please input a valid email.")
+    .when("role", {
+      is: (role) => role === "mentor",
+      then: Yup.string()
+        .email()
+        .required("Please input an email."),
+    }),
 
   student_name: Yup.string().when("role", {
     is: (role) => role !== "mentor",
