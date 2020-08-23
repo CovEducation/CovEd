@@ -18,7 +18,7 @@ const { exit } = require('process');
 
 
 const backupMongoToJSON = () => {
-    Mentor.countDocuments((err, count) => {
+   Mentor.countDocuments((err, count) => {
         if (err) throw err;
 
         readline.question(`Backup ${count} mentors? Y/N \n`, ans => {
@@ -29,17 +29,20 @@ const backupMongoToJSON = () => {
   
           readline.question(`Output filename? Do not include ".json" at the end.\n`, filename => {
               console.log('Retrieving mentors...');
-              Mentor.find({}).then((mentors) => {
+              Mentor.find({}).then( async (mentors) => {
                   console.log(`Writing mentors to ${filename + '.json'}...`);
-                  fs.writeFileSync(filename + '.json', JSON.stringify(mentors), (err) => {
+                  return await fs.writeFileSync(filename + '.json', JSON.stringify(mentors), (err) => {
                       if (err) throw err;
                       console.log(`Data written to ${filename + '.json'}`);
                   });
+              }).then(() => {
+                  console.log('Data written.');
+                  exit();
               })
-          })
+          });
         })
     })
-  }
+}
   
 
   
