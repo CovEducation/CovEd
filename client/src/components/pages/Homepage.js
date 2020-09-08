@@ -31,7 +31,7 @@ class Homepage extends Component {
     this.state = {
       mentor_count : PREVIOUS_MENTOR_COUNT,
       mentee_count : PREVIOUS_MENTEE_COUNT,
-      college_count : 0,
+      college_count : 410,
     }
   }
 
@@ -41,7 +41,7 @@ class Homepage extends Component {
     this.setState({
       mentor_count: stats.mentor_count + PREVIOUS_MENTOR_COUNT,
       mentee_count: stats.mentee_count + PREVIOUS_MENTEE_COUNT,
-      college_count: stats.college_count,
+      college_count: 410,
     })
   };
 
