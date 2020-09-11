@@ -85,11 +85,11 @@ router.get("/stats", (req, res) => {
   Mentee.countDocuments({}, (err, count) => {
     resp.mentee_count = count;
   }).then(async () => {
-    await Mentor.countDocuments({}, (err, count) => {
+    return await Mentor.countDocuments({}, (err, count) => {
       resp.mentor_count = count;
     })
   }).then(async () => {
-    await College.countDocuments({}, (err, count) => {
+    return await College.countDocuments({}, (err, count) => {
       resp.college_count = count;
     })
   }).then(() => {
