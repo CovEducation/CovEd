@@ -24,6 +24,7 @@ import AnimatedNumber from 'react-animated-number';
 // Stats we had before launching the site.
 const PREVIOUS_MENTOR_COUNT = 2150;
 const PREVIOUS_MENTEE_COUNT = 1407;
+const COLLEGE_COUNT_SNAPSHOT = 410;
 
 class Homepage extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class Homepage extends Component {
     this.state = {
       mentor_count : PREVIOUS_MENTOR_COUNT,
       mentee_count : PREVIOUS_MENTEE_COUNT,
-      college_count : 410,
+      college_count : COLLEGE_COUNT_SNAPSHOT,
     }
   }
 
@@ -41,13 +42,13 @@ class Homepage extends Component {
     this.setState({
       mentor_count: stats.mentor_count + PREVIOUS_MENTOR_COUNT,
       mentee_count: stats.mentee_count + PREVIOUS_MENTEE_COUNT,
-      college_count: 410,
+      college_count: stats.college_count ? stats.college_count : COLLEGE_COUNT_SNAPSHOT,
     })
   };
 
   getMemberCount = () => {
 
-    const animation_duration = 2000; // 2 seconds.
+    const animation_duration = 4000; // 4 seconds.
     let stats = [
       {
         name: "Mentors",
