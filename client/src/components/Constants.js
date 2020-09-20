@@ -369,7 +369,7 @@ export const FOOT = [
 ]
 
 export const announcement = {
-  description: "",
+  description: "Sign up for our College Application Fair on September 26th and 27th",
   link: "/event",
 }
 
