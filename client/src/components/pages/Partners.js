@@ -10,6 +10,7 @@ import {
 import {theme} from "../Constants.js";
 import fe_unite from '../../public/img/feunite.png';
 import ja from '../../public/img/ja-north-ca.png';
+import inspire from '../../public/img/InspireED-logo.png';
 
 class Partners extends Component {
   constructor(props) {
@@ -33,6 +34,13 @@ class Partners extends Component {
             <br />
             <div className="container">
               <p>Junior Achievement helps prepare today’s students for a bright future. Junior Achievement of Northern California is proud to partner with CovEd to share our service broadly with their students.</p>
+            </div>
+            <br />
+
+            <img src={inspire} height="150" alt="inspire-ed"/>
+            <br />
+            <div className="container">
+              <p>Inspired Education works with both students and school representatives alike to demystify the college admissions process. We are proud to have helped students gain admission to hundreds of private and public universities across the country in both English and Spanish.</p>
             </div>
         </Section>
         </Provider>
