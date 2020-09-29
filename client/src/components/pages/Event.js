@@ -25,43 +25,24 @@ class Event extends Component {
         <Section fontSize={[2]} bg="white" heading="" subhead="" p={[1,2,2,2]} mt={7} mb={7}>
           <Row className="justify-content-center">
           <Col sm={{span: 10}}  xs={{span:10}} className="text-center">
-            <h4><span className="webinar-name">Grit: The Power of Passion and Perseverance<br /><hr className="hr-primary"/></span></h4>
-            <p className="text-left">Join us on August 5th with Angela Duckworth, the cofounder and CEO of Character Lab, to learn about grit. 
+            <h4><span className="webinar-name">College Application Fair<br /><hr className="hr-primary"/></span></h4>
+            <p className="text-left">Join us on the 26th and 27th of September to learn about the college application process. We'll go over everything from different types of applications to applying for financial aid!
                <br />
                <br />
                </p>
             <p><b>To register to attend our upcoming workshop (August 5th),
-               click <a className="dark-a" href='https://docs.google.com/forms/d/e/1FAIpQLSfg12XntmYX10sJ8rPZtafNGrnlT8bxWwQ10JlGTlmu0sVXDg/viewform'>here</a></b></p>
+               click <a className="dark-a" href='https://docs.google.com/forms/d/e/1FAIpQLSczKKnget3fMcl8JCgMqowBwzbtX_Vzu8IeMOuR7p67MQTp1Q/viewform'>here</a></b></p>
             <br />
             <p> Can't make the event? Don't worry! We'll be recording it, and we'll have more events in the future!</p>
             <br />
             </Col>
             </Row>
             <Row className="justify-content-center">
-            <iframe src="https://drive.google.com/file/d/1H79e991-5bCFE4npbmytH-6bXa9zG3gv/preview" width="640" height="480"></iframe>
+            <iframe src="https://drive.google.com/file/d/1JmTgE93vW16TfZ-nal1ma6-9Khyqb7ea/preview" width="640" height="480"></iframe>
             
           </Row>
           <br />
           <br />
-          <br />
-          <br />
-          <Row className="justify-content-center">
-          <Col sm={{span: 10}}  xs={{span:10}} className="text-center">
-            <h4><span className="webinar-name">COVID-19: Biology and Global Ramifications<br /><hr className="hr-primary"/></span></h4>
-            <p className="text-left"> Join us for our Science of Happiness and Mental Health workshop with Dr. Robert Lue to learn more about the biological and global ramifications of the COVID-19 pandemic. 
-               <br />
-               <br />
-               </p>
-            <p><b>To register to attend our upcoming workshop (Auhust 14th),
-               click <a className="dark-a" href='https://docs.google.com/forms/d/e/1FAIpQLSckgMY8_ZqKYhP6JTYNO8aoD87iuwvbqzsVrG9GaS25EHFxEg/viewform'>here</a></b></p>
-            <br />
-            <p> Can't make the event? Don't worry! We'll be recording it, and we'll have more events in the future!</p>
-            <br />
-            </Col>
-            </Row>
-            <Row className="justify-content-center">
-            <iframe src="https://drive.google.com/file/d/1wZgdzy9gPubIkueV2jGFEHiLq7ydkl63/preview" width="640" height="480"></iframe> 
-          </Row>
         </Section>
         </Provider>
         </>)
