@@ -375,7 +375,7 @@ export const FOOT = [
 ]
 
 export const announcement = {
-  description: "",
+  description: "See our past events!",
   link: "/event",
 }
 
