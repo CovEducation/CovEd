@@ -375,8 +375,8 @@ export const FOOT = [
 ]
 
 export const announcement = {
-  description: "See our past events!",
-  link: "/event",
+  description: "Interested in joining our team? ",
+  link: "https://docs.google.com/document/d/1OU5w6JODjBE0AiSX3OYbGimzm8eR65A2w_BcdPKUM5Y/edit?usp=sharing",
 }
 
 
