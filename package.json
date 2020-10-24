@@ -6,7 +6,7 @@
   "scripts": {
     "hotloader": "webpack-dev-server --config ./webpack.config.js --host 0.0.0.0 --mode development --port 5000",
     "start": "nodemon --ignore client/",
-    "build": "webpack",
+    "build": "npx webpack",
     "postinstall": "node postinstall.js",
     "heroku-postbuild": "node postinstall.js"
   },
