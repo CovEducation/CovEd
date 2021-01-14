@@ -211,7 +211,7 @@ export const theme = {
   ]
 };
 
-export const tags = ["Early Childhood Learning", "Preschool", "Elementary School", "Middle School","High School", "Fe-Unite"]
+export const tags = ["Early Childhood Learning", "Preschool", "Elementary School", "Middle School","High School", "Fe-Unite", "Mobile Mentoring Program (MMP)", "CovEd x Chicago Heights"]
                     .map(k => {return {label: k, value: k}});
 
 export const about_us_content =
