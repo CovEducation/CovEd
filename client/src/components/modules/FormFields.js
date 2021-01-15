@@ -158,7 +158,7 @@ export const getSubjectField = (formik) => {
 export const getTagField = (formik) => {
   return (
     <Form.Group as={Col} controlId="validationTag">
-      <Form.Label>{formik.values.role === "student" ? <>School level tags (Optional)</> : <>School levels you are comfortable teaching (Optional)</>}</Form.Label>
+      <Form.Label>{formik.values.role === "student" ? <>School level tags (Optional)</> : <>School levels you are comfortable and Special Programs you are part of. (Optional)</>}</Form.Label>
       <Select
         value={formik.values.tags}
         className={!!formik.errors.tags && formik.touched.tags ? "is-invalid" : ""}
