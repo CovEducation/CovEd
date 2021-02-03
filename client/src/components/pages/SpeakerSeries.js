@@ -53,6 +53,29 @@ class SpeakerSeries extends Component {
             <br />
             <p>Check out recordings of our previous Speaker Series events! You must be signed in to your CovEd account to view these recordings.</p>
             <br />
+            <h4><a className="dark-a" href="https://drive.google.com/file/d/1shs5REyE_AAJZDUcS09zkqelNDt87r3j/view
+            "><span className="webinar-name">Demsytifying Myths about Med School</span></a></h4><hr className="hr-primary"/>
+            <p className="text-left">This 60-minute panel will feature med students discussing their personal experiences applying to medical school and their takeaways.</p>
+            <h4><a className="dark-a" href="https://drive.google.com/file/d/18UNBb6sPvlG4R6ydh6up6OBZGQaAaPco/view?usp=sharing
+            "><span className="webinar-name">Life at UCLA</span></a></h4><hr className="hr-primary"/>
+            <p className="text-left">Thank you to everyone who registered and attended CovEd West Coast’s  Life at UCLA event! Our three panelists, Jason Wu (“Waddle” on Youtube), Annie Liu and Brett Blauner shared their insights and experiences about topics such as Student Life, Extracurriculars and Academics, and last-minute UC Application advice. Please check out our panelists’ socials, and please follow CovEd West Coast on Instagram for future events.</p>
+            <br />
+            <h4><a className="dark-a" href="https://mit.zoom.us/rec/share/HbGRG2-k4vg5V62kMxGWUONeEIO71EBUQd8pFzrlGJSF92LKvXIx08gAFi1dQNX3.wsH33pJK_g_0dOhI
+            "><span className="webinar-name">College Essay Workshop</span></a></h4><hr className="hr-primary"/>
+            <p className="text-left">Learn about what should and shouldn't be in your college application essays. Mentors will discuss how to approach writing essays, like the personal statement and other common essay topics. This event is part of the college application fair.</p>
+            <br />
+            <h4><a className="dark-a" href="https://mit.zoom.us/rec/share/B6SR_VI_YjqrAYRIZuSiglHhld2aYsczYHixNtpgv0--7NozI9UztondstqgVtBD.bYcYbgVgANZwQa0J
+            "><span className="webinar-name">Personal Experience Panel</span></a></h4><hr className="hr-primary"/>
+            <p className="text-left">This mentor led panel will feature mentors discussing their personal experiences applying to college and their biggest takeaways. This event is part of the college application fair.</p>
+            <br />
+            <h4><a className="dark-a" href=" https://www.dropbox.com/s/4hnm03jujib9usq/Advice%20from%20a%20College%20Advisor%20.mp4?dl=0
+            "><span className="webinar-name">Advice from a College Advisor</span></a></h4><hr className="hr-primary"/>
+            <p className="text-left">This event is part of our college application fair, that aims to provide oppurtunities for students to learn about applying to college. Get advice from a college counselor about the college aplication process, and learn how to make an application plan that works for you.</p>
+            <br />
+            <h4><a className="dark-a" href="https://mit.zoom.us/rec/share/zyAqm8HKlrRZ21Qtm4882j1jHhw_baXaaH9NK3HNS9Yafs5vwaHCHwA33GyNvYVf.sszoteaBxdO3iJN9
+            "><span className="webinar-name">How to Complete College Applications</span></a></h4><hr className="hr-primary"/>
+            <p className="text-left">A panel of CovEd mentors will discuss their college application experience, what they looked for when selecting a school, and helpful tips for the application process.</p>
+            <br />
             <h4><a className="dark-a" href="https://www.dropbox.com/s/i1z2mwyo3v7u02z/HowToFundCollegePanel.mp4?dl=0
             "><span className="webinar-name">How To Fund College</span></a></h4><hr className="hr-primary"/>
             <p className="text-left">A panel of CovEd mentors will discuss the ways they were able to pay for college and answer your questions about the funding process.</p>
