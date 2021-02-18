@@ -121,6 +121,11 @@ const coordinators = [
     major: "Molecular and Cellular Biology",
   },
   {
+    name: "Catherine Eng",
+    school: "UCSD, 2020",
+    major: "Cognitive and Behavioral Neuroscience",
+  },
+  {
     name: "Jin Wong",
     school: "Southview HS, 2022",
     major: "Computer Science",
