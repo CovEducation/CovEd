@@ -36,7 +36,7 @@
     "firebase-admin": "^9.3.0",
     "formik": "^2.1.5",
     "googleapis": "^61.0.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "jquery": "^3.5.1",
     "mongoose": "^5.9.25",
     "node-cron": "^2.0.3",
