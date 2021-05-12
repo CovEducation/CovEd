@@ -40,7 +40,7 @@
     "jquery": "^3.5.1",
     "mongoose": "^5.9.25",
     "node-cron": "^2.0.3",
-    "nodemailer": "^6.4.10",
+    "nodemailer": "^6.4.16",
     "nodemailer-mandrill-transport": "^1.2.0",
     "nodemon": "^1.19.4",
     "pace": "0.0.4",
