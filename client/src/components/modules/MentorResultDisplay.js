@@ -10,6 +10,7 @@ import "./MentorResultDisplay.css";
 import { Col, Row } from "react-bootstrap";
 
 import {CircleButton} from "./UtilityComponents";
+import { updateUser } from "../../api.js";
 
 class MentorResultDisplay extends Component {
   static contextType = UserContext;
@@ -39,7 +40,7 @@ class MentorResultDisplay extends Component {
     let args = {
       personal_message: this.state.msg,
       mentor_uid: this.props.mentor.firebase_uid,
-      student: this.state.user ? this.state.user : { email: "test@email.com" },
+      student: this.state.user,
       token: this.state.token,
     };
     let guardianInfo = {
@@ -50,11 +51,12 @@ class MentorResultDisplay extends Component {
     };
 
     return post("/api/pingMentor", args)
-      .then((resp) => {
+      .then(async (resp) => {
         post("/api/pingGuardian", guardianInfo);
+        await this.changeMentorState(this.props.mentor);
       })
       .then((resp) => {
-        alert("Sent message! You should recieve a confirmation email with the subject CovEd Mentor Request. Expect a reply within the next couple days.  \n\nWhile you are waiting for a mentor, feel free to use our online forum, Piazza, in which you can ask for help 24/7. \n\nInstructions can be found both on our Resources page and here: tinyurl.com/menteeguideline. A video tutorial can be found here: tinyurl.com/piazzavid. Our piazza page is also available for use after you are matched with a mentor!");
+        alert("Sent message! You should receive a confirmation email with the subject CovEd Mentor Request. Expect a reply within the next couple days.  \n\nWhile you are waiting for a mentor, feel free to use our online forum, Piazza, in which you can ask for help 24/7. \n\nInstructions can be found both on our Resources page and here: tinyurl.com/menteeguideline. A video tutorial can be found here: tinyurl.com/piazzavid. Our piazza page is also available for use after you are matched with a mentor!");
         this.setState({
           msg: "",
         });
@@ -68,7 +70,12 @@ class MentorResultDisplay extends Component {
     this.setState({ msg: event.target.value });
   };
 
-
+  changeMentorState = async (mentor) => {
+    // Marks mentors as unavailable after they have been requested.
+    let updatedMentor = mentor;
+    updatedMentor.public = false;
+    return await updateUser(user, this.context.user.token);
+  }
 
   render() {
     const bull = <span>•</span>;
