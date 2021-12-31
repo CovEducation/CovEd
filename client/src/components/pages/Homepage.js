@@ -22,9 +22,9 @@ import { theme, about_us_content, problem_content, solution_content } from "../C
 import AnimatedNumber from 'react-animated-number';
 
 // Stats we had before launching the site.
-const PREVIOUS_MENTOR_COUNT = 2150;
-const PREVIOUS_MENTEE_COUNT = 1407;
-const COLLEGE_COUNT_SNAPSHOT = 410;
+const PREVIOUS_MENTOR_COUNT = 6259;
+const PREVIOUS_MENTEE_COUNT = 6107;
+const COLLEGE_COUNT_SNAPSHOT = 525;
 
 class Homepage extends Component {
   constructor(props) {
@@ -40,9 +40,9 @@ class Homepage extends Component {
     let stats = await get("/api/stats");
 
     this.setState({
-      mentor_count: stats.mentor_count + PREVIOUS_MENTOR_COUNT,
-      mentee_count: stats.mentee_count + PREVIOUS_MENTEE_COUNT,
-      college_count: stats.college_count ? stats.college_count : COLLEGE_COUNT_SNAPSHOT,
+      mentor_count: PREVIOUS_MENTOR_COUNT,
+      mentee_count: PREVIOUS_MENTEE_COUNT,
+      college_count: COLLEGE_COUNT_SNAPSHOT,
     })
   };
 
